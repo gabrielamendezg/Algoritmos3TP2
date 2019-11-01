@@ -1,0 +1,9 @@
+language: java
+jdk:
+  - openjdk11
+notifications:
+  email:
+    recipients:
+      - eclaros@fi.uba.ar
+    on_failure: always
+
