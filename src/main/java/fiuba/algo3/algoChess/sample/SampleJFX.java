@@ -1,4 +1,4 @@
-package sample;
+package fiuba.algo3.algoChess.sample;
 
 import javafx.application.Application;
 import javafx.scene.Group;

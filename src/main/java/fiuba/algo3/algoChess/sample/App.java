@@ -1,4 +1,4 @@
-package sample;
+package fiuba.algo3.algoChess.sample;
 
 /**
  * Hello world!
