@@ -6,8 +6,8 @@ notifications:
     recipients:
       - eclaros@fi.uba.ar
       - gabrielamendezg@outlook.com
-      -hbarrio86@gmail.com
-      -zeluuh@gmail.com
+      - hbarrio86@gmail.com
+      - zeluuh@gmail.com
     on_failure: always
 script: "mvn cobertura:cobertura"
 
