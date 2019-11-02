@@ -89,6 +89,7 @@
         </pluginManagement>
     </build>
 
+    <!-- profile no funciona ahh
     <profiles>
       <profile>
           <id>codecoverage</id>
@@ -122,5 +123,7 @@
               </plugins>
           </build>
       </profile>
+
+     -->
   </profiles>
 </project>
