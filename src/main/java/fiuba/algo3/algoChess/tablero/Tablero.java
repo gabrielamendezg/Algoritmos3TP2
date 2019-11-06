@@ -1,5 +1,4 @@
 package fiuba.algo3.algoChess.tablero;
-
 import fiuba.algo3.algoChess.sample.InstanciaDeTableroYaExiste;
 
 public class Tablero {
