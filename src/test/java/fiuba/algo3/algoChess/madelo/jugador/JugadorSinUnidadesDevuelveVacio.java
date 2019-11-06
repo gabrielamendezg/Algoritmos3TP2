@@ -6,7 +6,7 @@ import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import org.junit.Test;
 
 
-public class JugadorSinUnidadesDevuelveNull {
+public class JugadorSinUnidadesDevuelveVacio {
 
 	Jugador jugador= new Jugador();
 	
