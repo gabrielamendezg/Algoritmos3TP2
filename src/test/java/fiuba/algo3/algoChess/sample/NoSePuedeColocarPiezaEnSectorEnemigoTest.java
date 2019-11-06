@@ -8,6 +8,7 @@ public class NoSePuedeColocarPiezaEnSectorEnemigoTest {
 
 	@Test
 	public void test() {
+		
 		assertTrue( true );
 	}
 

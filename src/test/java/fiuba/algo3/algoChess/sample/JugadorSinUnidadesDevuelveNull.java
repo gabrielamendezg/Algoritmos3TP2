@@ -13,8 +13,6 @@ public class JugadorSinUnidadesDevuelveNull {
 	public void deberiaDevolverNull(){
 		
 	assertEquals(null, jugador.obtenerUnidades());
-		
-		
 	}
 	
 }
