@@ -2,7 +2,7 @@ package fiuba.algo3.algoChess.sample;
 
 import org.junit.jupiter.api.Test;
 
-import fiuba.algo3.algoChess.Tablero.Tablero;
+import fiuba.algo3.algoChess.tablero.Tablero;
 
 class TableroNoSePuedeClonarTest {
 	@SuppressWarnings("unused")
@@ -11,7 +11,7 @@ class TableroNoSePuedeClonarTest {
 		//Arrange and Act
 		try{
 			try{
-			Tablero tableroA = Tablero.ObtenerInstancia();
+			Tablero tableroA = Tablero.obtenerInstancia();
 			Tablero tableroB = tableroA.clone();
 		}catch(CloneNotSupportedException e) {
 			//Assert

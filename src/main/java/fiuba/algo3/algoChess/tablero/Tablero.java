@@ -1,4 +1,4 @@
-package fiuba.algo3.algoChess.Tablero;
+package fiuba.algo3.algoChess.tablero;
 
 import fiuba.algo3.algoChess.sample.InstanciaDeTableroYaExiste;
 
@@ -11,7 +11,7 @@ public class Tablero {
 		this.matriz = new Celda[tamanio][tamanio];
 	}
 	
-	public static Tablero ObtenerInstancia() throws InstanciaDeTableroYaExiste{
+	public static Tablero obtenerInstancia() throws InstanciaDeTableroYaExiste{
 		if(!soyUnico){
 			throw new InstanciaDeTableroYaExiste();
 		}

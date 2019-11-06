@@ -1,4 +1,4 @@
-package fiuba.algo3.algoChess.Tablero;
+package fiuba.algo3.algoChess.tablero;
 
 import fiuba.algo3.algoChess.modelo.entidades.Entidad;
 

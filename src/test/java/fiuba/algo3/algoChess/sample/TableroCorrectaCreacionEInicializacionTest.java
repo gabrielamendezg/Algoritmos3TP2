@@ -1,7 +1,7 @@
 package fiuba.algo3.algoChess.sample;
 import static org.junit.Assert.*;
 import org.junit.Test;
-import fiuba.algo3.algoChess.Tablero.Tablero;
+import fiuba.algo3.algoChess.tablero.Tablero;
 
 public class TableroCorrectaCreacionEInicializacionTest {
 
@@ -12,7 +12,7 @@ public class TableroCorrectaCreacionEInicializacionTest {
 		int contador = 0;
 		
 		try{
-			tablero = Tablero.ObtenerInstancia();
+			tablero = Tablero.obtenerInstancia();
 			for(int fila = 0; fila < 20; fila++) {
 				for(int columna = 0; columna < 20; columna++) {
 					if(!tablero.moverEntidad(fila,columna)) {

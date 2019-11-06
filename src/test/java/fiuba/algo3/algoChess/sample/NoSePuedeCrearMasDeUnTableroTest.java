@@ -2,7 +2,7 @@ package fiuba.algo3.algoChess.sample;
 
 import org.junit.jupiter.api.Test;
 
-import fiuba.algo3.algoChess.Tablero.Tablero;
+import fiuba.algo3.algoChess.tablero.Tablero;
 
 class TableroNoSePuedeCrearMasDeUnTableroTest {
 
@@ -10,8 +10,8 @@ class TableroNoSePuedeCrearMasDeUnTableroTest {
 	@Test
 	public void NoEsPosibleCrearMasDeUnaInstanciaDeTableroTest() {
 		try{
-			Tablero tableroA = Tablero.ObtenerInstancia();
-			Tablero tableroB = Tablero.ObtenerInstancia();
+			Tablero tableroA = Tablero.obtenerInstancia();
+			Tablero tableroB = Tablero.obtenerInstancia();
 		}catch(InstanciaDeTableroYaExiste ex) {
 			assert(true);
 		}
