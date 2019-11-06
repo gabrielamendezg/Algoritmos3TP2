@@ -3,21 +3,22 @@ import java.util.*;
 
 
 /*Agregar Mock unidad con aceptacion de String*/
-
+/*JUGADOR CON MULTITON para 2 jugadores*/
 
 public class Jugador{
 
 	private int puntos;
 	private ArrayList<String> unidades;
 	
+public Jugador() {	 	
 	
- public Jugador(){
-	 
-	 this.puntos= 20;
-	 this.unidades = new ArrayList<String>();
+	this.puntos= 20;
+	this.unidades = new ArrayList<String>();
 	 
  }
 	
+
+
  public void elegirSoldado(){
 	 
 	 if(this.puntos>=1) {

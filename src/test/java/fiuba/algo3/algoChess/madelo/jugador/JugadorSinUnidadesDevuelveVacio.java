@@ -1,6 +1,6 @@
 package fiuba.algo3.algoChess.madelo.jugador;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import org.junit.Test;
@@ -11,9 +11,9 @@ public class JugadorSinUnidadesDevuelveVacio {
 	Jugador jugador= new Jugador();
 	
 	@Test
-	public void deberiaDevolverNull(){
+	public void deberiaDevolverVacio(){
 		
-	assertEquals(null, jugador.obtenerUnidades());
+	assertTrue((jugador.obtenerUnidades()).isEmpty());
 		
 		
 	}
