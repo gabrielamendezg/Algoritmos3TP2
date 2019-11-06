@@ -1,7 +1,8 @@
-package fiuba.algo3.algoChess.sample;
+package fiuba.algo3.algoChess.madelo.jugador;
 
 import static org.junit.Assert.assertTrue;
 
+import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import org.junit.*;
 
 public class JugadorAgregaUnidadesYDevuelveCorrectamenteCantidadTest {

@@ -1,4 +1,4 @@
-package fiuba.algo3.algoChess.sample;
+package fiuba.algo3.algoChess.modelo.jugador;
 import java.util.*;
 
 

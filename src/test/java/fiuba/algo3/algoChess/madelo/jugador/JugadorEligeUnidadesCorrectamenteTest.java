@@ -1,9 +1,10 @@
-package fiuba.algo3.algoChess.sample;
+package fiuba.algo3.algoChess.madelo.jugador;
 
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import org.junit.Test;
 
 
