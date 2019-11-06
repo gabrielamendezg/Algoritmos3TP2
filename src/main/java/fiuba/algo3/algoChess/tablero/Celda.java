@@ -1,7 +1,7 @@
 package fiuba.algo3.algoChess.tablero;
 
 import fiuba.algo3.algoChess.modelo.entidades.Entidad;
-import fiuba.algo3.algoChess.sample.Jugador;
+import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 
 public class Celda{
 	private Jugador jugador;
