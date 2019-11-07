@@ -26,7 +26,7 @@ public class Jugador {
 
 		if (this.puntos >= 1) {
 
-			nuevaUnidad = new SoldadoDeInfanteria();
+			nuevaUnidad = new SoldadoDeInfanteria(this);
 			this.unidades.add(nuevaUnidad);
 			this.puntos = this.puntos - 1;
 
@@ -62,7 +62,7 @@ public class Jugador {
 
 		if (this.puntos >= 3) {
 
-			nuevaUnidad = new Jinete();
+			nuevaUnidad = new Jinete(this);
 			this.unidades.add(nuevaUnidad);
 			this.puntos = this.puntos - 3;
 
@@ -81,7 +81,7 @@ public class Jugador {
 
 		if (this.puntos >= 2) {
 
-			nuevaUnidad = new Curandero();
+			nuevaUnidad = new Curandero(this);
 			this.unidades.add(nuevaUnidad);
 			this.puntos = this.puntos - 2;
 
