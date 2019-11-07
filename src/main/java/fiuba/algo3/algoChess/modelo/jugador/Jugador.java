@@ -38,7 +38,7 @@ public Jugador() {
 		 System.out.println("Puntos insuficientes, devuelve null");
 	 }
 	 
-	 return nuevaEntidad;
+	 return nuevaUnidad;
  }
  
  public Unidad elegirCatapulta(){
