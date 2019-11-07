@@ -127,7 +127,7 @@ public Jugador() {
 	 }
  }
  
- public boolean ordenarAtaque(ArrayList<Unidad> unidadesEnemigas) {
+ public boolean ordenarAtaque() {
 	 
 	 boolean pudoOrdenarAtaque=true;
 	 
