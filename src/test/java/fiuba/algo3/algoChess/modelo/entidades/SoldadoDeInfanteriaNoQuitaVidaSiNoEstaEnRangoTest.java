@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 
 class SoldadoDeInfanteriaNoQuitaVidaSiNoEstaEnRangoTest {
 	
-	SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
-	Curandero curandero = new Curandero();
+	Unidad soldado = new SoldadoDeInfanteria();
+	Unidad curandero = new Curandero();
 	@Test
 	void soldadoNoQuitaVida() {
 		curandero.setPosicion(1, 4);

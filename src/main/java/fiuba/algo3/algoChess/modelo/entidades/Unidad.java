@@ -2,6 +2,9 @@ package fiuba.algo3.algoChess.modelo.entidades;
 
 import fiuba.algo3.algoChess.modelo.jugador.*;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import fiuba.algo3.algoChess.modelo.ataque.*;
 
 public class Unidad {
@@ -47,41 +50,28 @@ public class Unidad {
 	public int obtenerPosicionY() {
 		return posicionY;
 	}
-	
+
 	public int obtenerVida(){
 		return vida;
 	}
 		
 	private boolean movimientoValido(int nuevaPosicionX, int nuevaPosicionY) {
-		
-		 boolean movimientoValido = false;
-		 int distanciaX = Math.abs(nuevaPosicionX - posicionX);
-		 int distanciaY = Math.abs(nuevaPosicionY - posicionY);
-		 
-		 if (  ( (0 == distanciaX) || (distanciaX == 1) ) 
-				 &&
-			  (  (0 == distanciaY) || (distanciaY ==1))  ){
-			 
-			 
-			 movimientoValido = true;
-		 }
-		 
-		 return movimientoValido;
 
-	}
-	
-	public boolean moverUnidadA(int nuevaPosicionX, int nuevaPosicionY) {
-		
-		boolean unidadMovida = false;
-		
-		if (this.movimientoValido(nuevaPosicionX, nuevaPosicionY) ){
-			
-			this.setPosicion(nuevaPosicionX, nuevaPosicionY);
-			unidadMovida = true;
+		boolean movimientoValido = false;
+		int distanciaX = Math.abs(nuevaPosicionX - posicionX);
+		int distanciaY = Math.abs(nuevaPosicionY - posicionY);
+
+		if (((0 == distanciaX) || (distanciaX == 1))
+				&&
+
+				((0 == distanciaY) || (distanciaY == 1))) {
+
+
+			movimientoValido = true;
 		}
-		return unidadMovida;
+		return movimientoValido;
 	}
-	
+
 	public void atacar(ArrayList<Unidad> unidadesEnemigas) {
 		
 		Iterator<Unidad> iterador = unidadesEnemigas.iterator();
@@ -91,6 +81,18 @@ public class Unidad {
 			Unidad unidadEnemiga = iterador.next();
 			this.atacar(unidadEnemiga);
 		}
+	}
+	
+	public boolean moverUnidadA(int nuevaPosicionX, int nuevaPosicionY, Jugador jugador) {
+		
+		boolean unidadMovida = false;
+		
+		if (this.movimientoValido(nuevaPosicionX, nuevaPosicionY) && (jugador ==duenio)  ){
+			
+			this.setPosicion(nuevaPosicionX, nuevaPosicionY);
+			unidadMovida = true;
+		}
+		return unidadMovida;
 	}
 	
 

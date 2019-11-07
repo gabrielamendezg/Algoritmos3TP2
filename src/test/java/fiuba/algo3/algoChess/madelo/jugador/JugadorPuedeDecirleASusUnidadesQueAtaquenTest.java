@@ -8,14 +8,14 @@ import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 
 public class JugadorPuedeDecirleASusUnidadesQueAtaquenTest {
 
-	Jugador unJugador = new Jugador();
+	/*Jugador unJugador = new Jugador();
 	
 	@Test
 	public void DeberiaDevolverTrue() {
 		
 		assertTrue (unJugador.ordenarAtaque());
 		
-	}
+	}*/
 	
 	
 }

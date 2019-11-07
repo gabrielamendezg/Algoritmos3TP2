@@ -1,16 +1,23 @@
 package fiuba.algo3.algoChess.modelo.entidades;
-import fiuba.algo3.algoChess.modelo.ataque.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import fiuba.algo3.algoChess.modelo.jugador.*;
+
+import fiuba.algo3.algoChess.modelo.ataque.*;
 
 public class Catapulta extends Unidad{
 	
-	public Catapulta(Jugador jugador) {
+	public Catapulta() {
 		
 	
 		vida = 50;
 		ataque = new AtaqueDistanciaLejana(20);
 		costo = 5;
-		this.setDuenio(jugador);
+	}
+	@Override
+	public boolean moverUnidadA(int posicionX, int posicionY, Jugador jugador) {
+		return false;
 	}
 	
 	

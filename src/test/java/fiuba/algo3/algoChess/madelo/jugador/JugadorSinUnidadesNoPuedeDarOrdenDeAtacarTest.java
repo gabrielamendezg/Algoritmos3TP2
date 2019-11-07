@@ -7,14 +7,14 @@ import static org.junit.Assert.assertFalse;
 import org.junit.*;
 
 public class JugadorSinUnidadesNoPuedeDarOrdenDeAtacarTest {
-	
-	Jugador jugador = new Jugador();
+	// ordenar ataque recive uniadad?
+	/*Jugador jugador = new Jugador();
 
 	@Test
 	public void deberiaDevolverFalseYaQueJugadorNoTieneUnidades() {
 		
 		assertFalse (jugador.ordenarAtaque());
-	}
+	}*/
 	
 	
 }

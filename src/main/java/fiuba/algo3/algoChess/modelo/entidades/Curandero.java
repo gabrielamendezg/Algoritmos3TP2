@@ -1,14 +1,12 @@
 package fiuba.algo3.algoChess.modelo.entidades;
 import fiuba.algo3.algoChess.modelo.ataque.*;
-import fiuba.algo3.algoChess.modelo.jugador.*;
 
 public class Curandero extends Unidad{
 	
-	public Curandero(Jugador jugador) {
+	public Curandero() {
 		vida = 75;
 		ataque = new AtaqueDistanciaMedia(15);
 		costo = 2;
-		this.setDuenio(jugador);
 	}
 	
 	@Override
