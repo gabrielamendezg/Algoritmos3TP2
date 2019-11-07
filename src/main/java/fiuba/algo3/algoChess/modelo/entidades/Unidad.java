@@ -51,6 +51,36 @@ public class Unidad {
 	public int obtenerVida(){
 		return vida;
 	}
+		
+	private boolean movimientoValido(int nuevaPosicionX, int nuevaPosicionY) {
+		
+		 boolean movimientoValido = false;
+		 int distanciaX = Math.abs(nuevaPosicionX - posicionX);
+		 int distanciaY = Math.abs(nuevaPosicionY - posicionY);
+		 
+		 if (  ( (0 == distanciaX) || (distanciaX == 1) ) 
+				 &&
+			  (  (0 == distanciaY) || (distanciaY ==1))  ){
+			 
+			 
+			 movimientoValido = true;
+		 }
+		 
+		 return movimientoValido;
+
+	}
+	
+	public boolean moverUnidadA(int nuevaPosicionX, int nuevaPosicionY) {
+		
+		boolean unidadMovida = false;
+		
+		if (this.movimientoValido(nuevaPosicionX, nuevaPosicionY) ){
+			
+			this.setPosicion(nuevaPosicionX, nuevaPosicionY);
+			unidadMovida = true;
+		}
+		return unidadMovida;
+	}
 	
 
 }
