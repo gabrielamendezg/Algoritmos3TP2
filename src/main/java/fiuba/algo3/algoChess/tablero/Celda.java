@@ -1,11 +1,11 @@
 package fiuba.algo3.algoChess.tablero;
 
-import fiuba.algo3.algoChess.modelo.entidades.Entidad;
+import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 
 public class Celda{
 	private Jugador jugador;
-	private Entidad entidad;
+	private Unidad unidad;
 	private EstadoCelda estado;
 	
 	public Celda(Jugador duenio) {
@@ -13,19 +13,19 @@ public class Celda{
 		jugador = duenio;
 	}
 
-	public void setEntidad(Entidad contenido) {
-		entidad = contenido;
+	public void setUnidad(Unidad contenido) {
+		unidad = contenido;
 	}
 	
 	public void setEstado(EstadoCelda nuevoestado) {
 		estado = nuevoestado;
 	}
 	
-	public boolean recibirEntidad(Entidad contenido) {
-		return estado.recibirEntidad(contenido, this);
+	public boolean recibirUnidad(Unidad contenido) {
+		return estado.recibirUnidad(contenido, this);
 	}
 
-	public boolean moverEntidad(Celda celda) {
-		return estado.moverEntidad(entidad, celda, this);
+	public boolean moverUnidad(Celda celda) {
+		return estado.moverUndiad(unidad, celda, this);
 	}
 }
