@@ -133,15 +133,11 @@ public boolean ordenarAtaque(ArrayList<Unidad> unidadesEnemigas) {
 	 
 	
 	 Iterator<Unidad> iterador = unidades.iterator();
-	 
-;
-	 
-	 
-	 
+	 	 
 	 while (iterador.hasNext()) {
 
 			
-	 		 iterador.next().atacar(ArrayList<Unidad> unidadesEnemigas);
+	 	 iterador.next().atacar(ArrayList<Unidad> unidadesEnemigas);
 		 }
 			 
 		 
@@ -152,7 +148,6 @@ public boolean ordenarAtaque(ArrayList<Unidad> unidadesEnemigas) {
 	 }
 	 
 	return pudoOrdenarAtaque; 
- 
  
 	
 }
