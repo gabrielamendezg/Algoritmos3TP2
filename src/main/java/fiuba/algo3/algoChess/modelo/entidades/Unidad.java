@@ -61,11 +61,9 @@ public class Unidad {
 		 int distanciaX = Math.abs(nuevaPosicionX - posicionX);
 		 int distanciaY = Math.abs(nuevaPosicionY - posicionY);
 		 
-		if( (nuevaPosicionX>0) && (nuevaPosicionY>0)) {
-		 
-		 	if (  ( (0 == distanciaX) || (distanciaX == 1) ) 
+		 if (  ( (0 == distanciaX) || (distanciaX == 1) ) 
 				 &&
-			  (  (0 == distanciaY) || (distanciaY ==1))  ){
+		   (  (0 == distanciaY) || (distanciaY ==1))  ){
 			 
 			 
 			 movimientoValido = true;
