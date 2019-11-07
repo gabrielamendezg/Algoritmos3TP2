@@ -23,7 +23,7 @@ public class Tablero {
 		return null;
 	}
 
-	public boolean moverEntidad(int fila, int columna) {
-		return matriz[fila][columna].moverEntidad(matriz[0][0]);
+	public boolean moverUnidad(int fila, int columna) {
+		return matriz[fila][columna].moverUnidad(matriz[0][0]);
 	}
 }

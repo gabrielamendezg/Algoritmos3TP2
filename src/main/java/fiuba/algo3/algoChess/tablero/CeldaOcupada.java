@@ -1,18 +1,18 @@
 package fiuba.algo3.algoChess.tablero;
 
-import fiuba.algo3.algoChess.modelo.entidades.Entidad;
+import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 
 public class CeldaOcupada extends EstadoCelda {
 
 	@Override
-	public boolean recibirEntidad(Entidad contenido, Celda receptora) {
+	public boolean recibirUnidad(Unidad contenido, Celda receptora) {
 		return false;
 	}
 
 	@Override
-	public boolean moverEntidad(Entidad contenido,Celda receptora,Celda emisora) {
-		receptora.setEntidad(contenido);
-		emisora.setEntidad(null);
+	public boolean moverUnidad(Unidad contenido,Celda receptora,Celda emisora) {
+		receptora.setUnidad(contenido);
+		emisora.setUnidad(null);
 		emisora.setEstado(new CeldaVacia());
 		return true;
 	}
