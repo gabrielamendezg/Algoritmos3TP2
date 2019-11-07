@@ -131,12 +131,12 @@ public Jugador() {
 	 
 	 boolean pudoOrdenarAtaque=true;
 	 
-	 Iterador<Unidad> iteradorUnidadesEnemigas = unidadesEnemigas.iterador();
+	
 	 Iterator<Unidad> iterador = unidades.iterator();
 	 
 	 while (iterador.hasNext()) {
-		 while(iterador.hasNext){
-			 Unidad unidadEnemiga = iterador.getClass();
+		 Unidad unidadEnemiga = new Unidad();
+			
 	 		 iterador.getClass().atacar(unidadEnemiga);
 			 
 		 }
