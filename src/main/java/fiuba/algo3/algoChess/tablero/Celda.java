@@ -26,6 +26,6 @@ public class Celda{
 	}
 
 	public boolean moverUnidad(Celda celda) {
-		return estado.moverUndiad(unidad, celda, this);
+		return estado.moverUnidad(unidad, celda, this);
 	}
 }
