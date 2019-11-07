@@ -137,7 +137,9 @@ public Jugador() {
 	 while (iterador.hasNext()) {
 		 while(iterador.hasNext){
 			 Unidad unidadEnemiga = iterador.getClass();
-	 		iterador.getClass().atacar(unidadEnemiga);
+	 		 iterador.getClass().atacar(unidadEnemiga);
+			 
+		 }
 	 }
 	
 	 if (this.cantidadDeUnidades() == 0) {
