@@ -48,5 +48,9 @@ public class Unidad {
 		return posicionY;
 	}
 	
+	public int obtenerVida(){
+		return vida;
+	}
+	
 
 }
