@@ -15,7 +15,7 @@ public class TableroCorrectaCreacionEInicializacionTest {
 			tablero = Tablero.obtenerInstancia();
 			for(int fila = 0; fila < 20; fila++) {
 				for(int columna = 0; columna < 20; columna++) {
-					if(!tablero.moverEntidad(fila,columna)) {
+					if(!tablero.moverUnidad(fila,columna)) {
 						contador += 1;
 					}
 				}
