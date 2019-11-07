@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class CuranderoCuraVidaCorrespondiente {
+class CuranderoCuraVidaCorrespondienteTest {
 	
 	Curandero curandero = new Curandero();
 	
