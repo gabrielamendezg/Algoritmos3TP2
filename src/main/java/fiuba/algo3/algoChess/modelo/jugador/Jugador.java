@@ -6,7 +6,6 @@ import fiuba.algo3.algoChess.sample.JugadorSinUnidadesPierdeException;
 
 /*REFACTOREAR A JUGADOR CON MULTITON para 2 jugadores?? Discutir y definir*/
 
-//CAMBIAR ENTIDAD POR UNIDAD
 
 public class Jugador{
 
@@ -131,7 +130,7 @@ public Jugador() {
  public boolean ordenarAtaque() {
 	
 	 boolean pudoOrdenarAtaque=true;
-	 Iterator<Entidad> iterador = unidades.iterator();
+	 Iterator<Unidad> iterador = unidades.iterator();
 	 while (iterador.hasNext()) {
 	 iterador.getClass().atacar();
 	 }
