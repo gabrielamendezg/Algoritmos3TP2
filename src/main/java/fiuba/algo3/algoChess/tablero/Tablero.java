@@ -24,6 +24,6 @@ public class Tablero {
 	}
 
 	public boolean moverUnidad(int fila, int columna) {
-		return matriz[fila][columna].moverEntidad(matriz[0][0]);
+		return matriz[fila][columna].moverUnidad(matriz[0][0]);
 	}
 }
