@@ -1,6 +1,7 @@
 package fiuba.algo3.algoChess.tablero;
 
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
+import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 
 public class CeldaVacia extends EstadoCelda{
 
@@ -12,7 +13,8 @@ public class CeldaVacia extends EstadoCelda{
 	}
 
 	@Override
-	public boolean moverUnidad(Unidad contenido, Celda receptora,Celda emisora) {
+	boolean moverUnidad(Celda celdaorigen, Jugador jugadormovimiento, int filadestino,
+			int columnadestino, Unidad unidad) {
 		return false;
 	}
 	

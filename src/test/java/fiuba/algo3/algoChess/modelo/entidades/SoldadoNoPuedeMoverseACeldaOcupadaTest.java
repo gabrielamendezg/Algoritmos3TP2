@@ -12,9 +12,9 @@ public class SoldadoNoPuedeMoverseACeldaOcupadaTest {
 		Curandero curandero = new Curandero();
 		Jugador jugador = new Jugador();
 		
-		Celda celda1 = new Celda(jugador);
+		Celda celda1 = new Celda();
 		
-		Celda celda2 = new Celda (jugador);
+		Celda celda2 = new Celda ();
 		@Test
 		void test() {
 			
@@ -23,8 +23,8 @@ public class SoldadoNoPuedeMoverseACeldaOcupadaTest {
 			
 			celda2.setUnidad(curandero); // agregaentidad y setea posicion
 			
-			if(celda1.moverUnidad(celda2)) {
-				soldado.moverUnidadA(1,	2, jugador);
+			if(celda1.recibirUnidad(curandero)) {
+				soldado.moverUnidadA(jugador,1,2);
 			}
 			
 			assertTrue(soldado.obtenerPosicionX() ==1 );

@@ -83,7 +83,7 @@ public class Unidad {
 		}
 	}
 	
-	public boolean moverUnidadA(int nuevaPosicionX, int nuevaPosicionY, Jugador jugador) {
+	public boolean moverUnidadA(Jugador jugador, int nuevaPosicionX, int nuevaPosicionY) {
 		
 		boolean unidadMovida = false;
 		

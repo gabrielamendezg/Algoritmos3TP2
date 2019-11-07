@@ -44,7 +44,7 @@ public class Jugador {
 
 		if (this.puntos >= 5) {
 
-			nuevaUnidad = new Catapulta();
+			nuevaUnidad = new Catapulta(this);
 			this.unidades.add(nuevaUnidad);
 			this.puntos = this.puntos - 5;
 

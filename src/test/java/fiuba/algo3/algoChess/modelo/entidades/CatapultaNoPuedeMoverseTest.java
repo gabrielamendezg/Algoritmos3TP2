@@ -1,23 +1,22 @@
 package fiuba.algo3.algoChess.modelo.entidades;
 import static org.junit.Assert.assertTrue;
 
-import fiuba.algo3.algoChess.modelo.jugador.*;
-
 import org.junit.jupiter.api.Test;
+
+import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 
 public class CatapultaNoPuedeMoverseTest {
 	
-	Catapulta catapulta = new Catapulta();
-
 	Jugador jugador = new Jugador();
-
+	Catapulta catapulta = new Catapulta(jugador);
 	
 	@Test
 	void test() {
 
 		catapulta.setPosicion(1,1);
-
-		catapulta.moverUnidadA(1,2, jugador);
+		
+		catapulta.moverUnidadA(jugador,1,2);
+		
 		assertTrue(catapulta.obtenerPosicionX() ==1 );
 		assertTrue(catapulta.obtenerPosicionY() ==1);
 		

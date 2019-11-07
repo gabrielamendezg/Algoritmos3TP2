@@ -15,7 +15,7 @@ public class CuranderoSeMueveCorrectamenteTest {
 		curandero.setPosicion(1,1);
 		curandero.setDuenio(jugador);
 		
-		curandero.moverUnidadA(1,2, jugador);
+		curandero.moverUnidadA(jugador,1,2);
 		
 		assertTrue(curandero.obtenerPosicionX() ==1 );
 		assertTrue(curandero.obtenerPosicionY() ==2);
