@@ -1,6 +1,5 @@
-package fiuba.algo3.algoChess.madelo.entidades;
+package fiuba.algo3.algoChess.modelo.entidades;
 
-import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

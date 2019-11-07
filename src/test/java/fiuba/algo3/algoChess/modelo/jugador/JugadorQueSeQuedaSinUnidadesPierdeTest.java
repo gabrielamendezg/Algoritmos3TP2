@@ -1,7 +1,6 @@
-package fiuba.algo3.algoChess.madelo.jugador;
+package fiuba.algo3.algoChess.modelo.jugador;
 
 import org.junit.*;
-import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.modelo.entidades.*;
 import fiuba.algo3.algoChess.sample.*;
 

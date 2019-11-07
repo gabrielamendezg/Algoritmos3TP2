@@ -1,6 +1,5 @@
-package fiuba.algo3.algoChess.madelo;
+package fiuba.algo3.algoChess.modelo;
 
-import fiuba.algo3.algoChess.modelo.Casilla;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
