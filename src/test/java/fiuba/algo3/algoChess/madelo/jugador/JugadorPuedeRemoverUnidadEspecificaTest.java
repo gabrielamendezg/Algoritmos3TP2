@@ -5,6 +5,7 @@ import fiuba.algo3.algoChess.modelo.entidades.*;
 import  org.junit.*;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
+import fiuba.algo3.algoChess.sample.JugadorSinUnidadesPierdeException;
 
 
 public class JugadorPuedeRemoverUnidadEspecificaTest {
@@ -17,7 +18,11 @@ public class JugadorPuedeRemoverUnidadEspecificaTest {
 		
 		unaUnidad = jugador.elegirCatapulta();
 		assertTrue(jugador.cantidadDeUnidades() == 1);
-		jugador.eliminarUnidad(unaUnidad);
+		try {jugador.eliminarUnidad(unaUnidad);
+		
+		}catch (JugadorSinUnidadesPierdeException e) {
+			
+		}
 		assertTrue(jugador.cantidadDeUnidades() == 0);
 		
 		

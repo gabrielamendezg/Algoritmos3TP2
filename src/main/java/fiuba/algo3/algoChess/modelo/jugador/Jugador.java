@@ -1,6 +1,7 @@
 package fiuba.algo3.algoChess.modelo.jugador;
 import java.util.*;
 import fiuba.algo3.algoChess.modelo.entidades.*;
+import fiuba.algo3.algoChess.sample.JugadorSinUnidadesPierdeException;
 
 
 /*Agregar Mock unidad con aceptacion de String*/
@@ -128,10 +129,14 @@ public Jugador() {
 	 return (unidades.size() != 0);
  }
  
- public void eliminarUnidad(Entidad unaEntidad) {
+ public void eliminarUnidad(Entidad unaEntidad) throws JugadorSinUnidadesPierdeException {
 	 
 	 this.unidades.remove(unaEntidad);
 	 
+	 if(!this.sigueEnJuego()) {
+		 throw new JugadorSinUnidadesPierdeException();
+	
+	 }
  }
  
 	
