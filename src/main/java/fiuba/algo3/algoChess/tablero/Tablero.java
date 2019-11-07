@@ -10,7 +10,7 @@ public class Tablero {
 	private GuardianMurallas guardianMurallas;
 	
 	private Tablero(Jugador jugadorA, Jugador jugadorB) {
-		this.matriz = new Celda[tamanio][tamanio];
+		matriz = new Celda[tamanio][tamanio];
 		guardianMurallas = new GuardianMurallas(20,jugadorA,jugadorB);
 		for(int i = 0; i < tamanio; i++) {
 			for (int j = 0; i < tamanio; i++) {
@@ -39,6 +39,7 @@ public class Tablero {
 		try{
 			return guardianMurallas.colocarEnPosicionPorJugador(jugador,unidad,fila,columna,matriz);
 		}catch(Exception e) {
+			 e.printStackTrace();
 			throw e;
 		}
 	}

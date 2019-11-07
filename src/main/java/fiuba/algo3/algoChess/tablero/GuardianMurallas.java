@@ -16,7 +16,7 @@ public class GuardianMurallas {
 	private int jugador2filamax;
 	
 	public GuardianMurallas(int i, Jugador jugadorA, Jugador jugadorB) {
-		columnamax = i;
+		columnamax = i-1;
 		filamax = i-1;
 		jugador1 = jugadorA;
 		jugador2 = jugadorB;
