@@ -82,5 +82,16 @@ public class Unidad {
 		return unidadMovida;
 	}
 	
+	public void atacar(ArrayList<Unidad> unidadesEnemigas) {
+		
+		Iterator<Unidad> iterador = unidadesEnemigas.iterator();
+		
+		while(iterador.hasNext()) {
+			
+			Unidad unidadEnemiga = iterador.next();
+			this.atacar(unidadEnemiga);
+		}
+	}
+	
 
 }
