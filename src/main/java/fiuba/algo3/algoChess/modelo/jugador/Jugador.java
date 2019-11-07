@@ -12,25 +12,25 @@ import fiuba.algo3.algoChess.sample.JugadorSinUnidadesPierdeException;
 public class Jugador{
 
 	private int puntos;
-	private ArrayList<Entidad> unidades;
+	private ArrayList<Unidad> unidades;
 	
 public Jugador() {	 	
 	
 	this.puntos= 20;
-	this.unidades = new ArrayList<Entidad>();
+	this.unidades = new ArrayList<Unidad>();
 	 
  }
 	
 
 
- public Entidad elegirSoldado(){
+ public Unidad elegirSoldado(){
 	 
-	 Entidad nuevaEntidad = null;
+	 Unidad nuevaUnidad = null;
 	
 	 	if(this.puntos>=1) {
 	 		
-	 		nuevaEntidad= new SoldadoDeInfanteria();
-	 		this.unidades.add(nuevaEntidad);
+	 		nuevaUnidad= new SoldadoDeInfanteria();
+	 		this.unidades.add(nuevaUnidad);
 	 		this.puntos= this.puntos -1;
 	 	
 	 	}else {
@@ -41,14 +41,14 @@ public Jugador() {
 	 return nuevaEntidad;
  }
  
- public Entidad elegirCatapulta(){
+ public Unidad elegirCatapulta(){
 	 
-	 Entidad nuevaEntidad = null;
+	 Unidad nuevaUnidad = null;
 	 
 	 if(this.puntos>=5) {
 	
-		nuevaEntidad= new Catapulta();
-	 	this.unidades.add(nuevaEntidad);
+		nuevaUnidad= new Catapulta();
+	 	this.unidades.add(nuevaUnidad);
 	 	this.puntos= this.puntos -5;
 	 	
 	 }else {
@@ -56,17 +56,17 @@ public Jugador() {
 		 System.out.println("Puntos insuficientes, devuelve null");
 	 }
 	 
-	 return nuevaEntidad;
+	 return nuevaUnidad;
  }
  
- public Entidad elegirJinete(){
+ public Unidad elegirJinete(){
  	 
-	 Entidad nuevaEntidad = null;
+	 Unidad nuevaUnidad = null;
 	 
 	 if(this.puntos>=3) {
 		 
-		nuevaEntidad= new Jinete();
-	 	this.unidades.add(nuevaEntidad);
+		nuevaUnidad= new Jinete();
+	 	this.unidades.add(nuevaUnidad);
 	 	this.puntos= this.puntos - 3;
 
 	 
@@ -75,17 +75,17 @@ public Jugador() {
 		 System.out.println("Puntos insuficientes, devuelve null");
 	 }
 	 
-	 return nuevaEntidad;
+	 return nuevaUnidad;
  }
  
- public Entidad elegirCurandero(){
+ public Unidad elegirCurandero(){
  	 
-	 Entidad nuevaEntidad = null;
+	 Unidad nuevaUnidad = null;
 	 
 	 if(this.puntos>=2) {
 		 
-		nuevaEntidad= new Curandero();
-	 	this.unidades.add(nuevaEntidad);
+		nuevaUnidad= new Curandero();
+	 	this.unidades.add(nuevaUnidad);
 	 	this.puntos= this.puntos - 2;
 	 
 	 }else {
@@ -93,7 +93,7 @@ public Jugador() {
 		 System.out.println("Puntos insuficientes, devuelve null");
 	 }
  
-	 return nuevaEntidad;
+	 return nuevaUnidad;
  }
  
 	 
@@ -104,7 +104,7 @@ public Jugador() {
 	 return (this.unidades.size());
  }
  
- public ArrayList<Entidad> obtenerUnidades(){
+ public ArrayList<Unidad> obtenerUnidades(){
 	 
 	 
 	 return this.unidades;
@@ -129,9 +129,9 @@ public Jugador() {
 	 return (unidades.size() != 0);
  }
  
- public void eliminarUnidad(Entidad unaEntidad) throws JugadorSinUnidadesPierdeException {
+ public void eliminarUnidad(Unidad unaUnidad) throws JugadorSinUnidadesPierdeException {
 	 
-	 this.unidades.remove(unaEntidad);
+	 this.unidades.remove(unaUnidad);
 	 
 	 if(!this.sigueEnJuego()) {
 		 throw new JugadorSinUnidadesPierdeException();
