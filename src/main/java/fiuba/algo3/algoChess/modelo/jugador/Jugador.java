@@ -127,12 +127,18 @@ public Jugador() {
 	 }
  }
  
- public boolean ordenarAtaque() {
+ public boolean ordenarAtaque(ArrayList<Unidad> enemigos) {
 	
 	 boolean pudoOrdenarAtaque=true;
-	 Iterator<Unidad> iterador = unidades.iterator();
-	 while (iterador.hasNext()) {
-	 iterador.getClass().atacar();
+	 Iterator<Unidad> iteradorUnidadesPropias = unidades.iterator();
+	
+	 
+	 while (iteradorUnidadesPropias.hasNext()) {
+		
+			 
+		 iteradorUnidadesPropias.next().atacar(enemigos);
+		 
+		 
 	 }
 	
 	 if (this.cantidadDeUnidades() == 0) {
