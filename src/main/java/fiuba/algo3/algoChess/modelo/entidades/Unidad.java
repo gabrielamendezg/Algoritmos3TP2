@@ -68,7 +68,7 @@ public class Unidad {
 			 
 			 movimientoValido = true;
 		 }
-		}
+		
 		 
 		 return movimientoValido;
 
