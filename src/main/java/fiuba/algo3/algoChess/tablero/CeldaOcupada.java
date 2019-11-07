@@ -11,7 +11,7 @@ public class CeldaOcupada extends EstadoCelda {
 
 	@Override
 	public boolean moverUnidad(Unidad contenido,Celda receptora,Celda emisora) {
-		receptora.setUndiad(contenido);
+		receptora.setUnidad(contenido);
 		emisora.setUnidad(null);
 		emisora.setEstado(new CeldaVacia());
 		return true;
