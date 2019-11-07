@@ -127,17 +127,24 @@ public Jugador() {
 	 }
  }
  
- public boolean ordenarAtaque() {
+public boolean ordenarAtaque(ArrayList<Unidad> unidadesEnemigas) {
 	 
 	 boolean pudoOrdenarAtaque=true;
 	 
 	
 	 Iterator<Unidad> iterador = unidades.iterator();
 	 
+	 Iterator<Unidad> iteradorEnemigo = unidadesEnemigas.iterator();
+	 
+	 
+	 
 	 while (iterador.hasNext()) {
-		 Unidad unidadEnemiga = new SoldadoDeInfanteria();
+		 while(iteradorEnemigo.hasNext()) {
+			 
+			 Unidad unidadEnemiga = iteradorEnemigo.next();
 			
 	 		 iterador.next().atacar(unidadEnemiga);
+		 }
 			 
 		 }
 	 
@@ -147,7 +154,6 @@ public Jugador() {
 	 }
 	 
 	return pudoOrdenarAtaque; 
- }
  
  
 	
