@@ -128,5 +128,11 @@ public Jugador() {
 	 return (unidades.size() != 0);
  }
  
+ public void eliminarUnidad(Entidad unaEntidad) {
+	 
+	 this.unidades.remove(unaEntidad);
+	 
+ }
+ 
 	
 }
