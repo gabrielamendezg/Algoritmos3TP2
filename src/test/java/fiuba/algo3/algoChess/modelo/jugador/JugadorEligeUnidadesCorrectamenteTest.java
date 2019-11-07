@@ -1,10 +1,9 @@
-package fiuba.algo3.algoChess.madelo.jugador;
+package fiuba.algo3.algoChess.modelo.jugador;
 
 import fiuba.algo3.algoChess.modelo.entidades.*;
 import static org.junit.Assert.*;
 
 
-import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import org.junit.Test;
 
 // Cambiar ENTIDAD por UNIDAD

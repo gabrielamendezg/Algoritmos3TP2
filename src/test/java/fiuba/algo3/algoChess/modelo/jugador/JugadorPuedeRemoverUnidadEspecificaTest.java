@@ -1,10 +1,9 @@
-package fiuba.algo3.algoChess.madelo.jugador;
+package fiuba.algo3.algoChess.modelo.jugador;
 import static org.junit.Assert.assertTrue;
 import fiuba.algo3.algoChess.modelo.entidades.*;
 
 import  org.junit.*;
 
-import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import fiuba.algo3.algoChess.sample.JugadorSinUnidadesPierdeException;
 
 
