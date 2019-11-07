@@ -4,10 +4,12 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import fiuba.algo3.algoChess.modelo.jugador.Jugador;
+
 class SoldadoDeInfanteriaNoQuitaVidaSiNoEstaEnRangoTest {
-	
-	Unidad soldado = new SoldadoDeInfanteria();
-	Unidad curandero = new Curandero();
+	Jugador jugador = new Jugador();
+	Unidad soldado = new SoldadoDeInfanteria(jugador);
+	Unidad curandero = new Curandero(jugador);
 	@Test
 	void soldadoNoQuitaVida() {
 		curandero.setPosicion(1, 4);

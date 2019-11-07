@@ -7,10 +7,9 @@ import org.junit.jupiter.api.Test;
 
 public class SoldadoNoPuedeMoverseACeldaOcupadaTest {
 	
-
-		SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
-		Curandero curandero = new Curandero();
 		Jugador jugador = new Jugador();
+		SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(jugador);
+		Curandero curandero = new Curandero(jugador);
 		
 		Celda celda1 = new Celda();
 		

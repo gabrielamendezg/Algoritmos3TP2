@@ -37,7 +37,7 @@ public class Tablero {
 	//Colocar una nueva pieza en el tablero. 
 	public boolean colocarUnidad(Jugador jugador, Unidad unidad, int fila, int columna) throws Exception {
 		try{
-			return guardianMurallas.colocarEnPosicionPorJugador(jugador,unidad,fila,columna);
+			return guardianMurallas.colocarEnPosicionPorJugador(jugador,unidad,fila,columna,matriz);
 		}catch(Exception e) {
 			throw e;
 		}

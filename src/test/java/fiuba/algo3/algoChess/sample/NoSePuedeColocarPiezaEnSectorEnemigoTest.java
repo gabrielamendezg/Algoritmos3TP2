@@ -18,6 +18,7 @@ public class NoSePuedeColocarPiezaEnSectorEnemigoTest {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		Unidad unidad1 = jugador1.elegirSoldado();
+		boolean excepcion = false;
 		
 		try {
 			Tablero tablero = Tablero.obtenerInstancia(jugador1,jugador2);
@@ -27,10 +28,11 @@ public class NoSePuedeColocarPiezaEnSectorEnemigoTest {
 		} catch (JugadorInvalido e) {
 			fail("JugadorInvalido exception");
 		} catch (PosicionInvalidaException e) {
-			assert(true);
+			excepcion = true;
 		} catch (Exception e) {
 			fail("Exception inesperada");
 		}
+		assert(excepcion);
 	}
 
 }

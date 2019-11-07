@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 
 public class CuranderoSeMueveCorrectamenteTest {
 
-
-	Curandero curandero = new Curandero();
 	Jugador jugador = new Jugador();
+	Curandero curandero = new Curandero(jugador);
+
 	@Test
 	void test() {
 

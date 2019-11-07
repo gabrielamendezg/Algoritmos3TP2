@@ -4,11 +4,14 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import fiuba.algo3.algoChess.modelo.jugador.Jugador;
+
 class JineteQuitaVidaCorrespondienteTest {
 	
-	SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
-	Curandero curandero = new Curandero();
-	Jinete jinete = new Jinete();
+	Jugador jugador = new Jugador();
+	SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(jugador);
+	Curandero curandero = new Curandero(jugador);
+	Jinete jinete = new Jinete(jugador);
 	@Test
 	void test() {
 		curandero.setPosicion(1, 2);

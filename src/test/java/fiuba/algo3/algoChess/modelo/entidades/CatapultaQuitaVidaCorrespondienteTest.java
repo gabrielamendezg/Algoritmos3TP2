@@ -7,7 +7,7 @@ import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 class CatapultaQuitaVidaCorrespondienteTest {
 	Jugador jugador = new Jugador();
 	Catapulta catapulta = new Catapulta(jugador);
-	Jinete jinete = new Jinete();
+	Jinete jinete = new Jinete(jugador);
 	
 	@Test
 	void test() {

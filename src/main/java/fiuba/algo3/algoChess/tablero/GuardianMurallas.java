@@ -32,13 +32,13 @@ public class GuardianMurallas {
 		return true;
 	}
 
-	public boolean colocarEnPosicionPorJugador(Jugador jugador, Unidad unidad, int fila, int columna) throws Exception{
+	public boolean colocarEnPosicionPorJugador(Jugador jugador, Unidad unidad, int fila, int columna, Celda[][] matriz) throws Exception{
 		try{
 			if(jugador == jugador1) {
-				return this.jugador1colocarenposicion(unidad,fila,columna);
+				return this.jugador1colocarenposicion(unidad,fila,columna, matriz);
 			}
 			if(jugador == jugador2) {
-				return this.jugador2colocarenposicion(unidad,fila,columna);
+				return this.jugador2colocarenposicion(unidad,fila,columna, matriz);
 			}
 		}catch(PosicionInvalidaException e) {
 			throw new PosicionInvalidaException();
@@ -46,18 +46,26 @@ public class GuardianMurallas {
 			throw new JugadorInvalido();
 	}
 	
-	private boolean jugador1colocarenposicion(Unidad unidad, int fila, int columna) throws PosicionInvalidaException{
+	private boolean jugador1colocarenposicion(Unidad unidad, int fila, int columna, Celda[][] matriz) throws PosicionInvalidaException{
 		if(fila < jugador1filamin || fila > jugador1filamax || columna < columnamin || columna > columnamax) {
 			throw new PosicionInvalidaException();
+		
+		}else if(matriz[fila][columna].recibirUnidad(unidad)) {
+			unidad.setPosicion(fila, columna);
+			return true;
 		}
-		return unidad.moverUnidadA(jugador1, fila, columna);
+		return false;
 	}
 	
-	private boolean jugador2colocarenposicion(Unidad unidad, int fila, int columna) throws PosicionInvalidaException{
+	private boolean jugador2colocarenposicion(Unidad unidad, int fila, int columna, Celda[][] matriz) throws PosicionInvalidaException{
 		if(fila < jugador2filamin || fila > jugador2filamax || columna < columnamin || columna > columnamax) {
 			throw new PosicionInvalidaException();
+		
+		}else if(matriz[fila][columna].recibirUnidad(unidad)) {
+			unidad.setPosicion(fila, columna);
+			return true;
 		}
-		return unidad.moverUnidadA(jugador2, fila, columna);
+		return false;
 	}
 	
 }

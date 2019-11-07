@@ -31,7 +31,7 @@ public class SeColocaPiezaAliadaEnSectorAliadoConExitoTest {
 		} catch (PosicionInvalidaException e) {
 			fail("PosicionInvalida exception");
 		} catch (Exception e) {
-			fail("Exception inesperada");
+			fail(e.toString());
 		}
 		assert(movimientoexitoso);
 	}

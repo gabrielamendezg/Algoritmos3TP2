@@ -1,17 +1,17 @@
 package fiuba.algo3.algoChess.modelo.entidades;
 
 import static org.junit.Assert.assertTrue;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
+
+import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 
 class CuranderoCuraVidaCorrespondienteTest {
 	
-	Curandero curandero = new Curandero();
+	Jugador jugador = new Jugador();
+	Curandero curandero = new Curandero(jugador);
 	
-	SoldadoDeInfanteria soldado = new SoldadoDeInfanteria ();
-	Jinete jinete = new Jinete();
+	SoldadoDeInfanteria soldado = new SoldadoDeInfanteria (jugador);
+	Jinete jinete = new Jinete(jugador);
 	
 
 	@Test
