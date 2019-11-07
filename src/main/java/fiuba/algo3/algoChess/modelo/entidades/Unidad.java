@@ -13,6 +13,7 @@ public class Unidad {
 		vida = vida- daño;
 		
 	}
+
 	
 	public void atacar (Unidad unidad) {
 		unidad.recibirAtaque(ataque);
