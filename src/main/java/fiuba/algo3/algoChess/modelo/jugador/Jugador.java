@@ -135,7 +135,7 @@ public Jugador() {
 	 Iterator<Unidad> iterador = unidades.iterator();
 	 
 	 while (iterador.hasNext()) {
-		 Unidad unidadEnemiga = new Unidad();
+		 Unidad unidadEnemiga = new SoldadoDeInfanteria();
 			
 	 		 iterador.getClass().atacar(unidadEnemiga);
 			 
