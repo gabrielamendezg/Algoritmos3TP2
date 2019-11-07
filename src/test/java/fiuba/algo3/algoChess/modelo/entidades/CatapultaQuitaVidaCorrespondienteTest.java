@@ -1,12 +1,12 @@
 package fiuba.algo3.algoChess.modelo.entidades;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
+import fiuba.algo3.algoChess.modelo.jugador.Jugador;
+
 class CatapultaQuitaVidaCorrespondienteTest {
-	
-	Catapulta catapulta = new Catapulta();
+	Jugador jugador = new Jugador();
+	Catapulta catapulta = new Catapulta(jugador);
 	Jinete jinete = new Jinete();
 	
 	@Test
