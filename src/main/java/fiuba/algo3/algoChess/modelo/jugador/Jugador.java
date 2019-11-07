@@ -137,10 +137,10 @@ public Jugador() {
 	 while (iterador.hasNext()) {
 		 Unidad unidadEnemiga = new SoldadoDeInfanteria();
 			
-	 		 iterador.getClass().atacar(unidadEnemiga);
+	 		 iterador.next().atacar(unidadEnemiga);
 			 
 		 }
-	 }
+	 
 	
 	 if (this.cantidadDeUnidades() == 0) {
 		 pudoOrdenarAtaque=false;
