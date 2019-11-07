@@ -4,8 +4,7 @@ import fiuba.algo3.algoChess.modelo.entidades.*;
 import fiuba.algo3.algoChess.sample.JugadorSinUnidadesPierdeException;
 
 
-/*Agregar Mock unidad con aceptacion de String*/
-/*JUGADOR CON MULTITON para 2 jugadores*/
+/*REFACTOREAR A JUGADOR CON MULTITON para 2 jugadores?? Discutir y definir*/
 
 //CAMBIAR ENTIDAD POR UNIDAD
 
@@ -110,20 +109,10 @@ public Jugador() {
 	 return this.unidades;
 	 
  }
- 
- public void jugarTurno() {
-	 
-	 if(this.sigueEnJuego()) {
-		 
-	 }else {
-		 
-		 System.out.println("Jugador ha perdido");
-		 
-	 }
+
 		 
 	 
- }
-	
+ 	
  private boolean sigueEnJuego() {
 	 
 	 return (unidades.size() != 0);
@@ -138,6 +127,22 @@ public Jugador() {
 	
 	 }
  }
+ 
+ public boolean ordenarAtaque() {
+	
+	 boolean pudoOrdenarAtaque=true;
+	 Iterator<Entidad> iterador = unidades.iterator();
+	 while (iterador.hasNext()) {
+	 iterador.getClass().atacar();
+	 }
+	
+	 if (this.cantidadDeUnidades() == 0) {
+		 pudoOrdenarAtaque=false;
+	 }
+	 
+	return pudoOrdenarAtaque; 
+ }
+ 
  
 	
 }
