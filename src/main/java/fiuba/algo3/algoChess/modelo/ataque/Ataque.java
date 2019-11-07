@@ -12,6 +12,15 @@ public abstract class Ataque {
 	 public boolean estaEnRango( int posicionXUnidadAtacante, int posicionYUnidadAtacante,  Unidad unidadAtacada) {
 		 
 		 boolean estaEnRango = false;
+		  int distanciaX = Math.abs((unidadAtacada.obtenerPosicionX()) - posicionXUnidadAtacante);
+		 int distanciaY = Math.abs((unidadAtacada.obtenerPosicionY()) - posicionYUnidadAtacante);
+		 
+		 if ( ( (rangoInicial <= distanciaX) && (distanciaX <= rangoFinal) ) 
+				 &&
+			   ( (rangoInicial <= distanciaY) && (distanciaY <= rangoFinal))) {
+			 
+			 estaEnRango = true;
+		 }
 
 		 return estaEnRango;
 	 }
