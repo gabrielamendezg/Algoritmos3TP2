@@ -17,11 +17,7 @@ public class JugadorPuedeRemoverUnidadEspecificaTest {
 		
 		unaUnidad = jugador.elegirCatapulta();
 		assertTrue(jugador.cantidadDeUnidades() == 1);
-		try {jugador.eliminarUnidad(unaUnidad);
-		
-		}catch (JugadorSinUnidadesPierdeException e) {
-			
-		}
+		jugador.eliminarUnidad(unaUnidad);
 		assertTrue(jugador.cantidadDeUnidades() == 0);
 		
 		

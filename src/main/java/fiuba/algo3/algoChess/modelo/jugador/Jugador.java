@@ -107,19 +107,15 @@ public class Jugador {
 	}
 
 
-	private boolean sigueEnJuego() {
+	public boolean sigueEnJuego() {
 
 		return (unidades.size() != 0);
 	}
 
-	public void eliminarUnidad(Unidad unaUnidad) throws JugadorSinUnidadesPierdeException {
+	public void eliminarUnidad(Unidad unaUnidad){
 
 		this.unidades.remove(unaUnidad);
-
-		if (!this.sigueEnJuego()) {
-			throw new JugadorSinUnidadesPierdeException();
-
-		}
+		
 	}
 
 	public boolean ordenarAtaque(ArrayList<Unidad> unidadesEnemigas) {
