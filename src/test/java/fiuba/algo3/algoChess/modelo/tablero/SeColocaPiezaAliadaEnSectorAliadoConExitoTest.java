@@ -2,7 +2,7 @@ package fiuba.algo3.algoChess.modelo.tablero;
 
 import org.junit.Test;
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador;;
+import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import fiuba.algo3.algoChess.modelo.tablero.Tablero;
 
 public class SeColocaPiezaAliadaEnSectorAliadoConExitoTest {
