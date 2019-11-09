@@ -1,7 +1,7 @@
 package fiuba.algo3.algoChess.modelo.entidades.soldadoDeInfanteria;
 import static org.junit.Assert.assertTrue;
 
-import fiuba.algo3.algoChess.tablero.*;
+import fiuba.algo3.algoChess.modelo.tablero.*;
 
 import fiuba.algo3.algoChess.modelo.jugador.*;
 

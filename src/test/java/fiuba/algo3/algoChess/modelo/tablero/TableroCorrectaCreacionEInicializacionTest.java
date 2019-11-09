@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
-import fiuba.algo3.algoChess.tablero.Tablero;
+import fiuba.algo3.algoChess.modelo.tablero.Tablero;
 
 public class TableroCorrectaCreacionEInicializacionTest {
 
