@@ -1,7 +1,8 @@
-package fiuba.algo3.algoChess.sample;
+package fiuba.algo3.algoChess.modelo.tablero;
 
 import static org.junit.Assert.*;
 
+import fiuba.algo3.algoChess.sample.InstanciaDeTableroYaExiste;
 import org.junit.Test;
 
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;

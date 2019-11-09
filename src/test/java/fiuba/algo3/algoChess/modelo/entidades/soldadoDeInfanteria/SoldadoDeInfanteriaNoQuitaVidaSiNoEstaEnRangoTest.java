@@ -1,7 +1,10 @@
-package fiuba.algo3.algoChess.modelo.entidades;
+package fiuba.algo3.algoChess.modelo.entidades.soldadoDeInfanteria;
 
 import static org.junit.Assert.assertTrue;
 
+import fiuba.algo3.algoChess.modelo.entidades.Curandero;
+import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
+import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 import org.junit.jupiter.api.Test;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;

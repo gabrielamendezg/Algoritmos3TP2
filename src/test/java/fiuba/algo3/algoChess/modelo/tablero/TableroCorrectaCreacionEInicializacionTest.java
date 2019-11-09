@@ -1,4 +1,4 @@
-package fiuba.algo3.algoChess.sample;
+package fiuba.algo3.algoChess.modelo.tablero;
 import static org.junit.Assert.*;
 import org.junit.Test;
 

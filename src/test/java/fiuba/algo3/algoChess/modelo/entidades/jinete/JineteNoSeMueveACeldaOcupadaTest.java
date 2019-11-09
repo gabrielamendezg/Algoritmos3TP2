@@ -1,7 +1,9 @@
-package fiuba.algo3.algoChess.modelo.entidades;
+package fiuba.algo3.algoChess.modelo.entidades.jinete;
 import static org.junit.jupiter.api.Assertions.*;
 
 import fiuba.algo3.algoChess.modelo.celda.Celda;
+import fiuba.algo3.algoChess.modelo.entidades.Curandero;
+import fiuba.algo3.algoChess.modelo.entidades.Jinete;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 
 import org.junit.jupiter.api.Test;
@@ -14,7 +16,7 @@ class JineteNoSeMueveACeldaOcupadaTest {
 	Celda celda2 = new Celda();
 	
 	Curandero curandero = new Curandero(jugador);
-	Jinete  jinete = new Jinete(jugador);
+	Jinete jinete = new Jinete(jugador);
 	
 	
 	

@@ -1,5 +1,6 @@
-package fiuba.algo3.algoChess.modelo.entidades;
+package fiuba.algo3.algoChess.modelo.entidades.jinete;
 
+import fiuba.algo3.algoChess.modelo.entidades.Jinete;
 import org.junit.jupiter.api.Test;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;

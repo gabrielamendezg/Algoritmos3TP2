@@ -1,29 +1,24 @@
-package fiuba.algo3.algoChess.sample;
+package fiuba.algo3.algoChess.modelo.tablero;
 
+import fiuba.algo3.algoChess.sample.InstanciaDeTableroYaExiste;
 import org.junit.jupiter.api.Test;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import fiuba.algo3.algoChess.tablero.Tablero;
 
-class TableroNoSePuedeClonarTest {
+class TableroNoSePuedeCrearMasDeUnTableroTest {
+
 	@SuppressWarnings("unused")
 	@Test
-	public void NoEsPosibleClonarInstanciaDeClaseTableroTest() {
-		//Arrange
+	public void NoEsPosibleCrearMasDeUnaInstanciaDeTableroTest() {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
 		try{
-			try{
 			Tablero tableroA = Tablero.obtenerInstancia(jugador1,jugador2);
-			//Act
-			Tablero tableroB = tableroA.clone();
-		}catch(CloneNotSupportedException e) {
-			//Assert
+			Tablero tableroB = Tablero.obtenerInstancia(jugador1,jugador2);
+		}catch(InstanciaDeTableroYaExiste ex) {
 			assert(true);
 		}
-		}catch(InstanciaDeTableroYaExiste ex) {	}
-
 	}
-
 }

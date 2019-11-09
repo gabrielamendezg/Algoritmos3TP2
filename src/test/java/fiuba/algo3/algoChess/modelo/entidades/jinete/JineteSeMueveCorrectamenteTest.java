@@ -1,4 +1,4 @@
-package fiuba.algo3.algoChess.modelo.entidades;
+package fiuba.algo3.algoChess.modelo.entidades.jinete;
 
 import fiuba.algo3.algoChess.modelo.jugador.*;
 
