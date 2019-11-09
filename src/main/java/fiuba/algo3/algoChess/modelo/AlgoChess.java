@@ -37,8 +37,8 @@ public class AlgoChess {
 		
 		while (seDesarrollaElJuegoNormalmente) {
 			
-			this.desarrollarTurno(jugador1);
-			this.desarrollarTurno(jugador2);
+			this.desarrollarTurno(jugador1, jugador2);
+			
 			seDesarrollaElJuegoNormalmente = jugador1.sigueEnJuego();
 			seDesarrollaElJuegoNormalmente = jugador2.sigueEnJuego();
 		}
@@ -57,8 +57,9 @@ public class AlgoChess {
 		
 	}
 	
-	private void desarrollarTurno(Jugador jugador) {
-		
+	private void desarrollarTurno(Jugador jugadorA, Jugador jugadorB) {
+		jugadorA.ordenarAtaque(jugadorB.obtenerUnidades());
+		jugadorB.ordenarAtaque(jugadorA.obtenerUnidades());
 		
 	}
 	
