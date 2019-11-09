@@ -1,4 +1,4 @@
-package fiuba.algo3.algoChess.tablero;
+package fiuba.algo3.algoChess.modelo.tablero;
 import fiuba.algo3.algoChess.modelo.Excepciones.PosicionInvalidaException;
 import fiuba.algo3.algoChess.modelo.celda.Celda;
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;

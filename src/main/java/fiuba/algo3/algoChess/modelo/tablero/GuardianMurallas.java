@@ -1,4 +1,4 @@
-package fiuba.algo3.algoChess.tablero;
+package fiuba.algo3.algoChess.modelo.tablero;
 
 import fiuba.algo3.algoChess.modelo.Excepciones.JugadorInvalidoExcepcion;
 import fiuba.algo3.algoChess.modelo.Excepciones.PosicionInvalidaException;
