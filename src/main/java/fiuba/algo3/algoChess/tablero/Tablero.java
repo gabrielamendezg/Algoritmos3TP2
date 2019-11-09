@@ -1,8 +1,8 @@
 package fiuba.algo3.algoChess.tablero;
+import fiuba.algo3.algoChess.modelo.Excepciones.PosicionInvalidaException;
 import fiuba.algo3.algoChess.modelo.celda.Celda;
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
-import fiuba.algo3.algoChess.sample.InstanciaDeTableroYaExiste;
 
 public class Tablero {
 	private static int tamanio = 20;
@@ -31,13 +31,17 @@ public class Tablero {
 
 	
 	//Colocar una nueva pieza en el tablero. 
-	public boolean colocarUnidad(Jugador jugador, Unidad unidad, int fila, int columna) throws Exception {
-		try{
-			return guardianMurallas.colocarEnPosicionPorJugador(jugador,unidad,fila,columna,matriz);
-		}catch(Exception e) {
-			 e.printStackTrace();
-			throw e;
+	public boolean colocarUnidad(Jugador jugador, Unidad unidad, int fila, int columna){
+		try {
+			if (guardianMurallas.colocarEnPosicionPorJugador(jugador,unidad,fila,columna,matriz)) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (PosicionInvalidaException e){
+			throw new PosicionInvalidaException();
 		}
+
 	}
 	
 	//Mueve la unidad (si existe) en la posición de origen a la posición destino. 

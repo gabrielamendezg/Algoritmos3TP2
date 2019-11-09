@@ -1,8 +1,9 @@
 package fiuba.algo3.algoChess.modelo.tablero;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import fiuba.algo3.algoChess.sample.InstanciaDeTableroYaExiste;
+import fiuba.algo3.algoChess.modelo.Excepciones.PosicionInvalidaException;
 import org.junit.Test;
 
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
@@ -19,28 +20,13 @@ public class NoSePuedeColocarPiezaEnCeldaAliadaOcupadaTest {
 		Jugador jugador2 = new Jugador();
 		Unidad unidad1 = jugador1.elegirSoldado();
 		Unidad unidad2 = jugador1.elegirSoldado();
-		boolean movimientoexitoso = true;
-		
-		try {
-			Tablero tablero = Tablero.obtenerInstancia(jugador1,jugador2);
-			if(!tablero.colocarUnidad(jugador1, unidad1,1,1)){
-				//Act
-				movimientoexitoso = tablero.colocarUnidad(jugador1, unidad2, 1, 1);
-			}
-		} catch (InstanciaDeTableroYaExiste e) {
-			fail("No se pudo crear tablero porque ya existe uno.");
-		} catch (PosicionInvalidaException e) {
-			fail("PosicionInvalida exception");
-		} catch (JugadorInvalido e) {
-			fail("JugadorInvalido exception");
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		
-		//Assert
-		assert(!movimientoexitoso);
-	
-	}
-	
+		Tablero tablero = Tablero.obtenerInstancia(jugador1, jugador2);
+		tablero.colocarUnidad(jugador1, unidad1, 1, 1);
+		assertThrows(PosicionInvalidaException.class,
+				() -> {
+					tablero.colocarUnidad(jugador1, unidad1, 1, 1);
 
+						});
+
+	}
 }
