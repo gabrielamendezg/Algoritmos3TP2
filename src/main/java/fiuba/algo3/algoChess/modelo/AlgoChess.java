@@ -14,18 +14,9 @@ public class AlgoChess {
 		
 		jugador1 = new Jugador();
 		jugador2 = new Jugador();
-		
-		try {
 			
-			this.tablero = Tablero.obtenerInstancia(jugador1, jugador2);
-		
-		}catch(InstanciaDeTableroYaExiste e) {
-			
-			System.out.println("Error por tablero existente de antemano");
-			}
-		
-		
-		
+		this.tablero = Tablero.obtenerInstancia(jugador1, jugador2);
+
 	}
 	
 	public boolean jugar() {

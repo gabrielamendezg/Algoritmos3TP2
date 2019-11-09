@@ -6,7 +6,7 @@ import fiuba.algo3.algoChess.sample.InstanciaDeTableroYaExiste;
 
 public class Tablero {
 	private static int tamanio = 20;
-	private static boolean soyUnico = true;
+	private static Tablero tablero = null ;
 	private Celda[][] matriz;
 	private GuardianMurallas guardianMurallas;
 	
@@ -21,19 +21,14 @@ public class Tablero {
 	}
 	
 	
-	public static Tablero obtenerInstancia(Jugador jugadorA, Jugador jugadorB) throws InstanciaDeTableroYaExiste{
-		if(!soyUnico){
-			throw new InstanciaDeTableroYaExiste();
+	public static Tablero obtenerInstancia(Jugador jugadorA, Jugador jugadorB){
+		if (tablero == null){
+			tablero = new Tablero(jugadorA,jugadorB);
+			return tablero;
 		}
-		else {
-			return new Tablero(jugadorA,jugadorB);
-		}
+			return tablero;
 	 }
-	
-	//No permite que se clone una instancia de tablero.
-	public Tablero clone() throws CloneNotSupportedException {
-		return null;
-	}
+
 	
 	//Colocar una nueva pieza en el tablero. 
 	public boolean colocarUnidad(Jugador jugador, Unidad unidad, int fila, int columna) throws Exception {
