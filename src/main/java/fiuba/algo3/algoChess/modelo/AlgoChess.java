@@ -30,6 +30,13 @@ public class AlgoChess {
 			
 			this.desarrollarTurno(jugador1, jugador2);
 			
+			
+			/* Luego de cada turno se comprueba que ninguno de los jugadores haya perdido
+			Luego hay que refactorear cuando redefinamos turno y ataques
+			Ademas de que en como esta codeado ahora podrian perder ambos
+			en el mismo turno. Ademas no verifica cual de los jugadores perdio aun, sino
+			que identifica que uno perdio.
+			*/
 			seDesarrollaElJuegoNormalmente = jugador1.sigueEnJuego();
 			seDesarrollaElJuegoNormalmente = jugador2.sigueEnJuego();
 		}
@@ -46,11 +53,25 @@ public class AlgoChess {
 	private void setPiezasEnElTablero(Jugador jugador) {
 		
 		
+	
+		
+		
+		
 	}
 	
+	
+	// Por ahora turno consiste en que cada jugador mueva y ordene ataque a sus unidades
+	//Queda ver que unidad mueve
 	private void desarrollarTurno(Jugador jugadorA, Jugador jugadorB) {
+		
+		
 		jugadorA.ordenarAtaque(jugadorB.obtenerUnidades());
+		
+		
+		
 		jugadorB.ordenarAtaque(jugadorA.obtenerUnidades());
+		
+		
 		
 	}
 	
