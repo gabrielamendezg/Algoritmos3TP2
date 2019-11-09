@@ -1,7 +1,10 @@
-package fiuba.algo3.algoChess.tablero;
+package fiuba.algo3.algoChess.modelo.celda;
 
+import fiuba.algo3.algoChess.modelo.celda.estadoCelda.EstadoCelda;
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
+import fiuba.algo3.algoChess.modelo.celda.estadoCelda.CeldaVacia;
+
 
 public class Celda{
 	private Unidad unidad;

@@ -1,9 +1,8 @@
 package fiuba.algo3.algoChess.modelo.entidades;
 import static org.junit.jupiter.api.Assertions.*;
 
+import fiuba.algo3.algoChess.modelo.celda.Celda;
 import fiuba.algo3.algoChess.modelo.jugador.*;
-import fiuba.algo3.algoChess.tablero.*;
-import fiuba.algo3.algoChess.modelo.entidades.*;
 
 import org.junit.jupiter.api.Test;
 

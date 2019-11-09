@@ -1,4 +1,5 @@
 package fiuba.algo3.algoChess.tablero;
+import fiuba.algo3.algoChess.modelo.celda.Celda;
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import fiuba.algo3.algoChess.sample.InstanciaDeTableroYaExiste;
