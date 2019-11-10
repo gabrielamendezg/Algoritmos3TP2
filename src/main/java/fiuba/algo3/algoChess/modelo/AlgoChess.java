@@ -1,6 +1,9 @@
 package fiuba.algo3.algoChess.modelo;
 
 import fiuba.algo3.algoChess.modelo.tablero.*;
+
+import java.io.IOException;
+
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.sample.InstanciaDeTableroYaExiste;
 
@@ -19,14 +22,22 @@ public class AlgoChess {
 
 	}
 	
-	public boolean jugar() {
+	public boolean jugar() throws IOException{
 		
 		boolean seDesarrollaElJuegoNormalmente = true;
+		
+		System.out.println("Bienvenido a AlgoChess V1.0" + "%n");
+		
 		
 		this.setPiezasEnElTablero(jugador1);
 		this.setPiezasEnElTablero(jugador2);
 		
 		while (seDesarrollaElJuegoNormalmente) {
+			
+			this.elegirUnidades(jugador1);
+			this.elegirUnidades(jugador2);
+			this.colocarUnidadesEnTablero(jugador1);
+			this.colocarUnidadesEnTablero(jugador2);
 			
 			this.desarrollarTurno(jugador1, jugador2);
 			
@@ -53,7 +64,7 @@ public class AlgoChess {
 	private void setPiezasEnElTablero(Jugador jugador) {
 		
 		
-	
+		
 		
 		
 		
@@ -70,6 +81,24 @@ public class AlgoChess {
 		
 		
 		jugadorB.ordenarAtaque(jugadorA.obtenerUnidades());
+		
+		
+		
+	}
+	
+	
+	private void elegirUnidades(Jugador jugador) throws IOException{
+		
+		System.out.println("Elija unidades hasta agotar sus 20 puntos");
+		System.out.println("1- Soldado de infanteria %n 2-Jinete%n 3-Catapulta%n 4-Curandero");
+		
+		jugador.seleccionarUnidades();
+		
+		
+	}
+	
+	private void colocarUnidadesEnTablero(Jugador jugador) {
+		
 		
 		
 		

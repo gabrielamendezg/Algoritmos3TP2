@@ -57,7 +57,7 @@ public class Tablero {
 	}
 	
 	//Mueve la unidad a la posición indicada.
-	public boolean recibirUnidad(Unidad unidad, int fila, int columna) {
+	private boolean recibirUnidad(Unidad unidad, int fila, int columna) {
 		try {
 			if(guardianMurallas.verificarposicion(fila, columna)) {
 				return matriz[fila][columna].recibirUnidad(unidad);

@@ -1,4 +1,5 @@
 package fiuba.algo3.algoChess.modelo.jugador;
+import java.io.IOException;
 import java.util.*;
 import fiuba.algo3.algoChess.modelo.entidades.*;
 import fiuba.algo3.algoChess.sample.JugadorSinUnidadesPierdeException;
@@ -139,5 +140,27 @@ public class Jugador {
 		return pudoOrdenarAtaque;
 
 
+	}
+	
+	public void seleccionarUnidades() throws IOException {
+		
+		char eleccion;
+		while (this.puntos>0) {
+			eleccion = (char) System.in.read();
+			switch (eleccion){
+			
+			case '1':
+				this.elegirSoldado();
+			case '2':
+				this.elegirJinete();
+			case '3':
+				this.elegirCatapulta();
+			case 4:
+				this.elegirCurandero();
+			
+			
+			}	
+		}
+	
 	}
 }
