@@ -10,6 +10,7 @@ import fiuba.algo3.algoChess.sample.InstanciaDeTableroYaExiste;
 public class AlgoChess {
 
 	private Tablero tablero;
+	InterfazDeUsuario interfaz;
 	private Jugador jugador1;
 	private Jugador jugador2;
 	
@@ -17,7 +18,7 @@ public class AlgoChess {
 		
 		jugador1 = new Jugador();
 		jugador2 = new Jugador();
-			
+		interfaz = new InterfazDeUsuario();	
 		this.tablero = Tablero.obtenerInstancia(jugador1, jugador2);
 
 	}
@@ -26,16 +27,17 @@ public class AlgoChess {
 		
 		boolean seDesarrollaElJuegoNormalmente = true;
 		
-		System.out.println("Bienvenido a AlgoChess V1.0" + "%n");
+		interfaz.mostrarPorConsola("Bienvenido a AlgoChess V1.0");
 		
+		this.elegirUnidades(jugador1);
+		this.elegirUnidades(jugador2);
 		
 		this.setPiezasEnElTablero(jugador1);
 		this.setPiezasEnElTablero(jugador2);
 		
 		while (seDesarrollaElJuegoNormalmente) {
 			
-			this.elegirUnidades(jugador1);
-			this.elegirUnidades(jugador2);
+		
 			this.colocarUnidadesEnTablero(jugador1);
 			this.colocarUnidadesEnTablero(jugador2);
 			
@@ -66,8 +68,6 @@ public class AlgoChess {
 		
 		
 		
-		
-		
 	}
 	
 	
@@ -89,14 +89,13 @@ public class AlgoChess {
 	
 	private void elegirUnidades(Jugador jugador) throws IOException{
 		
-		System.out.println("Elija unidades hasta agotar sus 20 puntos");
-		System.out.println("1- Soldado de infanteria %n 2-Jinete%n 3-Catapulta%n 4-Curandero");
 		
-		jugador.seleccionarUnidades();
+		interfaz.elegirUnidades(tablero, jugador);
 		
 		
 	}
 	
+	//Mover piezas durante los turnos
 	private void colocarUnidadesEnTablero(Jugador jugador) {
 		
 		
