@@ -7,7 +7,7 @@ import org.junit.*;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import fiuba.algo3.algoChess.modelo.tablero.Tablero;
-
+/*
 public class InterfazDeUsuarioDejaPosicionarUnidadesAlComienzoDeLaPartidaTest {
 	
 	Tablero tablero;
@@ -26,3 +26,4 @@ public class InterfazDeUsuarioDejaPosicionarUnidadesAlComienzoDeLaPartidaTest {
 	
 
 }
+*/

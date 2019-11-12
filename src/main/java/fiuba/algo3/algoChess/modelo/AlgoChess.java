@@ -10,7 +10,6 @@ import fiuba.algo3.algoChess.sample.InstanciaDeTableroYaExiste;
 public class AlgoChess {
 
 	private Tablero tablero;
-	InterfazDeUsuario interfaz;
 	private Jugador jugador1;
 	private Jugador jugador2;
 	
@@ -18,16 +17,14 @@ public class AlgoChess {
 		
 		jugador1 = new Jugador();
 		jugador2 = new Jugador();
-		interfaz = new InterfazDeUsuario();	
 		this.tablero = Tablero.obtenerInstancia(jugador1, jugador2);
 
 	}
 	
-	public boolean jugar() throws IOException{
+	public boolean jugar(){
 		
 		boolean seDesarrollaElJuegoNormalmente = true;
 		
-		interfaz.mostrarPorConsola("Bienvenido a AlgoChess V1.0");
 		
 		this.elegirUnidades(jugador1);
 		this.elegirUnidades(jugador2);
@@ -87,10 +84,9 @@ public class AlgoChess {
 	}
 	
 	
-	private void elegirUnidades(Jugador jugador) throws IOException{
+	private void elegirUnidades(Jugador jugador){
 		
 		
-		interfaz.elegirUnidades(tablero, jugador);
 		
 		
 	}

@@ -6,7 +6,7 @@ import org.junit.*;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import fiuba.algo3.algoChess.modelo.tablero.*;
-
+/*
 
 public class InterfazConUsuarioDaOpcionDeElegirUnidadesTest {
 	
@@ -23,3 +23,4 @@ public class InterfazConUsuarioDaOpcionDeElegirUnidadesTest {
 	}
 
 }
+*/

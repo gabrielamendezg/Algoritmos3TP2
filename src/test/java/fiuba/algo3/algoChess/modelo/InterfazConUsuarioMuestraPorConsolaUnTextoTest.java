@@ -3,7 +3,7 @@ package fiuba.algo3.algoChess.modelo;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.*;
-
+/*
 
 
 public class InterfazConUsuarioMuestraPorConsolaUnTextoTest {
@@ -20,3 +20,4 @@ public class InterfazConUsuarioMuestraPorConsolaUnTextoTest {
 	}
 	
 }
+*/
