@@ -35,8 +35,8 @@ public class AlgoChess {
 		while (seDesarrollaElJuegoNormalmente) {
 			
 		
-			this.colocarUnidadesEnTablero(jugador1);
-			this.colocarUnidadesEnTablero(jugador2);
+			this.elegirUnidadYMoverUnidadEnTablero(jugador1);
+			this.elegirUnidadYMoverUnidadEnTablero(jugador2);
 			
 			this.desarrollarTurno(jugador1, jugador2);
 			
@@ -92,8 +92,9 @@ public class AlgoChess {
 	}
 	
 	//Mover piezas durante los turnos
-	private void colocarUnidadesEnTablero(Jugador jugador) {
+	private void elegirUnidadYMoverUnidadEnTablero(Jugador jugador) {
 		
+
 		
 		
 		

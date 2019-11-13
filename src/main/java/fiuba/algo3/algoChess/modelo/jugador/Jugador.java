@@ -8,6 +8,7 @@ import fiuba.algo3.algoChess.modelo.entidades.*;
 
 /*REFACTOREAR A JUGADOR CON MULTITON para 2 jugadores?? Discutir y definir*/
 
+//RESPONSABILIDAD DE ELEGIR PIEZAS, DE ELEGIR DONDE PONERLAS, DE ELEGIR PIEZA Y DONDE MOVER Y ATACAR
 
 public class Jugador {
 
