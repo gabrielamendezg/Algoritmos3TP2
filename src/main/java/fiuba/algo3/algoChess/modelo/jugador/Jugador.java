@@ -1,8 +1,9 @@
 package fiuba.algo3.algoChess.modelo.jugador;
-import java.io.IOException;
 import java.util.*;
 import fiuba.algo3.algoChess.modelo.entidades.*;
-import fiuba.algo3.algoChess.sample.JugadorSinUnidadesPierdeException;
+
+
+//import fiuba.algo3.algoChess.sample.JugadorSinUnidadesPierdeException; -___ELIMINAR
 
 
 /*REFACTOREAR A JUGADOR CON MULTITON para 2 jugadores?? Discutir y definir*/
@@ -31,10 +32,10 @@ public class Jugador {
 			this.unidades.add(nuevaUnidad);
 			this.puntos = this.puntos - 1;
 
-		} else {
+		/*} else {
 
 			System.out.println("Puntos insuficientes, devuelve null");
-		}
+	*/	}
 
 		return nuevaUnidad;
 	}
@@ -49,10 +50,10 @@ public class Jugador {
 			this.unidades.add(nuevaUnidad);
 			this.puntos = this.puntos - 5;
 
-		} else {
+	/*	} else {
 
 			System.out.println("Puntos insuficientes, devuelve null");
-		}
+	*/	}
 
 		return nuevaUnidad;
 	}
@@ -68,10 +69,10 @@ public class Jugador {
 			this.puntos = this.puntos - 3;
 
 
-		} else {
+	/*	} else {
 
 			System.out.println("Puntos insuficientes, devuelve null");
-		}
+	*/	}
 
 		return nuevaUnidad;
 	}
@@ -86,10 +87,10 @@ public class Jugador {
 			this.unidades.add(nuevaUnidad);
 			this.puntos = this.puntos - 2;
 
-		} else {
+	/*	} else {
 
 			System.out.println("Puntos insuficientes, devuelve null");
-		}
+	*/	}
 
 		return nuevaUnidad;
 	}
@@ -119,9 +120,8 @@ public class Jugador {
 		
 	}
 
-	public boolean ordenarAtaque(ArrayList<Unidad> unidadesEnemigas) {
-
-		boolean pudoOrdenarAtaque = true;
+	// Ordena atacar a todas las unidades
+	public void ordenarAtaque(ArrayList<Unidad> unidadesEnemigas) {
 
 
 		Iterator<Unidad> iterador = unidades.iterator();
@@ -133,17 +133,14 @@ public class Jugador {
 		}
 
 
-		if (this.cantidadDeUnidades() == 0) {
-			pudoOrdenarAtaque = false;
-		}
-
-		return pudoOrdenarAtaque;
-
-
 	}
 	
-	public void seleccionarUnidades() throws IOException {
+
+	/*public void seleccionarUnidades(){
 		
+		 * 
+		 * VER ESTO SI TIENE SENTIDO EL METODO Y COMO CODEAR
+		 * 
 		char eleccion;
 		while (this.puntos>0) {
 			eleccion = (char) System.in.read();
@@ -159,8 +156,8 @@ public class Jugador {
 				this.elegirCurandero();
 			
 			
-			}	
-		}
+			}	*/
+		
 	
 	}
-}
+
