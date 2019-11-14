@@ -13,6 +13,10 @@ public class AlgoChessTest {
 	@Test
 	public void deberiaDevolverTrue() throws IOException{
 		
+		
+		
+		
+		
 		assertTrue (algochess.jugar());
 	}
 }

@@ -71,7 +71,6 @@ public class Jugador {
 			this.unidades.add(nuevaUnidad);
 			this.puntos = this.puntos - 3;
 
-
 		}
 
 		return nuevaUnidad;
@@ -155,7 +154,10 @@ public class Jugador {
 		return this.nombre;
 	}
 	
-	
+	public boolean tienePuntosRestantes() {
+		
+		return (this.puntos>0);
+	}
 
 
 		

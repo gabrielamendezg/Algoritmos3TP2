@@ -3,6 +3,7 @@ package fiuba.algo3.algoChess.modelo;
 import fiuba.algo3.algoChess.modelo.tablero.*;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.sample.InstanciaDeTableroYaExiste;
@@ -21,7 +22,7 @@ public class AlgoChess {
 
 	}
 	
-	public boolean jugar(){
+	public boolean jugar() throws IOException{
 		
 		boolean seDesarrollaElJuegoNormalmente = true;
 		
@@ -84,11 +85,32 @@ public class AlgoChess {
 	}
 	
 	
-	private void elegirUnidades(Jugador jugador){
+	public boolean elegirUnidades(Jugador jugador) throws IOException{
+		String eleccion="1";
+		Scanner scanner = new Scanner (System.in);
+		
+		System.out.println("Elegir entre las siguientes unidades");
+		System.out.println("1-Soldado 2-Jinete 3-Catapulta 4-Curandero");
+		do {
+			System.out.println("Elegir");
+	
+		eleccion = scanner.nextLine();
+		System.out.println (eleccion);
 		
 		
+		switch (eleccion) {
+		case "1":
+			jugador.elegirSoldado();
+		case "2":
+			jugador.elegirJinete();
+		case "3":
+			jugador.elegirCatapulta();
+		case "4":
+			jugador.elegirCurandero();
+			}
+		}while(jugador.tienePuntosRestantes());
 		
-		
+		return (!jugador.tienePuntosRestantes());
 	}
 	
 	//Mover piezas durante los turnos
