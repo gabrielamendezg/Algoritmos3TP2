@@ -3,8 +3,9 @@ package fiuba.algo3.algoChess.modelo;
 import fiuba.algo3.algoChess.modelo.tablero.*;
 
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.*;
 
+import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.sample.InstanciaDeTableroYaExiste;
 
@@ -63,7 +64,26 @@ public class AlgoChess {
 	
 	private void setPiezasEnElTablero(Jugador jugador) {
 		
+		ArrayList<Unidad> unidades = jugador.obtenerUnidades();
+		int posicionX=1;
+		int posicionY=1;
+		Scanner scanner = new Scanner (System.in);
+		Iterator<Unidad> iterador = unidades.iterator();
+		Unidad unidadActual;
 		
+		
+		while (iterador.hasNext()) {
+			unidadActual=iterador.next();
+			System.out.println("El jugador "+jugador+" elige posicion de unidad "+unidadActual);
+			System.out.println("Ingrese posicion x de la unidad");
+			posicionX= scanner.nextInt();
+			System.out.println("Ingrese posicion y de la unidad");
+			posicionY= scanner.nextInt();
+			unidadActual.setPosicion(posicionX, posicionY);
+			tablero.colocarUnidad(jugador, unidadActual, posicionX, posicionY);
+		}
+		
+	
 		
 		
 	}
