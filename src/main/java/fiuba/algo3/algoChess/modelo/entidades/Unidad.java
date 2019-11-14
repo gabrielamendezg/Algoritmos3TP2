@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 import fiuba.algo3.algoChess.modelo.ataque.*;
 
-public class Unidad {
+public abstract class Unidad {
 	
 	
 	Ataque ataque;
@@ -38,7 +38,7 @@ public class Unidad {
 		posicionY = y;
 	}
 
-	public void setDuenio(Jugador jugadorDuenio) {
+	protected void setDuenio(Jugador jugadorDuenio) {
 		
 		duenio = jugadorDuenio;
 	}

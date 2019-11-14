@@ -15,7 +15,7 @@ public class CuranderoSeMueveCorrectamenteTest {
 	void test() {
 
 		curandero.setPosicion(1,1);
-		curandero.setDuenio(jugador);
+	//	curandero.setDuenio(jugador); NO VA
 		
 		curandero.moverUnidadA(jugador,1,2);
 		

@@ -33,10 +33,7 @@ public class Jugador {
 			this.unidades.add(nuevaUnidad);
 			this.puntos = this.puntos - 1;
 
-		/*} else {
-
-			System.out.println("Puntos insuficientes, devuelve null");
-	*/	}
+		}
 
 		return nuevaUnidad;
 	}
@@ -51,10 +48,7 @@ public class Jugador {
 			this.unidades.add(nuevaUnidad);
 			this.puntos = this.puntos - 5;
 
-	/*	} else {
-
-			System.out.println("Puntos insuficientes, devuelve null");
-	*/	}
+		}
 
 		return nuevaUnidad;
 	}
@@ -70,10 +64,7 @@ public class Jugador {
 			this.puntos = this.puntos - 3;
 
 
-	/*	} else {
-
-			System.out.println("Puntos insuficientes, devuelve null");
-	*/	}
+		}
 
 		return nuevaUnidad;
 	}
@@ -88,10 +79,7 @@ public class Jugador {
 			this.unidades.add(nuevaUnidad);
 			this.puntos = this.puntos - 2;
 
-	/*	} else {
-
-			System.out.println("Puntos insuficientes, devuelve null");
-	*/	}
+		}
 
 		return nuevaUnidad;
 	}
@@ -135,6 +123,25 @@ public class Jugador {
 
 
 	}
+	
+	//VER RESPONSABILIDAD CON GRUPO
+	public void colocarUnidadesAlComienzoDeLaPartda(int[][] posiciones) {
+		
+		Iterator<Unidad> iteradorUnidades = unidades.iterator();
+		int i=0;
+		
+		while (iteradorUnidades.hasNext()) {
+			
+		
+			iteradorUnidades.next().setPosicion(posiciones[i][0], posiciones[i][1]);
+			i++;
+		
+		}
+		
+		
+	}
+	
+	
 	
 
 	/*public void seleccionarUnidades(){
