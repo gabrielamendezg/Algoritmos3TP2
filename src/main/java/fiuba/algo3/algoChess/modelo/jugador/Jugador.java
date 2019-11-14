@@ -14,12 +14,20 @@ public class Jugador {
 
 	private int puntos;
 	private ArrayList<Unidad> unidades;
+	private String nombre;
 
 	public Jugador() {
 
 		this.puntos = 20;
 		this.unidades = new ArrayList<Unidad>();
+		this.nombre = "";
+	}
+	
+	public Jugador(String nombreDeJugador) {
 
+		this.puntos = 20;
+		this.unidades = new ArrayList<Unidad>();
+		this.nombre = nombreDeJugador;
 	}
 
 
@@ -142,30 +150,14 @@ public class Jugador {
 	}
 	
 	
+	public String obtenerNombre () {
+		
+		return this.nombre;
+	}
+	
 	
 
-	/*public void seleccionarUnidades(){
+
 		
-		 * 
-		 * VER ESTO SI TIENE SENTIDO EL METODO Y COMO CODEAR
-		 * 
-		char eleccion;
-		while (this.puntos>0) {
-			eleccion = (char) System.in.read();
-			switch (eleccion){
-			
-			case '1':
-				this.elegirSoldado();
-			case '2':
-				this.elegirJinete();
-			case '3':
-				this.elegirCatapulta();
-			case 4:
-				this.elegirCurandero();
-			
-			
-			}	*/
-		
-	
-	}
+}
 
