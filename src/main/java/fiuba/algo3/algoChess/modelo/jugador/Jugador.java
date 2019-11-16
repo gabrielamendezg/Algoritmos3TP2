@@ -1,10 +1,12 @@
 package fiuba.algo3.algoChess.modelo.jugador;
 import java.util.*;
+
+import fiuba.algo3.algoChess.modelo.Excepciones.JugadorSinPuntosSuficientesException;
 import fiuba.algo3.algoChess.modelo.entidades.*;
 
 
 //import fiuba.algo3.algoChess.sample.JugadorSinUnidadesPierdeException; -___ELIMINAR
-
+//AGREGAR EXCEPTION DE PUNTOS INSUFICIENTES
 
 /*REFACTOREAR A JUGADOR CON MULTITON para 2 jugadores?? Discutir y definir*/
 
@@ -15,80 +17,77 @@ public class Jugador {
 	private int puntos;
 	private ArrayList<Unidad> unidades;
 	private String nombre;
+	private SelectorDeUnidades selector;
 
 	public Jugador() {
 
 		this.puntos = 20;
 		this.unidades = new ArrayList<Unidad>();
 		this.nombre = "";
+		this.selector = new SelectorDeUnidades();
+	
 	}
+	
 	
 	public Jugador(String nombreDeJugador) {
 
 		this.puntos = 20;
 		this.unidades = new ArrayList<Unidad>();
 		this.nombre = nombreDeJugador;
+		this.selector = new SelectorDeUnidades();
 	}
 
 
 	public Unidad elegirSoldado() {
-
-		Unidad nuevaUnidad = null;
-
-		if (this.puntos >= 1) {
-
-			nuevaUnidad = new SoldadoDeInfanteria(this);
-			this.unidades.add(nuevaUnidad);
-			this.puntos = this.puntos - 1;
-
+		
+		Unidad unidadElegida = null;
+		try {
+		unidadElegida = this.selector.elegirSoldado(this);
+		this.unidades.add(unidadElegida);
+		}catch (JugadorSinPuntosSuficientesException e) {
+			
 		}
-
-		return nuevaUnidad;
+		
+		return unidadElegida;
 	}
 
 	public Unidad elegirCatapulta() {
 
-		Unidad nuevaUnidad = null;
-
-		if (this.puntos >= 5) {
-
-			nuevaUnidad = new Catapulta(this);
-			this.unidades.add(nuevaUnidad);
-			this.puntos = this.puntos - 5;
-
+		Unidad unidadElegida = null;
+		try {
+		unidadElegida = this.selector.elegirCatapulta(this);
+		this.unidades.add(unidadElegida);			
+		}catch (JugadorSinPuntosSuficientesException e) {
+			
 		}
-
-		return nuevaUnidad;
+		
+		return unidadElegida;
 	}
 
 	public Unidad elegirJinete() {
 
-		Unidad nuevaUnidad = null;
-
-		if (this.puntos >= 3) {
-
-			nuevaUnidad = new Jinete(this);
-			this.unidades.add(nuevaUnidad);
-			this.puntos = this.puntos - 3;
-
+		Unidad unidadElegida = null;
+		try {
+		unidadElegida = this.selector.elegirJinete(this);
+		this.unidades.add(unidadElegida);			
+		}catch (JugadorSinPuntosSuficientesException e) {
+			
 		}
-
-		return nuevaUnidad;
+		
+		return unidadElegida;
 	}
 
 	public Unidad elegirCurandero() {
 
-		Unidad nuevaUnidad = null;
-
-		if (this.puntos >= 2) {
-
-			nuevaUnidad = new Curandero(this);
-			this.unidades.add(nuevaUnidad);
-			this.puntos = this.puntos - 2;
-
+		Unidad unidadElegida = null;
+		try {
+		unidadElegida = this.selector.elegirCurandero(this);
+		this.unidades.add(unidadElegida);			
+		}catch (JugadorSinPuntosSuficientesException e) {
+			
 		}
-
-		return nuevaUnidad;
+		
+		return unidadElegida;
 	}
 
 
@@ -131,7 +130,7 @@ public class Jugador {
 
 	}
 	
-	//VER RESPONSABILIDAD CON GRUPO
+	//VER RESPONSABILIDAD CON GRUPO ME PARECE QUe removER
 	public void colocarUnidadesAlComienzoDeLaPartda(int[][] posiciones) {
 		
 		Iterator<Unidad> iteradorUnidades = unidades.iterator();
@@ -159,7 +158,17 @@ public class Jugador {
 		return (this.puntos>0);
 	}
 
-
+	public int getPuntos() {
+		
+		return this.puntos;
+	}
+	
+	public void restarPuntos(int puntosARestar) {
+		
+		this.puntos = puntos - puntosARestar;
+	}
+	
+	
 		
 }
 
