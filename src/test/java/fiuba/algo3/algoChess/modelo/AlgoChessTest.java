@@ -8,12 +8,12 @@ import org.junit.*;
 
 public class AlgoChessTest {
 	
-	AlgoChess algochess = new AlgoChess();
+	AlgoChess algochess;
 	
 	@Test
 	public void deberiaDevolverTrue() throws IOException{
 		
-		
+		algochess= algochess.getInstance();
 		
 		
 		

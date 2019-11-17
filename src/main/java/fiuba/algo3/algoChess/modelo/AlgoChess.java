@@ -13,15 +13,22 @@ public class AlgoChess {
 
 	private Tablero tablero;
 	private Jugador jugador1;
+	private static AlgoChess algochess = new AlgoChess();
 	private Jugador jugador2;
 	
-	public AlgoChess() {
+	private AlgoChess() {
 		
 		jugador1 = new Jugador();
 		jugador2 = new Jugador();
 		this.tablero = Tablero.obtenerInstancia(jugador1, jugador2);
 
 	}
+	
+	public static AlgoChess getInstance() {
+		
+		return algochess;
+	}
+	
 	
 	public boolean jugar() throws IOException{
 		

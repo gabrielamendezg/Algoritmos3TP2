@@ -16,7 +16,7 @@ public class AlgoChessJugadorPuedeElegirUnidadesTest {
 	@Test //Elige soldado
 	public void test() throws IOException{
 		
-		algochess= new AlgoChess();
+		algochess= algochess.getInstance();
 		jugador = new Jugador();
 		
 		assertTrue(algochess.elegirUnidades(jugador));
