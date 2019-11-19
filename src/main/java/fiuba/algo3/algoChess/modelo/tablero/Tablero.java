@@ -14,7 +14,7 @@ public class Tablero {
 		matriz = new Celda[tamanio][tamanio];
 		guardianMurallas = new GuardianMurallas(20,jugadorA,jugadorB);
 		for(int i = 0; i < tamanio; i++) {
-			for (int j = 0; i < tamanio; i++) {
+			for (int j = 0; j < tamanio; j++) {
 				matriz[i][j] = new Celda();
 			}
 		}
