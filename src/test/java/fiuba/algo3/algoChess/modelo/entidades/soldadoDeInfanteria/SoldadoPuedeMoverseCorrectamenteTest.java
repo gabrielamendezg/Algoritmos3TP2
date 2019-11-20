@@ -1,42 +1,28 @@
 package fiuba.algo3.algoChess.modelo.entidades.soldadoDeInfanteria;
-import static org.junit.Assert.assertTrue;
 
-import fiuba.algo3.algoChess.modelo.tablero.*;
 
-import fiuba.algo3.algoChess.modelo.jugador.*;
+import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
+import fiuba.algo3.algoChess.modelo.jugador.Jugador;
+import fiuba.algo3.algoChess.modelo.jugador.Jugador1;
+import fiuba.algo3.algoChess.modelo.tablero.Posicion;
+import fiuba.algo3.algoChess.modelo.tablero.Tablero;
+import org.junit.jupiter.api.Test;
 
-import org.junit.jupiter.api.Test;;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SoldadoPuedeMoverseCorrectamenteTest {
-	/*Unidad soldado = new SoldadoDeInfanteria();
-	Unidad curandero = new Curandero();
-	@Test
-	void test() {
+    Jugador jugador = new Jugador1("");
+    SoldadoDeInfanteria soldado = new SoldadoDeInfanteria("");
 
-		soldado.setPosicion(1, 1);
+    @Test
+    void test() {
+        Tablero tablero = new Tablero();
+        tablero.posicionarEn(jugador,soldado, new Posicion(1, 1));
+        soldado.movibleMomoveteA("", new Posicion(1, 2));
 
-		soldado.moverUnidadA(1, 2);
+        assertEquals(soldado.getPosicion().getX(), 1 );
+        assertEquals(soldado.getPosicion().getY(), 2);
 
-		Jugador jugador = new Jugador();
-
-		Celda celda1 = new Celda(jugador);
-		Celda celda2 = new Celda(jugador);
-	}
-	@Test
-	void test() {
-		
-		soldado.setDuenio(jugador);
-
-		Celda celda1 = new Celda();
-		celda1.setUnidad(soldado); //hace set posicion soldado
-		soldado.setPosicion(1,1);
-		
-		celda1.moverUnidad(new Celda()); //hace soldado mover a posicion
-		soldado.moverUnidadA(1, 2, jugador);
-		
-		assertTrue(soldado.obtenerPosicionX() ==1 );
-		assertTrue(soldado.obtenerPosicionY() ==2);
-		
-	}*/
+    }
 
 }

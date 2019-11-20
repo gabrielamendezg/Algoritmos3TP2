@@ -12,8 +12,8 @@ public abstract class Ataque {
 	 public boolean estaEnRango( int posicionXUnidadAtacante, int posicionYUnidadAtacante,  Unidad unidadAtacada) {
 		 
 		 boolean estaEnRango = false;
-		  int distanciaX = Math.abs((unidadAtacada.obtenerPosicionX()) - posicionXUnidadAtacante);
-		 int distanciaY = Math.abs((unidadAtacada.obtenerPosicionY()) - posicionYUnidadAtacante);
+		  int distanciaX = Math.abs((unidadAtacada.getPosicion().getX()) - posicionXUnidadAtacante);
+		 int distanciaY = Math.abs((unidadAtacada.getPosicion().getY()) - posicionYUnidadAtacante);
 		 
 		 if ( ( ( (rangoInicial <= distanciaX) && (distanciaX <= rangoFinal) ) || distanciaX == 0)
 				 &&
@@ -33,12 +33,5 @@ public abstract class Ataque {
 			 unidadAtacada.recibirAtaque(ataque);
 		 }
 	 }
-	 public void sanar( int posicionXUnidadAtacante, int posicionYUnidadAtacante,  Unidad unidadAtacada) {
-		 
-		 
-		 if ( this.estaEnRango(posicionXUnidadAtacante, posicionYUnidadAtacante, unidadAtacada)){
-		 
-			 unidadAtacada.sanar(ataque);
-		 }
-	 }
+
 }

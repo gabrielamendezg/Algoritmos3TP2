@@ -6,9 +6,9 @@ import org.junit.*;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import fiuba.algo3.algoChess.modelo.tablero.Tablero;
-/*
-public class InterfazConUsuarioPermiteElegirUnidadYDondeMoverlaTest {
 
+public class InterfazConUsuarioPermiteElegirUnidadYDondeMoverlaTest {
+/*
 	Tablero tablero;
 	Jugador jugadorA = new Jugador();
 	Jugador jugadorB = new Jugador();
@@ -21,6 +21,5 @@ public class InterfazConUsuarioPermiteElegirUnidadYDondeMoverlaTest {
 		assertTrue(interfaz.moverUnidades(tablero.obtenerInstancia(jugadorA, jugadorB), jugadorA));
 		
 	}
-	
+	*/
 }
-*/

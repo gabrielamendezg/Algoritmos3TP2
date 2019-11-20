@@ -1,29 +1,29 @@
 package fiuba.algo3.algoChess.modelo.jugador;
 
 
-import static org.junit.Assert.assertTrue;
+import fiuba.algo3.algoChess.modelo.Excepciones.PuntosInsuficientesExcepcion;
+import org.junit.jupiter.api.*;
 
-import org.junit.*;
-
-import fiuba.algo3.algoChess.modelo.Excepciones.JugadorSinPuntosSuficientesException;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class JugadorNoPuedeTomarMasUnidadesQuePuntosQueTieneTest{
 	
-	Jugador jugador = new Jugador();
+	Jugador jugador = new Jugador("E");
 	
 	@Test
-	public void deberiaLanzarExcepcionJugadorSinPuntosSuficientes() {
+	public void deberiaNoAgregarMasUnidadesLanzaPuntosDeVidaInsuficienteExcepcionTest() {
 		
 	jugador.elegirCatapulta();
 	jugador.elegirCatapulta();
 	jugador.elegirCatapulta();
 	jugador.elegirCatapulta();
-	try {
-	jugador.elegirSoldado();
-	}catch (JugadorSinPuntosSuficientesException e){
+		assertThrows(PuntosInsuficientesExcepcion.class,
+				() -> {
+					jugador.elegirSoldado();
+
+				});
 		
-		}
-	assertTrue(jugador.cantidadDeUnidades()== 4);
-}
+	}
+	
 }
 

@@ -4,19 +4,19 @@ import static org.junit.Assert.assertTrue;
 
 import fiuba.algo3.algoChess.modelo.entidades.Curandero;
 import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
+import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import org.junit.jupiter.api.Test;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 
 class SoldadoDeInfanteriaRestaVidaCorrespondienteTest {
-	
-	Jugador jugador = new Jugador();
-	SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(jugador);
-	Curandero curandero = new Curandero(jugador);
+
+	SoldadoDeInfanteria soldado = new SoldadoDeInfanteria("");
+	Curandero curandero = new Curandero("");
 	@Test
 	void test() {
-		curandero.setPosicion(1, 2);
-		soldado.setPosicion(1,1);
+		curandero.setPosicion(new Posicion(1, 2));
+		soldado.setPosicion(new Posicion(1,1));
 		
 		soldado.atacar(curandero);
 		

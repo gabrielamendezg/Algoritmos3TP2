@@ -1,93 +1,101 @@
 package fiuba.algo3.algoChess.modelo.jugador;
-import java.util.*;
 
-import fiuba.algo3.algoChess.modelo.Excepciones.JugadorSinPuntosSuficientesException;
+import java.util.*;
+import fiuba.algo3.algoChess.modelo.Excepciones.PuntosInsuficientesExcepcion;
 import fiuba.algo3.algoChess.modelo.entidades.*;
 
 
-//import fiuba.algo3.algoChess.sample.JugadorSinUnidadesPierdeException; -___ELIMINAR
-//AGREGAR EXCEPTION DE PUNTOS INSUFICIENTES
-
 /*REFACTOREAR A JUGADOR CON MULTITON para 2 jugadores?? Discutir y definir*/
 
-//RESPONSABILIDAD DE ELEGIR PIEZAS, DE ELEGIR DONDE PONERLAS, DE ELEGIR PIEZA Y DONDE MOVER Y ATACAR
 
 public class Jugador {
 
+	protected int columnamin;
+	protected int columnamax;
+	protected int filamin;
+	protected int filamax;
+	private String meLLamo = null;
 	private int puntos;
 	private ArrayList<Unidad> unidades;
-	private String nombre;
-	private SelectorDeUnidades selector;
 
-	public Jugador() {
-
+	public Jugador(String nombre) {
+		meLLamo = nombre;
 		this.puntos = 20;
 		this.unidades = new ArrayList<Unidad>();
-		this.nombre = "";
-		this.selector = new SelectorDeUnidades();
-	
-	}
-	
-	
-	public Jugador(String nombreDeJugador) {
-
-		this.puntos = 20;
-		this.unidades = new ArrayList<Unidad>();
-		this.nombre = nombreDeJugador;
-		this.selector = new SelectorDeUnidades();
 	}
 
 
-	public Unidad elegirSoldado() {
-		
-		Unidad unidadElegida = null;
-		try {
-		unidadElegida = this.selector.elegirSoldado(this);
-		this.unidades.add(unidadElegida);
-		}catch (JugadorSinPuntosSuficientesException e) {
-			
+    public SoldadoDeInfanteria elegirSoldado() {
+
+		SoldadoDeInfanteria nuevaUnidad = null;
+
+		if (this.puntos >= 1) {
+
+			nuevaUnidad = new SoldadoDeInfanteria(meLLamo);
+			this.unidades.add(nuevaUnidad);
+			this.puntos = this.puntos - 1;
+
+		} else {
+
+			throw new PuntosInsuficientesExcepcion();
 		}
-		
-		return unidadElegida;
+
+		return nuevaUnidad;
 	}
 
-	public Unidad elegirCatapulta() {
+	public Catapulta elegirCatapulta() {
 
-		Unidad unidadElegida = null;
-		try {
-		unidadElegida = this.selector.elegirCatapulta(this);
-		this.unidades.add(unidadElegida);			
-		}catch (JugadorSinPuntosSuficientesException e) {
-			
+		Catapulta nuevaUnidad = null;
+
+		if (this.puntos >= 5) {
+
+			nuevaUnidad = new Catapulta(meLLamo);
+			this.unidades.add(nuevaUnidad);
+			this.puntos = this.puntos - 5;
+
+		} else {
+
+			throw new PuntosInsuficientesExcepcion();
 		}
-		
-		return unidadElegida;
+
+		return nuevaUnidad;
 	}
 
-	public Unidad elegirJinete() {
+	public Jinete elegirJinete() {
 
-		Unidad unidadElegida = null;
-		try {
-		unidadElegida = this.selector.elegirJinete(this);
-		this.unidades.add(unidadElegida);			
-		}catch (JugadorSinPuntosSuficientesException e) {
-			
+		Jinete nuevaUnidad = null;
+
+		if (this.puntos >= 3) {
+
+			nuevaUnidad = new Jinete(meLLamo);
+			this.unidades.add(nuevaUnidad);
+			this.puntos = this.puntos - 3;
+
+
+		} else {
+
+			throw new PuntosInsuficientesExcepcion();
 		}
-		
-		return unidadElegida;
+
+		return nuevaUnidad;
 	}
 
-	public Unidad elegirCurandero() {
+	public Curandero elegirCurandero() {
 
-		Unidad unidadElegida = null;
-		try {
-		unidadElegida = this.selector.elegirCurandero(this);
-		this.unidades.add(unidadElegida);			
-		}catch (JugadorSinPuntosSuficientesException e) {
-			
+		Curandero nuevaUnidad = null;
+
+		if (this.puntos >= 2) {
+
+			nuevaUnidad = new Curandero(meLLamo);
+			this.unidades.add(nuevaUnidad);
+			this.puntos = this.puntos - 2;
+
+		} else {
+
+			throw new PuntosInsuficientesExcepcion();
 		}
-		
-		return unidadElegida;
+
+		return nuevaUnidad;
 	}
 
 
@@ -115,60 +123,27 @@ public class Jugador {
 		
 	}
 
-	// Ordena atacar a todas las unidades
-	public void ordenarAtaque(ArrayList<Unidad> unidadesEnemigas) {
-
-
-		Iterator<Unidad> iterador = unidades.iterator();
-
-		while (iterador.hasNext()) {
-
-
-			iterador.next().atacar(unidadesEnemigas);
-		}
-
-
-	}
-	
-	//VER RESPONSABILIDAD CON GRUPO ME PARECE QUe removER
-	public void colocarUnidadesAlComienzoDeLaPartda(int[][] posiciones) {
-		
-		Iterator<Unidad> iteradorUnidades = unidades.iterator();
-		int i=0;
-		
-		while (iteradorUnidades.hasNext()) {
-			
-		
-			iteradorUnidades.next().setPosicion(posiciones[i][0], posiciones[i][1]);
-			i++;
-		
-		}
-		
-		
-	}
-	
-	
-	public String obtenerNombre () {
-		
-		return this.nombre;
-	}
-	
-	public boolean tienePuntosRestantes() {
-		
-		return (this.puntos>0);
+	public String nombre() {
+		return meLLamo;
 	}
 
-	public int getPuntos() {
-		
-		return this.puntos;
+	public void colocarenposicion(Unidad unidad, int fila, int columna, Unidad[][] matriz) {
+
 	}
-	
-	public void restarPuntos(int puntosARestar) {
-		
-		this.puntos = puntos - puntosARestar;
+
+	public int getFilaMin() {
+		return 0;
 	}
-	
-	
-		
+
+	public int grtFilaMax() {
+		return 0;
+	}
+
+	public int getColumnaMin() {
+		return 0;
+	}
+
+	public int getColumnaMax() {
+		return 0;
+	}
 }
-

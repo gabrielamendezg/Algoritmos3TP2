@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class JugadorSinUnidadesDevuelveVacioTest {
 
-	Jugador jugador= new Jugador();
+	Jugador jugador= new Jugador("E");
 	
 	@Test
 	public void deberiaDevolverVacio(){

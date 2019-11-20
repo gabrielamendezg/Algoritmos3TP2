@@ -6,10 +6,10 @@ import org.junit.*;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import fiuba.algo3.algoChess.modelo.tablero.*;
-/*
+
 
 public class InterfazConUsuarioDaOpcionDeElegirUnidadesTest {
-	
+	/*
 	Tablero tablero;
 	Jugador jugadorA = new Jugador();
 	Jugador jugadorB = new Jugador();
@@ -20,7 +20,6 @@ public class InterfazConUsuarioDaOpcionDeElegirUnidadesTest {
 		
 		assertTrue(interfaz.elegirUnidades(tablero.obtenerInstancia(jugadorA, jugadorB), jugadorA));
 		
-	}
+	}*/
 
 }
-*/

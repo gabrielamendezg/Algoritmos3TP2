@@ -1,32 +1,34 @@
 package fiuba.algo3.algoChess.modelo.celda;
 
-import fiuba.algo3.algoChess.modelo.celda.estadoCelda.EstadoCelda;
-import fiuba.algo3.algoChess.modelo.entidades.Unidad;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador;
-import fiuba.algo3.algoChess.modelo.celda.estadoCelda.CeldaVacia;
+import fiuba.algo3.algoChess.modelo.Excepciones.PosicionOcupadaExcepcion;
 
 
 public class Celda{
-	private Unidad unidad;
-	private EstadoCelda estado;
+	private Posicionable unidad;
 	
 	public Celda() {
-		estado = new CeldaVacia();
+		unidad = null;
 	}
 
-	public void setUnidad(Unidad contenido) {
-		unidad = contenido;
-	}
-	
-	public void setEstado(EstadoCelda nuevoestado) {
-		estado = nuevoestado;
-	}
-	
-	public boolean recibirUnidad(Unidad nuevaUnidad) {
-		return estado.recibirUnidad(nuevaUnidad, this);
+	public void recibirPosicionable(Posicionable nuevaUnidad) {
+		if (unidad == null){
+			unidad  = nuevaUnidad;
+		} else {
+			throw new PosicionOcupadaExcepcion();
+		}
 	}
 
-	public boolean moverUnidad(Jugador jugadormovimiento, int filadestino, int columnadestino) {
-		return estado.moverUnidad(this,jugadormovimiento, filadestino, columnadestino,unidad);
+	public Posicionable vaciarCelda() {
+		Posicionable unaUnidad = unidad;
+		unidad = null;
+		return unaUnidad;
+	}
+
+	public boolean celdaOcupadaPorUnidad( Posicionable unaUnidad){
+		return unidad == unaUnidad;
+	}
+
+	public boolean celdaVacia() {
+		return unidad == null;
 	}
 }

@@ -1,65 +1,47 @@
 package fiuba.algo3.algoChess.modelo.entidades;
 
-import fiuba.algo3.algoChess.modelo.jugador.*;
-
-import java.util.ArrayList;
-import java.util.Iterator;
+import fiuba.algo3.algoChess.modelo.Excepciones.NoEsTuUnidadExcepcion;
+import fiuba.algo3.algoChess.modelo.Excepciones.NoMePuedesMoverNoEresMiDuenioExcepcion;
+import fiuba.algo3.algoChess.modelo.Excepciones.SolotePudesMoverUnaPosicionExcepcion;
 
 import fiuba.algo3.algoChess.modelo.ataque.*;
+import fiuba.algo3.algoChess.modelo.celda.Posicionable;
+import fiuba.algo3.algoChess.modelo.tablero.Posicion;
+import fiuba.algo3.algoChess.modelo.tablero.Tablero;
 
-public abstract class Unidad {
+public abstract class Unidad implements Posicionable {
 	
 	
 	Ataque ataque;
-	public int vida;
-	public int costo;
-	
-	public Jugador duenio;
-	
+	protected int vida;
+	protected int costo;
+
 	// posicion
-	public int posicionX;
-	public int posicionY;
-	
-	
+	protected Posicion posicion;
+	protected String nombreDelDuenio;
+
+	public Unidad(String nombre) {
+		nombreDelDuenio = nombre;
+		posicion = new Posicion(-1, -1);
+	}
+
 	public void recibirAtaque(int daño) {
 		vida = vida- daño;
 		
 	}
 
-	public void sanar(int sanacion) {
-		vida = vida + sanacion;
-	}
 	public void atacar (Unidad unidad) {
-		ataque.atacar(posicionX, posicionY, unidad);		
-	}
-	
-	public void setPosicion( int x, int y) {
-		posicionX = x;
-		posicionY = y;
-	}
-
-	protected void setDuenio(Jugador jugadorDuenio) {
-		
-		duenio = jugadorDuenio;
-	}
-	
-	public int obtenerPosicionX() {
-		return posicionX;
-	}
-	
-	public int obtenerPosicionY() {
-		return posicionY;
+		ataque.atacar(posicion.getX(), posicion.getY(), unidad);
 	}
 
 	public int obtenerVida(){
 		return vida;
 	}
 		
-	private boolean movimientoValido(int nuevaPosicionX, int nuevaPosicionY) {
+	private boolean movimientoValido(Posicion unaPosicion) {
 
-		boolean movimientoValido = false;
-		int distanciaX = Math.abs(nuevaPosicionX - posicionX);
-		int distanciaY = Math.abs(nuevaPosicionY - posicionY);
+		int distanciaX = Math.abs(unaPosicion.getX() - posicion.getX());
+		int distanciaY = Math.abs(unaPosicion.getY() - posicion.getY());
 
 		if (((0 == distanciaX) || (distanciaX == 1))
 				&&
@@ -67,33 +49,51 @@ public abstract class Unidad {
 				((0 == distanciaY) || (distanciaY == 1))) {
 
 
-			movimientoValido = true;
+			return true;
+		} else {
+			throw new SolotePudesMoverUnaPosicionExcepcion();
 		}
-		return movimientoValido;
 	}
 
-	public void atacar(ArrayList<Unidad> unidadesEnemigas) {
-		
-		Iterator<Unidad> iterador = unidadesEnemigas.iterator();
-		
-		while(iterador.hasNext()) {
-			
-			Unidad unidadEnemiga = iterador.next();
-			this.atacar(unidadEnemiga);
-		}
-	}
-	
-	public boolean moverUnidadA(Jugador jugador, int nuevaPosicionX, int nuevaPosicionY) {
-		
-		boolean unidadMovida = false;
-		
-		if (this.movimientoValido(nuevaPosicionX, nuevaPosicionY) && (jugador ==duenio)  ){
-			
-			this.setPosicion(nuevaPosicionX, nuevaPosicionY);
-			unidadMovida = true;
-		}
-		return unidadMovida;
-	}
-	
 
+	public boolean movibleMomoveteA(String duenio, Posicion unaPosicion) {
+
+		if (this.movimientoValido(unaPosicion) && this.verificaSiEsTuDuenio(duenio) ){
+			posicion = unaPosicion;
+			return true;
+		}
+		return false;
+	}
+
+	protected boolean verificaSiEsTuDuenio(String duenio) {
+		if(nombreDelDuenio == duenio){
+			return true;
+		}else {
+			throw new NoMePuedesMoverNoEresMiDuenioExcepcion();
+		}
+	}
+
+
+	public String getNombreDelDuenio() {
+		return nombreDelDuenio;
+	}
+
+	@Override
+	public Posicion getPosicion() {
+		return posicion;
+	}
+
+	@Override
+	public void setPosicion(Posicion newPosicion) {
+		posicion = newPosicion;
+	}
+
+	@Override
+	public void posicionateEnEstaPosicion(String duenio, Posicion aPosicion) {
+		if(duenio == nombreDelDuenio) {
+			posicion = aPosicion;
+			return;
+		}
+		throw new NoEsTuUnidadExcepcion();
+	}
 }

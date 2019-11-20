@@ -9,7 +9,7 @@ import fiuba.algo3.algoChess.sample.JugadorSinUnidadesPierdeException;
 
 public class JugadorPuedeRemoverUnidadEspecificaTest {
 	
-	Jugador jugador = new Jugador();
+	Jugador jugador = new Jugador("e");
 	Unidad unaUnidad;
 	
 	@Test

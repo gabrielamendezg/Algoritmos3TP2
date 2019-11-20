@@ -1,71 +1,68 @@
 package fiuba.algo3.algoChess.modelo.tablero;
-import fiuba.algo3.algoChess.modelo.Excepciones.PosicionInvalidaException;
+import fiuba.algo3.algoChess.modelo.Excepciones.CoordenadaFueraDelTableroExcepcion;
+import fiuba.algo3.algoChess.modelo.Excepciones.NoEsTuUnidadExcepcion;
+import fiuba.algo3.algoChess.modelo.Excepciones.FilaOColumnaNoPerteneceATuParteDelTableroExcepcion;
+import fiuba.algo3.algoChess.modelo.Excepciones.PosicionOcupadaExcepcion;
 import fiuba.algo3.algoChess.modelo.celda.Celda;
+import fiuba.algo3.algoChess.modelo.celda.Posicionable;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 
+import java.util.HashMap;
+
 public class Tablero {
-	private static int tamanio = 20;
-	private static Tablero tablero = null ;
-	private Celda[][] matriz;
-	private GuardianMurallas guardianMurallas;
-	
-	private Tablero(Jugador jugadorA, Jugador jugadorB) {
-		matriz = new Celda[tamanio][tamanio];
-		guardianMurallas = new GuardianMurallas(20,jugadorA,jugadorB);
-		for(int i = 0; i < tamanio; i++) {
-			for (int j = 0; j < tamanio; j++) {
-				matriz[i][j] = new Celda();
+	private int tamanio = 20;
+	private HashMap <String, Celda> matriz = new HashMap<String, Celda>();
+	public  Tablero(){
+		for(int i = 1; i <= tamanio; i++) {
+			for (int j = 1; j <= tamanio; j++) {
+				matriz.put(new Posicion(j,i).toString(), new Celda());
 			}
 		}
-	}
-	
-	
-	public static Tablero obtenerInstancia(Jugador jugadorA, Jugador jugadorB){
-		if (tablero == null){
-			tablero = new Tablero(jugadorA,jugadorB);
-			return tablero;
-		}
-			return tablero;
-	 }
-
-	
-	//Colocar una nueva pieza en el tablero. 
-	public boolean colocarUnidad(Jugador jugador, Unidad unidad, int fila, int columna){
-		try {
-			if (guardianMurallas.colocarEnPosicionPorJugador(jugador,unidad,fila,columna,matriz)) {
-				return true;
-			} else {
-				return false;
-			}
-		} catch (PosicionInvalidaException e){
-			throw new PosicionInvalidaException();
-		}
-
-	}
-	
-	//Mueve la unidad (si existe) en la posición de origen a la posición destino. 
-	public boolean moverUnidad(Jugador jugador, int filaorigen, int columnaorigen, int filadestino, int columnadestino) {
-		try {
-			if(guardianMurallas.verificarposicion(filaorigen, columnaorigen) && guardianMurallas.verificarposicion(filadestino,columnadestino)) {
-				return matriz[filaorigen][columnaorigen].moverUnidad(jugador, filadestino, columnadestino);
-			}
-		} catch (PosicionInvalidaException e) {
-			return false;
-		}
-		return false;
-	}
-	
-	//Mueve la unidad a la posición indicada.
-	private boolean recibirUnidad(Unidad unidad, int fila, int columna) {
-		try {
-			if(guardianMurallas.verificarposicion(fila, columna)) {
-				return matriz[fila][columna].recibirUnidad(unidad);
-			}
-		} catch (PosicionInvalidaException e) {
-			return false;
-		}
-		return false;
 	}
 
+	//Colocar una nueva pieza en el tablero.
+	public void posicionarEn(Jugador jugador, Posicionable posicionable, Posicion aPosicion){
+
+		if(this.verificaSiPerteneceAMiParteDelTablero(jugador, aPosicion) && this.verificaSiEstaLibreLaPosicion(aPosicion)) {
+			posicionable.posicionateEnEstaPosicion(jugador.nombre(), aPosicion);
+			matriz.get(aPosicion.toString()).recibirPosicionable(posicionable);
+		}
+	}
+
+	public boolean verificaSiEstaLibreLaPosicion(Posicion unaPosicion) {
+		if (matriz.get(unaPosicion.toString()).celdaVacia()){
+			return true;
+		} else {
+			throw new PosicionOcupadaExcepcion();
+		}
+	}
+
+	private boolean verificaSiPerteneceAMiParteDelTablero(Jugador jugador, Posicion aPosicion) {
+		if (aPosicion.getX() >= jugador.getFilaMin() && aPosicion.getX() <= jugador.grtFilaMax() && aPosicion.getY() >= jugador.getColumnaMin() && aPosicion.getY() <= jugador.getColumnaMax()){
+			return true;
+		}else {
+				throw new FilaOColumnaNoPerteneceATuParteDelTableroExcepcion();
+		}
+	}
+
+
+	//Mueve la unidad (si existe) en la posición de origen a la posición destino.
+	public void moverMovibleA(Jugador jugador, Movible movible, Posicion aPosicion) {
+
+		if(this.verificarPosicion(movible.getPosicion()) && this.verificarPosicion(aPosicion)) {
+
+			if (this.verificaSiEstaLibreLaPosicion(aPosicion)) {
+				movible.movibleMoveteA(jugador.nombre(), aPosicion);
+				matriz.get(aPosicion.toString()).recibirPosicionable(matriz.get(movible.getPosicion().toString()).vaciarCelda());
+			}
+		}
+	}
+
+	private boolean verificarPosicion(Posicion posicio) {
+		if(posicio.getX() <= tamanio && posicio.getY() <= tamanio)
+			return true;
+		throw new CoordenadaFueraDelTableroExcepcion();
+	}
 }

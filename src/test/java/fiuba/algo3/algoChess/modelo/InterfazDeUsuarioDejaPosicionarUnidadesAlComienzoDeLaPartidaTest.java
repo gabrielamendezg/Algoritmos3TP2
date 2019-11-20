@@ -7,9 +7,9 @@ import org.junit.*;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import fiuba.algo3.algoChess.modelo.tablero.Tablero;
-/*
+
 public class InterfazDeUsuarioDejaPosicionarUnidadesAlComienzoDeLaPartidaTest {
-	
+	/*
 	Tablero tablero;
 	Jugador jugadorA = new Jugador();
 	Jugador jugadorB = new Jugador();
@@ -22,8 +22,7 @@ public class InterfazDeUsuarioDejaPosicionarUnidadesAlComienzoDeLaPartidaTest {
 		assertTrue(interfaz.posicionarUnidades(tablero.obtenerInstancia(jugadorA, jugadorB), jugadorA)); 
 		
 	}
-	
+	*/
 	
 
 }
-*/

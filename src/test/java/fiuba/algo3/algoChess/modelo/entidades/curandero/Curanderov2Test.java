@@ -5,13 +5,13 @@ import static org.junit.Assert.assertTrue;
 import fiuba.algo3.algoChess.modelo.entidades.Curandero;
 import fiuba.algo3.algoChess.modelo.entidades.Jinete;
 import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
+import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import org.junit.jupiter.api.Test;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 
-class CuranderoCuraVidaCorrespondienteTest {
-	
-	Jugador jugador = new Jugador();
+class Curanderov2Test {
+	String jugador = "elvis";
 	Curandero curandero = new Curandero(jugador);
 	
 	SoldadoDeInfanteria soldado = new SoldadoDeInfanteria (jugador);
@@ -19,17 +19,17 @@ class CuranderoCuraVidaCorrespondienteTest {
 	
 
 	@Test
-	void test() {
+	void curaVidaCorrespondientetest() {
 		
-		soldado.setPosicion(1,1);
-		jinete.setPosicion(1, 2);
+		soldado.setPosicion(new Posicion(1,1));
+		jinete.setPosicion(new Posicion(1, 2));
 		
-		curandero.setPosicion(1, 5);
+		curandero.setPosicion(new Posicion(1, 5));
 		
 		soldado.atacar(jinete);
 		soldado.atacar(jinete);
 		
-		curandero.atacar(jinete);
+		curandero.sanar(jinete);
 		assertTrue(jinete.obtenerVida() == 95);
 	}
 

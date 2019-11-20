@@ -2,24 +2,27 @@ package fiuba.algo3.algoChess.modelo.entidades.catapulta;
 import static org.junit.Assert.assertTrue;
 
 import fiuba.algo3.algoChess.modelo.entidades.Catapulta;
+import fiuba.algo3.algoChess.modelo.jugador.Jugador;
+import fiuba.algo3.algoChess.modelo.jugador.Jugador1;
+import fiuba.algo3.algoChess.modelo.tablero.Posicion;
+import fiuba.algo3.algoChess.modelo.tablero.Tablero;
 import org.junit.jupiter.api.Test;
 
-import fiuba.algo3.algoChess.modelo.jugador.Jugador;
-
 public class CatapultaNoPuedeMoverseTest {
-	
-	Jugador jugador = new Jugador();
-	Catapulta catapulta = new Catapulta(jugador);
+
+	Catapulta catapulta = new Catapulta("");
+	Jugador jugador = new Jugador1("");
+	Tablero tablero = new Tablero();
 	
 	@Test
 	void test() {
 
-		catapulta.setPosicion(1,1);
+		tablero.posicionarEn(jugador, catapulta, new Posicion(1, 1));
+		//Por no ser movible no compila
+		//tablero.moverUnidadA(jugador, catapulta, new Posicion(1, 2));
 		
-		catapulta.moverUnidadA(jugador,1,2);
-		
-		assertTrue(catapulta.obtenerPosicionX() ==1 );
-		assertTrue(catapulta.obtenerPosicionY() ==1);
+		assertTrue(catapulta.getPosicion().getX() ==1 );
+		assertTrue(catapulta.getPosicion().getY() ==1);
 		
 	}
 

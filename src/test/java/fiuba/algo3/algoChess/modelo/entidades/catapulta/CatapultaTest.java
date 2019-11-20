@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CatapultaTest {
     @Test
     public void testCatapultaEsCorrectamenteCreada(){
-    	Jugador jugador = new Jugador();
-        assertNotNull(new Catapulta(jugador));
+        assertNotNull(new Catapulta(""));
     }
 }
