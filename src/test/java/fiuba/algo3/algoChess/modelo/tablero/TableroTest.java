@@ -1,7 +1,7 @@
 package fiuba.algo3.algoChess.modelo.tablero;
 
 import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
-import fiuba.algo3.algoChess.modelo.entidades.posicionables.PosicionableADistaciaCercana;
+import fiuba.algo3.algoChess.modelo.entidades.posicionables.PosicionablesADistaciaCercana;
 import fiuba.algo3.algoChess.modelo.jugador.Jugador1;
 import fiuba.algo3.algoChess.modelo.jugador.Jugador2;
 import org.junit.Test;
@@ -60,7 +60,7 @@ public class TableroTest {
 		/*
 		los posicionables a distancia cercana de soldado1 son soldado2 y soldado3
 		 */
-		PosicionableADistaciaCercana posicionablesCercanos = new PosicionableADistaciaCercana();
+		PosicionablesADistaciaCercana posicionablesCercanos = new PosicionablesADistaciaCercana();
 		posicionablesCercanos.add(soldado2);
 		posicionablesCercanos.add(soldado3);
 		assertEquals(tablero.posicionablesADistanciaCercanaDe(soldado1), posicionablesCercanos);
@@ -87,7 +87,7 @@ public class TableroTest {
 		/*
 		los posicionables a distancia cercana de soldado3 son soldado1,2,4
 		 */
-		PosicionableADistaciaCercana posicionablesCercanos = tablero.posicionablesADistanciaCercanaDe(soldado3);
+		PosicionablesADistaciaCercana posicionablesCercanos = tablero.posicionablesADistanciaCercanaDe(soldado3);
 
 		assertTrue(posicionablesCercanos.contains(soldado1));
 		assertTrue(posicionablesCercanos.contains(soldado2));

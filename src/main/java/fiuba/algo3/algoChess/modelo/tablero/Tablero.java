@@ -1,14 +1,11 @@
 package fiuba.algo3.algoChess.modelo.tablero;
 import fiuba.algo3.algoChess.modelo.Excepciones.CoordenadaFueraDelTableroExcepcion;
-import fiuba.algo3.algoChess.modelo.Excepciones.NoEsTuUnidadExcepcion;
 import fiuba.algo3.algoChess.modelo.Excepciones.FilaOColumnaNoPerteneceATuParteDelTableroExcepcion;
 import fiuba.algo3.algoChess.modelo.Excepciones.PosicionOcupadaExcepcion;
 import fiuba.algo3.algoChess.modelo.celda.Celda;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
-import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
-import fiuba.algo3.algoChess.modelo.entidades.Unidad;
-import fiuba.algo3.algoChess.modelo.entidades.posicionables.PosicionableADistaciaCercana;
+import fiuba.algo3.algoChess.modelo.entidades.posicionables.PosicionablesADistaciaCercana;
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 
 import java.util.HashMap;
@@ -68,8 +65,8 @@ public class Tablero {
 		throw new CoordenadaFueraDelTableroExcepcion();
 	}
 
-	public PosicionableADistaciaCercana posicionablesADistanciaCercanaDe(Posicionable posicionable) {
-		PosicionableADistaciaCercana posicionablesCercanos = new PosicionableADistaciaCercana();
+	public PosicionablesADistaciaCercana posicionablesADistanciaCercanaDe(Posicionable posicionable) {
+		PosicionablesADistaciaCercana posicionablesCercanos = new PosicionablesADistaciaCercana();
 		if(!matriz.get(posicionable.getPosicion().toString()).celdaOcupadaPorPosicionable(posicionable)){
 			return posicionablesCercanos;
 		}
