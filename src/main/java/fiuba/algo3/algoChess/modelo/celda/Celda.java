@@ -24,11 +24,15 @@ public class Celda{
 		return unaUnidad;
 	}
 
-	public boolean celdaOcupadaPorUnidad( Posicionable unaUnidad){
-		return unidad == unaUnidad;
+	public boolean celdaOcupadaPorPosicionable( Posicionable unPosicionable){
+		return unidad == unPosicionable;
 	}
 
 	public boolean celdaVacia() {
 		return unidad == null;
+	}
+
+	public Posicionable getPosicionable() {
+		return unidad;
 	}
 }

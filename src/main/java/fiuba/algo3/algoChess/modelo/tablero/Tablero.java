@@ -5,8 +5,10 @@ import fiuba.algo3.algoChess.modelo.Excepciones.FilaOColumnaNoPerteneceATuParteD
 import fiuba.algo3.algoChess.modelo.Excepciones.PosicionOcupadaExcepcion;
 import fiuba.algo3.algoChess.modelo.celda.Celda;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
+import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
+import fiuba.algo3.algoChess.modelo.entidades.posicionables.PosicionableADistaciaCercana;
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 
 import java.util.HashMap;
@@ -61,8 +63,32 @@ public class Tablero {
 	}
 
 	private boolean verificarPosicion(Posicion posicio) {
-		if(posicio.getX() <= tamanio && posicio.getY() <= tamanio)
+		if(posicio.getX() <= tamanio && posicio.getY() <= tamanio && posicio.getX() > 0 && posicio.getY() > 0)
 			return true;
 		throw new CoordenadaFueraDelTableroExcepcion();
+	}
+
+	public PosicionableADistaciaCercana posicionablesADistanciaCercanaDe(Posicionable posicionable) {
+		PosicionableADistaciaCercana posicionablesCercanos = new PosicionableADistaciaCercana();
+		if(!matriz.get(posicionable.getPosicion().toString()).celdaOcupadaPorPosicionable(posicionable)){
+			return posicionablesCercanos;
+		}
+
+		for(int i = posicionable.getPosicion().getX() - 2; i <= posicionable.getPosicion().getX() + 2; i++) {
+			for (int j = posicionable.getPosicion().getY() - 2; j <= posicionable.getPosicion().getY() + 2; j++) {
+
+				try {
+					if(this.verificarPosicion(new Posicion(i,j)) && (i != posicionable.getPosicion().getX() || j != posicionable.getPosicion().getY())){
+						if(!matriz.get(new Posicion(i, j).toString()).celdaVacia()){
+							posicionablesCercanos.add(matriz.get(new Posicion(i, j).toString()).getPosicionable());
+						}
+					}
+				} catch (CoordenadaFueraDelTableroExcepcion e) {
+					//si las coordenadas estan fuera del tablero CoordenadaFueraDelTableroExcepcion.
+				}
+
+			}
+		}
+		return posicionablesCercanos;
 	}
 }
