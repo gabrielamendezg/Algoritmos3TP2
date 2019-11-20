@@ -62,8 +62,8 @@ public class Tablero {
 		}
 	}
 
-	private boolean verificarPosicion(Posicion posicio) {
-		if(posicio.getX() <= tamanio && posicio.getY() <= tamanio && posicio.getX() > 0 && posicio.getY() > 0)
+	private boolean verificarPosicion(Posicion unPosicionable) {
+		if(unPosicionable.getX() <= tamanio && unPosicionable.getY() <= tamanio && unPosicionable.getX() > 0 && unPosicionable.getY() > 0)
 			return true;
 		throw new CoordenadaFueraDelTableroExcepcion();
 	}

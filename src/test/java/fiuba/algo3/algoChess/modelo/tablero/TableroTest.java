@@ -87,10 +87,8 @@ public class TableroTest {
 		/*
 		los posicionables a distancia cercana de soldado3 son soldado1,2,4
 		 */
-		PosicionableADistaciaCercana posicionablesCercanos = new PosicionableADistaciaCercana();
-		posicionablesCercanos.add(soldado2);
-		posicionablesCercanos.add(soldado4);
-		posicionablesCercanos.add(soldado1);
+		PosicionableADistaciaCercana posicionablesCercanos = tablero.posicionablesADistanciaCercanaDe(soldado3);
+
 		assertTrue(posicionablesCercanos.contains(soldado1));
 		assertTrue(posicionablesCercanos.contains(soldado2));
 		assertTrue(posicionablesCercanos.contains(soldado4));
