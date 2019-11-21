@@ -4,13 +4,21 @@ import fiuba.algo3.algoChess.modelo.ataque.*;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Sanable;
+import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 
 public class SoldadoDeInfanteria extends Unidad implements Sanable, Movible, Posicionable {
 
 
-	public SoldadoDeInfanteria(String nombreDejugador) {
-		super(nombreDejugador);
+	public SoldadoDeInfanteria(JugadorA jugador) {
+		super(jugador);
+		ataque = new AtaqueCercano(10);
+		vida = 100;
+		costo = 1;
+	}
+	
+	public SoldadoDeInfanteria(JugadorB jugador) {
+		super(jugador);
 		ataque = new AtaqueCercano(10);
 		vida = 100;
 		costo = 1;
@@ -22,7 +30,12 @@ public class SoldadoDeInfanteria extends Unidad implements Sanable, Movible, Pos
 	}
 
 	@Override
-	public boolean movibleMoveteA(String duenio, Posicion unaPosicion) {
-		return super.movibleMomoveteA(duenio, unaPosicion);
+	public boolean movibleMoveteA(JugadorA jugador, Posicion unaPosicion) {
+		return tipo.moverA(this, jugador, unaPosicion);
 	}
+	@Override
+	public boolean movibleMoveteA(JugadorB jugador, Posicion unaPosicion) {
+		return tipo.moverA(this, jugador, unaPosicion);
+	}
+	
 }

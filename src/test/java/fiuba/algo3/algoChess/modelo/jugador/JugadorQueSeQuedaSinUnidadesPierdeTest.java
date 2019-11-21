@@ -9,7 +9,7 @@ import fiuba.algo3.algoChess.sample.*;
 
 public class JugadorQueSeQuedaSinUnidadesPierdeTest {
 	
-	Jugador jugador = new Jugador("E");
+	JugadorA jugador = new JugadorA();
 	Unidad unaUnidad;
 	
 	@Test

@@ -8,7 +8,7 @@ import fiuba.algo3.algoChess.modelo.entidades.*;
 
 public class JugadorDevuelveSiSigueEnJuegoTest {
 	
-	Jugador jugador = new Jugador("E");
+	JugadorA jugador = new JugadorA();
 	Unidad unidad;
 	
 	@Test

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class JugadorNoPuedeTomarMasUnidadesQuePuntosQueTieneTest{
 	
-	Jugador jugador = new Jugador("E");
+	JugadorA jugador = new JugadorA();
 	
 	@Test
 	public void deberiaNoAgregarMasUnidadesLanzaPuntosDeVidaInsuficienteExcepcionTest() {

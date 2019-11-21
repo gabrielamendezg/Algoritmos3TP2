@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 
 public class CatapultaNoPuedeMoverseTest {
 
-	Catapulta catapulta = new Catapulta("");
-	Jugador jugador = new JugadorA("");
+	JugadorA jugador = new JugadorA();
+	Catapulta catapulta = new Catapulta(jugador);
 	Tablero tablero = new Tablero();
 	
 	@Test

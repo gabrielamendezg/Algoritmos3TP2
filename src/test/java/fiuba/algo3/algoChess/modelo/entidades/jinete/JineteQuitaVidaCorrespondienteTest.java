@@ -8,12 +8,13 @@ import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import org.junit.jupiter.api.Test;
 
-import fiuba.algo3.algoChess.modelo.jugador.Jugador;
+import fiuba.algo3.algoChess.modelo.jugador.*;
 
 class JineteQuitaVidaCorrespondienteTest {
-	String jugador = "e";
-	SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(jugador);
-	Curandero curandero = new Curandero(jugador);
+	JugadorA jugador = new JugadorA();
+	JugadorB jugadorb = new JugadorB();
+	SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(jugadorb);
+	Curandero curandero = new Curandero(jugadorb);
 	Jinete jinete = new Jinete(jugador);
 	@Test
 	void test() {
@@ -21,8 +22,8 @@ class JineteQuitaVidaCorrespondienteTest {
 		soldado.setPosicion(new Posicion(1,4));
 		jinete.setPosicion(new Posicion(1, 1));
 		
-		jinete.atacar(curandero);
-		jinete.atacar(soldado);
+		jinete.atacar(jugador,curandero,0);
+		jinete.atacar(jugador,soldado,0);
 		
 		assertTrue(curandero.obtenerVida() == 70);
 		assertTrue(soldado.obtenerVida() ==100);

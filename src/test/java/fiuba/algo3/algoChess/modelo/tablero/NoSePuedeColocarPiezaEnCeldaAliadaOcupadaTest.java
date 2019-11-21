@@ -12,7 +12,7 @@ public class NoSePuedeColocarPiezaEnCeldaAliadaOcupadaTest {
 	@Test
 	public void TableroNoPuedeColocarPiezaEnCeldaAliadaOcupadaTest() {
 		//Arange
-		Jugador jugador1 = new JugadorA("elvis");
+		JugadorA jugador1 = new JugadorA();
 		Unidad unidad1 = jugador1.elegirSoldado();
 		Unidad unidad2 = jugador1.elegirSoldado();
         Tablero tablero = new Tablero();

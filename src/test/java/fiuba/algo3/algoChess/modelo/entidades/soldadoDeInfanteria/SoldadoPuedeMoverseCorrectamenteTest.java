@@ -11,14 +11,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SoldadoPuedeMoverseCorrectamenteTest {
-    Jugador jugador = new JugadorA("");
-    SoldadoDeInfanteria soldado = new SoldadoDeInfanteria("");
+    JugadorA jugador = new JugadorA();
+    SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(jugador);
 
     @Test
     void test() {
         Tablero tablero = new Tablero();
         tablero.posicionarEn(jugador,soldado, new Posicion(1, 1));
-        soldado.movibleMomoveteA("", new Posicion(1, 2));
+        soldado.movibleMoveteA(jugador, new Posicion(1, 2));
 
         assertEquals(soldado.getPosicion().getX(), 1 );
         assertEquals(soldado.getPosicion().getY(), 2);

@@ -15,13 +15,13 @@ public class SoldadoDeInfanteriaTest {
     @Test
     public  void seVerificaQue3SoldadosContiguosPuedenMoverseAlMismoTiempoEnLaMismaDirecciónConUnaSolaAcciónTest(){
 
-        Jugador juagador1 = new JugadorA("elvis");
-        Jugador juagador2 = new JugadorB("pepe");
+        JugadorA juagador1 = new JugadorA();
+        JugadorB juagador2 = new JugadorB();
 
         Tablero tablero = new Tablero();
-        SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(juagador1.nombre());
-        SoldadoDeInfanteria soldado2 = new SoldadoDeInfanteria(juagador1.nombre());
-        SoldadoDeInfanteria soldado3 = new SoldadoDeInfanteria(juagador1.nombre());
+        SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(juagador1);
+        SoldadoDeInfanteria soldado2 = new SoldadoDeInfanteria(juagador1);
+        SoldadoDeInfanteria soldado3 = new SoldadoDeInfanteria(juagador1);
 
         tablero.posicionarEn(juagador1, soldado1, new Posicion(1, 1));
         tablero.posicionarEn(juagador1, soldado2, new Posicion(2, 1));

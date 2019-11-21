@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class JugadorEligeUnidadesCorrectamenteTest{
   
-	Jugador jugador=new Jugador("E");
+	JugadorA jugador=new JugadorA();
 	Unidad unaUnidad;
 	
 	

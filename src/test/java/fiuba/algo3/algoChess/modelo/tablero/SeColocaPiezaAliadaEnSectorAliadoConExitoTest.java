@@ -12,7 +12,7 @@ public class SeColocaPiezaAliadaEnSectorAliadoConExitoTest {
 	@Test
 	public void test() {
 		//Arrange
-		Jugador jugador = new JugadorA("");
+		JugadorA jugador = new JugadorA();
 		Unidad unidad = jugador.elegirSoldado();
 		Tablero tablero =  new Tablero();
 		tablero.posicionarEn(jugador, unidad, new Posicion(1, 1));

@@ -11,9 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SoldadoNoPuedeMoverseACeldaOcupadaTest {
 	
-		Jugador jugador = new JugadorA("Zele");
-		SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(jugador.nombre());
-		Curandero curandero = new Curandero(jugador.nombre());
+		JugadorA jugador = new JugadorA();
+		SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(jugador);
+		Curandero curandero = new Curandero(jugador);
 		Tablero tablero = new Tablero();
 		@Test
 		void test() {

@@ -9,7 +9,7 @@ import  org.junit.*;
 
 public class JugadorPuedeRemoverUnidadEspecificaTest {
 	
-	Jugador jugador = new Jugador("e");
+	JugadorA jugador = new JugadorA();
 	Unidad unaUnidad;
 	
 	@Test

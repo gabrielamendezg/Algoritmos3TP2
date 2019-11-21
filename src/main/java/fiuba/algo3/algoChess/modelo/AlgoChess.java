@@ -14,8 +14,9 @@ public class AlgoChess {
 	private static AlgoChess algoChess = new AlgoChess();
 	private Tablero tablero = new Tablero();
 	InterfazDeUsuario interfaz;
-	private Jugador jugador1;
-	private Jugador jugador2;
+	private Jugador jugadorA = new JugadorA();
+	private Jugador jugadorB = new JugadorB();
+	
 
 	private AlgoChess() {
 		tablero = new Tablero();
@@ -31,26 +32,23 @@ public class AlgoChess {
 
 
 	private void setPiezasEnElTablero(Jugador jugador) {
-
-
-
-
+		
 	}
 
 	private void elegirUnidades(Jugador jugador) throws IOException{
-
-
 		interfaz.elegirUnidades(tablero, jugador);
-
-
+		jugadorA.actualizarUnidades(jugadorB.obtenerUnidades(),jugadorB.cantidadDeUnidades());
+		jugadorB.actualizarUnidades(jugadorA.obtenerUnidades(),jugadorA.cantidadDeUnidades());
 	}
 
 	//Mover piezas durante los turnos
 	private void colocarUnidadesEnTablero(Jugador jugador) {
-
-
-
+		
 
 	}
+	
+	
+	
+	
 
 }

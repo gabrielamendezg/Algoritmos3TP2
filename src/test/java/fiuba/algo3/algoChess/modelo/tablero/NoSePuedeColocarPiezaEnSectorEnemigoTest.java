@@ -14,7 +14,7 @@ public class NoSePuedeColocarPiezaEnSectorEnemigoTest {
 	@Test
 	public void TableroNoPuedeColocarPiezaEnSectorEnemigoTest() {
 		//Arrange
-		Jugador jugador = new JugadorA("elvis");
+		JugadorA jugador = new JugadorA();
 		Unidad unidad1 = jugador.elegirSoldado();
 		Tablero tablero = new Tablero();
 		assertThrows(FilaOColumnaNoPerteneceATuParteDelTableroExcepcion.class,

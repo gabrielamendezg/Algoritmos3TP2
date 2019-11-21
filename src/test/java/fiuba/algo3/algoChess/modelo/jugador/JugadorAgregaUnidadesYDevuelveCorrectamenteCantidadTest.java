@@ -6,7 +6,7 @@ import org.junit.*;
 
 public class JugadorAgregaUnidadesYDevuelveCorrectamenteCantidadTest {
 
-	Jugador jugador= new Jugador("E");
+	JugadorA jugador= new JugadorA();
 	
 	@Test
 	public void deberiaDevolverCantidadesCorrectasDeUnidades() {

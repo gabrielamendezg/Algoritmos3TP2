@@ -1,22 +1,20 @@
 package fiuba.algo3.algoChess.modelo.celda;
 
 import fiuba.algo3.algoChess.modelo.Excepciones.PosicionOcupadaExcepcion;
+import fiuba.algo3.algoChess.modelo.jugador.*;
+import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 
 
-public class Celda{
-	private Posicionable unidad;
+public abstract class Celda{
+	protected Posicionable unidad;
 	
 	public Celda() {
 		unidad = null;
 	}
 
-	public void recibirPosicionable(Posicionable nuevaUnidad) {
-		if (unidad == null){
-			unidad  = nuevaUnidad;
-		} else {
-			throw new PosicionOcupadaExcepcion();
-		}
-	}
+	public abstract void recibirPosicionable(JugadorA jugador, Posicionable nuevaUnidad, Posicion posicion);
+	public abstract void recibirPosicionable(JugadorB jugador, Posicionable nuevaUnidad, Posicion posicion);
+	
 
 	public Posicionable vaciarCelda() {
 		Posicionable unaUnidad = unidad;
@@ -35,4 +33,13 @@ public class Celda{
 	public Posicionable getPosicionable() {
 		return unidad;
 	}
+	
+	public void recibirMovible(Posicionable nuevaUnidad) {
+		if (this.celdaVacia()) {
+			unidad  = nuevaUnidad;
+		}else {
+			throw new PosicionOcupadaExcepcion();
+		}
+	}
+
 }
