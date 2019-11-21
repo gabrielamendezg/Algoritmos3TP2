@@ -2,6 +2,12 @@ package fiuba.algo3.algoChess.modelo;
 
 import fiuba.algo3.algoChess.modelo.tablero.*;
 
+/*Rearmar base
+ * 
+ * 
+ * 
+ */
+
 import java.io.IOException;
 
 import fiuba.algo3.algoChess.modelo.jugador.*;

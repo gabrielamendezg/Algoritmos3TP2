@@ -5,7 +5,13 @@ import fiuba.algo3.algoChess.modelo.Excepciones.PuntosInsuficientesExcepcion;
 import fiuba.algo3.algoChess.modelo.entidades.*;
 
 
-/*REFACTOREAR A JUGADOR CON MULTITON para 2 jugadores?? Discutir y definir*/
+/*	-REFACTOREAR A JUGADOR CON MULTITON para 2 jugadores?? Discutir y definir
+ * 	
+ * -Ver responsabilidad de saber espacio del tablero (Jugador o tablero)
+ * -Ver Encapsular puntaje e implementar selector de unidades
+ * -- Ver refactoreo a Multiton para 2 (implementar con Dictionary)
+ * 
+ * */
 
 
 public class Jugador {
