@@ -12,15 +12,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class JineteSeMueveCorrectamenteTest {
-    Jugador jugador = new Jugador1("");
-    Jinete jinete = new Jinete("");
+    JugadorA jugador = new JugadorA();
+    Jinete jinete = new Jinete(jugador);
 
     @Test
     void test() {
         Tablero tablero = new Tablero();
         tablero.posicionarEn(jugador, jinete, new Posicion(1, 1));
 
-        jinete.movibleMomoveteA( "", new Posicion(1, 2));
+        jinete.movibleMoveteA(jugador, new Posicion(1, 2));
         assertEquals(jinete.getPosicion().getX(), 1 );
         assertEquals(jinete.getPosicion().getY(), 2);
 

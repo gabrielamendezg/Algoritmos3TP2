@@ -1,7 +1,7 @@
 package fiuba.algo3.algoChess.modelo.tablero;
 
 import fiuba.algo3.algoChess.modelo.Excepciones.FilaOColumnaNoPerteneceATuParteDelTableroExcepcion;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador1;
+import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
 import org.junit.Test;
 
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
@@ -14,7 +14,7 @@ public class NoSePuedeColocarPiezaEnSectorEnemigoTest {
 	@Test
 	public void TableroNoPuedeColocarPiezaEnSectorEnemigoTest() {
 		//Arrange
-		Jugador jugador = new Jugador1("elvis");
+		JugadorA jugador = new JugadorA();
 		Unidad unidad1 = jugador.elegirSoldado();
 		Tablero tablero = new Tablero();
 		assertThrows(FilaOColumnaNoPerteneceATuParteDelTableroExcepcion.class,

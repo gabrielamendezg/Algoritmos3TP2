@@ -13,9 +13,9 @@ import static org.junit.Assert.assertEquals;
 
 class JineteNoSeMueveACeldaOcupadaTest {
 
-	Jugador jugador = new Jugador1("elvis");
-	Curandero curandero = new Curandero(jugador.nombre());
-	Jinete jinete = new Jinete(jugador.nombre());
+	JugadorA jugador = new JugadorA();
+	Curandero curandero = new Curandero(jugador);
+	Jinete jinete = new Jinete(jugador);
 	Tablero tablero = new Tablero();
 	
 	@Test
