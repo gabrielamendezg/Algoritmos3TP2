@@ -2,8 +2,8 @@ package fiuba.algo3.algoChess.modelo.tablero;
 
 import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
 import fiuba.algo3.algoChess.modelo.entidades.posicionables.PosicionablesADistaciaCercana;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador1;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador2;
+import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
+import fiuba.algo3.algoChess.modelo.jugador.JugadorB;
 import org.junit.Test;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
@@ -20,7 +20,7 @@ public class TableroTest {
 	@Test
 	public void tableroMueveUnaUnidadCorrectamente(){
 
-		Jugador jugador = new Jugador1("elvis");
+		Jugador jugador = new JugadorA("elvis");
 		Tablero tablero = new Tablero();
 		SoldadoDeInfanteria soldado = jugador.elegirSoldado();
 
@@ -34,7 +34,7 @@ public class TableroTest {
 	@Test
 	public void unidadRecienCreadaNoposicionadaEnElTableroTieneCoordenadasQueNoPertenecenAlTableroTest(){
 
-		Jugador jugador = new Jugador1("elvis");
+		Jugador jugador = new JugadorA("elvis");
 		SoldadoDeInfanteria soldado = jugador.elegirSoldado();
 
 		assertEquals(soldado.getPosicion().getX(), -1 );
@@ -44,8 +44,8 @@ public class TableroTest {
 	@Test
 	public void tableroRetornaCorectamenteLosPosicionablesADistanciaCercanaDeUnPosicionable1Test(){
 
-		Jugador juagador1 = new Jugador1("elvis");
-		Jugador juagador2 = new Jugador2("pepe");
+		Jugador juagador1 = new JugadorA("elvis");
+		Jugador juagador2 = new JugadorB("pepe");
 
 		Tablero tablero = new Tablero();
 		SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(juagador1.nombre());
@@ -69,8 +69,8 @@ public class TableroTest {
 	@Test
 	public void tableroRetornaCorectamenteLosPosicionablesADistanciaCercanaDeUnPosicionable2Test(){
 
-		Jugador juagador1 = new Jugador1("elvis");
-		Jugador juagador2 = new Jugador2("pepe");
+		Jugador juagador1 = new JugadorA("elvis");
+		Jugador juagador2 = new JugadorB("pepe");
 
 		Tablero tablero = new Tablero();
 		SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(juagador1.nombre());

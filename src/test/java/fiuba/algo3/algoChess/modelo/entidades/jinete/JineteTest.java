@@ -4,7 +4,7 @@ import fiuba.algo3.algoChess.modelo.Excepciones.NoEsTuUnidadExcepcion;
 import fiuba.algo3.algoChess.modelo.Excepciones.PosicionOcupadaExcepcion;
 import fiuba.algo3.algoChess.modelo.entidades.Curandero;
 import fiuba.algo3.algoChess.modelo.entidades.Jinete;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador1;
+import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import fiuba.algo3.algoChess.modelo.tablero.Tablero;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ public class JineteTest {
 
     @Test
     void curanderoNoPuedeSerColocadoEnPosicionOcupadaPorJinetePosicionOcupadaExcepcion() {
-        Jugador jugador = new Jugador1("elvis");
+        Jugador jugador = new JugadorA("elvis");
         Curandero curandero = new Curandero(jugador.nombre());
         Jinete jinete = new Jinete(jugador.nombre());
         Tablero tablero = new Tablero();
@@ -35,7 +35,7 @@ public class JineteTest {
 
     @Test
     void jineteNoPuedeSerColocarEnPosicionPorAlguienQueNoSeaSuDuenioNoEsTuUnidadExcepcion() {
-        Jugador jugador = new Jugador1("elvis");
+        Jugador jugador = new JugadorA("elvis");
         Jinete jinete = new Jinete("hernan");
         Tablero tablero = new Tablero();
         assertThrows(NoEsTuUnidadExcepcion.class, ()->{

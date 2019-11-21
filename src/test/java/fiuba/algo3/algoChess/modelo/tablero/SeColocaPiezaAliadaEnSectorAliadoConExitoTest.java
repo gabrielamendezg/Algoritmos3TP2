@@ -1,6 +1,6 @@
 package fiuba.algo3.algoChess.modelo.tablero;
 
-import fiuba.algo3.algoChess.modelo.jugador.Jugador1;
+import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
 import org.junit.Test;
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
@@ -12,7 +12,7 @@ public class SeColocaPiezaAliadaEnSectorAliadoConExitoTest {
 	@Test
 	public void test() {
 		//Arrange
-		Jugador jugador = new Jugador1("");
+		Jugador jugador = new JugadorA("");
 		Unidad unidad = jugador.elegirSoldado();
 		Tablero tablero =  new Tablero();
 		tablero.posicionarEn(jugador, unidad, new Posicion(1, 1));

@@ -4,9 +4,11 @@ import fiuba.algo3.algoChess.modelo.tablero.*;
 
 import java.io.IOException;
 
+import fiuba.algo3.algoChess.modelo.Excepciones.InstanciaDeTableroYaExiste;
 import fiuba.algo3.algoChess.modelo.jugador.*;
-import fiuba.algo3.algoChess.sample.InstanciaDeTableroYaExiste;
 
+
+@SuppressWarnings("unused")
 public class AlgoChess {
 
 	private static AlgoChess algoChess = new AlgoChess();

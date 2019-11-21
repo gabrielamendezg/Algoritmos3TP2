@@ -2,8 +2,8 @@ package fiuba.algo3.algoChess.modelo.entidades.soldadoDeInfanteria;
 
 import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador1;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador2;
+import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
+import fiuba.algo3.algoChess.modelo.jugador.JugadorB;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import fiuba.algo3.algoChess.modelo.tablero.Tablero;
 import org.junit.jupiter.api.Test;
@@ -15,8 +15,8 @@ public class SoldadoDeInfanteriaTest {
     @Test
     public  void seVerificaQue3SoldadosContiguosPuedenMoverseAlMismoTiempoEnLaMismaDirecciónConUnaSolaAcciónTest(){
 
-        Jugador juagador1 = new Jugador1("elvis");
-        Jugador juagador2 = new Jugador2("pepe");
+        Jugador juagador1 = new JugadorA("elvis");
+        Jugador juagador2 = new JugadorB("pepe");
 
         Tablero tablero = new Tablero();
         SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(juagador1.nombre());

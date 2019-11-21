@@ -1,7 +1,7 @@
 package fiuba.algo3.algoChess.modelo.jugador;
 
-public class Jugador2 extends Jugador {
-    public Jugador2(String nombre) {
+public class JugadorB extends Jugador {
+    public JugadorB(String nombre) {
         super(nombre);
         filamin = 11;
         filamax = 20;

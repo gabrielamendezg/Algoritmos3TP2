@@ -7,7 +7,7 @@ import fiuba.algo3.algoChess.modelo.Excepciones.SolotePudesMoverUnaPosicionExcep
 import fiuba.algo3.algoChess.modelo.ataque.*;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
-import fiuba.algo3.algoChess.modelo.tablero.Tablero;
+//import fiuba.algo3.algoChess.modelo.tablero.Tablero;
 
 public abstract class Unidad implements Posicionable {
 	

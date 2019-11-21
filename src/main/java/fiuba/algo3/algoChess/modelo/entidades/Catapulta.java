@@ -2,7 +2,7 @@ package fiuba.algo3.algoChess.modelo.entidades;
 
 import fiuba.algo3.algoChess.modelo.ataque.*;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
-import fiuba.algo3.algoChess.modelo.tablero.Tablero;
+//import fiuba.algo3.algoChess.modelo.tablero.Tablero;
 
 public class Catapulta extends Unidad implements Posicionable {
 	

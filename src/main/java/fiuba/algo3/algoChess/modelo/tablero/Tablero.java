@@ -65,6 +65,7 @@ public class Tablero {
 		throw new CoordenadaFueraDelTableroExcepcion();
 	}
 
+	@SuppressWarnings("unchecked")
 	public PosicionablesADistaciaCercana posicionablesADistanciaCercanaDe(Posicionable posicionable) {
 		PosicionablesADistaciaCercana posicionablesCercanos = new PosicionablesADistaciaCercana();
 		if(!matriz.get(posicionable.getPosicion().toString()).celdaOcupadaPorPosicionable(posicionable)){

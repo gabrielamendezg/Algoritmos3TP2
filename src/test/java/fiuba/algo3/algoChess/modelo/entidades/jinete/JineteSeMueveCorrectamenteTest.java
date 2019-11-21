@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class JineteSeMueveCorrectamenteTest {
-    Jugador jugador = new Jugador1("");
+    Jugador jugador = new JugadorA("");
     Jinete jinete = new Jinete("");
 
     @Test

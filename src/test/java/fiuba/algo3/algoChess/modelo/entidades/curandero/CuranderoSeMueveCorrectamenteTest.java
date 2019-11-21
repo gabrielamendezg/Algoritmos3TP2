@@ -5,14 +5,14 @@ import static org.junit.Assert.assertTrue;
 import fiuba.algo3.algoChess.modelo.entidades.Curandero;
 
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador1;
+import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import fiuba.algo3.algoChess.modelo.tablero.Tablero;
 import org.junit.jupiter.api.Test;
 
 public class CuranderoSeMueveCorrectamenteTest {
 
-	Jugador jugador = new Jugador1("");
+	Jugador jugador = new JugadorA("");
 	Curandero curandero = new Curandero("");
 
 	@Test

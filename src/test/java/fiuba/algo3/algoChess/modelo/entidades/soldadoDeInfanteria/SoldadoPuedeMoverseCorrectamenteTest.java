@@ -3,7 +3,7 @@ package fiuba.algo3.algoChess.modelo.entidades.soldadoDeInfanteria;
 
 import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador1;
+import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import fiuba.algo3.algoChess.modelo.tablero.Tablero;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SoldadoPuedeMoverseCorrectamenteTest {
-    Jugador jugador = new Jugador1("");
+    Jugador jugador = new JugadorA("");
     SoldadoDeInfanteria soldado = new SoldadoDeInfanteria("");
 
     @Test
