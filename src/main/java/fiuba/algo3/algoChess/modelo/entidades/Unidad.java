@@ -100,7 +100,7 @@ public abstract class Unidad implements Posicionable {
 		tipo.posicionarEnEstaPosicion(this,jugador,aPosicion);
 	}
 	
-	boolean movibleMoveteA(Jugador jugador, Posicion unaPosicion) {
+	public boolean movibleMoveteA(Jugador jugador, Posicion unaPosicion) {
 		if (this.movimientoValido(unaPosicion)){
 			posicion = unaPosicion;
 			return true;
