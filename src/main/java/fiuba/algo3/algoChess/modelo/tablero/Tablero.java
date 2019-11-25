@@ -16,12 +16,12 @@ public class Tablero {
 	public  Tablero(){
 		for(int i = 1; i < filaminB; i++) {
 			for (int j = 1; j <= tamanio; j++) {
-				matriz.put(new Posicion(j,i).toString(), new CeldaA());
+				matriz.put(new Posicion(i,j).toString(), new CeldaA());
 			}
 		}
 		for(int i = filaminB; i <= tamanio; i++) {
 			for (int j = 1; j <= tamanio; j++) {
-				matriz.put(new Posicion(j,i).toString(), new CeldaB());
+				matriz.put(new Posicion(i,j).toString(), new CeldaB());
 			}
 		}
 	}
@@ -62,7 +62,9 @@ public class Tablero {
 			Celda Origen = matriz.get(dePosicion.toString());
 			movible.movibleMoveteA(jugador, aPosicion);
 			Destino.recibirMovible(Origen.vaciarCelda());
+			return;
 		}
+		throw new PosicionOcupadaExcepcion();
 	}
 
 
