@@ -4,10 +4,14 @@ import static org.junit.Assert.assertTrue;
 
 import fiuba.algo3.algoChess.modelo.entidades.Curandero;
 import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import org.junit.jupiter.api.Test;
 
 import fiuba.algo3.algoChess.modelo.jugador.*;
+
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
 
 class SoldadoDeInfanteriaRestaVidaCorrespondienteTest {
 	
@@ -19,8 +23,9 @@ class SoldadoDeInfanteriaRestaVidaCorrespondienteTest {
 	void test() {
 		curandero.setPosicion(new Posicion(1, 2));
 		soldado.setPosicion(new Posicion(1,1));
-		
-		soldado.atacar(jugadora,curandero,0);
+		LinkedList atacables = new <Atacable> LinkedList();
+		atacables.add(curandero);
+		soldado.atacarAtacable(jugadora, curandero, atacables);
 		
 		assertTrue(curandero.obtenerVida() == 65);
 		

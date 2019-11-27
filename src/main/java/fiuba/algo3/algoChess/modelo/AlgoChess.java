@@ -43,8 +43,8 @@ public class AlgoChess {
 
 	private void elegirUnidades(Jugador jugador) throws IOException{
 		interfaz.elegirUnidades(tablero, jugador);
-		jugadorA.actualizarUnidades(jugadorB.obtenerUnidades(),jugadorB.cantidadDeUnidades());
-		jugadorB.actualizarUnidades(jugadorA.obtenerUnidades(),jugadorA.cantidadDeUnidades());
+		/*jugadorA.actualizarUnidades(jugadorB.obtenerUnidades(),jugadorB.cantidadDeUnidades());
+		jugadorB.actualizarUnidades(jugadorA.obtenerUnidades(),jugadorA.cantidadDeUnidades());*/
 	}
 
 	//Mover piezas durante los turnos

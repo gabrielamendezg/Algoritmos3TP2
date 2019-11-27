@@ -21,17 +21,17 @@ public interface Jugador {
     public Jinete elegirJinete();
     public Curandero elegirCurandero();
     
-    //Obtiene limites de territorio.
+    /*/Obtiene limites de territorio. tablero maneja estas cosas
     public abstract int getFilaMin();
 	public abstract int getFilaMax();
 	public abstract int getColumnaMin();
-	public abstract int getColumnaMax();
+	public abstract int getColumnaMax();*/
 
 	//Otros Metodos
 	public int cantidadDeUnidades();
 	public ArrayList<Unidad> obtenerUnidades();
 	public void eliminarUnidad(Unidad unaUnidad);
 	//public void colocarenposicion(Unidad unidad, int fila, int columna, Unidad[][] matriz);
-	public void actualizarUnidades(ArrayList<Unidad> unidadesEnemigas,int cantidadEnemigas);
+	//public void actualizarUnidades(ArrayList<Unidad> unidadesEnemigas,int cantidadEnemigas);
 	
 }

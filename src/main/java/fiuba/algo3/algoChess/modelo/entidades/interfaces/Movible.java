@@ -5,6 +5,7 @@ import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 
 public interface Movible {
     public Posicion getPosicion();
+    public void setPosicion(Posicion posicion);
 	public boolean movibleMoveteA(JugadorA jugador, Posicion unaPosicion);
     public boolean movibleMoveteA(JugadorB jugador, Posicion unaPosicion);
 }
