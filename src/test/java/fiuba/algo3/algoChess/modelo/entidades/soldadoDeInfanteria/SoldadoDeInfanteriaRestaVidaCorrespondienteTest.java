@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import fiuba.algo3.algoChess.modelo.jugador.*;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
@@ -23,7 +24,7 @@ class SoldadoDeInfanteriaRestaVidaCorrespondienteTest {
 	void test() {
 		curandero.setPosicion(new Posicion(1, 2));
 		soldado.setPosicion(new Posicion(1,1));
-		LinkedList atacables = new <Atacable> LinkedList();
+		ArrayList<Atacable> atacables = new ArrayList<Atacable>();
 		atacables.add(curandero);
 		soldado.atacarAtacable(jugadora, curandero, atacables);
 		

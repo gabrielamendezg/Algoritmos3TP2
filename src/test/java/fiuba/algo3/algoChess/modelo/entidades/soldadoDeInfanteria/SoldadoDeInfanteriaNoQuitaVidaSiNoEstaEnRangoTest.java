@@ -5,11 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import fiuba.algo3.algoChess.modelo.Excepciones.FueraDelRangoDeAtaqueExcepcion;
 import fiuba.algo3.algoChess.modelo.entidades.*;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import org.junit.jupiter.api.Test;
 
 import fiuba.algo3.algoChess.modelo.jugador.*;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 class SoldadoDeInfanteriaNoQuitaVidaSiNoEstaEnRangoTest {
@@ -25,7 +27,7 @@ class SoldadoDeInfanteriaNoQuitaVidaSiNoEstaEnRangoTest {
 
 		assertThrows(FueraDelRangoDeAtaqueExcepcion.class,
 				()->{
-					soldado.atacarAtacable(jugador, curandero, new LinkedList());
+					soldado.atacarAtacable(jugador, curandero, new ArrayList<Atacable>());
 				});
 		
 		assertTrue(curandero.obtenerVida() == 75);

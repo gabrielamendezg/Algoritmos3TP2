@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import fiuba.algo3.algoChess.modelo.jugador.*;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,7 +26,7 @@ public class CatapultaTest {
         JugadorA jugador = new JugadorA();
         Catapulta catapulta = new Catapulta(jugador);
         catapulta.setPosicion(new Posicion(1,1));
-        LinkedList atacables = new <Atacable>LinkedList();
+        ArrayList<Atacable> atacables = new ArrayList<Atacable>();
         SoldadoDeInfanteria soldadoDeInfanteria = new SoldadoDeInfanteria(new JugadorB());
         soldadoDeInfanteria.setPosicion(new Posicion(11, 11));
         atacables.add(soldadoDeInfanteria);

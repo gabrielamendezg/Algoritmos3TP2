@@ -29,8 +29,8 @@ public class Catapulta extends Unidad implements Posicionable, Atacador, Atacabl
 	}
 
 	@Override
-	public void atacarAtacable(Jugador atacante, Atacable unAtacable, LinkedList atacables) {
-		ArrayList aliados = atacante.obtenerUnidades();
+	public void atacarAtacable(Jugador atacante, Atacable unAtacable, ArrayList<Atacable> atacables) {
+		ArrayList<Unidad> aliados = atacante.obtenerUnidades();
 		if(aliados.contains(unAtacable)) return;
 		ataque.atacar(posicion.getX(), posicion.getY(), unAtacable);
 		//falta
