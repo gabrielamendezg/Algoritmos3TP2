@@ -17,6 +17,7 @@ public class JugadorB implements Jugador {
 	protected int filamax;
 	protected int puntos;
 	protected  ArrayList<Unidad> unidades;
+	protected String nombre;
 	
 	public JugadorB() {
         super();
@@ -24,6 +25,15 @@ public class JugadorB implements Jugador {
         filamax = 20;
         columnamin = 1;
         columnamax = 20;
+    }
+	
+	public JugadorB(String nombreDelJugador) {
+        super();
+        filamin = 11;
+        filamax = 20;
+        columnamin = 1;
+        columnamax = 20;
+        this.nombre = nombreDelJugador;
     }
 
     public int getFilaMin() {
@@ -143,5 +153,12 @@ public class JugadorB implements Jugador {
 				unidades.get(i).recibirEnemigoLejano(unidadesEnemigas.get(j));
 			}
 		}
+	}
+
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		
+		return this.nombre;
 	}
 }

@@ -17,6 +17,7 @@ public class JugadorA implements Jugador {
 	protected int filamax;
 	protected int puntos;
 	protected  ArrayList<Unidad> unidades;
+	protected String nombre;
 	
     public JugadorA() {
     	this.puntos = 20;
@@ -25,6 +26,15 @@ public class JugadorA implements Jugador {
         filamax = 10;
         columnamin = 1;
         columnamax = 20;
+    }
+    
+    public JugadorA(String nombreDelJugador) {
+        super();
+        filamin = 11;
+        filamax = 20;
+        columnamin = 1;
+        columnamax = 20;
+        this.nombre = nombreDelJugador;
     }
 
     public int getFilaMin() {
@@ -134,6 +144,12 @@ public class JugadorA implements Jugador {
 	public void actualizarUnidades(ArrayList<Unidad> unidadesEnemigas, int cantidadEnemigas) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return this.nombre;
 	}
 
 }
