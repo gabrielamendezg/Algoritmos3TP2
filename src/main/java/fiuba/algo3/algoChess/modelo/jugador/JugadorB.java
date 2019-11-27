@@ -155,7 +155,6 @@ public class JugadorB implements Jugador {
 		}
 	}
 
-	@Override
 	public String getNombre() {
 		// TODO Auto-generated method stub
 		

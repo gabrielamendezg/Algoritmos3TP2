@@ -3,6 +3,7 @@ package fiuba.algo3.algoChess.modelo.entidades.interfaces;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 
+
 public interface Movible {
     public Posicion getPosicion();
 	public boolean movibleMoveteA(JugadorA jugador, Posicion unaPosicion);

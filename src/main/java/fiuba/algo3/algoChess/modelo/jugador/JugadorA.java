@@ -146,7 +146,6 @@ public class JugadorA implements Jugador {
 		
 	}
 
-	@Override
 	public String getNombre() {
 		// TODO Auto-generated method stub
 		return this.nombre;
