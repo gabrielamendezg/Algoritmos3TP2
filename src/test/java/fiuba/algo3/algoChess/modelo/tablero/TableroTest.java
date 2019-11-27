@@ -1,7 +1,7 @@
 package fiuba.algo3.algoChess.modelo.tablero;
 
 import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
-import fiuba.algo3.algoChess.modelo.entidades.posicionables.PosicionablesADistaciaCercana;
+//import fiuba.algo3.algoChess.modelo.entidades.posicionables.PosicionablesADistaciaCercana;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import org.junit.Test;
 

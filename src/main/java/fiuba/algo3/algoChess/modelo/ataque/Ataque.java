@@ -1,6 +1,8 @@
 package fiuba.algo3.algoChess.modelo.ataque;
 
+import fiuba.algo3.algoChess.modelo.Excepciones.FueraDelRangoDeAtaqueExcepcion;
 import fiuba.algo3.algoChess.modelo.entidades.*;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
 
 public abstract class Ataque {
 
@@ -9,7 +11,7 @@ public abstract class Ataque {
 	 
 	 protected int ataque;
 	 
-	 public boolean estaEnRango( int posicionXUnidadAtacante, int posicionYUnidadAtacante,  Unidad unidadAtacada) {
+	 public boolean estaEnRango( int posicionXUnidadAtacante, int posicionYUnidadAtacante,  Atacable unidadAtacada) {
 		 
 		 boolean estaEnRango = false;
 		  int distanciaX = Math.abs((unidadAtacada.getPosicion().getX()) - posicionXUnidadAtacante);
@@ -25,13 +27,15 @@ public abstract class Ataque {
 		 return estaEnRango;
 	 }
 	 
-	 public void atacar( int posicionXUnidadAtacante, int posicionYUnidadAtacante,  Unidad unidadAtacada) {
+	 public void atacar( int posicionXUnidadAtacante, int posicionYUnidadAtacante,  Atacable unidadAtacada) {
 	 
 	 
 		 if ( this.estaEnRango(posicionXUnidadAtacante, posicionYUnidadAtacante, unidadAtacada)){
 		 
 			 unidadAtacada.recibirAtaque(ataque);
+			 return;
 		 }
+		 throw new FueraDelRangoDeAtaqueExcepcion();
 	 }
 
 }

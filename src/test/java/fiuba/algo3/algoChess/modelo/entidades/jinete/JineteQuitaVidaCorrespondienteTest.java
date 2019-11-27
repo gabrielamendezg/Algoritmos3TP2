@@ -10,8 +10,11 @@ import org.junit.jupiter.api.Test;
 
 import fiuba.algo3.algoChess.modelo.jugador.*;
 
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+
 class JineteQuitaVidaCorrespondienteTest {
-	JugadorA jugador = new JugadorA();
+	/*JugadorA jugador = new JugadorA();
 	JugadorB jugadorb = new JugadorB();
 	SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(jugadorb);
 	Curandero curandero = new Curandero(jugadorb);
@@ -22,12 +25,12 @@ class JineteQuitaVidaCorrespondienteTest {
 		soldado.setPosicion(new Posicion(1,4));
 		jinete.setPosicion(new Posicion(1, 1));
 		
-		jinete.atacar(jugador,curandero,0);
-		jinete.atacar(jugador,soldado,0);
+		jinete.atacarAtacable(jugador, soldado,new LinkedList());
+		jinete.atacarAtacable(jugador, soldado,new LinkedList());
 		
 		assertTrue(curandero.obtenerVida() == 70);
 		assertTrue(soldado.obtenerVida() ==100);
 		
-	}
+	}*/
 
 }

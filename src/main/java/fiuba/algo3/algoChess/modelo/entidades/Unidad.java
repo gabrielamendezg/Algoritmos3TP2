@@ -1,5 +1,6 @@
 package fiuba.algo3.algoChess.modelo.entidades;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import fiuba.algo3.algoChess.modelo.Excepciones.*;
@@ -13,18 +14,19 @@ import fiuba.algo3.algoChess.modelo.jugador.*;
 public abstract class Unidad implements Posicionable {
 	
 	//Atributos.
-	Ataque ataque;
 	protected int vida;
 	protected int costo;
 	protected TipoUnidad tipo;
+	/*Ataque ataque; no todos pueden atacar
 	protected List <Unidad> aliadoscercanos;
 	protected List <Unidad> aliadosmedios;
 	protected List <Unidad> aliadoslejanos;
 	protected List <Unidad> enemigoscercanos;
 	protected List <Unidad> enemigosmedios;
 	protected List <Unidad> enemigoslejanos;
+	//protected String nombreDelDuenio;*/
 	protected Posicion posicion;
-	//protected String nombreDelDuenio;
+
 
 	public Unidad(JugadorA jugador) {
 		//nombreDelDuenio = nombre;
@@ -39,19 +41,21 @@ public abstract class Unidad implements Posicionable {
 
 	public void recibirAtaque(int daño) {
 		vida = vida- daño;
-		
+
 	}
 
 	public int obtenerVida(){
 		return vida;
 	}
-	
-	
-	public void atacar (Jugador jugador, Unidad unidad, int pctextra) {
+
+	/*
+	public void atacar (Jugador jugador, Unidad unidad, int pctextra) { no todos pueden atacar
 		ataque.atacar(posicion.getX(), posicion.getY(), unidad);
 	}
-		
-	boolean movimientoValido(Posicion unaPosicion) {
+
+	public abstract void atacarAtacable(LinkedHashSet atacables);
+
+	boolean movimientoValido(Posicion unaPosicion) { no todos se pueden mover
 
 		int distanciaX = Math.abs(unaPosicion.getX() - posicion.getX());
 		int distanciaY = Math.abs(unaPosicion.getY() - posicion.getY());
@@ -68,16 +72,16 @@ public abstract class Unidad implements Posicionable {
 		}
 	}
 
-	/*protected boolean verificaSiEsTuDuenio(String duenio) {
+	protected boolean verificaSiEsTuDuenio(String duenio) {
 		if(nombreDelDuenio == duenio){
 			return true;
 		}else {
 			throw new NoMePuedesMoverNoEresMiDuenioExcepcion();
 		}
-	}*/
+	}
 
 
-	/*public String getNombreDelDuenio() {
+	public String getNombreDelDuenio() {
 		return nombreDelDuenio;
 	}*/
 
@@ -99,8 +103,9 @@ public abstract class Unidad implements Posicionable {
 	public void posicionateEnEstaPosicion(JugadorB jugador, Posicion aPosicion) {
 		tipo.posicionarEnEstaPosicion(this,jugador,aPosicion);
 	}
-	
-	public boolean movibleMoveteA(Jugador jugador, Posicion unaPosicion) {
+
+	/*
+	public boolean movibleMoveteA(Jugador jugador, Posicion unaPosicion) { no todos se pueden mover
 		if (this.movimientoValido(unaPosicion)){
 			posicion = unaPosicion;
 			return true;
@@ -139,4 +144,6 @@ public abstract class Unidad implements Posicionable {
 		// TODO Auto-generated method stub
 		
 	}
+*/
+
 }

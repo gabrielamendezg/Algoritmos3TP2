@@ -1,25 +1,32 @@
 package fiuba.algo3.algoChess.modelo.entidades.soldadoDeInfanteria;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import fiuba.algo3.algoChess.modelo.Excepciones.FueraDelRangoDeAtaqueExcepcion;
 import fiuba.algo3.algoChess.modelo.entidades.*;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import org.junit.jupiter.api.Test;
 
 import fiuba.algo3.algoChess.modelo.jugador.*;
 
+import java.util.LinkedList;
+
 class SoldadoDeInfanteriaNoQuitaVidaSiNoEstaEnRangoTest {
 	
 	JugadorA jugador = new JugadorA();
 	JugadorB jugadorb = new JugadorB();
-	Unidad soldado = new SoldadoDeInfanteria(jugador);
-	Unidad curandero = new Curandero(jugadorb);
+	SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(jugador);
+	Curandero curandero = new Curandero(jugadorb);
 	@Test
 	void soldadoNoQuitaVida() {
 		curandero.setPosicion(new Posicion(1, 4));
 		soldado.setPosicion(new Posicion(1,1));
-		
-		soldado.atacar(jugador,curandero,0);
+
+		assertThrows(FueraDelRangoDeAtaqueExcepcion.class,
+				()->{
+					soldado.atacarAtacable(jugador, curandero, new LinkedList());
+				});
 		
 		assertTrue(curandero.obtenerVida() == 75);
 		

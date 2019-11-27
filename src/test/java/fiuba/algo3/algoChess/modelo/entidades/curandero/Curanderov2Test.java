@@ -10,6 +10,9 @@ import org.junit.jupiter.api.Test;
 
 import fiuba.algo3.algoChess.modelo.jugador.*;
 
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+
 class Curanderov2Test {
 	JugadorA jugadora = new JugadorA();
 	JugadorB jugadorb = new JugadorB();
@@ -27,8 +30,8 @@ class Curanderov2Test {
 		
 		curandero.setPosicion(new Posicion(1, 5));
 		
-		soldado.atacar(jugadorb,jinete,0);
-		soldado.atacar(jugadorb,jinete,0);
+		soldado.atacarAtacable(jugadora, jinete, new LinkedList());
+		soldado.atacarAtacable(jugadora, jinete, new LinkedList());
 		
 		curandero.sanar(jinete);
 		assertTrue(jinete.obtenerVida() == 95);
