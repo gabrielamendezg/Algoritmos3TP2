@@ -6,7 +6,6 @@ import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacador;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 

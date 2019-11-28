@@ -2,14 +2,10 @@ package fiuba.algo3.algoChess.modelo.entidades.jinete;
 
 import fiuba.algo3.algoChess.modelo.entidades.Jinete;
 import fiuba.algo3.algoChess.modelo.jugador.*;
-
-
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import fiuba.algo3.algoChess.modelo.tablero.Tablero;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class JineteSeMueveCorrectamenteTest {
     JugadorA jugador = new JugadorA();

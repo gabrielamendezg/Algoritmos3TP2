@@ -10,11 +10,7 @@ import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 
 public class JugadorA implements Jugador {
-	
-	/*protected int columnamin;
-	protected int columnamax;
-	protected int filamin;
-	protected int filamax;*/
+
 	protected int puntos;
 	protected  ArrayList<Unidad> unidades;
 	protected String nombre;
@@ -22,38 +18,15 @@ public class JugadorA implements Jugador {
     public JugadorA() {
     	this.puntos = 20;
 		this.unidades = new ArrayList<Unidad>();
-       /* filamin = 1;
-        filamax = 10;
-        columnamin = 1;
-        columnamax = 20;*/
     }
     
     public JugadorA(String nombreDelJugador) {
         super();
-        /*filamin = 11;
-        filamax = 20;
-        columnamin = 1;
-        columnamax = 20;*/
 		this.puntos = 20;
 		this.unidades = new ArrayList<Unidad>();
         this.nombre = nombreDelJugador;
     }
 
-/*
-    public int getFilaMin() {
-        return filamin;
-    }
-
-    public int getFilaMax() {
-        return filamax;
-    }
-    public int getColumnaMin() {
-        return columnamin;
-    }
-    public int getColumnaMax() {
-        return columnamax;
-    }
-    */
     public int cantidadDeUnidades() {
 		return (this.unidades.size());
 	}
@@ -142,12 +115,6 @@ public class JugadorA implements Jugador {
 
 		return nuevaUnidad;
 	}
-
-/*	@Override
-	public void actualizarUnidades(ArrayList<Unidad> unidadesEnemigas, int cantidadEnemigas) {
-		// TODO Auto-generated method stub
-		
-	}*/
 
 	public String getNombre() {
 		// TODO Auto-generated method stub

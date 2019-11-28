@@ -8,7 +8,6 @@ import fiuba.algo3.algoChess.modelo.ataque.*;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Sanable;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -103,12 +102,12 @@ public class Jinete extends Unidad implements Sanable, Movible, Posicionable, At
 		else {
 			this.setAtaque(new AtaqueDistanciaMedia(15));
 		}
-		
-		
+
+
 		 ataque.atacar(posicion.getX(), posicion.getY(), unAtacable);
 		
 	}
 		
 
-		}
+}
 

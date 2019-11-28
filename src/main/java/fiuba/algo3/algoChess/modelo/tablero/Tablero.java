@@ -2,7 +2,7 @@ package fiuba.algo3.algoChess.modelo.tablero;
 import fiuba.algo3.algoChess.modelo.Excepciones.*;
 import fiuba.algo3.algoChess.modelo.celda.*;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
-import fiuba.algo3.algoChess.modelo.entidades.*;
+import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 
@@ -45,7 +45,7 @@ public class Tablero {
 
 	//Mueve la unidad (si existe) en la posición de origen a la posición destino.
 	//Reescribo un poco por más orden.
-	public void moverMovibleA(JugadorB jugador, Movible movible, Posicion aPosicion) {
+	private void moverMovibleA(JugadorB jugador, Movible movible, Posicion aPosicion) {
 		Posicion dePosicion = movible.getPosicion();
 		Celda Destino = matriz.get(aPosicion.toString());
 		if(Destino.celdaVacia() && this.verificarPosicion(aPosicion)) {
@@ -55,7 +55,7 @@ public class Tablero {
 		}
 	}
 	
-	public void moverMovibleA(JugadorA jugador, Movible movible, Posicion aPosicion) {
+	private void moverMovibleA(JugadorA jugador, Movible movible, Posicion aPosicion) {
 		Posicion dePosicion = movible.getPosicion();
 		Celda Destino = matriz.get(aPosicion.toString());
 		if(Destino.celdaVacia() && this.verificarPosicion(aPosicion)) {
@@ -67,50 +67,31 @@ public class Tablero {
 		throw new PosicionOcupadaExcepcion();
 	}
 
-
-	/*@SuppressWarnings("unchecked")
-	public LinkedList<Unidad> posicionablesADistanciaCercanaDe(Posicionable posicionable) {
-		LinkedList<Unidad> aliadosCercanos = new LinkedList<Unidad>();
-		int x = posicionable.getPosicion().getX();
-		int y = posicionable.getPosicion().getY();
-		for(int i = x - maxcercano; i <= x + maxcercano; i++) {
-			for (int j = y - 2; j <= y + 2; j++) {
-				try {
-					if(this.verificarPosicion(new Posicion(i,j)) && (i != x || j != y)){
-						if(!matriz.get(new Posicion(i, j).toString()).celdaVacia()){
-							posicionablesCercanos.add(matriz.get(new Posicion(i, j).toString()).getPosicionable());
-						}
-					}
-				} catch (CoordenadaFueraDelTableroExcepcion e) {
-					//si las coordenadas estan fuera del tablero CoordenadaFueraDelTableroExcepcion.
-				}
-
-			}
-		}
-		return posicionablesCercanos;
+	public void moverMovibleADerecha(JugadorA jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() + 1, movible.getPosicion().getY()));
 	}
-	
-	public List posicionablesADistanciaMediaDe(Posicionable posicionable) {
-		PosicionablesADistaciaCercana posicionablesCercanos = new LinkedList();
-		if(!matriz.get(posicionable.getPosicion().toString()).celdaOcupadaPorPosicionable(posicionable)){
-			return posicionablesCercanos;
-		}
+	public void moverMovibleAIzquierda(JugadorA jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() - 1, movible.getPosicion().getY()));
+	}
+	public void moverMovibleAAdelante(JugadorA jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX(), movible.getPosicion().getY() + 1));
+	}
+	public void moverMovibleAAtras(JugadorA jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX(), movible.getPosicion().getY() - 1));
+	}
 
-		for(int i = posicionable.getPosicion().getX() - 2; i <= posicionable.getPosicion().getX() + 2; i++) {
-			for (int j = posicionable.getPosicion().getY() - 2; j <= posicionable.getPosicion().getY() + 2; j++) {
+	public void moverMovibleADerecha(JugadorB jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() - 1, movible.getPosicion().getY()));
+	}
+	public void moverMovibleAIzquierda(JugadorB jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() + 1, movible.getPosicion().getY()));
+	}
+	public void moverMovibleAAdelante(JugadorB jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX(), movible.getPosicion().getY() - 1));
+	}
+	public void moverMovibleAAtras(JugadorB jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX(), movible.getPosicion().getY() + 1));
+	}
 
-				try {
-					if(this.verificarPosicion(new Posicion(i,j)) && (i != posicionable.getPosicion().getX() || j != posicionable.getPosicion().getY())){
-						if(!matriz.get(new Posicion(i, j).toString()).celdaVacia()){
-							posicionablesCercanos.add(matriz.get(new Posicion(i, j).toString()).getPosicionable());
-						}
-					}
-				} catch (CoordenadaFueraDelTableroExcepcion e) {
-					//si las coordenadas estan fuera del tablero CoordenadaFueraDelTableroExcepcion.
-				}
-
-			}
-		}
-		return posicionablesCercanos;
-	}*/
+	//atacanteAtacarAtacable(jugadorAtacanteAB, unAtacante, unAtacable)
 }

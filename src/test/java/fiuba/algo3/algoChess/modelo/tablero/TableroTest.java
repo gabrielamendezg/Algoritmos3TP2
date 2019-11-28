@@ -17,17 +17,235 @@ public class TableroTest {
     }
 
 	@Test
-	public void tableroMueveUnaUnidadCorrectamente(){
+	public void tableroJugadorAMueveUnaUnidadALaDerechaCorrectamenteTest(){
 
 		JugadorA jugador = new JugadorA();
 		Tablero tablero = new Tablero();
 		SoldadoDeInfanteria soldado = jugador.elegirSoldado();
 
-		tablero.posicionarEn(jugador,soldado, new Posicion(1, 1));
-		tablero.moverMovibleA(jugador,soldado, new Posicion(1, 2));
+		tablero.posicionarEn(jugador,soldado, new Posicion(5, 5));
 
-		assertEquals(soldado.getPosicion().getX(), 1 );
-		assertEquals(soldado.getPosicion().getY(), 2);
+		/*
+		lado del jugadorA                                       lado del jugadorB
+		--------------------------------------------------------------------------
+		|                                                                        |
+		----------------                                     --------------------
+		|         Izquierdo                                     Derecho          |
+		----------------                                     --------------------
+		|  Atras <--  --> Adelante                   Adelante <--  --> Atras     |
+		-----------------                                     -------------------
+		|          Derecho                                      Izquierdo        |
+		---------------                                     ---------------------
+		|                                                                        |
+		--------------------------------------------------------------------------
+		*/
+		tablero.moverMovibleADerecha(jugador,soldado);
+
+		assertEquals(soldado.getPosicion().getX(), 6);
+		assertEquals(soldado.getPosicion().getY(), 5);
+	}
+
+	@Test
+	public void tableroJugadorAMueveUnaUnidadALaIzquierdaCorrectamenteTest(){
+
+		JugadorA jugador = new JugadorA();
+		Tablero tablero = new Tablero();
+		SoldadoDeInfanteria soldado = jugador.elegirSoldado();
+
+		tablero.posicionarEn(jugador,soldado, new Posicion(5, 5));
+
+		/*
+		lado del jugadorA                                       lado del jugadorB
+		--------------------------------------------------------------------------
+		|                                                                        |
+		----------------                                     --------------------
+		|         Izquierdo                                     Derecho          |
+		----------------                                     --------------------
+		|  Atras <--  --> Adelante                   Adelante <--  --> Atras     |
+		-----------------                                     -------------------
+		|          Derecho                                      Izquierdo        |
+		---------------                                     ---------------------
+		|                                                                        |
+		--------------------------------------------------------------------------
+		*/
+		tablero.moverMovibleAIzquierda(jugador,soldado);
+
+		assertEquals(soldado.getPosicion().getX(), 4 );
+		assertEquals(soldado.getPosicion().getY(), 5);
+	}
+
+	@Test
+	public void tableroJugadorAMueveUnaUnidadALaAdelanteCorrectamenteTest(){
+
+		JugadorA jugador = new JugadorA();
+		Tablero tablero = new Tablero();
+		SoldadoDeInfanteria soldado = jugador.elegirSoldado();
+
+		tablero.posicionarEn(jugador,soldado, new Posicion(5, 5));
+
+		/*
+		lado del jugadorA                                       lado del jugadorB
+		--------------------------------------------------------------------------
+		|                                                                        |
+		----------------                                     --------------------
+		|         Izquierdo                                     Derecho          |
+		----------------                                     --------------------
+		|  Atras <--  --> Adelante                   Adelante <--  --> Atras     |
+		-----------------                                     -------------------
+		|          Derecho                                      Izquierdo        |
+		---------------                                     ---------------------
+		|                                                                        |
+		--------------------------------------------------------------------------
+		*/
+		tablero.moverMovibleAAdelante(jugador,soldado);
+
+		assertEquals(soldado.getPosicion().getX(), 5 );
+		assertEquals(soldado.getPosicion().getY(), 6);
+	}
+
+	@Test
+	public void tableroJugadorAMueveUnaUnidadALaAtrasCorrectamenteTest(){
+
+		JugadorA jugador = new JugadorA();
+		Tablero tablero = new Tablero();
+		SoldadoDeInfanteria soldado = jugador.elegirSoldado();
+
+		tablero.posicionarEn(jugador,soldado, new Posicion(5, 5));
+
+		/*
+		lado del jugadorA                                       lado del jugadorB
+		--------------------------------------------------------------------------
+		|                                                                        |
+		----------------                                     --------------------
+		|         Izquierdo                                     Derecho          |
+		----------------                                     --------------------
+		|  Atras <--  --> Adelante                   Adelante <--  --> Atras     |
+		-----------------                                     -------------------
+		|          Derecho                                      Izquierdo        |
+		---------------                                     ---------------------
+		|                                                                        |
+		--------------------------------------------------------------------------
+		*/
+		tablero.moverMovibleAAtras(jugador,soldado);
+
+		assertEquals(soldado.getPosicion().getX(), 5 );
+		assertEquals(soldado.getPosicion().getY(), 4);
+	}
+
+	@Test
+	public void tableroJugadorBMueveUnaUnidadALaDerechaCorrectamenteTest(){
+
+		JugadorB jugador = new JugadorB();
+		Tablero tablero = new Tablero();
+		SoldadoDeInfanteria soldado = jugador.elegirSoldado();
+
+		tablero.posicionarEn(jugador,soldado, new Posicion(14, 14));
+
+		/*
+		lado del jugadorA                                       lado del jugadorB
+		--------------------------------------------------------------------------
+		|                                                                        |
+		----------------                                     --------------------
+		|         Izquierdo                                     Derecho          |
+		----------------                                     --------------------
+		|  Atras <--  --> Adelante                   Adelante <--  --> Atras     |
+		-----------------                                     -------------------
+		|          Derecho                                      Izquierdo        |
+		---------------                                     ---------------------
+		|                                                                        |
+		--------------------------------------------------------------------------
+		*/
+		tablero.moverMovibleADerecha(jugador,soldado);
+
+		assertEquals(soldado.getPosicion().getX(), 13);
+		assertEquals(soldado.getPosicion().getY(), 14);
+	}
+
+	@Test
+	public void tableroJugadorBMueveUnaUnidadALaIzquierdaCorrectamenteTest(){
+
+		JugadorB jugador = new JugadorB();
+		Tablero tablero = new Tablero();
+		SoldadoDeInfanteria soldado = jugador.elegirSoldado();
+
+		tablero.posicionarEn(jugador,soldado, new Posicion(14, 14));
+
+		/*
+		lado del jugadorA                                       lado del jugadorB
+		--------------------------------------------------------------------------
+		|                                                                        |
+		----------------                                     --------------------
+		|         Izquierdo                                     Derecho          |
+		----------------                                     --------------------
+		|  Atras <--  --> Adelante                   Adelante <--  --> Atras     |
+		-----------------                                     -------------------
+		|          Derecho                                      Izquierdo        |
+		---------------                                     ---------------------
+		|                                                                        |
+		--------------------------------------------------------------------------
+		*/
+		tablero.moverMovibleAIzquierda(jugador,soldado);
+
+		assertEquals(soldado.getPosicion().getX(), 15 );
+		assertEquals(soldado.getPosicion().getY(), 14);
+	}
+
+	@Test
+	public void tableroJugadorBMueveUnaUnidadALaAdelanteCorrectamenteTest(){
+
+		JugadorB jugador = new JugadorB();
+		Tablero tablero = new Tablero();
+		SoldadoDeInfanteria soldado = jugador.elegirSoldado();
+
+		tablero.posicionarEn(jugador,soldado, new Posicion(14, 14));
+
+		/*
+		lado del jugadorA                                       lado del jugadorB
+		--------------------------------------------------------------------------
+		|                                                                        |
+		----------------                                     --------------------
+		|         Izquierdo                                     Derecho          |
+		----------------                                     --------------------
+		|  Atras <--  --> Adelante                   Adelante <--  --> Atras     |
+		-----------------                                     -------------------
+		|          Derecho                                      Izquierdo        |
+		---------------                                     ---------------------
+		|                                                                        |
+		--------------------------------------------------------------------------
+		*/
+		tablero.moverMovibleAAdelante(jugador,soldado);
+
+		assertEquals(soldado.getPosicion().getX(), 14 );
+		assertEquals(soldado.getPosicion().getY(), 13);
+	}
+
+	@Test
+	public void tableroJugadorBMueveUnaUnidadALaAtrasCorrectamenteTest(){
+
+		JugadorB jugador = new JugadorB();
+		Tablero tablero = new Tablero();
+		SoldadoDeInfanteria soldado = jugador.elegirSoldado();
+
+		tablero.posicionarEn(jugador,soldado, new Posicion(14, 14));
+
+		/*
+		lado del jugadorA                                       lado del jugadorB
+		--------------------------------------------------------------------------
+		|                                                                        |
+		----------------                                     --------------------
+		|         Izquierdo                                     Derecho          |
+		----------------                                     --------------------
+		|  Atras <--  --> Adelante                   Adelante <--  --> Atras     |
+		-----------------                                     -------------------
+		|          Derecho                                      Izquierdo        |
+		---------------                                     ---------------------
+		|                                                                        |
+		--------------------------------------------------------------------------
+		*/
+		tablero.moverMovibleAAtras(jugador,soldado);
+
+		assertEquals(soldado.getPosicion().getX(), 14 );
+		assertEquals(soldado.getPosicion().getY(), 15);
 	}
 
 	@Test
@@ -40,54 +258,5 @@ public class TableroTest {
 		assertEquals(soldado.getPosicion().getY(), -1);
 	}
 
-	/*@Test
-	public void tableroRetornaCorectamenteLosPosicionablesADistanciaCercanaDeUnPosicionable1Test(){
 
-		JugadorA juagador1 = new JugadorA();
-		JugadorB juagador2 = new JugadorB();
-
-		Tablero tablero = new Tablero();
-		SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(juagador1);
-		SoldadoDeInfanteria soldado2 = new SoldadoDeInfanteria(juagador1);
-		SoldadoDeInfanteria soldado3 = new SoldadoDeInfanteria(juagador1);
-		SoldadoDeInfanteria soldado4 = new SoldadoDeInfanteria(juagador1);
-
-		tablero.posicionarEn(juagador1, soldado1, new Posicion(1, 1));
-		tablero.posicionarEn(juagador1, soldado2, new Posicion(2, 1));
-		tablero.posicionarEn(juagador1, soldado3, new Posicion(3, 1));
-		tablero.posicionarEn(juagador1, soldado4, new Posicion(4, 1));
-		/*
-		los posicionables a distancia cercana de soldado1 son soldado2 y soldado3
-		 *//*
-		PosicionablesADistaciaCercana posicionablesCercanos = new PosicionablesADistaciaCercana();
-		posicionablesCercanos.add(soldado2);
-		posicionablesCercanos.add(soldado3);
-		assertEquals(tablero.posicionablesADistanciaCercanaDe(soldado1), posicionablesCercanos);
-	}
-
-	@Test
-	public void tableroRetornaCorectamenteLosPosicionablesADistanciaCercanaDeUnPosicionable2Test(){
-
-		Jugador juagador1 = new JugadorA("elvis");
-		Jugador juagador2 = new JugadorB("pepe");
-
-		Tablero tablero = new Tablero();
-		SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(juagador1.nombre());
-		SoldadoDeInfanteria soldado2 = new SoldadoDeInfanteria(juagador1.nombre());
-		SoldadoDeInfanteria soldado3 = new SoldadoDeInfanteria(juagador1.nombre());
-		SoldadoDeInfanteria soldado4 = new SoldadoDeInfanteria(juagador1.nombre());
-
-		tablero.posicionarEn(juagador1, soldado1, new Posicion(1, 1));
-		tablero.posicionarEn(juagador1, soldado2, new Posicion(2, 1));
-		tablero.posicionarEn(juagador1, soldado4, new Posicion(4, 1));
-
-		tablero.posicionarEn(juagador1, soldado3, new Posicion(3, 1));
-
-		//los posicionables a distancia cercana de soldado3 son soldado1,2,4
-		PosicionablesADistaciaCercana posicionablesCercanos = tablero.posicionablesADistanciaCercanaDe(soldado3);
-
-		assertTrue(posicionablesCercanos.contains(soldado1));
-		assertTrue(posicionablesCercanos.contains(soldado2));
-		assertTrue(posicionablesCercanos.contains(soldado4));
-	}*/
 }
