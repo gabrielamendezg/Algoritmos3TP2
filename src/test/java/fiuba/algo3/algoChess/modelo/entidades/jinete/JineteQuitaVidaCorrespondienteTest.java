@@ -2,23 +2,15 @@ package fiuba.algo3.algoChess.modelo.entidades.jinete;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import fiuba.algo3.algoChess.modelo.Excepciones.FueraDelRangoDeAtaqueExcepcion;
-import fiuba.algo3.algoChess.modelo.Excepciones.PuntosInsuficientesExcepcion;
-import fiuba.algo3.algoChess.modelo.entidades.Catapulta;
 import fiuba.algo3.algoChess.modelo.entidades.Curandero;
-import fiuba.algo3.algoChess.modelo.entidades.catapulta.*;
 import fiuba.algo3.algoChess.modelo.entidades.Jinete;
 import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import org.junit.jupiter.api.Test;
-
 import fiuba.algo3.algoChess.modelo.jugador.*;
-
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
 
 class JineteQuitaVidaCorrespondienteTest {
 	JugadorA jugador = new JugadorA();

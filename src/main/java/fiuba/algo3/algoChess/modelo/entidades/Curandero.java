@@ -1,4 +1,5 @@
 package fiuba.algo3.algoChess.modelo.entidades;
+
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;

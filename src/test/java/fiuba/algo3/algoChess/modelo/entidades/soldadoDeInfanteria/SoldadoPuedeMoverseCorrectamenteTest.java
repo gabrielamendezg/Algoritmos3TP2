@@ -2,7 +2,6 @@ package fiuba.algo3.algoChess.modelo.entidades.soldadoDeInfanteria;
 
 
 import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import fiuba.algo3.algoChess.modelo.tablero.Tablero;

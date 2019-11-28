@@ -20,10 +20,10 @@ public class SoldadoNoPuedeMoverseACeldaOcupadaTest {
 			tablero.posicionarEn(jugador, soldado, new Posicion(1, 1));
 
 			
-			tablero.posicionarEn(jugador, curandero, new Posicion(1, 2)); // agregaentidad y setea posicion
+			tablero.posicionarEn(jugador, curandero, new Posicion(2, 1)); // agregaentidad y setea posicion
 
 			assertThrows( PosicionOcupadaExcepcion.class, ()->{
-				tablero.moverMovibleA(jugador, soldado, new Posicion( 1, 2));
+				tablero.moverMovibleADerecha(jugador, soldado);
 			}
 
 			);

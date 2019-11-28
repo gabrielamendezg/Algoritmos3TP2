@@ -1,7 +1,6 @@
 package fiuba.algo3.algoChess.modelo.entidades.soldadoDeInfanteria;
 
 import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
 import fiuba.algo3.algoChess.modelo.jugador.JugadorB;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
@@ -27,8 +26,8 @@ public class SoldadoDeInfanteriaTest {
         tablero.posicionarEn(juagador1, soldado2, new Posicion(2, 1));
         tablero.posicionarEn(juagador1, soldado3, new Posicion(3, 1));
 
-        tablero.moverMovibleA(juagador1, soldado1,new Posicion(2, 2));
-        assertEquals(soldado1.getPosicion().getX(), 2);
+        tablero.moverMovibleAAdelante(juagador1, soldado1);
+        assertEquals(soldado1.getPosicion().getX(), 1);
         assertEquals(soldado1.getPosicion().getY(), 2);
         //assertEquals(soldado2.obtenerPosicionX(), 2);
         //assertEquals(soldado2.obtenerPosicionY(), 2);
