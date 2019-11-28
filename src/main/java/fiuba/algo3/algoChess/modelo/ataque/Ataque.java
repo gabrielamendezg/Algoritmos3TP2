@@ -1,7 +1,6 @@
 package fiuba.algo3.algoChess.modelo.ataque;
 
 import fiuba.algo3.algoChess.modelo.Excepciones.FueraDelRangoDeAtaqueExcepcion;
-import fiuba.algo3.algoChess.modelo.entidades.*;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
 
 public abstract class Ataque {

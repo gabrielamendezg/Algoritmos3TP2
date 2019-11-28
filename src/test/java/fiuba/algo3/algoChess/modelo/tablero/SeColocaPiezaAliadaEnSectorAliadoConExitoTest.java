@@ -3,8 +3,6 @@ package fiuba.algo3.algoChess.modelo.tablero;
 import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
 import org.junit.Test;
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SeColocaPiezaAliadaEnSectorAliadoConExitoTest {

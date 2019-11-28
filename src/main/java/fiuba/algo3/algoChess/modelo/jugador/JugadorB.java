@@ -11,50 +11,21 @@ import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 
 public class JugadorB implements Jugador {
 
-	/*protected int columnamin;
-	protected int columnamax;
-	protected int filamin;
-	protected int filamax;*/
 	protected int puntos;
 	protected  ArrayList<Unidad> unidades;
 	protected String nombre;
 	
 	public JugadorB() {
-        /*super();
-        filamin = 11;
-        filamax = 20;
-        columnamin = 1;
-        columnamax = 20;*/
 		this.puntos = 20;
 		this.unidades = new ArrayList<Unidad>();
     }
 	
 	public JugadorB(String nombreDelJugador) {
-        /*super();
-        filamin = 11;
-        filamax = 20;
-        columnamin = 1;
-        columnamax = 20;*/
 		this.puntos = 20;
 		this.unidades = new ArrayList<Unidad>();
         this.nombre = nombreDelJugador;
     }
 
-
-/*
-    public int getFilaMin() {
-        return filamin;
-    }
-
-    public int getFilaMax() {
-        return filamax;
-    }
-    public int getColumnaMin() {
-        return columnamin;
-    }
-    public int getColumnaMax() {
-        return columnamax;
-    }*/
     
     public int cantidadDeUnidades() {
 		return (this.unidades.size());
@@ -145,23 +116,6 @@ public class JugadorB implements Jugador {
 		return nuevaUnidad;
 	}
 
-/*	@Override
-	public void actualizarUnidades(ArrayList<Unidad> unidadesEnemigas, int cantidadEnemigas) {
-		for (int i = 0; i < this.cantidadDeUnidades(); i++) {
-			for(int j = 0; j < this.cantidadDeUnidades(); j++) {
-				unidades.get(i).recibirAliadoCercano(unidades.get(j));
-				unidades.get(i).recibirAliadoMedio(unidades.get(j));
-				unidades.get(i).recibirAliadoLejano(unidades.get(j));
-			}
-			for(int j = 0; i < cantidadEnemigas; j++) {
-				unidades.get(i).recibirEnemigoCercano(unidadesEnemigas.get(j));
-				unidades.get(i).recibirEnemigoMedio(unidadesEnemigas.get(j));
-				unidades.get(i).recibirEnemigoLejano(unidadesEnemigas.get(j));
-			}
-		}
-
-	}
-*/
 	public String getNombre() {
 		// TODO Auto-generated method stub
 		

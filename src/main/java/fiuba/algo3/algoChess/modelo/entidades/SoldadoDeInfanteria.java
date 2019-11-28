@@ -8,9 +8,7 @@ import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Sanable;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class SoldadoDeInfanteria extends Unidad implements Sanable, Movible, Posicionable, Atacable, Atacador {
 
