@@ -1,12 +1,10 @@
 package fiuba.algo3.algoChess.modelo.tablero;
 
+import fiuba.algo3.algoChess.modelo.entidades.Catapulta;
 import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
-//import fiuba.algo3.algoChess.modelo.entidades.posicionables.PosicionablesADistaciaCercana;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import org.junit.Test;
-
 import fiuba.algo3.algoChess.modelo.jugador.Jugador;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TableroTest {
@@ -75,7 +73,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void tableroJugadorAMueveUnaUnidadALaAdelanteCorrectamenteTest(){
+	public void tableroJugadorAMueveUnaUnidadAAdelanteCorrectamenteTest(){
 
 		JugadorA jugador = new JugadorA();
 		Tablero tablero = new Tablero();
@@ -104,7 +102,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void tableroJugadorAMueveUnaUnidadALaAtrasCorrectamenteTest(){
+	public void tableroJugadorAMueveUnaUnidadAAtrasCorrectamenteTest(){
 
 		JugadorA jugador = new JugadorA();
 		Tablero tablero = new Tablero();
@@ -191,13 +189,14 @@ public class TableroTest {
 	}
 
 	@Test
-	public void tableroJugadorBMueveUnaUnidadALaAdelanteCorrectamenteTest(){
+	public void tableroJugadorBMueveUnaUnidadAAdelanteCorrectamenteTest(){
 
 		JugadorB jugador = new JugadorB();
 		Tablero tablero = new Tablero();
 		SoldadoDeInfanteria soldado = jugador.elegirSoldado();
 
 		tablero.posicionarEn(jugador,soldado, new Posicion(14, 14));
+
 
 		/*
 		lado del jugadorA                                       lado del jugadorB
@@ -213,6 +212,7 @@ public class TableroTest {
 		|                                                                        |
 		--------------------------------------------------------------------------
 		*/
+
 		tablero.moverMovibleAAdelante(jugador,soldado);
 
 		assertEquals(soldado.getPosicion().getX(), 14 );
@@ -220,7 +220,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void tableroJugadorBMueveUnaUnidadALaAtrasCorrectamenteTest(){
+	public void tableroJugadorBMueveUnaUnidadAAtrasCorrectamenteTest(){
 
 		JugadorB jugador = new JugadorB();
 		Tablero tablero = new Tablero();
@@ -248,6 +248,7 @@ public class TableroTest {
 		assertEquals(soldado.getPosicion().getY(), 15);
 	}
 
+
 	@Test
 	public void unidadRecienCreadaNoposicionadaEnElTableroTieneCoordenadasQueNoPertenecenAlTableroTest(){
 
@@ -259,4 +260,95 @@ public class TableroTest {
 	}
 
 
+
+
+	@Test
+	public void tableroTestDeCatapultaDeJugadorAAtacaAlAtacableYALosAtacablesContiguas1Test(){
+		JugadorA jugador = new JugadorA();
+		JugadorB jugadorB = new JugadorB();
+		Tablero tablero = new Tablero();
+
+		SoldadoDeInfanteria [] soldado = new SoldadoDeInfanteria[20];
+		for (int i = 0; i < 20; i++){
+			soldado[i] = jugadorB.elegirSoldado();
+		}
+
+		Posicion [] posicion = new Posicion[20];
+
+		posicion[0] = new Posicion(13, 7);posicion[5] = new Posicion( 13, 11);
+		posicion[1] = new Posicion( 14, 8);posicion[6] = new Posicion(14, 10);
+		posicion[2] = new Posicion(15, 9);posicion[7] = new Posicion(16, 8);
+		posicion[3] = new Posicion(16, 10);posicion[8] = new Posicion(17, 7);
+		posicion[4] = new Posicion(17,11);
+
+		posicion[9] = new Posicion(13, 9);posicion[13] = new Posicion(15, 7);
+		posicion[10] = new Posicion( 14, 9);posicion[14] = new Posicion( 15, 8);
+		posicion[11] = new Posicion( 16, 9);posicion[15] = new Posicion(15, 10);
+		posicion[12] = new Posicion( 17, 9);posicion[16] = new Posicion( 15, 11);
+
+		posicion[17] = new Posicion(19, 8);
+		posicion[18] = new Posicion( 19, 9);
+		posicion[19] = new Posicion( 19, 10);
+
+		for (int i = 0; i < 20; i++){
+			tablero.posicionarEn(jugadorB, soldado[i], posicion[i]);
+		}
+
+
+		Catapulta catapulta = new Catapulta(jugador);
+		tablero.posicionarEn(jugador, catapulta, new Posicion(1,1));
+
+
+		tablero.atacanteAtacarAtacable(jugador, catapulta, soldado[2]);
+
+		for (int i = 0; i < 17; i++){
+			assertEquals(soldado[i].obtenerVida(), 80);
+		}
+
+	}
+
+	@Test
+	public void tableroTestDeCatapultaDeJugadorBAtacaAlAtacableYALosAtacablesContiguas1Test(){
+		JugadorA jugador = new JugadorA();
+		JugadorB jugadorB = new JugadorB();
+		Tablero tablero = new Tablero();
+
+		SoldadoDeInfanteria [] soldado = new SoldadoDeInfanteria[20];
+		for (int i = 0; i < 20; i++){
+			soldado[i] = jugador.elegirSoldado();
+		}
+
+		Posicion [] posicion = new Posicion[20];
+
+		posicion[0] = new Posicion(2,8);posicion[5] = new Posicion(2,12 );
+		posicion[1] = new Posicion( 3, 9);posicion[6] = new Posicion(3,11);
+		posicion[2] = new Posicion(4, 10);posicion[7] = new Posicion(5,9);
+		posicion[3] = new Posicion(5, 11);posicion[8] = new Posicion(6,8);
+		posicion[4] = new Posicion(6, 12);
+
+		posicion[9] = new Posicion(4,8);posicion[13] = new Posicion(2,10);
+		posicion[10] = new Posicion(4,9 );posicion[14] = new Posicion( 3,10);
+		posicion[11] = new Posicion( 4,11);posicion[15] = new Posicion(5,10);
+		posicion[12] = new Posicion( 4,12);posicion[16] = new Posicion( 6,10);
+
+		posicion[17] = new Posicion(8,9);
+		posicion[18] = new Posicion( 8,10);
+		posicion[19] = new Posicion(8,11 );
+
+		for (int i = 0; i < 20; i++){
+			tablero.posicionarEn(jugador, soldado[i], posicion[i]);
+		}
+
+
+		Catapulta catapulta = new Catapulta(jugadorB);
+		tablero.posicionarEn(jugadorB, catapulta, new Posicion(20,20));
+
+
+		tablero.atacanteAtacarAtacable(jugadorB, catapulta, soldado[2]);
+
+		for (int i = 0; i < 17; i++){
+			assertEquals(soldado[i].obtenerVida(), 80);
+		}
+
+	}
 }
