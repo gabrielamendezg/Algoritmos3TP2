@@ -17,7 +17,7 @@ import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
 import fiuba.algo3.algoChess.modelo.jugador.JugadorB;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 
-class JineteAtacaADistancia {
+class JineteAtacaADistanciaTest {
 	 
 	JugadorA jugador = new JugadorA();
 	JugadorB jugadorb = new JugadorB();
