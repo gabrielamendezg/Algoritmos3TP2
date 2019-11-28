@@ -38,10 +38,12 @@ public class Catapulta extends Unidad implements Posicionable, Atacador, Atacabl
 		atacables.stream().forEach(atacable -> {
 		    atacableHashMap.put(atacable.getPosicion().toString(), atacable);
 		});
-		int i = unAtacable.getPosicion().getY();
-		Atacable atacable = atacableHashMap.get(new Posicion(unAtacable.getPosicion().getX(), i + 1).toString());
+		int i = unAtacable.getPosicion().getY() + 1;
+		Atacable atacable = atacableHashMap.get(new Posicion(unAtacable.getPosicion().getX(), i).toString());
 		while (atacable != null){
             ataque.atacar(posicion.getX(),posicion.getY(), atacable);
+            i++;
+            atacable = atacableHashMap.get(new Posicion(unAtacable.getPosicion().getX(), i).toString());
         }
 	}
 }
