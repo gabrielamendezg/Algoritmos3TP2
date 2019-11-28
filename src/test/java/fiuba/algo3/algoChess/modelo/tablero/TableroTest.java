@@ -248,20 +248,6 @@ public class TableroTest {
 		assertEquals(soldado.getPosicion().getY(), 15);
 	}
 
-
-	@Test
-	public void unidadRecienCreadaNoposicionadaEnElTableroTieneCoordenadasQueNoPertenecenAlTableroTest(){
-
-		Jugador jugador = new JugadorA();
-		SoldadoDeInfanteria soldado = jugador.elegirSoldado();
-
-		assertEquals(soldado.getPosicion().getX(), -1 );
-		assertEquals(soldado.getPosicion().getY(), -1);
-	}
-
-
-
-
 	@Test
 	public void tableroTestDeCatapultaDeJugadorAAtacaAlAtacableYALosAtacablesContiguas1Test(){
 		JugadorA jugador = new JugadorA();
@@ -350,5 +336,14 @@ public class TableroTest {
 			assertEquals(soldado[i].obtenerVida(), 80);
 		}
 
+	}
+	@Test
+	public void unidadRecienCreadaNoposicionadaEnElTableroTieneCoordenadasQueNoPertenecenAlTableroTest(){
+
+		Jugador jugador = new JugadorA();
+		SoldadoDeInfanteria soldado = jugador.elegirSoldado();
+
+		assertEquals(soldado.getPosicion().getX(), -1 );
+		assertEquals(soldado.getPosicion().getY(), -1);
 	}
 }
