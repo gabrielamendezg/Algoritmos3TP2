@@ -7,7 +7,6 @@ public class ImagenCelda extends Button {
 	private int x;
     private int y;
     //private ImagenUnidad unidad;
-    Image image = new Image(getClass().getResourceAsStream("imagenes/CeldaSeleccionada.jpg"));
     
     public ImagenCelda(int x, int y)
     {
