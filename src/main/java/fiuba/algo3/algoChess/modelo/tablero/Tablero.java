@@ -11,19 +11,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Tablero {
-	int filaminB = 11;
+	private int xMinB = 11;
 	private int tamanio = 20;
 	private HashMap <String, Celda> matriz = new HashMap<String, Celda>();
 	
 	public  Tablero(){
-		for(int i = 1; i < filaminB; i++) {
-			for (int j = 1; j <= tamanio; j++) {
-				matriz.put(new Posicion(i,j).toString(), new CeldaA());
+		for(int x = 1; x < xMinB; x++) {
+			for (int y = 1; y <= tamanio; y++) {
+				matriz.put(new Posicion(x,y).toString(), new CeldaA());
 			}
 		}
-		for(int i = filaminB; i <= tamanio; i++) {
-			for (int j = 1; j <= tamanio; j++) {
-				matriz.put(new Posicion(i,j).toString(), new CeldaB());
+		for(int x = xMinB; x <= tamanio; x++) {
+			for (int y = 1; y <= tamanio; y++) {
+				matriz.put(new Posicion(x,y).toString(), new CeldaB());
 			}
 		}
 	}
