@@ -2,6 +2,7 @@ package fiuba.algo3.algoChess.modelo.tablero;
 import fiuba.algo3.algoChess.modelo.Excepciones.*;
 import fiuba.algo3.algoChess.modelo.celda.*;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
+import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacador;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
@@ -11,20 +12,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Tablero {
-	int filaminB = 11;
+	int xMinB = 11;
 	private int tamanio = 20;
 	private HashMap <String, Celda> matriz = new HashMap<String, Celda>();
 	MovimientoDeBatallonDeSoldadosDeInfanteria movimientoDeBatallonDeSoldadosDeInfanteria = null;
 
 	public  Tablero(){
-		for(int i = 1; i < filaminB; i++) {
-			for (int j = 1; j <= tamanio; j++) {
-				matriz.put(new Posicion(i,j).toString(), new CeldaA());
+		for(int x = 1; x < xMinB; x++) {
+			for (int y = 1; y <= tamanio; y++) {
+				matriz.put(new Posicion(x,y).toString(), new CeldaA());
 			}
 		}
-		for(int i = filaminB; i <= tamanio; i++) {
-			for (int j = 1; j <= tamanio; j++) {
-				matriz.put(new Posicion(i,j).toString(), new CeldaB());
+		for(int x = xMinB; x <= tamanio; x++) {
+			for (int y = 1; y <= tamanio; y++) {
+				matriz.put(new Posicion(x,y).toString(), new CeldaB());
 			}
 		}
 	}
@@ -96,26 +97,50 @@ public class Tablero {
 	public void moverMovibleAIzquierda(JugadorA jugador, Movible movible) {
 		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() - 1, movible.getPosicion().getY()));
 	}
-	public void moverMovibleAAdelante(JugadorA jugador, Movible movible) {
+	public void moverMovibleAArriba(JugadorA jugador, Movible movible) {
 		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX(), movible.getPosicion().getY() + 1));
 	}
-	public void moverMovibleAAtras(JugadorA jugador, Movible movible) {
+	public void moverMovibleAAbajo(JugadorA jugador, Movible movible) {
 		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX(), movible.getPosicion().getY() - 1));
 	}
+	public void moverMovibleAAbajoDerecha(JugadorA jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() + 1, movible.getPosicion().getY() - 1));
+	}
+	public void moverMovibleAArribaDerecha(JugadorA jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() + 1, movible.getPosicion().getY() + 1));
+	}
+	public void moverMovibleAAbajoIzquierda(JugadorA jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() - 1, movible.getPosicion().getY() - 1));
+	}
+	public void moverMovibleAArribaIzquierda(JugadorA jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() - 1, movible.getPosicion().getY() + 1));
+	}
+
 
 	public void moverMovibleADerecha(JugadorB jugador, Movible movible) {
-		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() - 1, movible.getPosicion().getY()));
-	}
-	public void moverMovibleAIzquierda(JugadorB jugador, Movible movible) {
 		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() + 1, movible.getPosicion().getY()));
 	}
-	public void moverMovibleAAdelante(JugadorB jugador, Movible movible) {
-		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX(), movible.getPosicion().getY() - 1));
+	public void moverMovibleAIzquierda(JugadorB jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() - 1, movible.getPosicion().getY()));
 	}
-	public void moverMovibleAAtras(JugadorB jugador, Movible movible) {
+	public void moverMovibleAArriba(JugadorB jugador, Movible movible) {
 		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX(), movible.getPosicion().getY() + 1));
 	}
-
+	public void moverMovibleAAbajo(JugadorB jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX(), movible.getPosicion().getY() - 1));
+	}
+	public void moverMovibleAAbajoDerecha(JugadorB jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() + 1, movible.getPosicion().getY() - 1));
+	}
+	public void moverMovibleAArribaDerecha(JugadorB jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() + 1, movible.getPosicion().getY() + 1));
+	}
+	public void moverMovibleAAbajoIzquierda(JugadorB jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() - 1, movible.getPosicion().getY() - 1));
+	}
+	public void moverMovibleAArribaIzquierda(JugadorB jugador, Movible movible) {
+		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() - 1, movible.getPosicion().getY() + 1));
+	}
 
 	public void atacanteAtacarAtacable(JugadorA jugadorAtacanteA, Atacador unAtacante, Atacable unAtacable) {
 		ArrayList <Atacable> atacables = this.atacablesPorElAtacante(unAtacante);
@@ -140,6 +165,16 @@ public class Tablero {
 		}
 
 		return atacables;
+	}
+
+	public Posicionable getPosicionableDeLaPosicion(Posicion posicion) {
+		try {
+			if (this.verificarPosicion(posicion)) {
+				if (!matriz.get(posicion.toString()).celdaVacia())
+					return matriz.get(posicion.toString()).getPosicionable();
+			}
+		} catch (CoordenadaFueraDelTableroExcepcion e) {}
+		return null;
 	}
 
 }
