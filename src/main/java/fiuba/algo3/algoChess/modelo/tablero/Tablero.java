@@ -14,6 +14,7 @@ public class Tablero {
 	int filaminB = 11;
 	private int tamanio = 20;
 	private HashMap <String, Celda> matriz = new HashMap<String, Celda>();
+	MovimientoDeBatallonDeSoldadosDeInfanteria movimientoDeBatallonDeSoldadosDeInfanteria = null;
 	
 	public  Tablero(){
 		for(int i = 1; i < filaminB; i++) {
@@ -48,6 +49,16 @@ public class Tablero {
 	//Mueve la unidad (si existe) en la posición de origen a la posición destino.
 	//Reescribo un poco por más orden.
 	private void moverMovibleA(JugadorB jugador, Movible movible, Posicion aPosicion) {
+
+		if(movimientoDeBatallonDeSoldadosDeInfanteria == null){
+			movimientoDeBatallonDeSoldadosDeInfanteria = new MovimientoDeBatallonDeSoldadosDeInfanteria(3);
+			if(movimientoDeBatallonDeSoldadosDeInfanteria.moverBatallonDeMovibleA(this, jugador, movible, aPosicion)){
+				movimientoDeBatallonDeSoldadosDeInfanteria = null;
+				return;
+			}
+			movimientoDeBatallonDeSoldadosDeInfanteria = null;
+		}
+
 		Posicion dePosicion = movible.getPosicion();
 		Celda Destino = matriz.get(aPosicion.toString());
 		if(Destino.celdaVacia() && this.verificarPosicion(aPosicion)) {
@@ -58,6 +69,16 @@ public class Tablero {
 	}
 	
 	private void moverMovibleA(JugadorA jugador, Movible movible, Posicion aPosicion) {
+
+		if(movimientoDeBatallonDeSoldadosDeInfanteria == null){
+			movimientoDeBatallonDeSoldadosDeInfanteria = new MovimientoDeBatallonDeSoldadosDeInfanteria(3);
+			if(movimientoDeBatallonDeSoldadosDeInfanteria.moverBatallonDeMovibleA(this, jugador, movible, aPosicion)){
+				movimientoDeBatallonDeSoldadosDeInfanteria = null;
+				return;
+			}
+			movimientoDeBatallonDeSoldadosDeInfanteria = null;
+		}
+
 		Posicion dePosicion = movible.getPosicion();
 		Celda Destino = matriz.get(aPosicion.toString());
 		if(Destino.celdaVacia() && this.verificarPosicion(aPosicion)) {
