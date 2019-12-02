@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Tablero {
-	int xMinB = 11;
+	private int xMinB = 11;
 	private int tamanio = 20;
 	private HashMap <String, Celda> matriz = new HashMap<String, Celda>();
 	

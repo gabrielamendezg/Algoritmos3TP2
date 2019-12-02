@@ -17,7 +17,7 @@ public class AlgoChessApp extends Application
 {
 	private String fondo = "#484860";
 	
-	ImagenTablero tablero;
+	public ImagenTablero tablero;
 	
     public static void main( String[] args )
     {
@@ -47,11 +47,11 @@ public class AlgoChessApp extends Application
 		layout1.setStyle("-fx-background-color: #484860");
 		Scene menu = new Scene(layout1, 810, 700);
 		reglas.setOnAction(e -> stage.setScene(this.reglas(stage,menu)));
-		iniciar.setOnAction(e -> stage.setScene(this.faseJuego(stage)));
+		iniciar.setOnAction(e -> stage.setScene(this.faseJuego()));
 		return menu;
 	}
 	
-	private Scene faseJuego(Stage stage) {
+	private Scene faseJuego() {
 		VBox derecha = new VBox();
 		derecha.setStyle("-fx-spacing: 5");	
 		Label jugador = new Label("Jugador");
