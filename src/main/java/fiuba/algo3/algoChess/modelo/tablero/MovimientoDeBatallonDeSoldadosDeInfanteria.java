@@ -28,32 +28,32 @@ public class MovimientoDeBatallonDeSoldadosDeInfanteria {
             return false;
         }
         batallon.stream().forEach(posicionable -> {
-            Posicion posicion = this.determinarMovimientoDelIntegrantePosicionadoEnConMovimientoDeA(posicionable.getPosicion(), movible.getPosicion(), aPosicion);
             try {
-                tablero.moverMovibleA(jugador, posicionable,posicion);
+                this.moverAlIntegranteDelBatallon(jugador, posicionable, movible.getPosicion(), aPosicion);
             } catch (PosicionOcupadaExcepcion e){}
         });
         return true;
     }
 
-    private Posicion determinarMovimientoDelIntegrantePosicionadoEnConMovimientoDeA(Posicion posicionActual, Posicion dePosicion, Posicion aPosicion) {
-        int x = -1, y = -1;
-        if(dePosicion.getX() < aPosicion.getX()){
-            x = posicionActual.getX() +1;
-        }else if(dePosicion.getX() > aPosicion.getX()){
-            x = posicionActual.getX() -1;
-        }else if(dePosicion.getX() == aPosicion.getX()){
-            x = posicionActual.getX();
-        }
+    private void moverAlIntegranteDelBatallon(Jugador jugador, Movible unPosicionable, Posicion dePosicion, Posicion aPosicion) {
 
-        if(dePosicion.getY() < aPosicion.getY()){
-            y = posicionActual.getY() +1;
-        }else if(dePosicion.getY() > aPosicion.getY()){
-            y = posicionActual.getY() -1;
-        }else if(dePosicion.getY() == aPosicion.getY()){
-            y = posicionActual.getY();
+        if((dePosicion.getX() == aPosicion.getX()) && (dePosicion.getY() < aPosicion.getY())){//arriba
+            return;
+        }else if((dePosicion.getX() == aPosicion.getX()) && (dePosicion.getY() > aPosicion.getY())){//abajo
+            return;
+        }else if((dePosicion.getX() > aPosicion.getX()) && (dePosicion.getY() == aPosicion.getY())){//izquierda
+            return;
+        }else if((dePosicion.getX() < aPosicion.getX()) && (dePosicion.getY() == aPosicion.getY())){//derecha
+            return;
+        }else if((dePosicion.getX() > aPosicion.getX()) && (dePosicion.getY() > aPosicion.getY())){//abajo izquierda
+            return;
+        }else if((dePosicion.getX() < aPosicion.getX()) && (dePosicion.getY() > aPosicion.getY())){//abajo derecha
+            return;
+        }else if((dePosicion.getX() > aPosicion.getX()) && (dePosicion.getY() < aPosicion.getY())){//arriba izquierda
+            return;
+        }else  if((dePosicion.getX() < aPosicion.getX()) && (dePosicion.getY() < aPosicion.getY())){//arriba derecha
+            return;
         }
-        return new Posicion(x, y);
     }
 
     private ArrayList<Movible> formarBatallonDeSoldadosDeInfanteria(Tablero tablero, Movible movible, int desFil, int deCol) {

@@ -15,7 +15,7 @@ public class Tablero {
 	private int tamanio = 20;
 	private HashMap <String, Celda> matriz = new HashMap<String, Celda>();
 	MovimientoDeBatallonDeSoldadosDeInfanteria movimientoDeBatallonDeSoldadosDeInfanteria = null;
-	
+
 	public  Tablero(){
 		for(int i = 1; i < filaminB; i++) {
 			for (int j = 1; j <= tamanio; j++) {
@@ -28,20 +28,20 @@ public class Tablero {
 			}
 		}
 	}
-	
+
 	private boolean verificarPosicion(Posicion unaPosicion) {
 		if(unaPosicion.getX() <= tamanio && unaPosicion.getY() <= tamanio && unaPosicion.getX() > 0 && unaPosicion.getY() > 0) {
 			return true;
 		}
 		throw new CoordenadaFueraDelTableroExcepcion();
 	}
-	
+
 	//Colocar una nueva pieza en el tablero.
 	//Modifico para hacer uso de CeldaA y CeldaB, encapsular y eliminar condiciones ifs y evaluaciones lógicas.
 	public void posicionarEn(JugadorA jugador, Posicionable posicionable, Posicion aPosicion){
 		matriz.get(aPosicion.toString()).recibirPosicionable(jugador, posicionable, aPosicion);
 	}
-	
+
 	public void posicionarEn(JugadorB jugador, Posicionable posicionable, Posicion aPosicion){
 		matriz.get(aPosicion.toString()).recibirPosicionable(jugador, posicionable, aPosicion);
 	}
@@ -67,7 +67,7 @@ public class Tablero {
 			Destino.recibirMovible(Origen.vaciarCelda());
 		}
 	}
-	
+
 	private void moverMovibleA(JugadorA jugador, Movible movible, Posicion aPosicion) {
 
 		if(movimientoDeBatallonDeSoldadosDeInfanteria == null){
