@@ -10,17 +10,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-//import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Line;
 import javafx.stage.*;
 
 public class AlgoChessApp extends Application
 {
-	String fondo = "#484860";
-	String celda = "#90c0c0";
-	String bordeCelda = "#d8f0d8";
+	private String fondo = "#484860";
 	
 	ImagenTablero tablero;
 	
@@ -34,6 +29,7 @@ public class AlgoChessApp extends Application
 		stage.setTitle("AlgoChess");
 		stage.getIcons().add(new Image(getClass().getResource("imagenes/Icon.png").toExternalForm())); 
 		
+		tablero = new ImagenTablero();
 		Scene menu = menu(stage);
 	    stage.setScene(menu);
 	    stage.show();
@@ -69,8 +65,7 @@ public class AlgoChessApp extends Application
 		BorderPane panelPrincipal = new BorderPane();
 		panelPrincipal.setRight(derecha);
 		
-		//crea Tablero
-		panelPrincipal.setCenter(new ImagenTablero());
+		panelPrincipal.setCenter(tablero);
 		panelPrincipal.setStyle("-fx-background-color:"+fondo);
 		panelPrincipal.setCenterShape(true);
 		
@@ -78,7 +73,7 @@ public class AlgoChessApp extends Application
 		return faseJuego;
 	}
 	
-	private Scene eleccionUnidades(Stage stage, Scene faseJuego) {
+	/*private Scene eleccionUnidades(Stage stage, Scene faseJuego) {
 		BorderPane panel = new BorderPane();
 		Scene eleccionUnidades = new Scene(panel);
 		return eleccionUnidades;
@@ -88,7 +83,7 @@ public class AlgoChessApp extends Application
 		BorderPane panel = new BorderPane();
 		Scene jugadores = new Scene(panel);
 		return jugadores;
-	}
+	}*/
 	
 	private Scene reglas(Stage stage,Scene menu) {
 		VBox boxReglas = new VBox();
