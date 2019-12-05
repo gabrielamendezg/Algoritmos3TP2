@@ -51,7 +51,7 @@ public class ImagenTablero extends GridPane {
 		celda.setStyle("-fx-background-color: #da6166; -fx-border-color: #484860;"
         		+ " -fx-border-width: 1px");
 		celda.setPadding(Insets.EMPTY);
-        celda.setGraphic(new ImageView(new Image(getClass().getResource("imagenes/CatapultaRojo.png").toExternalForm(),30,30,true,true)));
+        //celda.setGraphic(new ImageView(new Image(getClass().getResource("imagenes/CatapultaRojo.png").toExternalForm(),30,30,true,true)));
         celda.setPrefHeight(35);
         celda.setPrefWidth(35);
 		return celda;
