@@ -47,7 +47,7 @@ public class AlgoChessApp extends Application
 		layout1.setStyle("-fx-background-color: #484860");
 		Scene menu = new Scene(layout1, 810, 700);
 		reglas.setOnAction(e -> stage.setScene(this.reglas(stage,menu)));
-		iniciar.setOnAction(e -> stage.setScene(this.faseJuego()));
+		iniciar.setOnAction(e -> stage.setScene(this.faseInicial()));
 		return menu;
 	}
 	
@@ -72,7 +72,32 @@ public class AlgoChessApp extends Application
 		Scene faseJuego = new Scene(panelPrincipal,810, 700);
 		return faseJuego;
 	}
-	
+
+    private Scene faseInicial() {
+        VBox derecha = new VBox();
+        derecha.setStyle("-fx-spacing: 5");
+        Label jugador = new Label("Jugador");
+        Button teminarturno = new Boton("Terminar Turno","#ffffff","#e3913e","#f5b754");
+        /*HBox acciones = new HBox();
+        acciones.getChildren().addAll(new Button("Mover"),new Button("Atacar"));
+        GridPane movimientos = new TecladoDeFlechas();
+        Button deseleccionar = new Button("Deseleccionar");
+        derecha.getChildren().addAll(jugador,pasarturno,acciones,movimientos,deseleccionar);*/
+
+        VBox dndEntidades = new EntidadesPosicionable();
+        derecha.getChildren().addAll(jugador, dndEntidades);
+        BorderPane panelPrincipal = new BorderPane();
+        panelPrincipal.setRight(derecha);
+
+        panelPrincipal.setCenter(tablero);
+        panelPrincipal.setStyle("-fx-background-color:"+fondo);
+        panelPrincipal.setCenterShape(true);
+
+        Scene faseInicial = new Scene(panelPrincipal,810, 700);
+        return faseInicial;
+    }
+
+
 	/*private Scene eleccionUnidades(Stage stage, Scene faseJuego) {
 		BorderPane panel = new BorderPane();
 		Scene eleccionUnidades = new Scene(panel);
