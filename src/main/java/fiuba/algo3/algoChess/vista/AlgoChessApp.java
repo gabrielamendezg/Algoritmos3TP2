@@ -56,22 +56,36 @@ public class AlgoChessApp extends Application
 		BorderPane panel = new BorderPane();
 		panel.setStyle("-fx-background-color: #484860");
 		Scene jugadores = new Scene(panel,990, 700);
-		Label jugadorAzul = new Label("Nombre Jugador Azul:");
+		HBox tagJugadorAzul = new HBox();
+		tagJugadorAzul.setStyle("-fx-spacing: 3");
+		Label jugadorAzul = new Label("Jugador Azul:");
 		jugadorAzul.setStyle("-fx-text-fill: white;-fx-font-size: 20px;-fx-label-padding: 30");
-		Label jugadorRojo = new Label("Nombre Jugador Rojo:");
+		tagJugadorAzul.getChildren().addAll(new ImageView(new Image(getClass().getResource("imagenes/emblemaAzul.png").toExternalForm())),jugadorAzul); 
+		tagJugadorAzul.setAlignment(Pos.CENTER);
+		
+		HBox tagJugadorRojo = new HBox();
+		tagJugadorRojo.setStyle("-fx-spacing: 3");
+		Label jugadorRojo = new Label("Jugador Rojo:");
 		jugadorRojo.setStyle("-fx-text-fill: white;-fx-font-size: 20px;-fx-label-padding: 30");
+		tagJugadorRojo.getChildren().addAll(new ImageView(new Image(getClass().getResource("imagenes/emblemaRojo.png").toExternalForm())),jugadorRojo);
+		tagJugadorRojo.setAlignment(Pos.CENTER);
+		
+		Label placeholder = new Label("Jugador Rojo:");
+		placeholder.setStyle("-fx-text-fill: #484860;-fx-font-size: 20px;-fx-label-padding: 30");
 		TextField jugadorAzulNombre = new TextField();
+		jugadorAzulNombre.setMaxWidth(100);
 		TextField jugadorRojoNombre = new TextField();
+		jugadorRojoNombre.setMaxWidth(100);
 		Boton continuar = new Boton("Continuar","#000000","#39516d","#6886aa");
-		continuar.setOnAction(e -> stage.setScene(this.eleccionUnidades(stage,jugadorAzulNombre.getText(), jugadorRojoNombre.getText())));
-		VBox layout2 = new VBox(jugadorAzul,jugadorAzulNombre,jugadorRojo,jugadorRojoNombre,continuar);
+		continuar.setOnAction(e -> stage.setScene(this.iniciarJuego(stage,jugadorAzulNombre.getText(), jugadorRojoNombre.getText())));
+		VBox layout2 = new VBox(tagJugadorAzul,jugadorAzulNombre,tagJugadorRojo,jugadorRojoNombre,placeholder,continuar);
 		layout2.setAlignment(Pos.CENTER);
 		panel.setCenter(layout2);
 		return jugadores;
 	}
 	
-	private Scene eleccionUnidades(Stage stage,String jugadorAzul,String jugadorRojo) {
-		Scene eleccion = new EscenaEleccionUnidades(stage, jugadorAzul, jugadorRojo, tablero, new BorderPane());
+	private Scene iniciarJuego(Stage stage,String jugadorAzul,String jugadorRojo) {
+		Scene eleccion = new EscenaTablero(stage, jugadorAzul, jugadorRojo, tablero, new BorderPane());
 		return eleccion;
 	}
 
@@ -107,3 +121,4 @@ public class AlgoChessApp extends Application
 	}
 
 }
+

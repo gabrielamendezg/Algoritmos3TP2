@@ -1,8 +1,6 @@
 package fiuba.algo3.algoChess.vista;
 
 import javafx.geometry.Insets;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 public class ImagenTablero extends GridPane {
