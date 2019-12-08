@@ -26,7 +26,7 @@ public class AlgoChess {
 		tablero = new Tablero();
 	}
 
-	public AlgoChess getAlgoChess(){
+	public static AlgoChess getAlgoChess(){
 		return algoChess;
 	}
 	public static void reiniciarAlgoChess(){

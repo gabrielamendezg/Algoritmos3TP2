@@ -1,5 +1,6 @@
-package fiuba.algo3.algoChess.vista;
+package fiuba.algo3.algoChess.controlador;
 
+import fiuba.algo3.algoChess.vista.ImagenCelda;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;

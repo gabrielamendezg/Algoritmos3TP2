@@ -35,7 +35,7 @@ public class EleccionUnidadesRojas extends VBox {
 	private HBox publicarUnidad(ToggleGroup grupo,ImageView imagen,String nombre, String precio) {
 		ToggleButton unidad = new ToggleButton();
 		unidad.setGraphic(imagen);
-		unidad.setStyle("-fx-background-color: #ffffff");
+		unidad.setStyle("-fx-background-color: #484860");
 		unidad.setPrefSize(110, 110);
 		unidad.setToggleGroup(grupo);
 

@@ -56,6 +56,7 @@ public class AlgoChessApp extends Application
 		BorderPane panel = new BorderPane();
 		panel.setStyle("-fx-background-color: #484860");
 		Scene jugadores = new Scene(panel,990, 700);
+
 		HBox tagJugadorAzul = new HBox();
 		tagJugadorAzul.setStyle("-fx-spacing: 3");
 		Label jugadorAzul = new Label("Jugador Azul:");
