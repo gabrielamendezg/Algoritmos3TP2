@@ -1,7 +1,6 @@
 package fiuba.algo3.algoChess.vista;
 
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 
 public class ImagenCelda extends Button {
 	private int x;
@@ -16,5 +15,5 @@ public class ImagenCelda extends Button {
         //this.unidad = null;
         //this.setGraphic(new ImageView(image));
     }
-    
+
 }

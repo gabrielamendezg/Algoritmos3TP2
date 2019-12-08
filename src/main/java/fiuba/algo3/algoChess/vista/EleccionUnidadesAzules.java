@@ -1,11 +1,16 @@
 package fiuba.algo3.algoChess.vista;
 
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -41,6 +46,21 @@ public class EleccionUnidadesAzules extends VBox {
 		);
 
 		unidad.setTooltip(tooltip);
+
+		unidad.setOnDragDetected(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent event) {
+				/* drag was detected, start a drag-and-drop gesture*/
+				/* allow any transfer mode */
+				Dragboard db = unidad.startDragAndDrop(TransferMode.ANY);
+
+				/* Put a string on a dragboard */
+				ClipboardContent content = new ClipboardContent();
+				content.putImage(imagen.getImage());
+				db.setContent(content);
+
+				event.consume();
+			}
+		});
 		
 		/*VBox info = new VBox();
 		Label infoLabel = new Label(nombre);
