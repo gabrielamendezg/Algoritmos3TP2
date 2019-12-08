@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -45,46 +46,49 @@ public class AlgoChessApp extends Application
 		layout1.getChildren().add(reglas);
 		layout1.getChildren().add(iniciar);
 		layout1.setStyle("-fx-background-color: #484860");
-		Scene menu = new Scene(layout1, 810, 700);
+		Scene menu = new Scene(layout1, 990, 700);
 		reglas.setOnAction(e -> stage.setScene(this.reglas(stage,menu)));
-		iniciar.setOnAction(e -> stage.setScene(this.faseJuego()));
+		iniciar.setOnAction(e -> stage.setScene(this.jugadores(stage)));
 		return menu;
 	}
 	
-	private Scene faseJuego() {
-		VBox derecha = new VBox();
-		derecha.setStyle("-fx-spacing: 5");	
-		Label jugador = new Label("Jugador");
-		Button pasarturno = new Boton("Pasar Turno","#ffffff","#e3913e","#f5b754");
-		HBox acciones = new HBox();
-		acciones.getChildren().addAll(new Button("Mover"),new Button("Atacar"));
-		GridPane movimientos = new TecladoDeFlechas();
-		Button deseleccionar = new Button("Deseleccionar");
-		derecha.getChildren().addAll(jugador,pasarturno,acciones,movimientos,deseleccionar);
-		
-		BorderPane panelPrincipal = new BorderPane();
-		panelPrincipal.setRight(derecha);
-		
-		panelPrincipal.setCenter(tablero);
-		panelPrincipal.setStyle("-fx-background-color:"+fondo);
-		panelPrincipal.setCenterShape(true);
-		
-		Scene faseJuego = new Scene(panelPrincipal,810, 700);
-		return faseJuego;
-	}
-	
-	/*private Scene eleccionUnidades(Stage stage, Scene faseJuego) {
+	private Scene jugadores(Stage stage) {
 		BorderPane panel = new BorderPane();
-		Scene eleccionUnidades = new Scene(panel);
-		return eleccionUnidades;
-	}
-	
-	private Scene jugadores(Stage stage, Scene eleccionUnidades) {
-		BorderPane panel = new BorderPane();
-		Scene jugadores = new Scene(panel);
+		panel.setStyle("-fx-background-color: #484860");
+		Scene jugadores = new Scene(panel,990, 700);
+		HBox tagJugadorAzul = new HBox();
+		tagJugadorAzul.setStyle("-fx-spacing: 3");
+		Label jugadorAzul = new Label("Jugador Azul:");
+		jugadorAzul.setStyle("-fx-text-fill: white;-fx-font-size: 20px;-fx-label-padding: 30");
+		tagJugadorAzul.getChildren().addAll(new ImageView(new Image("imagenes/emblemaAzul.PNG")),jugadorAzul);
+		tagJugadorAzul.setAlignment(Pos.CENTER);
+		
+		HBox tagJugadorRojo = new HBox();
+		tagJugadorRojo.setStyle("-fx-spacing: 3");
+		Label jugadorRojo = new Label("Jugador Rojo:");
+		jugadorRojo.setStyle("-fx-text-fill: white;-fx-font-size: 20px;-fx-label-padding: 30");
+		tagJugadorRojo.getChildren().addAll(new ImageView(new Image("imagenes/emblemaRojo.PNG")),jugadorRojo);
+		tagJugadorRojo.setAlignment(Pos.CENTER);
+		
+		Label placeholder = new Label("Jugador Rojo:");
+		placeholder.setStyle("-fx-text-fill: #484860;-fx-font-size: 20px;-fx-label-padding: 30");
+		TextField jugadorAzulNombre = new TextField();
+		jugadorAzulNombre.setMaxWidth(100);
+		TextField jugadorRojoNombre = new TextField();
+		jugadorRojoNombre.setMaxWidth(100);
+		Boton continuar = new Boton("Continuar","#000000","#39516d","#6886aa");
+		continuar.setOnAction(e -> stage.setScene(this.iniciarJuego(stage,jugadorAzulNombre.getText(), jugadorRojoNombre.getText())));
+		VBox layout2 = new VBox(tagJugadorAzul,jugadorAzulNombre,tagJugadorRojo,jugadorRojoNombre,placeholder,continuar);
+		layout2.setAlignment(Pos.CENTER);
+		panel.setCenter(layout2);
 		return jugadores;
-	}*/
+	}
 	
+	private Scene iniciarJuego(Stage stage,String jugadorAzul,String jugadorRojo) {
+		Scene eleccion = new EscenaTablero(stage, jugadorAzul, jugadorRojo, tablero, new BorderPane());
+		return eleccion;
+	}
+
 	private Scene reglas(Stage stage,Scene menu) {
 		VBox boxReglas = new VBox();
 		Label reglastxt1 = new Label("¿CÓMO JUGAR?\n\n"
@@ -111,9 +115,10 @@ public class AlgoChessApp extends Application
 		boxReglas.setStyle("-fx-background-color: #484860");
 		boxReglas.setAlignment(Pos.CENTER);
 		boxReglas.getChildren().addAll(reglastxt1,atras);
-		Scene reglas = new Scene(boxReglas,810,700);
+		Scene reglas = new Scene(boxReglas,990,700);
 		
 		return reglas;
 	}
 
 }
+
