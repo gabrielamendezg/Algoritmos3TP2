@@ -1,6 +1,9 @@
 package fiuba.algo3.algoChess.vista;
 
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.TransferMode;
 
 public class ImagenCelda extends Button {
 	private int x;

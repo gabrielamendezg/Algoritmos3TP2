@@ -1,7 +1,6 @@
 package fiuba.algo3.algoChess.vista;
 
 import java.util.Random;
-import java.util.stream.IntStream;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -32,7 +31,7 @@ public class EscenaTablero extends Scene {
 		panelPrincipal = panel;
 		stagePrincipal = stage;
 		
-		panelPrincipal.setLeft(this.EleccionJugadorAzul(jugadorAzulNombre,jugadorAzulEmblema));
+		panelPrincipal.setLeft(this.eleccionJugadorAzul(jugadorAzulNombre,jugadorAzulEmblema));
 		VBox derecha = new VBox();
 		derecha.setPrefWidth(144);
 		panelPrincipal.setRight(derecha);
@@ -44,7 +43,7 @@ public class EscenaTablero extends Scene {
 		return;
 	}
 	
-	public VBox EleccionJugadorAzul(String nombreJugador,ImageView icono) {
+	public VBox eleccionJugadorAzul(String nombreJugador, ImageView icono) {
 		//Nombre jugador
 		HBox tagJugador = new HBox();
 		tagJugador.setStyle("-fx-background-color: #000000;-fx-spacing: 5");
@@ -58,14 +57,14 @@ public class EscenaTablero extends Scene {
 
 		//Creo VBox.
 		VBox controles = new VBox();
-		terminar.setOnAction(e -> this.EleccionJugadorRojo(jugadorRojoNombre,jugadorRojoEmblema));
+		terminar.setOnAction(e -> this.eleccionJugadorRojo(jugadorRojoNombre,jugadorRojoEmblema));
 		controles.getChildren().addAll(tagJugador,unidades,terminar);
 		controles.setStyle("-fx-spacing: 5");
 		controles.setPrefWidth(144);
 		return controles;
 	}
 
-	private void EleccionJugadorRojo(String nombreJugador, ImageView icono) {
+	private void eleccionJugadorRojo(String nombreJugador, ImageView icono) {
 		VBox vacio = new VBox();
 		vacio.setPrefWidth(144);
 		panelPrincipal.setLeft(vacio);
@@ -95,7 +94,7 @@ public class EscenaTablero extends Scene {
 	}
 	private void iniciarJuego(boolean turno) {
 		if(turno) {
-			panelPrincipal.setLeft(this.ImagenTableroControles(jugadorAzulNombre,jugadorAzulEmblema));
+			panelPrincipal.setLeft(this.imagenTableroControles(jugadorAzulNombre,jugadorAzulEmblema));
 			VBox derecha = new VBox();
 			derecha.setPrefWidth(144);
 			panelPrincipal.setRight(derecha);
@@ -103,11 +102,11 @@ public class EscenaTablero extends Scene {
 			VBox izquierda = new VBox();
 			izquierda.setPrefWidth(144);
 			panelPrincipal.setLeft(izquierda);
-			panelPrincipal.setRight(this.ImagenTableroControles(jugadorRojoNombre, jugadorRojoEmblema));
+			panelPrincipal.setRight(this.imagenTableroControles(jugadorRojoNombre, jugadorRojoEmblema));
 		}
 	}
 	
-	public VBox ImagenTableroControles(String nombreJugador,ImageView icono) {
+	public VBox imagenTableroControles(String nombreJugador, ImageView icono) {
 		//Nombre jugador
 		HBox tagJugador = new HBox();
 		tagJugador.setStyle("-fx-background-color: #000000;-fx-spacing: 5");
@@ -140,11 +139,11 @@ public class EscenaTablero extends Scene {
 			VBox izquierda = new VBox();
 			izquierda.setPrefWidth(144);
 			panelPrincipal.setLeft(izquierda);
-			panelPrincipal.setRight(this.ImagenTableroControles(jugadorRojoNombre, jugadorRojoEmblema));
+			panelPrincipal.setRight(this.imagenTableroControles(jugadorRojoNombre, jugadorRojoEmblema));
 			jugadorTurno = 2;
 		}
 		else{
-			panelPrincipal.setLeft(this.ImagenTableroControles(jugadorAzulNombre,jugadorAzulEmblema));
+			panelPrincipal.setLeft(this.imagenTableroControles(jugadorAzulNombre,jugadorAzulEmblema));
 			VBox derecha = new VBox();
 			derecha.setPrefWidth(144);
 			panelPrincipal.setRight(derecha);

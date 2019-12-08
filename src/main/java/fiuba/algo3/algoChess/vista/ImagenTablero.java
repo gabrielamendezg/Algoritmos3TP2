@@ -43,6 +43,10 @@ public class ImagenTablero extends GridPane {
         //celda.setGraphic(new ImageView(new Image("imagenes/SoldadoAzul.png",30,30,true,true)));
         celda.setPrefHeight(35);
         celda.setPrefWidth(35);
+        celda.setOnDragOver(new DragClase().getDragOver(celda));
+        celda.setOnDragEntered(new DragClase().getDragEntered(celda));
+        celda.setOnDragExited(new DragClase().getDragExited(celda));
+        celda.setOnDragDropped(new DragClase().getDragDropped(celda));
 		return celda;
 	}
 	
@@ -54,6 +58,11 @@ public class ImagenTablero extends GridPane {
         //celda.setGraphic(new ImageView(new Image("imagenes/CatapultaRojo.png",30,30,true,true)));
         celda.setPrefHeight(35);
         celda.setPrefWidth(35);
+
+        celda.setOnDragOver(new DragClase().getDragOver(celda));
+        celda.setOnDragEntered(new DragClase().getDragEntered(celda));
+        celda.setOnDragExited(new DragClase().getDragExited(celda));
+        celda.setOnDragDropped(new DragClase().getDragDropped(celda));
 		return celda;
 	}
 	
