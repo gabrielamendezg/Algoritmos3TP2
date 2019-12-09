@@ -15,7 +15,7 @@ public class Boton extends Button {
 	    "-fx-background-radius: 8;"+
 	    "-fx-background-color:"+ color1+", "+color2+"; "+
 	    "-fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );"+
-	    "-fx-text-fill: white;"+
+	    "-fx-text-fill: "+colorTexto+";"+
 	    "-fx-font-weight: bold;"+
 	    "-fx-font-size: 1.1em;");
 	}

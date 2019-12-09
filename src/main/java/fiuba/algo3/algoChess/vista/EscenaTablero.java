@@ -55,7 +55,7 @@ public class EscenaTablero extends Scene {
 	public VBox eleccionJugadorAzul(String nombreJugador, ImageView icono) {
 		//unidades y boton para terminar turno de elección
 		VBox unidades = new EleccionUnidadesAzules();
-		Boton terminar = new Boton("Terminar","#000000","#39516d","#6886aa");
+		Boton terminar = new Boton("Terminar","#ffffff","#39516d","#6886aa");
 		terminar.setOnAction(e -> this.eleccionJugadorRojo(jugadorRojoNombre,jugadorRojoEmblema));
 		HBox botonterminar = new HBox(terminar);
 		botonterminar.setAlignment(Pos.CENTER);
@@ -76,7 +76,7 @@ public class EscenaTablero extends Scene {
 		
 		VBox unidades = new EleccionUnidadesRojas();
 		unidades.setAlignment(Pos.CENTER);
-		Boton terminar = new Boton("Terminar","#000000","#39516d","#6886aa");
+		Boton terminar = new Boton("Terminar","#ffffff","#39516d","#6886aa");
 		terminar.setOnAction(e -> this.iniciarJuego(this.turnoAleatorio()));
 		HBox botonterminar = new HBox(terminar);
 		botonterminar.setAlignment(Pos.CENTER);
@@ -114,10 +114,10 @@ public class EscenaTablero extends Scene {
 		pasarturno.setOnAction(e -> this.pasarTurno());
 		pasarturno.setPrefWidth(144);
 		
-		Boton deseleccionar = new Boton("Deseleccionar","#000000","#39516d","#6886aa");
+		Boton deseleccionar = new Boton("Deseleccionar","#ffffff","#39516d","#6886aa");
 		deseleccionar.setPrefWidth(144);
 		
-		Boton atacar = new Boton("Atacar","#000000","#39516d","#6886aa");
+		Boton atacar = new Boton("Atacar","#ffffff","#39516d","#6886aa");
 		atacar.setPrefWidth(144);
 		
 		//Controles de flechas

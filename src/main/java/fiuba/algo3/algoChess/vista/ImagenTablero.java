@@ -1,14 +1,13 @@
 package fiuba.algo3.algoChess.vista;
 
-import fiuba.algo3.algoChess.controlador.DragClase;
-import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 
 public class ImagenTablero extends GridPane {
 
 	ImagenCelda[][] celdas = new ImagenCelda[20][20];
 	public ImagenCelda seleccionado = null;
-	
+	private String colorJugadorA = "#8cb5bc";
+	private String colorJugadorB = "#da6166";
 	public ImagenTablero()
     {
         super();
@@ -18,7 +17,7 @@ public class ImagenTablero extends GridPane {
         {
             for (int y = 0; y < 20; y++)
             {
-                celdas[x][y] = inicializarEstiloCeldaAzul(x,y);
+                celdas[x][y] = new ImagenCelda(x,y,colorJugadorA);
                 this.add(celdas[x][y],x,y);
             }
         }
@@ -27,42 +26,11 @@ public class ImagenTablero extends GridPane {
         {
             for (int y = 0; y < 20; y++)
             {
-                celdas[x][y] = inicializarEstiloCeldaRojo(x,y);
+                celdas[x][y] = new ImagenCelda(x,y,colorJugadorB);
                 this.add(celdas[x][y],x,y);
             }
         }
         
    }
-	
-	private ImagenCelda inicializarEstiloCeldaAzul(int x, int y) {
-		ImagenCelda celda = new ImagenCelda(x,y);
-		celda.setStyle("-fx-background-color: #8cb5bc; -fx-border-color: #484860;"
-        		+ " -fx-border-width: 1px");
-		celda.setPadding(Insets.EMPTY);
-        //celda.setGraphic(new ImageView(new Image("imagenes/SoldadoAzul.png",30,30,true,true)));
-        celda.setPrefHeight(35);
-        celda.setPrefWidth(35);
-        celda.setOnDragOver(new DragClase().getDragOver(celda));
-        celda.setOnDragEntered(new DragClase().getDragEntered(celda));
-        celda.setOnDragExited(new DragClase().getDragExited(celda));
-        celda.setOnDragDropped(new DragClase().getDragDropped(celda));
-		return celda;
-	}
-	
-	private ImagenCelda inicializarEstiloCeldaRojo(int x, int y) {
-		ImagenCelda celda = new ImagenCelda(x,y);
-		celda.setStyle("-fx-background-color: #da6166; -fx-border-color: #484860;"
-        		+ " -fx-border-width: 1px");
-		celda.setPadding(Insets.EMPTY);
-        //celda.setGraphic(new ImageView(new Image("imagenes/CatapultaRojo.png",30,30,true,true)));
-        celda.setPrefHeight(35);
-        celda.setPrefWidth(35);
-
-        celda.setOnDragOver(new DragClase().getDragOver(celda));
-        celda.setOnDragEntered(new DragClase().getDragEntered(celda));
-        celda.setOnDragExited(new DragClase().getDragExited(celda));
-        celda.setOnDragDropped(new DragClase().getDragDropped(celda));
-		return celda;
-	}
 	
 }

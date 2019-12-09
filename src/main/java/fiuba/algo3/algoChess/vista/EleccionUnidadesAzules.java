@@ -2,7 +2,6 @@ package fiuba.algo3.algoChess.vista;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
@@ -52,11 +51,11 @@ public class EleccionUnidadesAzules extends VBox {
 
 		unidad.setOnDragDetected(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent event) {
-				/* drag was detected, start a drag-and-drop gesture*/
-				/* allow any transfer mode */
+				// Comienza un gesto de drag-n-drop.
+				// permitir cualquier transferencia.
 				Dragboard db = unidad.startDragAndDrop(TransferMode.ANY);
 
-				/* Put a string on a dragboard */
+				//coloca la imagen de la unidad en el dragboard.
 				ClipboardContent content = new ClipboardContent();
 				content.putImage(imagen.getImage());
 				db.setContent(content);
@@ -65,15 +64,7 @@ public class EleccionUnidadesAzules extends VBox {
 			}
 		});
 		
-		/*VBox info = new VBox();
-		Label infoLabel = new Label(nombre);
-		infoLabel.setStyle("-fx-text-fill: white;-fx-font-size: 12px");
-		Label infoLabel2 = new Label(precio);
-		infoLabel2.setStyle("-fx-text-fill: white;-fx-font-size: 12px");
-		info.getChildren().addAll(infoLabel,infoLabel2);*/
-		
 		HBox publicacion = new HBox();
-		//publicacion.getChildren().addAll(unidad,info);
 		publicacion.getChildren().addAll(unidad);
 		publicacion.setStyle("-fx-spacing: 5");
 		publicacion.setAlignment(Pos.CENTER);
