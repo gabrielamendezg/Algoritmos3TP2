@@ -37,7 +37,7 @@ public class AlgoChessApp extends Application
 	}
 	
 	private Scene menu(Stage stage) {
-		ImageView imagen = new ImageView(new Image("imagenes/Menu.png"));
+		ImageView imagen = new ImageView(new Image("imagenes/Menu2.png",554,399,true,true));
 		Boton reglas = new Boton("¿Cómo jugar?","#000000","#39516d","#6886aa");
 		Boton iniciar = new Boton("Iniciar","#000000","#39516d","#6886aa");
 		VBox layout1 = new VBox(20);
