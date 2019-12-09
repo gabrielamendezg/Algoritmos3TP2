@@ -1,5 +1,6 @@
-package fiuba.algo3.algoChess.modelo;
+package fiuba.algo3.algoChess.modelo.algoChess;
 
+import fiuba.algo3.algoChess.modelo.InterfazDeUsuario;
 import fiuba.algo3.algoChess.modelo.tablero.*;
 
 /*Rearmar base
@@ -10,7 +11,6 @@ import fiuba.algo3.algoChess.modelo.tablero.*;
 
 import java.io.IOException;
 
-import fiuba.algo3.algoChess.modelo.Excepciones.InstanciaDeTableroYaExiste;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 
 public class AlgoChess {

@@ -19,7 +19,8 @@ public class AlgoChessApp extends Application
 	private String fondo = "#484860";
 	
 	public ImagenTablero tablero;
-	
+
+
     public static void main( String[] args )
     {
         launch(args);

@@ -6,10 +6,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
+import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 
 public class DragClase{
 
     static String styleDefaul;
+
+    AlgoChess algoChess = AlgoChess.getAlgoChess();
 
     public EventHandler<DragEvent> getDragOver(ImagenCelda celda){
         return new EventHandler<DragEvent>() {
@@ -64,6 +67,7 @@ public class DragClase{
                 Dragboard db = event.getDragboard();
                 boolean success = false;
                 if (db.hasImage()) {
+
                     ImageView imageView =new ImageView(db.getImage());
                     imageView.setFitHeight(30);
                     imageView.setFitWidth(30);
