@@ -3,13 +3,11 @@ package fiuba.algo3.algoChess.vista;
 import javafx.application.*;
 import javafx.geometry.Pos;
 import javafx.scene.*;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.*;
@@ -17,6 +15,9 @@ import javafx.stage.*;
 public class AlgoChessApp extends Application
 {
 	private String fondo = "#484860";
+	private String botonColor = "#6886aa";
+	private String botonSombra = "#39516d";
+	private String blanco ="#ffffff";
 	
 	public ImagenTablero tablero;
 
@@ -38,15 +39,15 @@ public class AlgoChessApp extends Application
 	}
 	
 	private Scene menu(Stage stage) {
-		ImageView imagen = new ImageView(new Image("imagenes/Menu.png"));
-		Boton reglas = new Boton("¿Cómo jugar?","#000000","#39516d","#6886aa");
-		Boton iniciar = new Boton("Iniciar","#000000","#39516d","#6886aa");
+		ImageView imagen = new ImageView(new Image("imagenes/Menu2.png",554,399,true,true));
+		Boton reglas = new Boton("¿Cómo jugar?",blanco,botonSombra,botonColor);
+		Boton iniciar = new Boton("Iniciar",blanco,botonSombra,botonColor);
 		VBox layout1 = new VBox(20);
 		layout1.setAlignment(Pos.CENTER);
 		layout1.getChildren().add(imagen);
 		layout1.getChildren().add(reglas);
 		layout1.getChildren().add(iniciar);
-		layout1.setStyle("-fx-background-color: #484860");
+		layout1.setStyle("-fx-background-color:"+fondo);
 		Scene menu = new Scene(layout1, 990, 700);
 		reglas.setOnAction(e -> stage.setScene(this.reglas(stage,menu)));
 		iniciar.setOnAction(e -> stage.setScene(this.jugadores(stage)));
@@ -55,7 +56,7 @@ public class AlgoChessApp extends Application
 	
 	private Scene jugadores(Stage stage) {
 		BorderPane panel = new BorderPane();
-		panel.setStyle("-fx-background-color: #484860");
+		panel.setStyle("-fx-background-color:"+fondo);
 		Scene jugadores = new Scene(panel,990, 700);
 
 		HBox tagJugadorAzul = new HBox();
@@ -78,7 +79,7 @@ public class AlgoChessApp extends Application
 		jugadorAzulNombre.setMaxWidth(100);
 		TextField jugadorRojoNombre = new TextField();
 		jugadorRojoNombre.setMaxWidth(100);
-		Boton continuar = new Boton("Continuar","#000000","#39516d","#6886aa");
+		Boton continuar = new Boton("Continuar",blanco,botonSombra,botonColor);
 		continuar.setOnAction(e -> stage.setScene(this.iniciarJuego(stage,jugadorAzulNombre.getText(), jugadorRojoNombre.getText())));
 		VBox layout2 = new VBox(tagJugadorAzul,jugadorAzulNombre,tagJugadorRojo,jugadorRojoNombre,placeholder,continuar);
 		layout2.setAlignment(Pos.CENTER);
@@ -112,9 +113,9 @@ public class AlgoChessApp extends Application
 				+ "Ataca en una distancia lejana únicamente. [Puede dañar tanto a Enemigos como Aliados]. " 
 				+ "Causa daño a la primera unidad enemiga alcanzada, y a todas las unidades directamente contiguas, y si a su vez la segunda unidad tiene otra unidad contigua, también causa el mismo daño (y así sucesivamente)");
 		reglastxt1.setStyle("-fx-text-fill: white;-fx-wrap-text: true;-fx-font-size: 16px;-fx-label-padding: 30");
-		Boton atras = new Boton("Atras","#000000","#39516d","#6886aa");
+		Boton atras = new Boton("Atras",blanco,botonSombra,botonColor);
 		atras.setOnAction(e -> stage.setScene(menu));
-		boxReglas.setStyle("-fx-background-color: #484860");
+		boxReglas.setStyle("-fx-background-color: "+fondo);
 		boxReglas.setAlignment(Pos.CENTER);
 		boxReglas.getChildren().addAll(reglastxt1,atras);
 		Scene reglas = new Scene(boxReglas,990,700);
