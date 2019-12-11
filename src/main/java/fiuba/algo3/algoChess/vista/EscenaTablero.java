@@ -1,7 +1,5 @@
 package fiuba.algo3.algoChess.vista;
 
-import java.util.Random;
-
 import fiuba.algo3.algoChess.controlador.AlgoChessControler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -59,7 +57,7 @@ public class EscenaTablero extends Scene {
 		Boton terminar = new Boton("Terminar","#ffffff","#39516d","#6886aa");
 		terminar.setOnAction(e -> {
 			this.eleccionJugadorRojo(jugadorRojoNombre,jugadorRojoEmblema);
-			AlgoChessControler.getAlgoChessControler().terminarTurno();
+			AlgoChessControler.getAlgoChessControler().pasarTurno();
 		});
 		HBox botonterminar = new HBox(terminar);
 		botonterminar.setAlignment(Pos.CENTER);
@@ -113,7 +111,7 @@ public class EscenaTablero extends Scene {
 		//Botones
 		Boton pasarturno = new Boton("Pasar Turno","#ffffff","#e3913e","#f5b754");
 		pasarturno.setOnAction(e -> {
-			AlgoChessControler.getAlgoChessControler().terminarTurno();
+			AlgoChessControler.getAlgoChessControler().pasarTurno();
 			this.pasarTurno();
 		});
 		pasarturno.setPrefWidth(144);

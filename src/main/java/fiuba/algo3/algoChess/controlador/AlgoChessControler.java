@@ -1,10 +1,7 @@
 package fiuba.algo3.algoChess.controlador;
 
-import fiuba.algo3.algoChess.modelo.Excepciones.FilaOColumnaNoPerteneceATuParteDelTableroExcepcion;
 import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
-import fiuba.algo3.algoChess.modelo.entidades.Catapulta;
-import fiuba.algo3.algoChess.vista.Informar;
 
 import java.util.Random;
 
@@ -22,7 +19,7 @@ public class AlgoChessControler {
         AlgoChess.getAlgoChess().posicionarPosicionable(posicionable,x + 1, y + 1);
     }
 
-    public void terminarTurno() {
+    public void pasarTurno() {
         AlgoChess.getAlgoChess().pasarTurno();
     }
 
