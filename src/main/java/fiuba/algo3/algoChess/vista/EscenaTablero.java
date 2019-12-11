@@ -112,7 +112,10 @@ public class EscenaTablero extends Scene {
 	public VBox jugadorControles(String nombreJugador, ImageView icono) {
 		//Botones
 		Boton pasarturno = new Boton("Pasar Turno","#ffffff","#e3913e","#f5b754");
-		pasarturno.setOnAction(e -> this.pasarTurno());
+		pasarturno.setOnAction(e -> {
+			AlgoChessControler.getAlgoChessControler().terminarTurno();
+			this.pasarTurno();
+		});
 		pasarturno.setPrefWidth(144);
 		
 		Boton deseleccionar = new Boton("Deseleccionar","#ffffff","#39516d","#6886aa");
