@@ -1,6 +1,7 @@
 package fiuba.algo3.algoChess.controlador;
 
 import fiuba.algo3.algoChess.modelo.Excepciones.FilaOColumnaNoPerteneceATuParteDelTableroExcepcion;
+import fiuba.algo3.algoChess.modelo.Excepciones.PosicionOcupadaExcepcion;
 import fiuba.algo3.algoChess.modelo.Excepciones.PuntosInsuficientesExcepcion;
 import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import fiuba.algo3.algoChess.vista.ImagenCelda;
@@ -83,6 +84,8 @@ public class DragClase{
                         new Informar("Usa tu PARTE", "Fila o Columna No Pertenece A Tu Parte Del Tablero");
                     } catch (PuntosInsuficientesExcepcion e) {
                         new Informar("Puntos de vida insuficiente","Te quedando " + AlgoChess.getAlgoChess().getJugadorActivo().getPuntos() + " puntos  insuficientes para este posicionable por favor termina tu turno o escoje otro");
+                    } catch (PosicionOcupadaExcepcion e){
+                        new Informar("Posicion ocupada", "La posicion ya esta ocupada ...");
                     }
 
                 }
