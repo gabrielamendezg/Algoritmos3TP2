@@ -81,9 +81,9 @@ public class DragClase{
                         celda.setGraphic(imageView);
                         success = true;
                     } catch (FilaOColumnaNoPerteneceATuParteDelTableroExcepcion e) {
-                        new Informar("Usa tu PARTE", "Fila o Columna No Pertenece A Tu Parte Del Tablero");
+                        new Informar("Territorio Enemigo!", "Solo puedes posicionar unidades en tu territorio");
                     } catch (PuntosInsuficientesExcepcion e) {
-                        new Informar("Puntos de vida insuficiente","Te quedando " + AlgoChess.getAlgoChess().getJugadorActivo().getPuntos() + " puntos  insuficientes para este posicionable por favor termina tu turno o escoje otro");
+                        new Informar("Puntos insuficientes","Puntos insuficientes para esta unidad por favor termina tu turno o escoge otro");
                     } catch (PosicionOcupadaExcepcion e){
                         new Informar("Posicion ocupada", "La posicion ya esta ocupada ...");
                     }

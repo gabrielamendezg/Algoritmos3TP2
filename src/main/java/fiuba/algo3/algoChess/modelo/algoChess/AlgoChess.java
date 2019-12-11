@@ -18,7 +18,7 @@ public class AlgoChess {
 	private JugadorA jugadorA = new JugadorA();
 	private JugadorB jugadorB = new JugadorB();
 
-	private Jugador jugadorAtivo = jugadorA;
+	private Jugador jugadorActivo = jugadorA;
 	private Jugador jugadorOponente = jugadorB;
 
 	
@@ -36,28 +36,28 @@ public class AlgoChess {
 
 	public void posicionarPosicionable(Posicionable posicionable, int x, int y) {
 
-		if(jugadorAtivo instanceof JugadorA)
-			tablero.posicionarEn((JugadorA) jugadorAtivo, posicionable, new Posicion(x, y));
-		if(jugadorAtivo instanceof JugadorB)
-			tablero.posicionarEn((JugadorB) jugadorAtivo, posicionable, new Posicion(x, y));
+		if(jugadorActivo instanceof JugadorA)
+			tablero.posicionarEn((JugadorA) jugadorActivo, posicionable, new Posicion(x, y));
+		if(jugadorActivo instanceof JugadorB)
+			tablero.posicionarEn((JugadorB) jugadorActivo, posicionable, new Posicion(x, y));
 	}
 
 	public Jugador getJugadorActivo() {
-		return jugadorAtivo;
+		return jugadorActivo;
 	}
 
 	public void pasarTurno() {
-		Jugador tem = jugadorAtivo;
-		jugadorAtivo = jugadorOponente;
+		Jugador tem = jugadorActivo;
+		jugadorActivo = jugadorOponente;
 		jugadorOponente = tem;
 	}
 
 	public void jugadorActivoAzul() {
-		jugadorAtivo = jugadorA;
+		jugadorActivo = jugadorA;
 		jugadorOponente = jugadorB;
 	}
 	public void jugadorActivoRojo() {
-		jugadorAtivo = jugadorB;
+		jugadorActivo = jugadorB;
 		jugadorOponente = jugadorA;
 	}
 }
