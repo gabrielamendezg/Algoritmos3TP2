@@ -1,6 +1,7 @@
 package fiuba.algo3.algoChess.controlador;
 
 import fiuba.algo3.algoChess.modelo.Excepciones.FilaOColumnaNoPerteneceATuParteDelTableroExcepcion;
+import fiuba.algo3.algoChess.modelo.Excepciones.PosicionOcupadaExcepcion;
 import fiuba.algo3.algoChess.modelo.Excepciones.PuntosInsuficientesExcepcion;
 import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import fiuba.algo3.algoChess.vista.ImagenCelda;
@@ -83,6 +84,8 @@ public class DragClase{
                         new Informar("Territorio Enemigo!", "Solo puedes posicionar unidades en tu territorio");
                     } catch (PuntosInsuficientesExcepcion e) {
                         new Informar("Puntos insuficientes","Puntos insuficientes para esta unidad por favor termina tu turno o escoge otro");
+                    } catch (PosicionOcupadaExcepcion e){
+                        new Informar("Posicion ocupada", "La posicion ya esta ocupada ...");
                     }
 
                 }
