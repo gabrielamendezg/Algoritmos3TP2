@@ -1,11 +1,12 @@
 package fiuba.algo3.algoChess.modelo.celda;
 
 import fiuba.algo3.algoChess.modelo.Excepciones.PosicionOcupadaExcepcion;
+import fiuba.algo3.algoChess.modelo.Observador;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 
 
-public abstract class Celda{
+public abstract class Celda implements Observador {
 	protected Posicionable unidad;
 	
 	public Celda() {

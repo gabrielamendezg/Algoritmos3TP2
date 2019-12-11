@@ -24,5 +24,6 @@ public interface Jugador {
 	//Otros Metodos
 	public int cantidadDeUnidades();
 	public ArrayList<Unidad> obtenerUnidades();
-	public void eliminarUnidad(Unidad unaUnidad);
+
+    int getPuntos();
 }

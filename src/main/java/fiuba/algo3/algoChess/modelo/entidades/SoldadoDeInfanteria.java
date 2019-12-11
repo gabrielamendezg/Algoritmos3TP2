@@ -49,4 +49,9 @@ public class SoldadoDeInfanteria extends Unidad implements Sanable, Movible, Pos
 		if(aliados.contains(unAtacable)) return;
 		ataque.atacar(posicion.getX(), posicion.getY(), unAtacable);
 	}
+
+	@Override
+	public int costo() {
+		return costo;
+	}
 }

@@ -60,4 +60,8 @@ public class Curandero extends Unidad implements Movible, Posicionable, Atacable
 		return tipo.moverA(this, jugador, unaPosicion);
 	}
 
+	@Override
+	public int costo() {
+		return costo;
+	}
 }

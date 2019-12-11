@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.algoChess.modelo.Excepciones.FilaOColumnaNoPerteneceATuParteDelTableroExcepcion;
+import fiuba.algo3.algoChess.modelo.tablero.Tablero;
 import org.junit.jupiter.api.Test;
 
 import fiuba.algo3.algoChess.modelo.Excepciones.FueraDelRangoDeAtaqueExcepcion;
@@ -18,37 +20,45 @@ import fiuba.algo3.algoChess.modelo.jugador.JugadorB;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 
 class JineteAtacaADistanciaTest {
-	 
-	JugadorA jugador = new JugadorA();
-	JugadorB jugadorb = new JugadorB();
-	SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(jugadorb);
-	Curandero curandero = new Curandero(jugadorb);
-	Jinete jinete = jugador.elegirJinete();
-	Catapulta catapultaAliada = jugador.elegirCatapulta();
-	
+
 	@Test
-	void test() {
+	void jineteAtacaAdistanciaMediatest() {
+		JugadorA jugador = new JugadorA();
+		Jinete jinete = jugador.elegirJinete();
+		Catapulta catapultaAliada = jugador.elegirCatapulta();
 
-			curandero.setPosicion(new Posicion(1, 2));
-			soldado.setPosicion(new Posicion(1,5));
-			jinete.setPosicion(new Posicion(1, 1));
-			catapultaAliada.setPosicion(new Posicion(2,1));
-			ArrayList<Atacable> atacables = new ArrayList<Atacable>();
-			atacables.add(curandero);
-			atacables.add(soldado);
-			
-			
-			jinete.atacarAtacable(jugador, soldado, atacables);
+		JugadorB jugadorb = new JugadorB();
+		SoldadoDeInfanteria soldado = jugadorb.elegirSoldado();
+		Curandero curandero = jugadorb.elegirCurandero();
 
-			
-			
-			assertTrue(soldado.obtenerVida() ==85);
-			
-			assertThrows(FueraDelRangoDeAtaqueExcepcion.class,
-					() -> {
-						jinete.atacarAtacable(jugador, curandero,atacables);
+		Tablero tablero = new Tablero();
+		tablero.posicionarEn(jugadorb,curandero, new Posicion(15, 5));
+		tablero.posicionarEn(jugadorb,soldado, new Posicion(14, 5));
+		tablero.posicionarEn(jugador,jinete, new Posicion(9, 5));
+		tablero.posicionarEn(jugador,catapultaAliada, new Posicion(10, 5));
 
-					});
+		tablero.atacanteAtacarAtacable(jugador, jinete, soldado);
 	}
 
+	@Test
+	void jineteNoAtacaAdistanciaCercanatest() {
+		JugadorA jugador = new JugadorA();
+		Jinete jinete = jugador.elegirJinete();
+		Catapulta catapultaAliada = jugador.elegirCatapulta();
+
+		JugadorB jugadorb = new JugadorB();
+		SoldadoDeInfanteria soldado = jugadorb.elegirSoldado();
+		Curandero curandero = jugadorb.elegirCurandero();
+
+		Tablero tablero = new Tablero();
+		tablero.posicionarEn(jugadorb,curandero, new Posicion(11, 5));
+		tablero.posicionarEn(jugadorb,soldado, new Posicion(14, 5));
+		tablero.posicionarEn(jugador,jinete, new Posicion(9, 5));
+		tablero.posicionarEn(jugador,catapultaAliada, new Posicion(10, 5));
+
+		assertThrows(FueraDelRangoDeAtaqueExcepcion.class,
+				()->{
+					tablero.atacanteAtacarAtacable(jugador, jinete, curandero);
+				});
+	}
 }

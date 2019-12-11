@@ -1,15 +1,18 @@
 package fiuba.algo3.algoChess.modelo.jugador;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 import fiuba.algo3.algoChess.modelo.Excepciones.*;
+import fiuba.algo3.algoChess.modelo.Observador;
+import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.entidades.Catapulta;
 import fiuba.algo3.algoChess.modelo.entidades.Curandero;
 import fiuba.algo3.algoChess.modelo.entidades.Jinete;
 import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 
-public class JugadorA implements Jugador {
+public class JugadorA implements Jugador, Observador {
 
 	protected int puntos;
 	protected  ArrayList<Unidad> unidades;
@@ -34,86 +37,35 @@ public class JugadorA implements Jugador {
     public ArrayList<Unidad> obtenerUnidades() {
 		return this.unidades;
 	}
-    
-    public boolean sigueEnJuego() {
+
+	@Override
+	public int getPuntos() {
+		return puntos;
+	}
+
+	public boolean sigueEnJuego() {
 		return (unidades.size() != 0);
 	}
     
-    public void eliminarUnidad(Unidad unaUnidad){
+    private void eliminarUnidad(Unidad unaUnidad){
 		this.unidades.remove(unaUnidad);
 	}
     
     @Override
 	public SoldadoDeInfanteria elegirSoldado() {
-		SoldadoDeInfanteria nuevaUnidad = null;
-
-		if (this.puntos >= 1) {
-
-			nuevaUnidad = new SoldadoDeInfanteria(this);
-			this.unidades.add(nuevaUnidad);
-			this.puntos = this.puntos - 1;
-
-		} else {
-
-			throw new PuntosInsuficientesExcepcion();
-		}
-
-		return nuevaUnidad;
+		return new SoldadoDeInfanteria(this);
 	}
-
 	@Override
 	public Catapulta elegirCatapulta() {
-		Catapulta nuevaUnidad = null;
-
-		if (this.puntos >= 5) {
-
-			nuevaUnidad = new Catapulta(this);
-			this.unidades.add(nuevaUnidad);
-			this.puntos = this.puntos - 5;
-
-		} else {
-
-			throw new PuntosInsuficientesExcepcion();
-		}
-
-		return nuevaUnidad;
+		return new Catapulta(this);
 	}
-
 	@Override
 	public Jinete elegirJinete() {
-		Jinete nuevaUnidad = null;
-
-		if (this.puntos >= 3) {
-
-			nuevaUnidad = new Jinete(this);
-			this.unidades.add(nuevaUnidad);
-			this.puntos = this.puntos - 3;
-
-
-		} else {
-
-			throw new PuntosInsuficientesExcepcion();
-		}
-
-		return nuevaUnidad;
+		return new Jinete(this);
 	}
-
 	@Override
 	public Curandero elegirCurandero() {
-		Curandero nuevaUnidad = null;
-
-		if (this.puntos >= 2) {
-
-			nuevaUnidad = new Curandero(this);
-			this.unidades.add(nuevaUnidad);
-			this.puntos = this.puntos - 2;
-
-		} else {
-
-			throw new PuntosInsuficientesExcepcion();
-		}
-
-		return nuevaUnidad;
+		return new Curandero(this);
 	}
 
 	public String getNombre() {
@@ -121,4 +73,24 @@ public class JugadorA implements Jugador {
 		return this.nombre;
 	}
 
+	public void agregarEntidadPosiciondoEnTablero(Posicionable nuevaUnidad) {
+		if (this.puntos >= nuevaUnidad.costo()) {
+			this.unidades.add((Unidad) nuevaUnidad);
+			this.puntos = this.puntos - nuevaUnidad.costo();
+
+		} else {
+
+			throw new PuntosInsuficientesExcepcion();
+		}
+	}
+
+	@Override
+	public void change() {
+    	AtomicReference<Unidad> unidadConVidaCero = new AtomicReference<>();
+		unidades.stream().forEach(unidadPosicionado -> {
+			if(unidadPosicionado.obtenerVida() == 0)
+				unidadConVidaCero.set(unidadPosicionado);
+		});
+		this.eliminarUnidad(unidadConVidaCero.get());
+	}
 }

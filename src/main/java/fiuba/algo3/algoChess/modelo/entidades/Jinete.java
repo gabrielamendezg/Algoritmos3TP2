@@ -107,7 +107,11 @@ public class Jinete extends Unidad implements Sanable, Movible, Posicionable, At
 		 ataque.atacar(posicion.getX(), posicion.getY(), unAtacable);
 		
 	}
-		
 
+
+	@Override
+	public int costo() {
+		return costo;
+	}
 }
 

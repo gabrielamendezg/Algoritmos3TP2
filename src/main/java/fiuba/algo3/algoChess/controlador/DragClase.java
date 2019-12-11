@@ -1,18 +1,21 @@
 package fiuba.algo3.algoChess.controlador;
 
+import fiuba.algo3.algoChess.modelo.Excepciones.FilaOColumnaNoPerteneceATuParteDelTableroExcepcion;
+import fiuba.algo3.algoChess.modelo.Excepciones.PuntosInsuficientesExcepcion;
+import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import fiuba.algo3.algoChess.vista.ImagenCelda;
+import fiuba.algo3.algoChess.vista.Informar;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
-import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 
 public class DragClase{
 
     static String styleDefaul;
 
-    AlgoChess algoChess = AlgoChess.getAlgoChess();
+    AlgoChessControler algoChessControler = AlgoChessControler.getAlgoChessControler();
 
     public EventHandler<DragEvent> getDragOver(ImagenCelda celda){
         return new EventHandler<DragEvent>() {
@@ -68,11 +71,20 @@ public class DragClase{
                 boolean success = false;
                 if (db.hasImage()) {
 
-                    ImageView imageView =new ImageView(db.getImage());
-                    imageView.setFitHeight(30);
-                    imageView.setFitWidth(30);
-                    celda.setGraphic(imageView);
-                    success = true;
+                    try {
+                        algoChessControler.posicionarPosicionable(celda.getX(), celda.getY());
+
+                        ImageView imageView =new ImageView(db.getImage());
+                        imageView.setFitHeight(30);
+                        imageView.setFitWidth(30);
+                        celda.setGraphic(imageView);
+                        success = true;
+                    } catch (FilaOColumnaNoPerteneceATuParteDelTableroExcepcion e) {
+                        new Informar("Usa tu PARTE", "Fila o Columna No Pertenece A Tu Parte Del Tablero");
+                    } catch (PuntosInsuficientesExcepcion e) {
+                        new Informar("Puntos de vida insuficiente","Te quedando " + AlgoChess.getAlgoChess().getJugadorActivo().getPuntos() + " puntos  insuficientes para este posicionable por favor termina tu turno o escoje otro");
+                    }
+
                 }
                 /* let the source know whether the string was successfully
                  * transferred and used */

@@ -1,11 +1,12 @@
 package fiuba.algo3.algoChess.modelo.entidades;
 
 
+import fiuba.algo3.algoChess.modelo.Observable;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 
-public abstract class Unidad implements Posicionable {
+public abstract class Unidad extends Observable implements Posicionable {
 	
 	//Atributos.
 	protected int vida;
@@ -27,6 +28,8 @@ public abstract class Unidad implements Posicionable {
 
 	public void recibirAtaque(int daño) {
 		vida = vida- daño;
+		if(vida <= 0)
+			notifyObservers();
 
 	}
 

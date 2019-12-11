@@ -119,4 +119,9 @@ public class Catapulta extends Unidad implements Posicionable, Atacador, Atacabl
 			atacable = atacableHashMap.get(new Posicion(i, j).toString());
 		}
 	}
+
+	@Override
+	public int costo() {
+		return costo;
+	}
 }

@@ -2,6 +2,7 @@ package fiuba.algo3.algoChess.vista;
 
 import java.util.Random;
 
+import fiuba.algo3.algoChess.controlador.AlgoChessControler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -48,7 +49,7 @@ public class EscenaTablero extends Scene {
 		tagJugador.setStyle("-fx-background-color: #000000;-fx-spacing: 5");
 		Label jugador = new Label(nombreJugador);
 		jugador.setStyle("-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 20");
-		tagJugador.getChildren().addAll(icono,jugador); 
+		tagJugador.getChildren().addAll(icono,jugador);
 		return tagJugador;
 	}
 	
@@ -56,7 +57,10 @@ public class EscenaTablero extends Scene {
 		//unidades y boton para terminar turno de elección
 		VBox unidades = new EleccionUnidadesAzules();
 		Boton terminar = new Boton("Terminar","#ffffff","#39516d","#6886aa");
-		terminar.setOnAction(e -> this.eleccionJugadorRojo(jugadorRojoNombre,jugadorRojoEmblema));
+		terminar.setOnAction(e -> {
+			this.eleccionJugadorRojo(jugadorRojoNombre,jugadorRojoEmblema);
+			AlgoChessControler.getAlgoChessControler().terminarTurno();
+		});
 		HBox botonterminar = new HBox(terminar);
 		botonterminar.setAlignment(Pos.CENTER);
 
@@ -77,7 +81,9 @@ public class EscenaTablero extends Scene {
 		VBox unidades = new EleccionUnidadesRojas();
 		unidades.setAlignment(Pos.CENTER);
 		Boton terminar = new Boton("Terminar","#ffffff","#39516d","#6886aa");
-		terminar.setOnAction(e -> this.iniciarJuego(this.turnoAleatorio()));
+		terminar.setOnAction(e -> {
+			this.iniciarJuego(AlgoChessControler.getAlgoChessControler().turnoAleatorio());
+		});
 		HBox botonterminar = new HBox(terminar);
 		botonterminar.setAlignment(Pos.CENTER);
 		
@@ -87,11 +93,6 @@ public class EscenaTablero extends Scene {
 		controles.setPrefWidth(144);
 		panelPrincipal.setRight(controles);
 		
-	}
-	
-	private boolean turnoAleatorio() {
-		Random rd = new Random();
-		return rd.nextBoolean();
 	}
 	
 	private void iniciarJuego(boolean turno) {
