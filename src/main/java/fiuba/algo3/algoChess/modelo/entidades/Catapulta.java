@@ -43,7 +43,7 @@ public class Catapulta extends Unidad implements Posicionable, Atacante, Atacabl
 		int i = unAtacable.getPosicion().getY() + 1;
 		Atacable atacable = atacableHashMap.get(new Posicion(unAtacable.getPosicion().getX(), i).toString());
 		while (atacable != null){
-            ataque.atacar(posicion.getX(),posicion.getY(), atacable);
+             atacable.recibirAtaque(20);
             i++;
             atacable = atacableHashMap.get(new Posicion(unAtacable.getPosicion().getX(), i).toString());
         }
@@ -52,7 +52,7 @@ public class Catapulta extends Unidad implements Posicionable, Atacante, Atacabl
 		 i = unAtacable.getPosicion().getY() - 1;
 		 atacable = atacableHashMap.get(new Posicion(unAtacable.getPosicion().getX(), i).toString());
 		while (atacable != null){
-			ataque.atacar(posicion.getX(),posicion.getY(), atacable);
+			atacable.recibirAtaque(20);
 			i--;
 			atacable = atacableHashMap.get(new Posicion(unAtacable.getPosicion().getX(), i).toString());
 		}
@@ -61,7 +61,7 @@ public class Catapulta extends Unidad implements Posicionable, Atacante, Atacabl
 		i = unAtacable.getPosicion().getX() - 1;
 		atacable = atacableHashMap.get(new Posicion(i, unAtacable.getPosicion().getY()).toString());
 		while (atacable != null){
-			ataque.atacar(posicion.getX(),posicion.getY(), atacable);
+			atacable.recibirAtaque(20);
 			i--;
 			atacable = atacableHashMap.get(new Posicion(i, unAtacable.getPosicion().getY()).toString());
 		}
@@ -70,7 +70,7 @@ public class Catapulta extends Unidad implements Posicionable, Atacante, Atacabl
 		i = unAtacable.getPosicion().getX() + 1;
 		atacable = atacableHashMap.get(new Posicion(i, unAtacable.getPosicion().getY()).toString());
 		while (atacable != null){
-			ataque.atacar(posicion.getX(),posicion.getY(), atacable);
+			atacable.recibirAtaque(20);
 			i++;
 			atacable = atacableHashMap.get(new Posicion(i, unAtacable.getPosicion().getY()).toString());
 		}
@@ -80,7 +80,7 @@ public class Catapulta extends Unidad implements Posicionable, Atacante, Atacabl
 		int j = unAtacable.getPosicion().getY() - 1;
 		atacable = atacableHashMap.get(new Posicion(i, j).toString());
 		while (atacable != null){
-			ataque.atacar(posicion.getX(),posicion.getY(), atacable);
+			atacable.recibirAtaque(20);
 			i--;
 			j--;
 			atacable = atacableHashMap.get(new Posicion(i, j).toString());
@@ -91,7 +91,7 @@ public class Catapulta extends Unidad implements Posicionable, Atacante, Atacabl
 		j = unAtacable.getPosicion().getY() + 1;
 		atacable = atacableHashMap.get(new Posicion(i, j).toString());
 		while (atacable != null){
-			ataque.atacar(posicion.getX(),posicion.getY(), atacable);
+			atacable.recibirAtaque(20);
 			i++;
 			j++;
 			atacable = atacableHashMap.get(new Posicion(i, j).toString());
@@ -102,7 +102,7 @@ public class Catapulta extends Unidad implements Posicionable, Atacante, Atacabl
 		j = unAtacable.getPosicion().getY() - 1;
 		atacable = atacableHashMap.get(new Posicion(i, j).toString());
 		while (atacable != null){
-			ataque.atacar(posicion.getX(),posicion.getY(), atacable);
+			atacable.recibirAtaque(20);
 			i++;
 			j--;
 			atacable = atacableHashMap.get(new Posicion(i, j).toString());
@@ -113,7 +113,7 @@ public class Catapulta extends Unidad implements Posicionable, Atacante, Atacabl
 		j = unAtacable.getPosicion().getY() + 1;
 		atacable = atacableHashMap.get(new Posicion(i, j).toString());
 		while (atacable != null){
-			ataque.atacar(posicion.getX(),posicion.getY(), atacable);
+			atacable.recibirAtaque(20);
 			i--;
 			j++;
 			atacable = atacableHashMap.get(new Posicion(i, j).toString());

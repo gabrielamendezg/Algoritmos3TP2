@@ -33,6 +33,7 @@ public class CeldaB extends Celda {
 
 	@Override
 	public void change() {
-		this.celdaVacia();
+		if(this.unidad.obtenerVida() == 0)
+			this.celdaVacia();
 	}
 }

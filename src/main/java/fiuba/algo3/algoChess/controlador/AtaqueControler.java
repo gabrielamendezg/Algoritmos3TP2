@@ -4,6 +4,7 @@ import fiuba.algo3.algoChess.controlador.excepciones.NoSePuedeAtacarUnidadPropia
 import fiuba.algo3.algoChess.controlador.excepciones.SelecionaUnaUnidaMasParaAtacarExcepcion;
 import fiuba.algo3.algoChess.controlador.excepciones.UnidadNoEsAtacanteExcepcion;
 import fiuba.algo3.algoChess.controlador.excepciones.YaCompletasteTuTurnoExcecion;
+import fiuba.algo3.algoChess.modelo.Excepciones.FueraDelRangoDeAtaqueExcepcion;
 import fiuba.algo3.algoChess.vista.Informar;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,6 +22,8 @@ public class AtaqueControler implements EventHandler<ActionEvent> {
             new Informar("¿A quién debo atacar?", "Selecciona una segunda unidad (enemiga) para atacar");
         }catch (YaCompletasteTuTurnoExcecion e){
             new Informar("Ya Atacaste", "Solo puedes atacar una vez por favor Pasa de turno");
+        }catch (FueraDelRangoDeAtaqueExcepcion e){
+            new Informar("No es posible Atacar", "estas muy lejos o muy cerca no puedes ataca");
         }
 
     }

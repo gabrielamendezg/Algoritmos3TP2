@@ -17,7 +17,7 @@ public abstract class Ataque {
 		 int distanciaY = Math.abs((unidadAtacada.getPosicion().getY()) - posicionYUnidadAtacante);
 		 
 		 if ( ( ( (rangoInicial <= distanciaX) && (distanciaX <= rangoFinal) ) || distanciaX == 0)
-				 &&
+				 ||
 			  ( ( (rangoInicial <= distanciaY) && (distanciaY <= rangoFinal)) || distanciaY == 0) ){
 			 
 			 estaEnRango = true;
