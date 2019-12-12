@@ -259,5 +259,34 @@ public class AlgoChessControler implements Observador {
             return new ImageSoldadoDeInfanteria("imagenes/SoldadoAzul.png",30,30,true,true);
         return null;
     }
+    
+	public void primeraUnidadSeleccionadaCuraSegundaUnida() throws Exception {
+        if((unidad1 != null) && (unidad2 != null)) {
+            if (algoChess.getJugadorActivo().obtenerUnidades().contains(unidad2)) {
+                if (unidad1 instanceof Sanador){
+                	if(unidad2 instanceof Sanable) {
+                		if (!turnoCompletado()){
+                			algoChess.primeraUnidadSeleccionadaCuraSegundaUnidad((Sanador) unidad1, (Sanable) unidad2);
+                			celdasConImagenes.stream().forEach(celda -> {
+                				final Tooltip tooltip = new Tooltip();
+                				Posicionable unidadPosicionada = algoChess.unidadDeLaPosicion(celda.getX() + 1, celda.getY() + 1);
+                				if(unidadPosicionada != null) {
+                					tooltip.setText(
+                							"PUNTOS DE VIDA" + "\n" +
+                									Integer.toString(unidadPosicionada.obtenerVida()));
+                					celda.setTooltip(tooltip);
+                				}
+                			});
+                			new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
+                			this.completarTurno();
+                			this.deseleccionarUnidades();
+                			this.determininarSiHayGanador();
+                			return;
+                    	}else throw new YaCompletasteTuTurnoExcecion();
+                    }else throw new UnidadNoEsSanableExcepcion();
+                } else throw new UnidadNoEsSanadorExcepcion();
+            } else throw new NoSePuedeCurarUnidadEnemigaExcepcion();
+        } throw new SelecionaUnaUnidaMasParaAtacarExcepcion();		
+	}
 
 }

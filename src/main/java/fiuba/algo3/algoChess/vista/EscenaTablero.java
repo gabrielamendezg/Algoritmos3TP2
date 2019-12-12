@@ -2,6 +2,7 @@ package fiuba.algo3.algoChess.vista;
 
 import fiuba.algo3.algoChess.controlador.AlgoChessControler;
 import fiuba.algo3.algoChess.controlador.AtaqueControler;
+import fiuba.algo3.algoChess.controlador.CuracionControler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -157,6 +158,7 @@ public class EscenaTablero extends Scene {
 		atacar.setPrefWidth(144);
 		
 		Boton curar = new Boton( "Curar", "#ffffff", "#39516d","#6886aa" );
+		curar.setOnAction(new CuracionControler());
 		curar.setPrefWidth(144);
 		
 		//Controles de flechas
