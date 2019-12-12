@@ -1,5 +1,6 @@
 package fiuba.algo3.algoChess.vista;
 
+import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import javafx.application.*;
 import javafx.geometry.Pos;
 import javafx.scene.*;
@@ -21,6 +22,10 @@ public class AlgoChessApp extends Application
 	
 	public ImagenTablero tablero;
 
+    public AlgoChessApp() {
+        tablero = ImagenTablero.getImagenTablero();
+    }
+
 
     public static void main( String[] args )
     {
@@ -30,9 +35,7 @@ public class AlgoChessApp extends Application
 	@Override
 	public void start(Stage stage) throws Exception {
 		stage.setTitle("AlgoChess");
-		stage.getIcons().add(new Image("imagenes/Icon.png")); 
-		
-		tablero = new ImagenTablero();
+		stage.getIcons().add(new Image("imagenes/Icon.png"));
 		Scene menu = menu(stage);
 	    stage.setScene(menu);
 	    stage.show();

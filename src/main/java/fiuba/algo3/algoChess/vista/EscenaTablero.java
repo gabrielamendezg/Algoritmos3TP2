@@ -1,6 +1,7 @@
 package fiuba.algo3.algoChess.vista;
 
 import fiuba.algo3.algoChess.controlador.AlgoChessControler;
+import fiuba.algo3.algoChess.controlador.AtaqueControler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -121,12 +122,15 @@ public class EscenaTablero extends Scene {
 	}
 	
 	private void iniciarJuego(boolean turno) {
+		AlgoChessControler.getAlgoChessControler().setOnActionCeldaConImagen();
 		if(turno) {
+			jugadorTurno = 2;
 			panelPrincipal.setLeft(this.jugadorControles(jugadorAzulNombre,jugadorAzulEmblema));
 			VBox derecha = new VBox();
 			derecha.setPrefWidth(144);
 			panelPrincipal.setRight(derecha);
 		}else {
+			jugadorTurno = 1;
 			VBox izquierda = new VBox();
 			izquierda.setPrefWidth(144);
 			panelPrincipal.setLeft(izquierda);
@@ -144,10 +148,17 @@ public class EscenaTablero extends Scene {
 		pasarturno.setPrefWidth(144);
 		
 		Boton deseleccionar = new Boton("Deseleccionar","#ffffff","#39516d","#6886aa");
+		deseleccionar.setOnAction(e -> {
+			AlgoChessControler.getAlgoChessControler().deseleccionarUnidades();
+		});
 		deseleccionar.setPrefWidth(144);
 		
 		Boton atacar = new Boton("Atacar","#ffffff","#39516d","#6886aa");
+		atacar.setOnAction(new AtaqueControler());
 		atacar.setPrefWidth(144);
+		
+		Boton curar = new Boton( "Curar", "#ffffff", "#39516d","#6886aa" );
+		curar.setPrefWidth(144);
 		
 		//Controles de flechas
 		GridPane movimientos = new TecladoDeFlechas();
@@ -162,19 +173,19 @@ public class EscenaTablero extends Scene {
 	}
 	
 	public void pasarTurno() {
-		if(jugadorTurno==1) {
+		if(jugadorTurno == 2) {
 			VBox izquierda = new VBox();
 			izquierda.setPrefWidth(144);
 			panelPrincipal.setLeft(izquierda);
 			panelPrincipal.setRight(this.jugadorControles(jugadorRojoNombre, jugadorRojoEmblema));
-			jugadorTurno = 2;
+			jugadorTurno = 1;
 		}
 		else{
 			panelPrincipal.setLeft(this.jugadorControles(jugadorAzulNombre,jugadorAzulEmblema));
 			VBox derecha = new VBox();
 			derecha.setPrefWidth(144);
 			panelPrincipal.setRight(derecha);
-			jugadorTurno = 1;
+			jugadorTurno = 2;
 		}
 	}
 	
