@@ -1,6 +1,7 @@
 package fiuba.algo3.algoChess.controlador;
 
 import fiuba.algo3.algoChess.controlador.excepciones.*;
+import fiuba.algo3.algoChess.modelo.Direccion.Direccion;
 import fiuba.algo3.algoChess.vista.Informar;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

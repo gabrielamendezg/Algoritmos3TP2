@@ -1,6 +1,15 @@
 package fiuba.algo3.algoChess.vista;
 
 import fiuba.algo3.algoChess.controlador.*;
+import fiuba.algo3.algoChess.modelo.Direccion.Abajo;
+import fiuba.algo3.algoChess.modelo.Direccion.AbajoDerecha;
+import fiuba.algo3.algoChess.modelo.Direccion.AbajoIzquierda;
+import fiuba.algo3.algoChess.modelo.Direccion.Arriba;
+import fiuba.algo3.algoChess.modelo.Direccion.ArribaDerecha;
+import fiuba.algo3.algoChess.modelo.Direccion.ArribaIzquierda;
+import fiuba.algo3.algoChess.modelo.Direccion.Derecha;
+import fiuba.algo3.algoChess.modelo.Direccion.Direccion;
+import fiuba.algo3.algoChess.modelo.Direccion.Izquierda;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

@@ -2,25 +2,17 @@ package fiuba.algo3.algoChess.controlador;
 
 import fiuba.algo3.algoChess.controlador.excepciones.*;
 import fiuba.algo3.algoChess.modelo.Observador;
+import fiuba.algo3.algoChess.modelo.Direccion.Direccion;
 import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.entidades.*;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador;
-import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
-import fiuba.algo3.algoChess.modelo.jugador.JugadorB;
+import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.vista.Ganaste;
-import fiuba.algo3.algoChess.vista.imagenes.ImageCatapulta;
-import fiuba.algo3.algoChess.vista.imagenes.ImageCurandero;
-import fiuba.algo3.algoChess.vista.imagenes.ImageJinete;
-import fiuba.algo3.algoChess.vista.imagenes.ImageSoldadoDeInfanteria;
+import fiuba.algo3.algoChess.vista.imagenes.*;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
-import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
-import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacante;
-import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
-import fiuba.algo3.algoChess.vista.ImagenCelda;
-import fiuba.algo3.algoChess.vista.ImagenTablero;
-import fiuba.algo3.algoChess.vista.Informar;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.*;
+import fiuba.algo3.algoChess.vista.*;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 
@@ -235,6 +227,8 @@ public class AlgoChessControler implements Observador {
         					direccion.moverUnidad(algoChess,(Movible) unidad1);
                             this.deseleccionarUnidades();
         					this.completarMovimiento();
+        					this.change();
+        					this.setOnActionCeldaConImagen();
         				}else throw new UnMovimientoPorTurnoExcepcion();
         			} else throw new UnidadNoEsMovibleExcepcion();
         		}else throw new SeleccionaUnaUnidadQueTePertenecePrimeroExcepcion();
@@ -275,5 +269,34 @@ public class AlgoChessControler implements Observador {
             return new ImageSoldadoDeInfanteria("imagenes/SoldadoAzul.png",30,30,true,true);
         return null;
     }
+    
+	public void primeraUnidadSeleccionadaCuraSegundaUnidad() throws Exception {
+        if((unidad1 != null) && (unidad2 != null)) {
+            if (algoChess.getJugadorActivo().obtenerUnidades().contains(unidad2)) {
+                if (unidad1 instanceof Sanador){
+                	if(unidad2 instanceof Sanable) {
+                		if (!turnoCompletado()){
+                			algoChess.primeraUnidadSeleccionadaCuraSegundaUnidad((Sanador) unidad1, (Sanable) unidad2);
+                			celdasConImagenes.stream().forEach(celda -> {
+                				final Tooltip tooltip = new Tooltip();
+                				Posicionable unidadPosicionada = algoChess.unidadDeLaPosicion(celda.getX() + 1, celda.getY() + 1);
+                				if(unidadPosicionada != null) {
+                					tooltip.setText(
+                							"PUNTOS DE VIDA" + "\n" +
+                									Integer.toString(unidadPosicionada.obtenerVida()));
+                					celda.setTooltip(tooltip);
+                				}
+                			});
+                			new Informar("Curación recibida", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
+                			this.completarTurno();
+                			this.deseleccionarUnidades();
+                			this.determininarSiHayGanador();
+                			return;
+                    	}else throw new YaCompletasteTuTurnoExcecion();
+                    }else throw new UnidadNoEsSanableExcepcion();
+                } else throw new UnidadNoEsSanadorExcepcion();
+            } else throw new NoSePuedeCurarUnidadEnemigaExcepcion();
+        } throw new SelecionaUnaUnidaMasParaAtacarExcepcion();		
+	}
 
 }

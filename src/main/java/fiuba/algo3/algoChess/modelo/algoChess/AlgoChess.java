@@ -4,6 +4,8 @@ import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacante;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.Sanable;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.Sanador;
 import fiuba.algo3.algoChess.modelo.tablero.*;
 
 /*Rearmar base
@@ -75,6 +77,7 @@ public class AlgoChess {
 			tablero.atacanteAtacarAtacable((JugadorB) jugadorActivo, unidad1, unidad2);
 	}
 	
+	
 	public void moverUnidadDerecha(Movible unidad) {
 		if(jugadorActivo instanceof JugadorA)
 			tablero.moverMovibleADerecha((JugadorA) jugadorActivo, unidad);
@@ -140,5 +143,9 @@ public class AlgoChess {
 		if(!jugadorA.sigueEnJuego()) return jugadorB;
 		else if(!jugadorB.sigueEnJuego()) return jugadorA;
 		return null;
+	}
+
+	public void primeraUnidadSeleccionadaCuraSegundaUnidad(Sanador unidad1, Sanable unidad2) {
+		unidad1.sanar(unidad2);
 	}
 }
