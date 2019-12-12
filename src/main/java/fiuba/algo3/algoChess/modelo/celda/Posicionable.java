@@ -13,4 +13,6 @@ public interface Posicionable {
     int costo();
 
     void addObserver(Observador observador);
+
+    int obtenerVida();
 }

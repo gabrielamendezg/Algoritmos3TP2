@@ -1,6 +1,7 @@
 package fiuba.algo3.algoChess.vista;
 
 import fiuba.algo3.algoChess.controlador.AlgoChessControler;
+import fiuba.algo3.algoChess.controlador.AtaqueControler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -126,6 +127,7 @@ public class EscenaTablero extends Scene {
 		deseleccionar.setPrefWidth(144);
 		
 		Boton atacar = new Boton("Atacar","#ffffff","#39516d","#6886aa");
+		atacar.setOnAction(new AtaqueControler());
 		atacar.setPrefWidth(144);
 		
 		//Controles de flechas

@@ -1,13 +1,16 @@
 package fiuba.algo3.algoChess.controlador;
 
-import fiuba.algo3.algoChess.controlador.excepciones.NoSePuedeSeleccionarMasDeDosUnidadesExcepcion;
-import fiuba.algo3.algoChess.controlador.excepciones.SeleccionaUnaUnidadQueNoTePerteneceExcepcion;
-import fiuba.algo3.algoChess.controlador.excepciones.SeleccionaUnaUnidadQueTePertenecePrimeroExcepcion;
+import fiuba.algo3.algoChess.controlador.excepciones.*;
 import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
+import fiuba.algo3.algoChess.modelo.entidades.Curandero;
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacador;
 import fiuba.algo3.algoChess.vista.ImagenCelda;
 import fiuba.algo3.algoChess.vista.ImagenTablero;
+import fiuba.algo3.algoChess.vista.Informar;
+import javafx.scene.control.Tooltip;
 
 import java.util.LinkedList;
 import java.util.Random;
@@ -67,9 +70,7 @@ public class AlgoChessControler {
                 unidad1 = algoChess.unidadDeLaPosicion(x + 1, y + 1);
             else throw new SeleccionaUnaUnidadQueTePertenecePrimeroExcepcion();
         }else if(unidad2 == null) {
-            if(!algoChess.getJugadorActivo().obtenerUnidades().contains(algoChess.unidadDeLaPosicion(x + 1, y + 1)))
-                unidad2 = algoChess.unidadDeLaPosicion(x + 1, y + 1);
-            else throw new SeleccionaUnaUnidadQueNoTePerteneceExcepcion();
+            unidad2 = algoChess.unidadDeLaPosicion(x + 1, y + 1);
         }else throw new NoSePuedeSeleccionarMasDeDosUnidadesExcepcion();
     }
 
@@ -79,6 +80,14 @@ public class AlgoChessControler {
 
     public void setOnActionCeldaConImagen() {
         celdasConImagenes.stream().forEach(celda -> celda.setOnAction(new CeldaControler(celda)));
+        celdasConImagenes.stream().forEach(celda -> {
+            final Tooltip tooltip = new Tooltip();
+            tooltip.setText(
+                    "PUNTOS DE VIDA" + "\n" +
+                           algoChess.unidadDeLaPosicion(celda.getX() + 1, celda.getY() + 1) + "\n"
+            );
+            celda.setTooltip(tooltip);
+        });
     }
 
     public void terminarDePosicionar() {
@@ -94,5 +103,18 @@ public class AlgoChessControler {
             ImagenTablero.getImagenTablero().desseleccionarPosicion(unidad2.getPosicion().getX() -1, unidad2.getPosicion().getY() - 1);
             unidad2 = null;
         }
+    }
+
+    public void primeraUnidadSeleccionadaAtacaSegundaUnida() {
+        if((unidad1 != null) && (unidad2 != null)) {
+            if (!algoChess.getJugadorActivo().obtenerUnidades().contains(unidad2)) {
+                if (!(unidad1 instanceof Curandero)){
+                    algoChess.primeraUnidadSeleccionadaAtacaSegundaUnida((Atacador) unidad1, (Atacable) unidad2);
+                    new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
+                    this.deseleccionarUnidades();
+                    return;
+                } else throw new UnidadNoEsAtacadorExcepcion();
+            } else throw new NoSePuedeAtacarUnidadPropiaExcepcion();
+        } throw new SelecionaUnaUnidaMasParaAtacarExcepcion();
     }
 }
