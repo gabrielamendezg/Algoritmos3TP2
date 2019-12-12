@@ -210,10 +210,20 @@ public class AlgoChessControler implements Observador {
             posicionablesRojos.remove(unidadMuerta);
         });
 
-        //se reinicia tablero imagen
-        ImagenTablero.getImagenTablero().reiniciar();
+        //elimino imagenes del tablero
+        celdasConImagenes.stream().forEach( celda -> {
+            celda.setGraphic(null);
+            celda.setOnAction(null);
+            ImagenTablero.getImagenTablero().desseleccionarPosicion(celda.getX(), celda.getY());
+        });
+
+        //elinmo las celdad viejas
+        celdasConImagenes = new LinkedList<ImagenCelda>();
+
         //Mostrar imagenes De los sobrevivientes y de los que se movieron
         this.mostrarImagenDeLosPosicionables();
+
+        this.setOnActionCeldaConImagen();
     }    
   
     public void moverUnidad(Direccion direccion) {
@@ -222,8 +232,8 @@ public class AlgoChessControler implements Observador {
         		if(algoChess.getJugadorActivo().obtenerUnidades().contains(unidad1)) {
         			if(unidad1 instanceof Movible) {
         				if(!movimientoCompletado) {
-        					this.deseleccionarUnidades();
         					direccion.moverUnidad(algoChess,(Movible) unidad1);
+                            this.deseleccionarUnidades();
         					this.completarMovimiento();
         				}else throw new UnMovimientoPorTurnoExcepcion();
         			} else throw new UnidadNoEsMovibleExcepcion();

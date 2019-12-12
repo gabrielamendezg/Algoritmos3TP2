@@ -1,5 +1,6 @@
 package fiuba.algo3.algoChess.vista;
 
+import fiuba.algo3.algoChess.controlador.AlgoChessControler;
 import fiuba.algo3.algoChess.modelo.celda.CeldaA;
 import fiuba.algo3.algoChess.modelo.celda.CeldaB;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
@@ -19,17 +20,22 @@ public class ImagenTablero extends GridPane {
     {
         super();
 
-        for(int x = 0; x < 10; x++) {
-            for (int y = 0; y < 20; y++) {
-                celdas[x][y] = new ImagenCelda(x,y,colorJugadorA);
-                this.add(celdas[x][y],x,y);
+        int aux = 0;
+        for(int y = 19; 0 <= y ; y--) {
+            for (int x = 0; x < 10; x++) {
+                celdas[x][aux] = new ImagenCelda(x,aux,colorJugadorA);
+                this.add(celdas[x][aux],x,y);
             }
+            aux++;
         }
-        for(int x = 10; x < 20; x++) {
-            for (int y = 0; y < 20; y++) {
-                celdas[x][y] = new ImagenCelda(x,y,colorJugadorB);
-                this.add(celdas[x][y],x,y);
+
+        aux = 0;
+        for(int y = 19; 0 <= y ; y--) {
+            for (int x = 10; x < 20; x++) {
+                celdas[x][aux] = new ImagenCelda(x,aux,colorJugadorB);
+                this.add(celdas[x][aux],x,y);
             }
+            aux++;
         }
    }
 
@@ -45,22 +51,9 @@ public class ImagenTablero extends GridPane {
                 + " -fx-border-width: 1px");
     }
 
-    public void reiniciar() {
-        for(int x = 0; x < 10; x++) {
-            for (int y = 0; y < 20; y++) {
-                celdas[x][y] = new ImagenCelda(x,y,colorJugadorA);
-                this.add(celdas[x][y],x,y);
-            }
-        }
-        for(int x = 10; x < 20; x++) {
-            for (int y = 0; y < 20; y++) {
-                celdas[x][y] = new ImagenCelda(x,y,colorJugadorB);
-                this.add(celdas[x][y],x,y);
-            }
-        }
-    }
 
     public void colocarImagenEnLaPosicion(Image image, int x, int y) {
         celdas[x][y].setGraphic(new ImageView(image));
+        AlgoChessControler.getAlgoChessControler().addCeldaConImagen(celdas[x][y]);
     }
 }
