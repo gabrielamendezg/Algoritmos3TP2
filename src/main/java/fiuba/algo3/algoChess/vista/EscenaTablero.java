@@ -128,6 +128,9 @@ public class EscenaTablero extends Scene {
 		Boton atacar = new Boton("Atacar","#ffffff","#39516d","#6886aa");
 		atacar.setPrefWidth(144);
 		
+		Boton curar = new Boton( "Curar", "#ffffff", "#39516d","#6886aa" );
+		curar.setPrefWidth(144);
+		
 		//Controles de flechas
 		GridPane movimientos = new TecladoDeFlechas();
 		movimientos.setAlignment(Pos.CENTER);
