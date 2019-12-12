@@ -23,11 +23,11 @@ public class CeldaControler implements EventHandler<ActionEvent> {
             imagenCelda.setStyle("-fx-background-color: #f2fcf2; -fx-border-color: #515260;"
                     + " -fx-border-width: 1px");
         } catch (NoSePuedeSeleccionarMasDeDosUnidadesExcepcion e) {
-            new Informar("Dos Unidades Seleccionados", "No se puede seleccionar mas de dos unidades");
+            new Informar("Dos Unidades Seleccionadas", "No se puede seleccionar mas de dos unidades");
         } catch (SeleccionaUnaUnidadQueTePertenecePrimeroExcepcion e){
-            new Informar("Seleccion de unida ", "Selecciona primero una unidad que te pertenece");
+            new Informar("Seleccion de unidad ", "Selecciona una unidad aliada");
         } catch (SeleccionaUnaUnidadQueNoTePerteneceExcepcion e){
-            new Informar("Seleccion de unida ", "Selecciona el segundo una unidad que no te pertenece");
+            new Informar("Seleccion de unidad ", "Selecciona una unidad enemiga");
         }
 
     }
