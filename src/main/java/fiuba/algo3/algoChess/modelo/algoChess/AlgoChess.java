@@ -129,5 +129,15 @@ public class AlgoChess {
 			tablero.moverMovibleAArribaIzquierda((JugadorA) jugadorActivo, unidad);
 		if(jugadorActivo instanceof JugadorB)
 			tablero.moverMovibleAArribaIzquierda((JugadorB) jugadorActivo, unidad);
+
+	public boolean hayGanador() {
+		if(!jugadorA.sigueEnJuego() || !jugadorB.sigueEnJuego()) return true;
+		return false;
+	}
+
+	public Jugador obtenerGanador() {
+		if(!jugadorA.sigueEnJuego()) return jugadorB;
+		else if(!jugadorB.sigueEnJuego()) return jugadorA;
+		return null;
 	}
 }

@@ -18,7 +18,6 @@ public class EscenaTablero extends Scene {
 	private ImageView jugadorRojoEmblema = new ImageView(new Image("imagenes/emblemaRojo.PNG",50,50,true,true));
 	private String jugadorAzulNombre;
 	private String jugadorRojoNombre;
-	public ImagenTablero tablero;
 	public Stage stagePrincipal;
 	public BorderPane panelPrincipal;
 	public int jugadorTurno;
@@ -36,7 +35,7 @@ public class EscenaTablero extends Scene {
 		derecha.setPrefWidth(144);
 		panelPrincipal.setRight(derecha);
 
-		panelPrincipal.setCenter(tablero);
+		panelPrincipal.setCenter(ImagenTablero.getImagenTablero());
 		tablero.setAlignment(Pos.CENTER);
 		panelPrincipal.setStyle("-fx-background-color: #484860");
 		panelPrincipal.setCenterShape(true);
