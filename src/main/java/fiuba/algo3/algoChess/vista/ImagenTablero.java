@@ -14,6 +14,7 @@ public class ImagenTablero extends GridPane {
 	public ImagenCelda seleccionado = null;
 	private String colorJugadorA = "#8cb5bc";
 	private String colorJugadorB = "#da6166";
+	
 	private ImagenTablero()
     {
         super();

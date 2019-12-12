@@ -17,6 +17,7 @@ import javafx.application.Platform;
 import javafx.scene.control.Label;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacante;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
 import fiuba.algo3.algoChess.vista.ImagenCelda;
 import fiuba.algo3.algoChess.vista.ImagenTablero;
 import fiuba.algo3.algoChess.vista.Informar;
@@ -34,8 +35,9 @@ public class AlgoChessControler implements Observador {
     private Label puntosLabel;
     private Posicionable unidad1 = null;
     private Posicionable unidad2 = null;
-    private LinkedList <ImagenCelda> celdasConImagenes = new <ImagenCelda>LinkedList();
+    private LinkedList <ImagenCelda> celdasConImagenes = new LinkedList<ImagenCelda>();
     private boolean turnoCompletado = false;
+    private boolean movimientoCompletado = false;
     private ArrayList <Posicionable> posicionablesAzules = new ArrayList<>();
     private ArrayList <Posicionable> posicionablesRojos = new ArrayList<>();
 
@@ -56,6 +58,7 @@ public class AlgoChessControler implements Observador {
         this.deseleccionarUnidades();
         AlgoChess.getAlgoChess().pasarTurno();
         turnoCompletado = false;
+        movimientoCompletado = false;
     }
 
     public void posicionableCataputaEnEspera() {
@@ -180,7 +183,10 @@ public class AlgoChessControler implements Observador {
     private boolean turnoCompletado() {
         return turnoCompletado;
     }
-
+    
+    private void completarMovimiento() {
+    	movimientoCompletado = true;
+    }
     @Override
     public void change() {
 
@@ -208,8 +214,24 @@ public class AlgoChessControler implements Observador {
         ImagenTablero.getImagenTablero().reiniciar();
         //Mostrar imagenes De los sobrevivientes y de los que se movieron
         this.mostrarImagenDeLosPosicionables();
+    }    
+  
+    public void moverUnidad(Direccion direccion) {
+    	if((unidad1 != null)) {
+    		if(unidad2 == null) {
+        		if(algoChess.getJugadorActivo().obtenerUnidades().contains(unidad1)) {
+        			if(unidad1 instanceof Movible) {
+        				if(!movimientoCompletado) {
+        					this.deseleccionarUnidades();
+        					direccion.moverUnidad(algoChess,(Movible) unidad1);
+        					this.completarMovimiento();
+        				}else throw new UnMovimientoPorTurnoExcepcion();
+        			} else throw new UnidadNoEsMovibleExcepcion();
+        		}else throw new SeleccionaUnaUnidadQueTePertenecePrimeroExcepcion();
+    		}else throw new SoloSePuedeMoverUnaUnidadExcepcion();
+    	}else throw new NoHayNingunaUnidadSeleccionadaExcepcion();
     }
-
+    
     private void mostrarImagenDeLosPosicionables() {
         posicionablesRojos.stream().forEach(unidadPosicionado -> {
             ImagenTablero.getImagenTablero().colocarImagenEnLaPosicion(this.imagenDePosicionableRojo(unidadPosicionado),unidadPosicionado.getPosicion().getX() - 1, unidadPosicionado.getPosicion().getY() - 1);
