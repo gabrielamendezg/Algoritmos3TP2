@@ -1,6 +1,7 @@
 package fiuba.algo3.algoChess.modelo.algoChess;
 
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
+import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 import fiuba.algo3.algoChess.modelo.tablero.*;
 
 /*Rearmar base
@@ -59,5 +60,9 @@ public class AlgoChess {
 	public void jugadorActivoRojo() {
 		jugadorActivo = jugadorB;
 		jugadorOponente = jugadorA;
+	}
+
+	public Posicionable unidadDeLaPosicion(int x, int y) {
+		return tablero.getPosicionableDeLaPosicion(new Posicion(x, y));
 	}
 }

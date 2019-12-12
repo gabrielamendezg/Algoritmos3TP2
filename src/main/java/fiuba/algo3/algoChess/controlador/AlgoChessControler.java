@@ -1,14 +1,24 @@
 package fiuba.algo3.algoChess.controlador;
 
+import fiuba.algo3.algoChess.controlador.excepciones.NoSePuedeSeleccionarMasDeDosUnidadesExcepcion;
+import fiuba.algo3.algoChess.controlador.excepciones.SeleccionaUnaUnidadQueNoTePerteneceExcepcion;
+import fiuba.algo3.algoChess.controlador.excepciones.SeleccionaUnaUnidadQueTePertenecePrimeroExcepcion;
 import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
+import fiuba.algo3.algoChess.modelo.entidades.Unidad;
+import fiuba.algo3.algoChess.vista.ImagenCelda;
+import fiuba.algo3.algoChess.vista.ImagenTablero;
 
+import java.util.LinkedList;
 import java.util.Random;
 
 public class AlgoChessControler {
     private static AlgoChessControler algoChessControler = new AlgoChessControler();
     AlgoChess algoChess = AlgoChess.getAlgoChess();
     private Posicionable posicionable;
+    private Posicionable unidad1 = null;
+    private Posicionable unidad2 = null;
+    private LinkedList <ImagenCelda> celdasConImagenes = new <ImagenCelda>LinkedList();
 
     private AlgoChessControler(){}
     public static AlgoChessControler getAlgoChessControler() {
@@ -20,6 +30,7 @@ public class AlgoChessControler {
     }
 
     public void pasarTurno() {
+        this.deseleccionarUnidades();
         AlgoChess.getAlgoChess().pasarTurno();
     }
 
@@ -47,6 +58,41 @@ public class AlgoChessControler {
         }else {
             algoChess.jugadorActivoRojo();
             return turno;
+        }
+    }
+
+    public void posicionXYSeleccionado(int x, int y) {
+        if(unidad1 == null ) {
+            if(algoChess.getJugadorActivo().obtenerUnidades().contains(algoChess.unidadDeLaPosicion(x + 1, y + 1)))
+                unidad1 = algoChess.unidadDeLaPosicion(x + 1, y + 1);
+            else throw new SeleccionaUnaUnidadQueTePertenecePrimeroExcepcion();
+        }else if(unidad2 == null) {
+            if(!algoChess.getJugadorActivo().obtenerUnidades().contains(algoChess.unidadDeLaPosicion(x + 1, y + 1)))
+                unidad2 = algoChess.unidadDeLaPosicion(x + 1, y + 1);
+            else throw new SeleccionaUnaUnidadQueNoTePerteneceExcepcion();
+        }else throw new NoSePuedeSeleccionarMasDeDosUnidadesExcepcion();
+    }
+
+    public void addCeldaConImagen(ImagenCelda celda) {
+        celdasConImagenes.add(celda);
+    }
+
+    public void setOnActionCeldaConImagen() {
+        celdasConImagenes.stream().forEach(celda -> celda.setOnAction(new CeldaControler(celda)));
+    }
+
+    public void terminarDePosicionar() {
+        AlgoChess.getAlgoChess().jugadorActivoRojo();
+    }
+
+    public void deseleccionarUnidades() {
+        if(unidad1 != null){
+            ImagenTablero.getImagenTablero().desseleccionarPosicion(unidad1.getPosicion().getX() -1, unidad1.getPosicion().getY() - 1);
+            unidad1 = null;
+        }
+        if(unidad2 != null){
+            ImagenTablero.getImagenTablero().desseleccionarPosicion(unidad2.getPosicion().getX() -1, unidad2.getPosicion().getY() - 1);
+            unidad2 = null;
         }
     }
 }

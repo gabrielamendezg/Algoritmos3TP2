@@ -57,7 +57,7 @@ public class EscenaTablero extends Scene {
 		Boton terminar = new Boton("Terminar","#ffffff","#39516d","#6886aa");
 		terminar.setOnAction(e -> {
 			this.eleccionJugadorRojo(jugadorRojoNombre,jugadorRojoEmblema);
-			AlgoChessControler.getAlgoChessControler().pasarTurno();
+			AlgoChessControler.getAlgoChessControler().terminarDePosicionar();
 		});
 		HBox botonterminar = new HBox(terminar);
 		botonterminar.setAlignment(Pos.CENTER);
@@ -94,12 +94,15 @@ public class EscenaTablero extends Scene {
 	}
 	
 	private void iniciarJuego(boolean turno) {
+		AlgoChessControler.getAlgoChessControler().setOnActionCeldaConImagen();
 		if(turno) {
+			jugadorTurno = 2;
 			panelPrincipal.setLeft(this.jugadorControles(jugadorAzulNombre,jugadorAzulEmblema));
 			VBox derecha = new VBox();
 			derecha.setPrefWidth(144);
 			panelPrincipal.setRight(derecha);
 		}else {
+			jugadorTurno = 1;
 			VBox izquierda = new VBox();
 			izquierda.setPrefWidth(144);
 			panelPrincipal.setLeft(izquierda);
@@ -117,6 +120,9 @@ public class EscenaTablero extends Scene {
 		pasarturno.setPrefWidth(144);
 		
 		Boton deseleccionar = new Boton("Deseleccionar","#ffffff","#39516d","#6886aa");
+		deseleccionar.setOnAction(e -> {
+			AlgoChessControler.getAlgoChessControler().deseleccionarUnidades();
+		});
 		deseleccionar.setPrefWidth(144);
 		
 		Boton atacar = new Boton("Atacar","#ffffff","#39516d","#6886aa");
@@ -135,19 +141,19 @@ public class EscenaTablero extends Scene {
 	}
 	
 	public void pasarTurno() {
-		if(jugadorTurno==1) {
+		if(jugadorTurno == 2) {
 			VBox izquierda = new VBox();
 			izquierda.setPrefWidth(144);
 			panelPrincipal.setLeft(izquierda);
 			panelPrincipal.setRight(this.jugadorControles(jugadorRojoNombre, jugadorRojoEmblema));
-			jugadorTurno = 2;
+			jugadorTurno = 1;
 		}
 		else{
 			panelPrincipal.setLeft(this.jugadorControles(jugadorAzulNombre,jugadorAzulEmblema));
 			VBox derecha = new VBox();
 			derecha.setPrefWidth(144);
 			panelPrincipal.setRight(derecha);
-			jugadorTurno = 1;
+			jugadorTurno = 2;
 		}
 	}
 	

@@ -6,6 +6,7 @@ import fiuba.algo3.algoChess.modelo.Excepciones.PuntosInsuficientesExcepcion;
 import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import fiuba.algo3.algoChess.vista.ImagenCelda;
 import fiuba.algo3.algoChess.vista.Informar;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -79,6 +80,7 @@ public class DragClase{
                         imageView.setFitHeight(30);
                         imageView.setFitWidth(30);
                         celda.setGraphic(imageView);
+                        algoChessControler.addCeldaConImagen(celda);
                         success = true;
                     } catch (FilaOColumnaNoPerteneceATuParteDelTableroExcepcion e) {
                         new Informar("Territorio Enemigo!", "Solo puedes posicionar unidades en tu territorio");
