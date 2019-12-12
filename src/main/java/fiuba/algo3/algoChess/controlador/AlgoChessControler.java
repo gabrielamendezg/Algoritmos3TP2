@@ -2,8 +2,8 @@ package fiuba.algo3.algoChess.controlador;
 
 import fiuba.algo3.algoChess.controlador.excepciones.*;
 import fiuba.algo3.algoChess.modelo.Observador;
+import fiuba.algo3.algoChess.modelo.Direccion.Direccion;
 import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
-import fiuba.algo3.algoChess.modelo.algoChess.Direccion;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.entidades.*;
 import fiuba.algo3.algoChess.modelo.jugador.*;
