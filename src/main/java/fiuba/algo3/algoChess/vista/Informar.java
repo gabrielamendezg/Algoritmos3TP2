@@ -5,6 +5,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
+import javafx.scene.media.*;
+
+import java.io.File;
 
 public class Informar {
     public Informar(String titulo, String mensaje) {
@@ -31,7 +34,9 @@ public class Informar {
 	    "-fx-text-fill: #ffffff;"+
 	    "-fx-font-weight: bold;"+
 	    "-fx-font-size: 1.1em;");
-        
+            Media sound = new Media(new File("src/main/resources/sonidos/Shutdown.wav").toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
         alert.showAndWait();
     }
 }

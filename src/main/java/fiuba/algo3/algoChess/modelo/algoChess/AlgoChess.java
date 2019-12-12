@@ -74,4 +74,15 @@ public class AlgoChess {
 		if(jugadorActivo instanceof JugadorB)
 			tablero.atacanteAtacarAtacable((JugadorB) jugadorActivo, unidad1, unidad2);
 	}
+
+	public boolean hayGanador() {
+		if(!jugadorA.sigueEnJuego() || !jugadorB.sigueEnJuego()) return true;
+		return false;
+	}
+
+	public Jugador obtenerGanador() {
+		if(!jugadorA.sigueEnJuego()) return jugadorB;
+		else if(!jugadorB.sigueEnJuego()) return jugadorA;
+		return null;
+	}
 }

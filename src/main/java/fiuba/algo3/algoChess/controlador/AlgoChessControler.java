@@ -5,11 +5,15 @@ import fiuba.algo3.algoChess.modelo.Observador;
 import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.entidades.*;
+import fiuba.algo3.algoChess.modelo.jugador.Jugador;
 import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
+import fiuba.algo3.algoChess.modelo.jugador.JugadorB;
+import fiuba.algo3.algoChess.vista.Ganaste;
 import fiuba.algo3.algoChess.vista.imagenes.ImageCatapulta;
 import fiuba.algo3.algoChess.vista.imagenes.ImageCurandero;
 import fiuba.algo3.algoChess.vista.imagenes.ImageJinete;
 import fiuba.algo3.algoChess.vista.imagenes.ImageSoldadoDeInfanteria;
+import javafx.application.Platform;
 import javafx.scene.control.Label;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacante;
@@ -148,11 +152,25 @@ public class AlgoChessControler implements Observador {
                         new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
                         this.completarTurno();
                         this.deseleccionarUnidades();
+                        this.determininarSiHayGanador();
                         return;
                     }else throw new YaCompletasteTuTurnoExcecion();
                 } else throw new UnidadNoEsAtacanteExcepcion();
             } else throw new NoSePuedeAtacarUnidadPropiaExcepcion();
         } throw new SelecionaUnaUnidaMasParaAtacarExcepcion();
+    }
+
+    private void determininarSiHayGanador() {
+        if (algoChess.hayGanador()) {
+            Jugador ganador = algoChess.obtenerGanador();
+            if (ganador instanceof JugadorA){
+                new Ganaste((JugadorA) ganador);
+                Platform.exit();
+            }else {
+                new Ganaste((JugadorB) ganador);
+                Platform.exit();
+            }
+        }
     }
 
     private void completarTurno() {
