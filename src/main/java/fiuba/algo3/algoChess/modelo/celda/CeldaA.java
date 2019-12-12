@@ -5,7 +5,7 @@ import fiuba.algo3.algoChess.modelo.Observador;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.modelo.tablero.*;
 
-public class CeldaA extends Celda {
+public class CeldaA extends Celda implements Observador {
 
 	public CeldaA() {
 		super();
@@ -35,8 +35,8 @@ public class CeldaA extends Celda {
 
 	@Override
 	public void change() {
-		if(this.unidad.obtenerVida() == 0)
-			this.celdaVacia();
+		if(this.unidad.obtenerVida() <= 0)
+			this.vaciarCelda();
 	}
 	
 }

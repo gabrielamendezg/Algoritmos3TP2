@@ -1,10 +1,12 @@
 package fiuba.algo3.algoChess.modelo.celda;
 
 import fiuba.algo3.algoChess.modelo.Excepciones.*;
+import fiuba.algo3.algoChess.modelo.Observador;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
+import javafx.collections.ObservableList;
 
-public class CeldaB extends Celda {
+public class CeldaB extends Celda implements Observador {
 	public CeldaB() {
 		super();
 	}
@@ -33,7 +35,7 @@ public class CeldaB extends Celda {
 
 	@Override
 	public void change() {
-		if(this.unidad.obtenerVida() == 0)
-			this.celdaVacia();
+		if(this.unidad.obtenerVida() <= 0)
+			this.vaciarCelda();
 	}
 }

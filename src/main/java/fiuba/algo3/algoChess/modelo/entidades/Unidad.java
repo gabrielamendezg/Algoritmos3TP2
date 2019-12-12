@@ -27,9 +27,9 @@ public abstract class Unidad extends Observable implements Posicionable {
 	}
 
 	public void recibirAtaque(int daño) {
-		vida = vida- daño;
+		vida = vida - daño;
 		if(vida <= 0)
-			notifyObservers();
+			this.notifyObservers();
 
 	}
 
@@ -46,6 +46,7 @@ public abstract class Unidad extends Observable implements Posicionable {
 	@Override
 	public void setPosicion(Posicion newPosicion) {
 		posicion = newPosicion;
+		this.notifyObservers();
 	}
 	
 	@Override

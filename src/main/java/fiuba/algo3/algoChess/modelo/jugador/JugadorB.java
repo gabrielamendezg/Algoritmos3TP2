@@ -88,11 +88,13 @@ public class JugadorB implements Jugador, Observador {
 
 	@Override
 	public void change() {
-		AtomicReference<Unidad> unidadConVidaCero = new AtomicReference<>();
+		ArrayList<Unidad> unidadConVidaCero = new ArrayList<>();
 		unidades.stream().forEach(unidadPosicionado -> {
-			if(unidadPosicionado.obtenerVida() == 0)
-				unidadConVidaCero.set(unidadPosicionado);
+			if(unidadPosicionado.obtenerVida() <= 0)
+				unidadConVidaCero.add(unidadPosicionado);
 		});
-		this.eliminarUnidad(unidadConVidaCero.get());
+		unidadConVidaCero.stream().forEach(unidadMuerta -> {
+			this.eliminarUnidad(unidadMuerta);
+		});
 	}
 }

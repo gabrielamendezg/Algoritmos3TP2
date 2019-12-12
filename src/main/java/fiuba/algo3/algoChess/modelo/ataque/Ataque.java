@@ -15,9 +15,9 @@ public abstract class Ataque {
 		  int distanciaX = Math.abs((unidadAtacada.getPosicion().getX()) - posicionXUnidadAtacante);
 		 int distanciaY = Math.abs((unidadAtacada.getPosicion().getY()) - posicionYUnidadAtacante);
 
-		 if(distanciaY == 0) {
+		 if(distanciaY <= rangoInicial) {
 			 if ((rangoInicial <= distanciaX) && (distanciaX <= rangoFinal)) return true;
-		 }else if (distanciaX == 0){
+		 }else if (distanciaX <= rangoInicial){
 		 	if ((rangoInicial <= distanciaY) && (distanciaY <= rangoFinal)) return true;
 		 }else if (((rangoInicial <= distanciaX) && (distanciaX <= rangoFinal) ) && ((rangoInicial <= distanciaY) && (distanciaY <= rangoFinal))){
 			return true;

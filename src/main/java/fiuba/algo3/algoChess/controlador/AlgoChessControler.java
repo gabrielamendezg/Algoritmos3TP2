@@ -1,11 +1,11 @@
 package fiuba.algo3.algoChess.controlador;
 
 import fiuba.algo3.algoChess.controlador.excepciones.*;
+import fiuba.algo3.algoChess.modelo.Observador;
 import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
+import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
 import javafx.scene.control.Label;
-import fiuba.algo3.algoChess.modelo.entidades.Curandero;
-import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacante;
 import fiuba.algo3.algoChess.vista.ImagenCelda;
@@ -13,10 +13,11 @@ import fiuba.algo3.algoChess.vista.ImagenTablero;
 import fiuba.algo3.algoChess.vista.Informar;
 import javafx.scene.control.Tooltip;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class AlgoChessControler {
+public class AlgoChessControler implements Observador {
     private static AlgoChessControler algoChessControler = new AlgoChessControler();
     AlgoChess algoChess = AlgoChess.getAlgoChess();
     private Posicionable posicionable;
@@ -25,6 +26,8 @@ public class AlgoChessControler {
     private Posicionable unidad2 = null;
     private LinkedList <ImagenCelda> celdasConImagenes = new <ImagenCelda>LinkedList();
     private boolean turnoCompletado = false;
+    private ArrayList <Posicionable> posicionablesAzules = new ArrayList<>();
+    private ArrayList <Posicionable> posicionablesRojos = new ArrayList<>();
 
     private AlgoChessControler(){}
     public static AlgoChessControler getAlgoChessControler() {
@@ -33,6 +36,10 @@ public class AlgoChessControler {
 
     public void posicionarPosicionable(int x, int y) {
         AlgoChess.getAlgoChess().posicionarPosicionable(posicionable,x + 1, y + 1);
+        if (algoChess.getJugadorActivo() instanceof JugadorA)
+            posicionablesAzules.add(posicionable);
+        else posicionablesRojos.add(posicionable);
+        posicionable.addObserver(this);
     }
 
     public void pasarTurno() {
@@ -124,10 +131,13 @@ public class AlgoChessControler {
                         algoChess.primeraUnidadSeleccionadaAtacaSegundaUnida((Atacante) unidad1, (Atacable) unidad2);
                         celdasConImagenes.stream().forEach(celda -> {
                             final Tooltip tooltip = new Tooltip();
-                            tooltip.setText(
-                                    "PUNTOS DE VIDA" + "\n" +
-                                            Integer.toString(algoChess.unidadDeLaPosicion(celda.getX() + 1, celda.getY() + 1).obtenerVida()));
-                            celda.setTooltip(tooltip);
+                            Posicionable unidadPosicionada = algoChess.unidadDeLaPosicion(celda.getX() + 1, celda.getY() + 1);
+                            if(unidadPosicionada != null) {
+                                tooltip.setText(
+                                        "PUNTOS DE VIDA" + "\n" +
+                                                Integer.toString(unidadPosicionada.obtenerVida()));
+                                celda.setTooltip(tooltip);
+                            }
                         });
                         new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
                         this.completarTurno();
@@ -145,5 +155,10 @@ public class AlgoChessControler {
 
     private boolean turnoCompletado() {
         return turnoCompletado;
+    }
+
+    @Override
+    public void change() {
+
     }
 }
