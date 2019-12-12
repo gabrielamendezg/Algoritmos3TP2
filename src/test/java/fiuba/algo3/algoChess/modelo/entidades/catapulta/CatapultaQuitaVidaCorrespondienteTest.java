@@ -22,7 +22,7 @@ class CatapultaQuitaVidaCorrespondienteTest {
 	
 	@Test
 	void test() {
-		catapulta.setPosicion(new Posicion(1, 7));
+		catapulta.setPosicion(new Posicion(1, 17));
 		jinete.setPosicion(new Posicion(1, 1));
 		ArrayList<Atacable> atacables = new ArrayList<Atacable>();
 		atacables.add(jinete);
