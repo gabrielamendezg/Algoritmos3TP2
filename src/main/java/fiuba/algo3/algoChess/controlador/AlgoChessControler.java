@@ -98,14 +98,9 @@ public class AlgoChessControler {
             final Tooltip tooltip = new Tooltip();
             tooltip.setText(
                     "PUNTOS DE VIDA" + "\n" +
-                           algoChess.unidadDeLaPosicion(celda.getX() + 1, celda.getY() + 1) + "\n"
-            );
+                            Integer.toString(algoChess.unidadDeLaPosicion(celda.getX() + 1, celda.getY() + 1).obtenerVida()));
             celda.setTooltip(tooltip);
         });
-    }
-
-    public void terminarDePosicionar() {
-        AlgoChess.getAlgoChess().jugadorActivoRojo();
     }
 
     public void deseleccionarUnidades() {
