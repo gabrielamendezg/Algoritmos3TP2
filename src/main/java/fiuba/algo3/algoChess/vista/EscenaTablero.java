@@ -167,7 +167,7 @@ public class EscenaTablero extends Scene {
 		
 		//Creo VBox.
 		VBox controles = new VBox();
-		controles.getChildren().addAll(this.tagJugador(nombreJugador,icono),pasarturno,movimientos,atacar,deseleccionar);
+		controles.getChildren().addAll(this.tagJugador(nombreJugador,icono),pasarturno,movimientos,atacar,curar,deseleccionar);
 		controles.setStyle("-fx-spacing: 5");
 		controles.setPrefWidth(144);
 		return controles;

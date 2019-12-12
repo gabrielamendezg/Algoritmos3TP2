@@ -77,14 +77,6 @@ public class AlgoChess {
 			tablero.atacanteAtacarAtacable((JugadorB) jugadorActivo, unidad1, unidad2);
 	}
 	
-	public void primeraUnidadSeleccionadaCuraSegundaUnidad(Sanador unidad1, Sanable unidad2) {
-		if(jugadorActivo instanceof JugadorA)
-			//tablero.atacanteAtacarAtacable((JugadorA) jugadorActivo, unidad1, unidad2);
-			;
-		if(jugadorActivo instanceof JugadorB)
-			//tablero.atacanteAtacarAtacable((JugadorB) jugadorActivo, unidad1, unidad2);
-			;
-	}
 	
 	public void moverUnidadDerecha(Movible unidad) {
 		if(jugadorActivo instanceof JugadorA)
@@ -151,5 +143,9 @@ public class AlgoChess {
 		if(!jugadorA.sigueEnJuego()) return jugadorB;
 		else if(!jugadorB.sigueEnJuego()) return jugadorA;
 		return null;
+	}
+
+	public void primeraUnidadSeleccionadaCuraSegundaUnidad(Sanador unidad1, Sanable unidad2) {
+		unidad1.sanar(unidad2);
 	}
 }

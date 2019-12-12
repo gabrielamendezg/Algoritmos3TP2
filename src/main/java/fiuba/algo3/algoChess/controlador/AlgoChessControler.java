@@ -260,7 +260,7 @@ public class AlgoChessControler implements Observador {
         return null;
     }
     
-	public void primeraUnidadSeleccionadaCuraSegundaUnida() throws Exception {
+	public void primeraUnidadSeleccionadaCuraSegundaUnidad() throws Exception {
         if((unidad1 != null) && (unidad2 != null)) {
             if (algoChess.getJugadorActivo().obtenerUnidades().contains(unidad2)) {
                 if (unidad1 instanceof Sanador){
@@ -277,7 +277,7 @@ public class AlgoChessControler implements Observador {
                 					celda.setTooltip(tooltip);
                 				}
                 			});
-                			new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
+                			new Informar("Curación recibida", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
                 			this.completarTurno();
                 			this.deseleccionarUnidades();
                 			this.determininarSiHayGanador();
