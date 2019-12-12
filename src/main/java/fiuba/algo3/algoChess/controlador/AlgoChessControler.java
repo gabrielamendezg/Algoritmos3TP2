@@ -3,24 +3,16 @@ package fiuba.algo3.algoChess.controlador;
 import fiuba.algo3.algoChess.controlador.excepciones.*;
 import fiuba.algo3.algoChess.modelo.Observador;
 import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
+import fiuba.algo3.algoChess.modelo.algoChess.Direccion;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.entidades.*;
-import fiuba.algo3.algoChess.modelo.jugador.Jugador;
-import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
-import fiuba.algo3.algoChess.modelo.jugador.JugadorB;
+import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.vista.Ganaste;
-import fiuba.algo3.algoChess.vista.imagenes.ImageCatapulta;
-import fiuba.algo3.algoChess.vista.imagenes.ImageCurandero;
-import fiuba.algo3.algoChess.vista.imagenes.ImageJinete;
-import fiuba.algo3.algoChess.vista.imagenes.ImageSoldadoDeInfanteria;
+import fiuba.algo3.algoChess.vista.imagenes.*;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
-import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
-import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacante;
-import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
-import fiuba.algo3.algoChess.vista.ImagenCelda;
-import fiuba.algo3.algoChess.vista.ImagenTablero;
-import fiuba.algo3.algoChess.vista.Informar;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.*;
+import fiuba.algo3.algoChess.vista.*;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 
@@ -222,9 +214,11 @@ public class AlgoChessControler implements Observador {
         		if(algoChess.getJugadorActivo().obtenerUnidades().contains(unidad1)) {
         			if(unidad1 instanceof Movible) {
         				if(!movimientoCompletado) {
-        					this.deseleccionarUnidades();
         					direccion.moverUnidad(algoChess,(Movible) unidad1);
+        					this.deseleccionarUnidades();
         					this.completarMovimiento();
+        					this.change();
+        					this.setOnActionCeldaConImagen();
         				}else throw new UnMovimientoPorTurnoExcepcion();
         			} else throw new UnidadNoEsMovibleExcepcion();
         		}else throw new SeleccionaUnaUnidadQueTePertenecePrimeroExcepcion();
