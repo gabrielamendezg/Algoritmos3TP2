@@ -24,6 +24,7 @@ public class AlgoChessControler {
     private Posicionable unidad1 = null;
     private Posicionable unidad2 = null;
     private LinkedList <ImagenCelda> celdasConImagenes = new <ImagenCelda>LinkedList();
+    private boolean turnoCompletado = false;
 
     private AlgoChessControler(){}
     public static AlgoChessControler getAlgoChessControler() {
@@ -118,12 +119,23 @@ public class AlgoChessControler {
         if((unidad1 != null) && (unidad2 != null)) {
             if (!algoChess.getJugadorActivo().obtenerUnidades().contains(unidad2)) {
                 if (unidad1 instanceof Atacante){
-                    algoChess.primeraUnidadSeleccionadaAtacaSegundaUnida((Atacante) unidad1, (Atacable) unidad2);
-                    new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
-                    this.deseleccionarUnidades();
-                    return;
+                    if (!turnoCompletado()){
+                        algoChess.primeraUnidadSeleccionadaAtacaSegundaUnida((Atacante) unidad1, (Atacable) unidad2);
+                        new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
+                        this.completarTurno();
+                        this.deseleccionarUnidades();
+                        return;
+                    }else throw new YaCompletasteTuTurnoExcecion();
                 } else throw new UnidadNoEsAtacanteExcepcion();
             } else throw new NoSePuedeAtacarUnidadPropiaExcepcion();
         } throw new SelecionaUnaUnidaMasParaAtacarExcepcion();
+    }
+
+    private void completarTurno() {
+        turnoCompletado = true;
+    }
+
+    private boolean turnoCompletado() {
+        return turnoCompletado;
     }
 }
