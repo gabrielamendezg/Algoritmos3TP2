@@ -4,7 +4,12 @@ import fiuba.algo3.algoChess.controlador.excepciones.*;
 import fiuba.algo3.algoChess.modelo.Observador;
 import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
+import fiuba.algo3.algoChess.modelo.entidades.*;
 import fiuba.algo3.algoChess.modelo.jugador.JugadorA;
+import fiuba.algo3.algoChess.vista.imagenes.ImageCatapulta;
+import fiuba.algo3.algoChess.vista.imagenes.ImageCurandero;
+import fiuba.algo3.algoChess.vista.imagenes.ImageJinete;
+import fiuba.algo3.algoChess.vista.imagenes.ImageSoldadoDeInfanteria;
 import javafx.scene.control.Label;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacante;
@@ -12,6 +17,7 @@ import fiuba.algo3.algoChess.vista.ImagenCelda;
 import fiuba.algo3.algoChess.vista.ImagenTablero;
 import fiuba.algo3.algoChess.vista.Informar;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -160,5 +166,64 @@ public class AlgoChessControler implements Observador {
     @Override
     public void change() {
 
+        //se elimina unidades muertas
+        ArrayList<Posicionable> unidadConVidaCeroAzules = new ArrayList<>();
+        posicionablesAzules.stream().forEach(unidadPosicionado -> {
+            if(unidadPosicionado.obtenerVida() <= 0)
+                unidadConVidaCeroAzules.add(unidadPosicionado);
+        });
+
+        unidadConVidaCeroAzules.stream().forEach(unidadMuerta -> {
+            posicionablesAzules.remove(unidadMuerta);
+        });
+
+        ArrayList<Posicionable> unidadConVidaCeroRojas = new ArrayList<>();
+        posicionablesRojos.stream().forEach(unidadPosicionado -> {
+            if(unidadPosicionado.obtenerVida() <= 0)
+                unidadConVidaCeroRojas.add(unidadPosicionado);
+        });
+        unidadConVidaCeroRojas.stream().forEach(unidadMuerta -> {
+            posicionablesRojos.remove(unidadMuerta);
+        });
+
+        //se reinicia tablero imagen
+        ImagenTablero.getImagenTablero().reiniciar();
+        //Mostrar imagenes De los sobrevivientes y de los que se movieron
+        this.mostrarImagenDeLosPosicionables();
     }
+
+    private void mostrarImagenDeLosPosicionables() {
+        posicionablesRojos.stream().forEach(unidadPosicionado -> {
+            ImagenTablero.getImagenTablero().colocarImagenEnLaPosicion(this.imagenDePosicionableRojo(unidadPosicionado),unidadPosicionado.getPosicion().getX() - 1, unidadPosicionado.getPosicion().getY() - 1);
+        });
+
+        posicionablesAzules.stream().forEach(unidadPosicionado -> {
+            ImagenTablero.getImagenTablero().colocarImagenEnLaPosicion(this.imagenDePosicionableAzul(unidadPosicionado),unidadPosicionado.getPosicion().getX() - 1, unidadPosicionado.getPosicion().getY() - 1);
+        });
+    }
+
+    private Image imagenDePosicionableRojo(Posicionable unidadPosicionado) {
+        if(unidadPosicionado instanceof Curandero)
+            return new ImageCurandero("imagenes/CuranderoRojo.png",30,30,true,true);
+        if(unidadPosicionado instanceof Catapulta)
+            return new ImageCatapulta("imagenes/CatapultaRojo.png",30,30,true,true);
+        if(unidadPosicionado instanceof Jinete)
+            return new ImageJinete("imagenes/JineteRojo.png",30,30,true,true);
+        if(unidadPosicionado instanceof SoldadoDeInfanteria)
+            return new ImageSoldadoDeInfanteria("imagenes/SoldadoRojo.png",30,30,true,true);
+        return null;
+    }
+
+    private Image imagenDePosicionableAzul(Posicionable unidadPosicionado) {
+        if(unidadPosicionado instanceof Curandero)
+            return new ImageCurandero("imagenes/CuranderoAzul.png",30,30,true,true);
+        if(unidadPosicionado instanceof Catapulta)
+            return new ImageCatapulta("imagenes/CatapultaAzul.png",30,30,true,true);
+        if(unidadPosicionado instanceof Jinete)
+            return new ImageJinete("imagenes/JineteAzul.png",30,30,true,true);
+        if(unidadPosicionado instanceof SoldadoDeInfanteria)
+            return new ImageSoldadoDeInfanteria("imagenes/SoldadoAzul.png",30,30,true,true);
+        return null;
+    }
+
 }

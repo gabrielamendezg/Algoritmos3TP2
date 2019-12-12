@@ -19,11 +19,8 @@ public class AlgoChessApp extends Application
 	private String botonColor = "#6886aa";
 	private String botonSombra = "#39516d";
 	private String blanco ="#ffffff";
-	
-	public ImagenTablero tablero;
 
     public AlgoChessApp() {
-        tablero = ImagenTablero.getImagenTablero();
     }
 
 
@@ -91,7 +88,7 @@ public class AlgoChessApp extends Application
 	}
 	
 	private Scene iniciarJuego(Stage stage,String jugadorAzul,String jugadorRojo) {
-		Scene eleccion = new EscenaTablero(stage, jugadorAzul, jugadorRojo, tablero, new BorderPane());
+		Scene eleccion = new EscenaTablero(stage, jugadorAzul, jugadorRojo, ImagenTablero.getImagenTablero(), new BorderPane());
 		return eleccion;
 	}
 

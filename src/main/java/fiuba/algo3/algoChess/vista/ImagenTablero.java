@@ -3,6 +3,8 @@ package fiuba.algo3.algoChess.vista;
 import fiuba.algo3.algoChess.modelo.celda.CeldaA;
 import fiuba.algo3.algoChess.modelo.celda.CeldaB;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 public class ImagenTablero extends GridPane {
@@ -34,11 +36,30 @@ public class ImagenTablero extends GridPane {
         return imagenTablero;
     }
 
-    public void desseleccionarPosicion(int i, int i1) {
-	    if(i < 10)
-	        celdas[i][i1].setStyle("-fx-background-color: "+ colorJugadorA +"; -fx-border-color: #484860;"
+    public void desseleccionarPosicion(int x, int y) {
+	    if(x < 10)
+	        celdas[x][y].setStyle("-fx-background-color: "+ colorJugadorA +"; -fx-border-color: #484860;"
                     + " -fx-border-width: 1px");
-	    else celdas[i][i1].setStyle("-fx-background-color: "+ colorJugadorB +"; -fx-border-color: #484860;"
+	    else celdas[x][y].setStyle("-fx-background-color: "+ colorJugadorB +"; -fx-border-color: #484860;"
                 + " -fx-border-width: 1px");
+    }
+
+    public void reiniciar() {
+        for(int x = 0; x < 10; x++) {
+            for (int y = 0; y < 20; y++) {
+                celdas[x][y] = new ImagenCelda(x,y,colorJugadorA);
+                this.add(celdas[x][y],x,y);
+            }
+        }
+        for(int x = 10; x < 20; x++) {
+            for (int y = 0; y < 20; y++) {
+                celdas[x][y] = new ImagenCelda(x,y,colorJugadorB);
+                this.add(celdas[x][y],x,y);
+            }
+        }
+    }
+
+    public void colocarImagenEnLaPosicion(Image image, int x, int y) {
+        celdas[x][y].setGraphic(new ImageView(image));
     }
 }
