@@ -2,6 +2,7 @@ package fiuba.algo3.algoChess.controlador;
 
 import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
+import javafx.scene.control.Label;
 
 import java.util.Random;
 
@@ -9,6 +10,7 @@ public class AlgoChessControler {
     private static AlgoChessControler algoChessControler = new AlgoChessControler();
     AlgoChess algoChess = AlgoChess.getAlgoChess();
     private Posicionable posicionable;
+    private Label puntosLabel;
 
     private AlgoChessControler(){}
     public static AlgoChessControler getAlgoChessControler() {
@@ -25,6 +27,7 @@ public class AlgoChessControler {
 
     public void posicionableCataputaEnEspera() {
         posicionable = algoChess.getJugadorActivo().elegirCatapulta();
+        
     }
     public void posicionableJineteEnEspera() {
         posicionable = algoChess.getJugadorActivo().elegirJinete();
@@ -49,4 +52,15 @@ public class AlgoChessControler {
             return turno;
         }
     }
+    
+    public int getPuntosJugadorActivo() {
+    	return algoChess.getJugadorActivo().getPuntos();
+    }
+    
+	public void setLabelPuntos(Label puntosJugadorActivo) {
+		puntosLabel = puntosJugadorActivo;
+	}
+	public void actualizarPuntos() {
+		puntosLabel.setText("Puntos: "+ Integer.toString(AlgoChessControler.getAlgoChessControler().getPuntosJugadorActivo()));
+	}
 }

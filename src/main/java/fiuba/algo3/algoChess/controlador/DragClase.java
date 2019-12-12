@@ -80,6 +80,7 @@ public class DragClase{
                         imageView.setFitWidth(30);
                         celda.setGraphic(imageView);
                         success = true;
+                        AlgoChessControler.getAlgoChessControler().actualizarPuntos();
                     } catch (FilaOColumnaNoPerteneceATuParteDelTableroExcepcion e) {
                         new Informar("Territorio Enemigo!", "Solo puedes posicionar unidades en tu territorio");
                     } catch (PuntosInsuficientesExcepcion e) {

@@ -52,32 +52,49 @@ public class EscenaTablero extends Scene {
 	}
 	
 	public VBox eleccionJugadorAzul(String nombreJugador, ImageView icono) {
-		//unidades y boton para terminar turno de elección
+		//Set de unidades disponibles
 		VBox unidades = new EleccionUnidadesAzules();
+		
+		//Boton para pasar turno de elección de unidades.
 		Boton terminar = new Boton("Terminar","#ffffff","#39516d","#6886aa");
 		terminar.setOnAction(e -> {
 			this.eleccionJugadorRojo(jugadorRojoNombre,jugadorRojoEmblema);
-			AlgoChessControler.getAlgoChessControler().pasarTurno();
 		});
 		HBox botonterminar = new HBox(terminar);
 		botonterminar.setAlignment(Pos.CENTER);
+		
+		//Nombre jugador y puntos.
+		Label puntosjugador = new Label("Puntos: "+ Integer.toString(AlgoChessControler.getAlgoChessControler().getPuntosJugadorActivo()));
+		puntosjugador.setStyle("-fx-text-fill: white;-fx-wrap-text: true;-fx-font-size: 16px;-fx-label-padding: 30;"+
+				"-fx-font-weight: bold;");
+		AlgoChessControler.getAlgoChessControler().setLabelPuntos(puntosjugador);
+		HBox puntos = new HBox(puntosjugador);
+		puntos.setAlignment(Pos.CENTER);
+		VBox datosjugador = new VBox(this.tagJugador(nombreJugador, icono),puntos);
+		datosjugador.setSpacing(1);
 
 		//Contenedor
 		VBox controles = new VBox();
-		controles.getChildren().addAll(this.tagJugador(nombreJugador,icono),unidades,botonterminar);
-		controles.setStyle("-fx-spacing: 5");
+		controles.getChildren().addAll(datosjugador,unidades,botonterminar);
+		controles.setStyle("-fx-spacing: 4");
 		controles.setPrefWidth(144);
 		return controles;
 	}
 
 	private void eleccionJugadorRojo(String nombreJugador, ImageView icono) {
+		//Cambia jugador activo.
+		AlgoChessControler.getAlgoChessControler().pasarTurno();
+		
 		//Elimina de la escena los controles del jugador azul.
 		VBox vacio = new VBox();
 		vacio.setPrefWidth(144);
 		panelPrincipal.setLeft(vacio);
 		
+		//Unidades disponibles para posicionar
 		VBox unidades = new EleccionUnidadesRojas();
 		unidades.setAlignment(Pos.CENTER);
+		
+		//boton para terminar fase inicial.
 		Boton terminar = new Boton("Terminar","#ffffff","#39516d","#6886aa");
 		terminar.setOnAction(e -> {
 			this.iniciarJuego(AlgoChessControler.getAlgoChessControler().turnoAleatorio());
@@ -85,8 +102,18 @@ public class EscenaTablero extends Scene {
 		HBox botonterminar = new HBox(terminar);
 		botonterminar.setAlignment(Pos.CENTER);
 		
+		//Nombre jugador y puntos.
+		Label puntosjugador = new Label("Puntos: "+ Integer.toString(AlgoChessControler.getAlgoChessControler().getPuntosJugadorActivo()));
+		puntosjugador.setStyle("-fx-text-fill: white;-fx-wrap-text: true;-fx-font-size: 16px;-fx-label-padding: 30;"+
+						"-fx-font-weight: bold;");
+		AlgoChessControler.getAlgoChessControler().setLabelPuntos(puntosjugador);
+		HBox puntos = new HBox(puntosjugador);
+		puntos.setAlignment(Pos.CENTER);
+		VBox datosjugador = new VBox(this.tagJugador(nombreJugador, icono),puntos);
+		datosjugador.setSpacing(1);		
+		
 		VBox controles = new VBox();
-		controles.getChildren().addAll(this.tagJugador(nombreJugador,icono),unidades,botonterminar);
+		controles.getChildren().addAll(datosjugador,unidades,botonterminar);
 		controles.setStyle("-fx-spacing: 5");
 		controles.setPrefWidth(144);
 		panelPrincipal.setRight(controles);
