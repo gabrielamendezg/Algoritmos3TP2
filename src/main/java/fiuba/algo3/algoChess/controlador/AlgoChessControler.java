@@ -38,6 +38,7 @@ public class AlgoChessControler {
     public void pasarTurno() {
         this.deseleccionarUnidades();
         AlgoChess.getAlgoChess().pasarTurno();
+        turnoCompletado = false;
     }
 
     public void posicionableCataputaEnEspera() {
@@ -121,6 +122,13 @@ public class AlgoChessControler {
                 if (unidad1 instanceof Atacante){
                     if (!turnoCompletado()){
                         algoChess.primeraUnidadSeleccionadaAtacaSegundaUnida((Atacante) unidad1, (Atacable) unidad2);
+                        celdasConImagenes.stream().forEach(celda -> {
+                            final Tooltip tooltip = new Tooltip();
+                            tooltip.setText(
+                                    "PUNTOS DE VIDA" + "\n" +
+                                            Integer.toString(algoChess.unidadDeLaPosicion(celda.getX() + 1, celda.getY() + 1).obtenerVida()));
+                            celda.setTooltip(tooltip);
+                        });
                         new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
                         this.completarTurno();
                         this.deseleccionarUnidades();

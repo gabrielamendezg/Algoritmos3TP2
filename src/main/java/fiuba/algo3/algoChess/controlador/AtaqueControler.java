@@ -20,7 +20,7 @@ public class AtaqueControler implements EventHandler<ActionEvent> {
         }catch (SelecionaUnaUnidaMasParaAtacarExcepcion e){
             new Informar("¿A quién debo atacar?", "Selecciona una segunda unidad (enemiga) para atacar");
         }catch (YaCompletasteTuTurnoExcecion e){
-            new Informar("Ya Atacaste", "Solo puedes atacar una vez");
+            new Informar("Ya Atacaste", "Solo puedes atacar una vez por favor Pasa de turno");
         }
 
     }
