@@ -3,7 +3,7 @@ import fiuba.algo3.algoChess.modelo.Excepciones.*;
 import fiuba.algo3.algoChess.modelo.celda.*;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
-import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacador;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacante;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 
@@ -142,16 +142,16 @@ public class Tablero {
 		moverMovibleA(jugador, movible, new Posicion(movible.getPosicion().getX() - 1, movible.getPosicion().getY() + 1));
 	}
 
-	public void atacanteAtacarAtacable(JugadorA jugadorAtacanteA, Atacador unAtacante, Atacable unAtacable) {
+	public void atacanteAtacarAtacable(JugadorA jugadorAtacanteA, Atacante unAtacante, Atacable unAtacable) {
 		ArrayList <Atacable> atacables = this.atacablesPorElAtacante(unAtacante);
 		unAtacante.atacarAtacable(jugadorAtacanteA, unAtacable, atacables);
 	}
-	public void atacanteAtacarAtacable(JugadorB jugadorAtacanteB, Atacador unAtacante, Atacable unAtacable) {
+	public void atacanteAtacarAtacable(JugadorB jugadorAtacanteB, Atacante unAtacante, Atacable unAtacable) {
 		ArrayList <Atacable> atacables = this.atacablesPorElAtacante(unAtacante);
 		unAtacante.atacarAtacable(jugadorAtacanteB, unAtacable, atacables);
 	}
 
-	private ArrayList<Atacable> atacablesPorElAtacante(Atacador unAtacante) {
+	private ArrayList<Atacable> atacablesPorElAtacante(Atacante unAtacante) {
 
 		ArrayList<Atacable> atacables = new ArrayList<Atacable>();
 		for(int i = 1; i <= 20; i++) {

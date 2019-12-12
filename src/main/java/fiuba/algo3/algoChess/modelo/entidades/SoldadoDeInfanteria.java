@@ -3,14 +3,14 @@ package fiuba.algo3.algoChess.modelo.entidades;
 import fiuba.algo3.algoChess.modelo.ataque.*;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
-import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacador;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacante;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Sanable;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import java.util.ArrayList;
 
-public class SoldadoDeInfanteria extends Unidad implements Sanable, Movible, Posicionable, Atacable, Atacador {
+public class SoldadoDeInfanteria extends Unidad implements Sanable, Movible, Posicionable, Atacable, Atacante {
 
 
 	private AtaqueCercano ataque;
@@ -44,8 +44,8 @@ public class SoldadoDeInfanteria extends Unidad implements Sanable, Movible, Pos
 	}
 
 	@Override
-	public void atacarAtacable(Jugador atacante, Atacable unAtacable, ArrayList<Atacable> atacables) {
-		ArrayList<Unidad> aliados = atacante.obtenerUnidades();
+	public void atacarAtacable(Jugador jugadorAtacante, Atacable unAtacable, ArrayList<Atacable> atacables) {
+		ArrayList<Unidad> aliados = jugadorAtacante.obtenerUnidades();
 		if(aliados.contains(unAtacable)) return;
 		ataque.atacar(posicion.getX(), posicion.getY(), unAtacable);
 	}

@@ -2,7 +2,7 @@ package fiuba.algo3.algoChess.modelo.entidades;
 
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
-import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacador;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacante;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
 import fiuba.algo3.algoChess.modelo.ataque.*;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Sanable;
@@ -11,7 +11,7 @@ import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Jinete extends Unidad implements Sanable, Movible, Posicionable, Atacador, Atacable {
+public class Jinete extends Unidad implements Sanable, Movible, Posicionable, Atacante, Atacable {
 
 	private Ataque ataque;
 
@@ -48,10 +48,10 @@ public class Jinete extends Unidad implements Sanable, Movible, Posicionable, At
 	}
 
 	@Override
-	public void atacarAtacable(Jugador atacante, Atacable unAtacable, ArrayList<Atacable> atacables) {
+	public void atacarAtacable(Jugador jugadorAtacante, Atacable unAtacable, ArrayList<Atacable> atacables) {
 		
 	
-		ArrayList<Unidad> aliados = new ArrayList<Unidad>(atacante.obtenerUnidades());
+		ArrayList<Unidad> aliados = new ArrayList<Unidad>(jugadorAtacante.obtenerUnidades());
 		ArrayList<Atacable> enemigosCopy = new ArrayList<Atacable> (atacables);
 		boolean enemigoCerca = false;
 		boolean noHayAliadosCerca = true;

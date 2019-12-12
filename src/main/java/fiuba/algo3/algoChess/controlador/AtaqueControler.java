@@ -2,7 +2,7 @@ package fiuba.algo3.algoChess.controlador;
 
 import fiuba.algo3.algoChess.controlador.excepciones.NoSePuedeAtacarUnidadPropiaExcepcion;
 import fiuba.algo3.algoChess.controlador.excepciones.SelecionaUnaUnidaMasParaAtacarExcepcion;
-import fiuba.algo3.algoChess.controlador.excepciones.UnidadNoEsAtacadorExcepcion;
+import fiuba.algo3.algoChess.controlador.excepciones.UnidadNoEsAtacanteExcepcion;
 import fiuba.algo3.algoChess.vista.Informar;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,12 +12,12 @@ public class AtaqueControler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         try {
             AlgoChessControler.getAlgoChessControler().primeraUnidadSeleccionadaAtacaSegundaUnida();
-        } catch (UnidadNoEsAtacadorExcepcion e){
-            new Informar("No es Atacador", "La primera unidad seleccionada tiene que ser Atacador");
+        } catch (UnidadNoEsAtacanteExcepcion e){
+            new Informar("No sé atacar!", "La primera unidad seleccionada debe ser de tipo ofensivo");
         }catch (NoSePuedeAtacarUnidadPropiaExcepcion e){
-            new Informar("No puedes Atacar", "No es posible atacar unidad propia");
+            new Informar("Fuego cruzado!", "No es posible atacar a tus propias unidades");
         }catch (SelecionaUnaUnidaMasParaAtacarExcepcion e){
-            new Informar("Selecciona un Atacable", "Tienes que seleccionar una unida Acatacable");
+            new Informar("¿A quién debo atacar?", "Selecciona una segunda unidad (enemiga) para atacar");
         }
 
     }

@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import fiuba.algo3.algoChess.modelo.entidades.Curandero;
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
-import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacador;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacante;
 import fiuba.algo3.algoChess.vista.ImagenCelda;
 import fiuba.algo3.algoChess.vista.ImagenTablero;
 import fiuba.algo3.algoChess.vista.Informar;
@@ -122,12 +122,12 @@ public class AlgoChessControler {
     public void primeraUnidadSeleccionadaAtacaSegundaUnida() {
         if((unidad1 != null) && (unidad2 != null)) {
             if (!algoChess.getJugadorActivo().obtenerUnidades().contains(unidad2)) {
-                if (!(unidad1 instanceof Curandero)){
-                    algoChess.primeraUnidadSeleccionadaAtacaSegundaUnida((Atacador) unidad1, (Atacable) unidad2);
+                if (unidad1 instanceof Atacante){
+                    algoChess.primeraUnidadSeleccionadaAtacaSegundaUnida((Atacante) unidad1, (Atacable) unidad2);
                     new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
                     this.deseleccionarUnidades();
                     return;
-                } else throw new UnidadNoEsAtacadorExcepcion();
+                } else throw new UnidadNoEsAtacanteExcepcion();
             } else throw new NoSePuedeAtacarUnidadPropiaExcepcion();
         } throw new SelecionaUnaUnidaMasParaAtacarExcepcion();
     }

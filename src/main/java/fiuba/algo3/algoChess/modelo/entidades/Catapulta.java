@@ -3,14 +3,14 @@ package fiuba.algo3.algoChess.modelo.entidades;
 import fiuba.algo3.algoChess.modelo.ataque.*;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
-import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacador;
+import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacante;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Catapulta extends Unidad implements Posicionable, Atacador, Atacable {
+public class Catapulta extends Unidad implements Posicionable, Atacante, Atacable {
 
 	private AtaqueDistanciaLejana ataque;
 
@@ -29,8 +29,8 @@ public class Catapulta extends Unidad implements Posicionable, Atacador, Atacabl
 	}
 
 	@Override
-	public void atacarAtacable(Jugador atacante, Atacable unAtacable, ArrayList<Atacable> atacables) {
-		ArrayList<Unidad> aliados = atacante.obtenerUnidades();
+	public void atacarAtacable(Jugador jugadorAtacante, Atacable unAtacable, ArrayList<Atacable> atacables) {
+		ArrayList<Unidad> aliados = jugadorAtacante.obtenerUnidades();
 
 		if(aliados.contains(unAtacable)) return;
 
