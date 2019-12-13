@@ -11,8 +11,8 @@ import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 public class Curandero extends Unidad implements Movible, Posicionable, Atacable, Sanador {
 
 	private int poderCuracion = 15;
-	private int rangoInicial = 3;
-	private int rangoFinal = 5;
+	private int rangoInicial = 1;
+	private int rangoFinal = 2;
 
 	public Curandero(JugadorA jugador) {
 		super(jugador);
@@ -37,18 +37,23 @@ public class Curandero extends Unidad implements Movible, Posicionable, Atacable
 
 	private boolean estaEnRango(int fila, int columna, Unidad unidad) {
 
-		boolean estaEnRango = false;
-		int distanciaX = Math.abs((unidad.getPosicion().getX()) - posicion.getX());
-		int distanciaY = Math.abs((unidad.getPosicion().getY()) - posicion.getY());
+		int distanciaX = Math.abs((unidad.getPosicion().getX()) - fila);
+		int distanciaY = Math.abs((unidad.getPosicion().getY()) - columna);
 
-		if ( ( ( (rangoInicial <= distanciaX) && (distanciaX <= rangoFinal) ) || distanciaX == 0)
-				&&
-				( ( (rangoInicial <= distanciaY) && (distanciaY <= rangoFinal)) || distanciaY == 0) ){
+		if(distanciaY <= rangoInicial && distanciaX != 0) {
+			if ((rangoInicial <= distanciaX) && (distanciaX <= rangoFinal)) return true;
+		}else if (distanciaX <= rangoInicial && distanciaY != 0){
+			if ((rangoInicial <= distanciaY) && (distanciaY <= rangoFinal)) return true;
+		}else if (((rangoInicial <= distanciaX) && (distanciaX <= rangoFinal) ) && ((rangoInicial <= distanciaY) && (distanciaY <= rangoFinal))){
+			return true;
+		}else if(distanciaX == 0){
+			if ((rangoInicial <= distanciaY) && (distanciaY <= rangoFinal)) return true;
 
-			estaEnRango = true;
+		}else if(distanciaY == 0) {
+			if ((rangoInicial <= distanciaX) && (distanciaX <= rangoFinal)) return true;
 		}
 
-		return estaEnRango;
+		return false;
 	}
 
 	@Override

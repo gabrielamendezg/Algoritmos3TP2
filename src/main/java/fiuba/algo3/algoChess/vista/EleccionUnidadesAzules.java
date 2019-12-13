@@ -12,10 +12,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
+import javafx.scene.input.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -68,6 +65,14 @@ public class EleccionUnidadesAzules extends VBox {
 				//contolador hay un catapulta para posicionar
 				AlgoChessControler.getAlgoChessControler().posicionableCataputaEnEspera();
 
+				event.consume();
+			}
+		});
+
+		unidad.setOnDragDone(new EventHandler<DragEvent>() {
+			public void handle(DragEvent event) {
+				/* the drag and drop gesture ended */
+				/* if the data was successfully moved, clear it */
 				event.consume();
 			}
 		});

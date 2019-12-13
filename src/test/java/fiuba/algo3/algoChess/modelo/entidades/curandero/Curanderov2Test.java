@@ -31,7 +31,7 @@ class Curanderov2Test {
 		soldado.setPosicion(new Posicion(1,1));
 		jinete.setPosicion(new Posicion(1, 2));
 		
-		curandero.setPosicion(new Posicion(1, 5));
+		curandero.setPosicion(new Posicion(1, 3));
 		
 		soldado.atacarAtacable(jugadora, jinete, new ArrayList<Atacable>());
 		soldado.atacarAtacable(jugadora, jinete, new ArrayList<Atacable>());
