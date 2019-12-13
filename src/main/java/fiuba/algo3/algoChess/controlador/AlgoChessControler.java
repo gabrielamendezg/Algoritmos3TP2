@@ -110,10 +110,13 @@ public class AlgoChessControler implements Observador {
         celdasConImagenes.stream().forEach(celda -> celda.setOnAction(new CeldaControler(celda)));
         celdasConImagenes.stream().forEach(celda -> {
             final Tooltip tooltip = new Tooltip();
-            tooltip.setText(
-                    "PUNTOS DE VIDA" + "\n" +
-                            Integer.toString(algoChess.unidadDeLaPosicion(celda.getX() + 1, celda.getY() + 1).obtenerVida()));
-            celda.setTooltip(tooltip);
+            Posicionable posicionable = algoChess.unidadDeLaPosicion(celda.getX() + 1, celda.getY() + 1);
+            if(posicionable != null) {
+                tooltip.setText(
+                        "PUNTOS DE VIDA" + "\n" +
+                                Integer.toString(posicionable.obtenerVida()));
+                celda.setTooltip(tooltip);
+            }
         });
     }
 
@@ -182,6 +185,7 @@ public class AlgoChessControler implements Observador {
     @Override
     public void change() {
 
+        this.deseleccionarUnidades();
         //se elimina unidades muertas
         ArrayList<Posicionable> unidadConVidaCeroAzules = new ArrayList<>();
         posicionablesAzules.stream().forEach(unidadPosicionado -> {
@@ -201,7 +205,6 @@ public class AlgoChessControler implements Observador {
         unidadConVidaCeroRojas.stream().forEach(unidadMuerta -> {
             posicionablesRojos.remove(unidadMuerta);
         });
-
         //elimino imagenes del tablero
         celdasConImagenes.stream().forEach( celda -> {
             celda.setGraphic(null);
@@ -214,7 +217,6 @@ public class AlgoChessControler implements Observador {
 
         //Mostrar imagenes De los sobrevivientes y de los que se movieron
         this.mostrarImagenDeLosPosicionables();
-
         this.setOnActionCeldaConImagen();
     }    
   
@@ -225,10 +227,8 @@ public class AlgoChessControler implements Observador {
         			if(unidad1 instanceof Movible) {
         				if(!movimientoCompletado) {
         					direccion.moverUnidad(algoChess,(Movible) unidad1);
-                            this.deseleccionarUnidades();
         					this.completarMovimiento();
-        					this.change();
-        					this.setOnActionCeldaConImagen();
+        					return;
         				}else throw new UnMovimientoPorTurnoExcepcion();
         			} else throw new UnidadNoEsMovibleExcepcion();
         		}else throw new SeleccionaUnaUnidadQueTePertenecePrimeroExcepcion();

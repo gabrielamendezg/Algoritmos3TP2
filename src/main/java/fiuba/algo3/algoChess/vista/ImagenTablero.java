@@ -1,9 +1,6 @@
 package fiuba.algo3.algoChess.vista;
 
 import fiuba.algo3.algoChess.controlador.AlgoChessControler;
-import fiuba.algo3.algoChess.modelo.celda.CeldaA;
-import fiuba.algo3.algoChess.modelo.celda.CeldaB;
-import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
