@@ -56,12 +56,11 @@ public class ImagenTablero extends GridPane {
     }
 
 
-    public void colocarImagenEnLaPosicion(Image image, int x, int y, int pustoDeVida) {
+    public void colocarImagenEnLaPosicion(Image image, int x, int y, double d) {
         celdas[x][y].setGraphic(new ImageView(image));
             final Tooltip tooltip = new Tooltip();
                 tooltip.setText(
-                        "PUNTOS DE VIDA" + "\n" +
-                                Integer.toString(pustoDeVida));
+                        "PUNTOS DE VIDA" + "\n" + String.valueOf(d));
         celdas[x][y].setTooltip(tooltip);
         AlgoChessControler.getAlgoChessControler().addCeldaConImagen(celdas[x][y]);
     }

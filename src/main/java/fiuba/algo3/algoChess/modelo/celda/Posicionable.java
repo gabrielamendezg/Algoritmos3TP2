@@ -14,5 +14,5 @@ public interface Posicionable {
 
     void addObserver(Observador observador);
 
-    int obtenerVida();
+    double obtenerVida();
 }

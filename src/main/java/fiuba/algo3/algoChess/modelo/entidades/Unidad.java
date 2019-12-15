@@ -9,7 +9,7 @@ import fiuba.algo3.algoChess.modelo.jugador.*;
 public abstract class Unidad extends Observable implements Posicionable {
 	
 	//Atributos.
-	protected int vida;
+	protected double vida;
 	protected int costo;
 	protected TipoUnidad tipo;
 	protected DanioPorTerritoroEnemigo danioPorTerritoroEnemigo;
@@ -32,13 +32,13 @@ public abstract class Unidad extends Observable implements Posicionable {
 
 	public void recibirAtaque(int daño) {
 		vida = vida - daño;
-		vida = vida - danioPorTerritoroEnemigo.penalizacionPorTerritoriEnemigo(daño);
+		vida = vida - danioPorTerritoroEnemigo.penalizacionPorTerritorioEnemigo(daño);
 		if(vida <= 0)
 			this.notificarObservadores();
 
 	}
 
-	public int obtenerVida(){
+	public double obtenerVida(){
 		return vida;
 	}
 

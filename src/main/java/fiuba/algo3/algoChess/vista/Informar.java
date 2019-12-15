@@ -35,9 +35,9 @@ public class Informar {
 	    "-fx-font-weight: bold;"+
 	    "-fx-font-size: 1.1em;");
         
-        Media sound = new Media(new File("src/main/resources/sonidos/Shutdown.wav").toURI().toString());
+        /*Media sound = new Media(new File("src/main/resources/sonidos/Shutdown.wav").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
+        mediaPlayer.play();*/
         
         alert.showAndWait();
     }
