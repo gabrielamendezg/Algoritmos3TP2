@@ -99,6 +99,7 @@ public class EscenaTablero extends Scene {
 		Boton terminar = new Boton("Terminar","#ffffff","#39516d","#6886aa");
 		terminar.setOnAction(e -> {
 			this.iniciarJuego(AlgoChessControler.getAlgoChessControler().turnoAleatorio());
+			ImagenTablero.getImagenTablero().desactivarDragAndDrop();
 		});
 		HBox botonterminar = new HBox(terminar);
 		botonterminar.setAlignment(Pos.CENTER);

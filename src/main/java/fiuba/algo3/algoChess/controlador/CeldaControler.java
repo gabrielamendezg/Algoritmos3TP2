@@ -1,5 +1,6 @@
 package fiuba.algo3.algoChess.controlador;
 
+import fiuba.algo3.algoChess.controlador.excepciones.NoPuedesSeleccionaLaMismaUnidaDosVecesExcepcion;
 import fiuba.algo3.algoChess.controlador.excepciones.NoSePuedeSeleccionarMasDeDosUnidadesExcepcion;
 import fiuba.algo3.algoChess.controlador.excepciones.SeleccionaUnaUnidadQueTePertenecePrimeroExcepcion;
 import fiuba.algo3.algoChess.vista.ImagenCelda;
@@ -23,6 +24,8 @@ public class CeldaControler implements EventHandler<ActionEvent> {
             new Informar("Dos Unidades Seleccionadas", "No se puede seleccionar mas de dos unidades");
         } catch (SeleccionaUnaUnidadQueTePertenecePrimeroExcepcion e){
             new Informar("Seleccion de unidad ", "Selecciona una unidad aliada");
+        } catch (NoPuedesSeleccionaLaMismaUnidaDosVecesExcepcion e){
+            new Informar("Es la misma Unidad ", "No se puede seleccionar  dos veces la misma unidad");
         }
 
     }

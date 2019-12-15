@@ -21,6 +21,8 @@ public class AlgoChessApp extends Application
 	private String blanco ="#ffffff";
 
     public AlgoChessApp() {
+    	//para que imagen tablero exita desde el comienzo
+		ImagenTablero.getImagenTablero();
     }
 
 

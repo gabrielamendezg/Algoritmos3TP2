@@ -1,5 +1,6 @@
 package fiuba.algo3.algoChess.modelo.tablero;
 import fiuba.algo3.algoChess.modelo.Excepciones.*;
+import fiuba.algo3.algoChess.modelo.Observador;
 import fiuba.algo3.algoChess.modelo.celda.*;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
@@ -10,7 +11,7 @@ import fiuba.algo3.algoChess.modelo.jugador.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Tablero {
+public class Tablero implements Observador {
 
 	private int xMinB = 11;
 	private int tamanio = 20;
@@ -41,48 +42,71 @@ public class Tablero {
 	//Modifico para hacer uso de CeldaA y CeldaB, encapsular y eliminar condiciones ifs y evaluaciones lógicas.
 	public void posicionarEn(JugadorA jugador, Posicionable posicionable, Posicion aPosicion){
 		matriz.get(aPosicion.toString()).recibirPosicionable(jugador, posicionable, aPosicion);
+		posicionable.addObserver(jugador);
+		posicionable.addObserver(this);
 	}
 
 	public void posicionarEn(JugadorB jugador, Posicionable posicionable, Posicion aPosicion){
 		matriz.get(aPosicion.toString()).recibirPosicionable(jugador, posicionable, aPosicion);
+		posicionable.addObserver(jugador);
+		posicionable.addObserver(this);
 	}
 
 	//Mueve la unidad (si existe) en la posición de origen a la posición destino.
 	//Reescribo un poco por más orden.
 	private void moverMovibleA(JugadorB jugador, Movible movible, Posicion aPosicion) {
-
-		if(movimientoDeBatallonDeSoldadosDeInfanteria == null){
-			movimientoDeBatallonDeSoldadosDeInfanteria = new MovimientoDeBatallonDeSoldadosDeInfanteria(3);
-			if(movimientoDeBatallonDeSoldadosDeInfanteria.moverBatallonDeMovibleA(this, jugador, movible, aPosicion)){
+		try {
+			if(movimientoDeBatallonDeSoldadosDeInfanteria == null){
+				movimientoDeBatallonDeSoldadosDeInfanteria = new MovimientoDeBatallonDeSoldadosDeInfanteria(3);
+				if(movimientoDeBatallonDeSoldadosDeInfanteria.moverBatallonDeMovibleA(this, jugador, movible, aPosicion)){
+					movimientoDeBatallonDeSoldadosDeInfanteria = null;
+					return;
+				}
 				movimientoDeBatallonDeSoldadosDeInfanteria = null;
-				return;
 			}
+		}catch (PosicionOcupadaExcepcion e){
 			movimientoDeBatallonDeSoldadosDeInfanteria = null;
+			throw  new PosicionOcupadaExcepcion();
+		}catch (CoordenadaFueraDelTableroExcepcion e){
+			movimientoDeBatallonDeSoldadosDeInfanteria = null;
+			throw new CoordenadaFueraDelTableroExcepcion();
 		}
+
 
 		Posicion dePosicion = movible.getPosicion();
 		Celda Destino = matriz.get(aPosicion.toString());
-		if(Destino.celdaVacia() && this.verificarPosicion(aPosicion)) {
+		if(this.verificarPosicion(aPosicion) && Destino.celdaVacia()) {
 			Celda Origen = matriz.get(dePosicion.toString());
 			movible.movibleMoveteA(jugador, aPosicion);
 			Destino.recibirMovible(Origen.vaciarCelda());
+			return;
 		}
+		throw new PosicionOcupadaExcepcion();
 	}
 
 	private void moverMovibleA(JugadorA jugador, Movible movible, Posicion aPosicion) {
 
-		if(movimientoDeBatallonDeSoldadosDeInfanteria == null){
-			movimientoDeBatallonDeSoldadosDeInfanteria = new MovimientoDeBatallonDeSoldadosDeInfanteria(3);
-			if(movimientoDeBatallonDeSoldadosDeInfanteria.moverBatallonDeMovibleA(this, jugador, movible, aPosicion)){
+		try {
+			if(movimientoDeBatallonDeSoldadosDeInfanteria == null){
+				movimientoDeBatallonDeSoldadosDeInfanteria = new MovimientoDeBatallonDeSoldadosDeInfanteria(3);
+				if(movimientoDeBatallonDeSoldadosDeInfanteria.moverBatallonDeMovibleA(this, jugador, movible, aPosicion)){
+					movimientoDeBatallonDeSoldadosDeInfanteria = null;
+					return;
+				}
 				movimientoDeBatallonDeSoldadosDeInfanteria = null;
-				return;
 			}
+		}catch (PosicionOcupadaExcepcion e){
 			movimientoDeBatallonDeSoldadosDeInfanteria = null;
+			throw  new PosicionOcupadaExcepcion();
+		}catch (CoordenadaFueraDelTableroExcepcion e){
+			movimientoDeBatallonDeSoldadosDeInfanteria = null;
+			throw new CoordenadaFueraDelTableroExcepcion();
 		}
+
 
 		Posicion dePosicion = movible.getPosicion();
 		Celda Destino = matriz.get(aPosicion.toString());
-		if(Destino.celdaVacia() && this.verificarPosicion(aPosicion)) {
+		if(this.verificarPosicion(aPosicion) && Destino.celdaVacia()) {
 			Celda Origen = matriz.get(dePosicion.toString());
 			movible.movibleMoveteA(jugador, aPosicion);
 			Destino.recibirMovible(Origen.vaciarCelda());
@@ -177,4 +201,11 @@ public class Tablero {
 		return null;
 	}
 
+	@Override
+	public void change() {
+		matriz.values().stream().forEach(celda -> {
+			if(celda.getPosicionable() != null && celda.getPosicionable().obtenerVida() <= 0)
+				celda.vaciarCelda();
+		});
+	}
 }

@@ -99,6 +99,10 @@ public class AlgoChessControler implements Observador {
             else throw new SeleccionaUnaUnidadQueTePertenecePrimeroExcepcion();
         }else if(unidad2 == null) {
             unidad2 = algoChess.unidadDeLaPosicion(x + 1, y + 1);
+            if (unidad2 == unidad1) {
+                unidad2 = null;
+                throw new NoPuedesSeleccionaLaMismaUnidaDosVecesExcepcion();
+            }
         }else throw new NoSePuedeSeleccionarMasDeDosUnidadesExcepcion();
     }
 
@@ -121,14 +125,12 @@ public class AlgoChessControler implements Observador {
     }
 
     public void deseleccionarUnidades() {
-        if(unidad1 != null){
-            ImagenTablero.getImagenTablero().desseleccionarPosicion(unidad1.getPosicion().getX() -1, unidad1.getPosicion().getY() - 1);
+        if(unidad1 != null || unidad2 != null){
+            ImagenTablero.getImagenTablero().colorPorDectoTablero();
             unidad1 = null;
-        }
-        if(unidad2 != null){
-            ImagenTablero.getImagenTablero().desseleccionarPosicion(unidad2.getPosicion().getX() -1, unidad2.getPosicion().getY() - 1);
             unidad2 = null;
         }
+
     }
 
     public void primeraUnidadSeleccionadaAtacaSegundaUnida() {
@@ -147,7 +149,8 @@ public class AlgoChessControler implements Observador {
                                 celda.setTooltip(tooltip);
                             }
                         });
-                        new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
+                        if (unidad2 !=null)
+                            new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
                         this.completarTurno();
                         this.deseleccionarUnidades();
                         this.determininarSiHayGanador();
@@ -205,11 +208,11 @@ public class AlgoChessControler implements Observador {
         unidadConVidaCeroRojas.stream().forEach(unidadMuerta -> {
             posicionablesRojos.remove(unidadMuerta);
         });
-        //elimino imagenes del tablero
+        //elimino imagenes del tablero la celda no se puede hacer click
         celdasConImagenes.stream().forEach( celda -> {
             celda.setGraphic(null);
             celda.setOnAction(null);
-            ImagenTablero.getImagenTablero().desseleccionarPosicion(celda.getX(), celda.getY());
+            ImagenTablero.getImagenTablero().colorPorDectoTablero();
         });
 
         //elinmo las celdad viejas

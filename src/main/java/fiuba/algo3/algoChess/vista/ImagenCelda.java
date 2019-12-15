@@ -5,7 +5,8 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 
 public class ImagenCelda extends Button {
-	private int x;
+    private final String colorDefaul;
+    private int x;
     private int y;
     
     public ImagenCelda(int coordenadaX, int coordenadaY,String color)
@@ -14,6 +15,7 @@ public class ImagenCelda extends Button {
         x = coordenadaX;
         y = coordenadaY;
         this.inicializar(color);
+        colorDefaul = color;
 
     }
     
@@ -38,4 +40,8 @@ public class ImagenCelda extends Button {
 		return y;
 	}
 
+    public void colorPorDefecto() {
+        this.setStyle("-fx-background-color: "+ colorDefaul +"; -fx-border-color: #484860;"
+                + " -fx-border-width: 1px");
+    }
 }

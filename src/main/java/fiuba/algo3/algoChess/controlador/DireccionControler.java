@@ -2,6 +2,8 @@ package fiuba.algo3.algoChess.controlador;
 
 import fiuba.algo3.algoChess.controlador.excepciones.*;
 import fiuba.algo3.algoChess.modelo.Direccion.Direccion;
+import fiuba.algo3.algoChess.modelo.Excepciones.CoordenadaFueraDelTableroExcepcion;
+import fiuba.algo3.algoChess.modelo.Excepciones.PosicionOcupadaExcepcion;
 import fiuba.algo3.algoChess.vista.Informar;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,6 +32,10 @@ public class DireccionControler {
 					new Informar("Solo una!","Selecciona una sola unidad para mover");
 				} catch (NoHayNingunaUnidadSeleccionadaExcepcion e) {
 					new Informar("Selecciona una unidad","Selecciona una unidad para mover");
+				} catch (PosicionOcupadaExcepcion e){
+					new Informar("Posicion ocupada", "La posicion ya esta ocupada ...");
+				} catch (CoordenadaFueraDelTableroExcepcion e){
+					new Informar("No te puedes MOVER", "No es posible moverce fuera del tablero");
 				}
 		
 			}

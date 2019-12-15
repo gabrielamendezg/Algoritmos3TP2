@@ -13,7 +13,7 @@ public abstract class Observable {
         observers.add(observador);
     }
 
-    public void notifyObservers() {
+    public void notificarObservadores() {
         observers.stream().forEach(observer -> observer.change());
     }
 }

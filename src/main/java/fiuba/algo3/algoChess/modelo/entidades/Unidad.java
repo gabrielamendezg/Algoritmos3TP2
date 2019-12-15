@@ -12,24 +12,29 @@ public abstract class Unidad extends Observable implements Posicionable {
 	protected int vida;
 	protected int costo;
 	protected TipoUnidad tipo;
-
+	protected DanioPorTerritoroEnemigo danioPorTerritoroEnemigo;
 	protected Posicion posicion;
 
 
 	public Unidad(JugadorA jugador) {
+		super();
 		posicion = new Posicion(-1, -1);
 		tipo = new UnidadA();
+		danioPorTerritoroEnemigo = new DanioPorTerritoroEnemigo(tipo);
 	}
 	
 	public Unidad(JugadorB jugador) {
+		super();
 		posicion = new Posicion(-1,-1);
 		tipo = new UnidadB();
+		danioPorTerritoroEnemigo = new DanioPorTerritoroEnemigo(tipo);
 	}
 
 	public void recibirAtaque(int daño) {
 		vida = vida - daño;
+		vida = vida - danioPorTerritoroEnemigo.penalizacionPorTerritoriEnemigo(daño);
 		if(vida <= 0)
-			this.notifyObservers();
+			this.notificarObservadores();
 
 	}
 
@@ -45,8 +50,13 @@ public abstract class Unidad extends Observable implements Posicionable {
 
 	@Override
 	public void setPosicion(Posicion newPosicion) {
+		if ((posicion.getX() == -1) && (posicion.getY() == -1) ){
+			posicion = newPosicion;
+			return;
+		}
 		posicion = newPosicion;
-		this.notifyObservers();
+		danioPorTerritoroEnemigo.actualizaDanioPorTerritoroEnemigo(posicion);
+		this.notificarObservadores();
 	}
 	
 	@Override

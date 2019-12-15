@@ -6,7 +6,7 @@ import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import javafx.collections.ObservableList;
 
-public class CeldaB extends Celda implements Observador {
+public class CeldaB extends Celda {
 	public CeldaB() {
 		super();
 	}
@@ -16,8 +16,6 @@ public class CeldaB extends Celda implements Observador {
 		if (this.celdaVacia()){
 			nuevaUnidad.posicionateEnEstaPosicion(jugador, posicion);
 			jugador.agregarEntidadPosiciondoEnTablero(nuevaUnidad);
-			nuevaUnidad.addObserver(jugador);
-			nuevaUnidad.addObserver(this);
 			unidad  = nuevaUnidad;
 		} else {
 			throw new PosicionOcupadaExcepcion();
@@ -33,9 +31,4 @@ public class CeldaB extends Celda implements Observador {
 		}
 	}
 
-	@Override
-	public void change() {
-		if(this.unidad.obtenerVida() <= 0)
-			this.vaciarCelda();
-	}
 }
