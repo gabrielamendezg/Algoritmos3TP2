@@ -2,6 +2,8 @@ package fiuba.algo3.algoChess.vista;
 
 import fiuba.algo3.algoChess.controlador.AlgoChessControler;
 import fiuba.algo3.algoChess.controlador.DragClase;
+import fiuba.algo3.algoChess.modelo.celda.Posicionable;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -54,8 +56,13 @@ public class ImagenTablero extends GridPane {
     }
 
 
-    public void colocarImagenEnLaPosicion(Image image, int x, int y) {
+    public void colocarImagenEnLaPosicion(Image image, int x, int y, int pustoDeVida) {
         celdas[x][y].setGraphic(new ImageView(image));
+            final Tooltip tooltip = new Tooltip();
+                tooltip.setText(
+                        "PUNTOS DE VIDA" + "\n" +
+                                Integer.toString(pustoDeVida));
+        celdas[x][y].setTooltip(tooltip);
         AlgoChessControler.getAlgoChessControler().addCeldaConImagen(celdas[x][y]);
     }
 

@@ -212,6 +212,7 @@ public class AlgoChessControler implements Observador {
         celdasConImagenes.stream().forEach( celda -> {
             celda.setGraphic(null);
             celda.setOnAction(null);
+            celda.setTooltip(null);
             ImagenTablero.getImagenTablero().colorPorDectoTablero();
         });
 
@@ -241,11 +242,11 @@ public class AlgoChessControler implements Observador {
     
     private void mostrarImagenDeLosPosicionables() {
         posicionablesRojos.stream().forEach(unidadPosicionado -> {
-            ImagenTablero.getImagenTablero().colocarImagenEnLaPosicion(this.imagenDePosicionableRojo(unidadPosicionado),unidadPosicionado.getPosicion().getX() - 1, unidadPosicionado.getPosicion().getY() - 1);
+            ImagenTablero.getImagenTablero().colocarImagenEnLaPosicion(this.imagenDePosicionableRojo(unidadPosicionado),unidadPosicionado.getPosicion().getX() - 1, unidadPosicionado.getPosicion().getY() - 1, unidadPosicionado.obtenerVida());
         });
 
         posicionablesAzules.stream().forEach(unidadPosicionado -> {
-            ImagenTablero.getImagenTablero().colocarImagenEnLaPosicion(this.imagenDePosicionableAzul(unidadPosicionado),unidadPosicionado.getPosicion().getX() - 1, unidadPosicionado.getPosicion().getY() - 1);
+            ImagenTablero.getImagenTablero().colocarImagenEnLaPosicion(this.imagenDePosicionableAzul(unidadPosicionado),unidadPosicionado.getPosicion().getX() - 1, unidadPosicionado.getPosicion().getY() - 1, unidadPosicionado.obtenerVida());
         });
     }
 
