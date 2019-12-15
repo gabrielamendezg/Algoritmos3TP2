@@ -35,8 +35,9 @@ public class Ganaste {
                 "-fx-text-fill: #ffffff;"+
                 "-fx-font-weight: bold;"+
                 "-fx-font-size: 1.1em;");
-       // Media sound = new Media(new File("src/main/resources/sonidos/Shutdown.wav").toURI().toString());
-       // mediaPlayer.play();
+        Media sound = new Media(new File("src/main/resources/sonidos/Shutdown.wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         alert.showAndWait();
     }
     public Ganaste(JugadorB jugadorAzul) {
