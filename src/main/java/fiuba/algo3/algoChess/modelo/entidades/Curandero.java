@@ -8,7 +8,7 @@ import fiuba.algo3.algoChess.modelo.entidades.interfaces.Sanador;
 import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 
-public class Curandero extends Unidad implements Movible, Posicionable, Atacable, Sanador {
+public class Curandero extends Unidad implements Movible, Posicionable, Atacable, Sanador, Sanable {
 
 	private int poderCuracion = 15;
 	private int rangoInicial = 1;
@@ -68,5 +68,11 @@ public class Curandero extends Unidad implements Movible, Posicionable, Atacable
 	@Override
 	public int costo() {
 		return costo;
+	}
+
+	@Override
+	public void curarce(int conVida) {
+		vida = vida + conVida;
+		
 	}
 }

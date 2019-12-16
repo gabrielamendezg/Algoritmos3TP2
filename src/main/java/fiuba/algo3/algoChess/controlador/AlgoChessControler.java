@@ -299,7 +299,7 @@ public class AlgoChessControler implements Observador {
                 				Posicionable unidadPosicionada = algoChess.unidadDeLaPosicion(celda.getX() + 1, celda.getY() + 1);
                 				if(unidadPosicionada != null) {
                 					tooltip.setText(
-                							"PUNTOS DE VIDA" + "\n" + String.valueOf(posicionable.obtenerVida()));
+                							"PUNTOS DE VIDA" + "\n" + String.valueOf(unidadPosicionada.obtenerVida()));
                 					celda.setTooltip(tooltip);
                 				}
                 			});
