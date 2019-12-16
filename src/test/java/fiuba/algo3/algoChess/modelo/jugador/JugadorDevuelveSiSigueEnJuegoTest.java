@@ -25,7 +25,7 @@ public class JugadorDevuelveSiSigueEnJuegoTest {
 		tablero.atacanteAtacarAtacable(jugadorB, unidad, soldado);
 		tablero.atacanteAtacarAtacable(jugadorB, unidad, soldado);
 		tablero.atacanteAtacarAtacable(jugadorB, unidad, soldado);
-		assertEquals(soldado.obtenerVida(), 0);
+		assertEquals(soldado.obtenerVida(), 0,0);
 		assertFalse(jugador.sigueEnJuego());
 		
 	}

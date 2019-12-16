@@ -28,7 +28,7 @@ class CatapultaQuitaVidaCorrespondienteTest {
 		atacables.add(jinete);
 		catapulta.atacarAtacable(jugadora, jinete, atacables);
 		
-		assertEquals(jinete.obtenerVida() , 80);
+		assertEquals(jinete.obtenerVida() , 80,0);
 	}
 
 }
