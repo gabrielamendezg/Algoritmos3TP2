@@ -58,6 +58,15 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.controlsfx/controlsfx -->
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.0.1</version>
+        </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/org.diirt.javafx/javafx -->
         <dependency>
             <groupId>org.diirt.javafx</groupId>

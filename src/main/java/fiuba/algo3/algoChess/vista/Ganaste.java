@@ -17,12 +17,12 @@ public class Ganaste {
 	MediaPlayer mediaPlayer;
     
 	public Ganaste(JugadorA jugador) {
-        Alert alert = this.getAlert("Ganador: Bando " + EscenaTablero.getEscenaTablero().getNombreJugadorAzul() + " ", emblemaAzul);
+        Alert alert = this.getAlert("Ganador: " + EscenaTablero.getEscenaTablero().getNombreJugadorAzul() + " ", emblemaAzul);
         alert.showAndWait();
     }
 
     public Ganaste(JugadorB jugador) {
-        Alert alert = this.getAlert("Ganador: Bando " + EscenaTablero.getEscenaTablero().getNombreJugadorRojo() + " ", emblemaRojo);
+        Alert alert = this.getAlert("Ganador: " + EscenaTablero.getEscenaTablero().getNombreJugadorRojo() + " ", emblemaRojo);
         alert.showAndWait();
     }
 	

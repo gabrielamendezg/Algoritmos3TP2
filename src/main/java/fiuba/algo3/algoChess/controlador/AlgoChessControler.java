@@ -10,12 +10,18 @@ import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.vista.Ganaste;
 import fiuba.algo3.algoChess.vista.imagenes.*;
 import javafx.application.Platform;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.*;
 import fiuba.algo3.algoChess.vista.*;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
@@ -193,7 +199,17 @@ public class AlgoChessControler implements Observador {
 
         unidadConVidaCeroAzules.stream().forEach(unidadMuerta -> {
             if(EscenaTablero.getEscenaTablero() != null)
-                new Informar("Murio ;( tu unidad", EscenaTablero.getEscenaTablero().getNombreJugadorAzul() + " MURIO tu " + this.nombredeUnidad(unidadMuerta) , "src/main/resources/sonidos/Shutdown.wav");
+                Notifications.create()
+                        .darkStyle()
+                        .hideAfter(Duration.seconds(5))
+                        .position(Pos.CENTER)
+                        .title("Murio ;( tu unidad")
+                        .text(EscenaTablero.getEscenaTablero().getNombreJugadorAzul() + " MURIO tu " + this.nombredeUnidad(unidadMuerta))
+                        .showInformation();
+            Media sound = new Media(new File("src/main/resources/sonidos/Shutdown.wav").toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+
             posicionablesAzules.remove(unidadMuerta);
         });
 
@@ -204,7 +220,15 @@ public class AlgoChessControler implements Observador {
         });
         unidadConVidaCeroRojas.stream().forEach(unidadMuerta -> {
             if(EscenaTablero.getEscenaTablero() != null)
-                new Informar("Murio ;( tu unidad", EscenaTablero.getEscenaTablero().getNombreJugadorRojo() + " MURIO tu " + this.nombredeUnidad(unidadMuerta) , "src/main/resources/sonidos/Shutdown.wav");
+                Notifications.create()
+                        .hideAfter(Duration.seconds(5))
+                        .position(Pos.CENTER)
+                        .title("Murio ;( tu unidad")
+                        .text(EscenaTablero.getEscenaTablero().getNombreJugadorRojo() + " MURIO tu " + this.nombredeUnidad(unidadMuerta))
+                        .showInformation();
+            Media sound = new Media(new File("src/main/resources/sonidos/Shutdown.wav").toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
             posicionablesRojos.remove(unidadMuerta);
         });
         //elimino imagenes del tablero la celda no se puede hacer click
