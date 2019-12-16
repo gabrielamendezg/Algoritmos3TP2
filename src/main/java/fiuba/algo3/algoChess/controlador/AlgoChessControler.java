@@ -156,7 +156,7 @@ public class AlgoChessControler implements Observador {
         });
     }
 
-    private void determininarSiHayGanador() {
+    public void determininarSiHayGanador() {
         if (algoChess.hayGanador()) {
             Jugador ganador = algoChess.obtenerGanador();
             if (ganador instanceof JugadorA){
@@ -192,6 +192,8 @@ public class AlgoChessControler implements Observador {
         });
 
         unidadConVidaCeroAzules.stream().forEach(unidadMuerta -> {
+            if(EscenaTablero.getEscenaTablero() != null)
+                new Informar("Murio ;( tu unidad", EscenaTablero.getEscenaTablero().getNombreJugadorAzul() + " MURIO tu " + this.nombredeUnidad(unidadMuerta) , "src/main/resources/sonidos/Shutdown.wav");
             posicionablesAzules.remove(unidadMuerta);
         });
 
@@ -201,6 +203,8 @@ public class AlgoChessControler implements Observador {
                 unidadConVidaCeroRojas.add(unidadPosicionado);
         });
         unidadConVidaCeroRojas.stream().forEach(unidadMuerta -> {
+            if(EscenaTablero.getEscenaTablero() != null)
+                new Informar("Murio ;( tu unidad", EscenaTablero.getEscenaTablero().getNombreJugadorRojo() + " MURIO tu " + this.nombredeUnidad(unidadMuerta) , "src/main/resources/sonidos/Shutdown.wav");
             posicionablesRojos.remove(unidadMuerta);
         });
         //elimino imagenes del tablero la celda no se puede hacer click
@@ -217,8 +221,21 @@ public class AlgoChessControler implements Observador {
         //Mostrar imagenes De los sobrevivientes y de los que se movieron
         this.mostrarImagenDeLosPosicionables();
         this.setOnActionCeldaConImagen();
-    }    
-  
+        this.determininarSiHayGanador();
+    }
+
+    private String nombredeUnidad(Posicionable unidad) {
+        if(unidad instanceof Curandero)
+            return "CuranderoRojo";
+        if(unidad instanceof Catapulta)
+            return "Catapulta";
+        if(unidad instanceof Jinete)
+            return "Jinete";
+        if(unidad instanceof SoldadoDeInfanteria)
+            return "Soldado";
+        return null;
+    }
+
     public void moverUnidad(Direccion direccion) {
     	if((unidad1 != null)) {
     		if(unidad2 == null) {

@@ -16,8 +16,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class EscenaTablero extends Scene {
-	private ImageView jugadorAzulEmblema = new ImageView(new Image("imagenes/emblemaAzul.PNG",50,50,true,true));
-	private ImageView jugadorRojoEmblema = new ImageView(new Image("imagenes/emblemaRojo.PNG",50,50,true,true));
+	private static EscenaTablero estenaTablero = null;
+	private ImageView jugadorAzulEmblema = new ImageView(new Image("imagenes/emblemaAzul.png",50,50,true,true));
+	private ImageView jugadorRojoEmblema = new ImageView(new Image("imagenes/emblemaRojo.png",50,50,true,true));
 	private String jugadorAzulNombre;
 	private String jugadorRojoNombre;
 	public Stage stagePrincipal;
@@ -42,9 +43,14 @@ public class EscenaTablero extends Scene {
 		panelPrincipal.setStyle("-fx-background-color: #484860");
 		panelPrincipal.setCenterShape(true);
 		mediaPlayer = mediaPlayerstage;
+		estenaTablero = this;
 		return;
 	}
-	
+
+	public static EscenaTablero getEscenaTablero() {
+		return estenaTablero;
+	}
+
 	private HBox tagJugador(String nombreJugador, ImageView icono) {
 		HBox tagJugador = new HBox();
 		tagJugador.setStyle("-fx-background-color: #000000;-fx-spacing: 5");
@@ -147,6 +153,7 @@ public class EscenaTablero extends Scene {
 		Boton pasarturno = new Boton("Pasar Turno","#ffffff","#e3913e","#f5b754");
 		pasarturno.setOnAction(e -> {
 			AlgoChessControler.getAlgoChessControler().pasarTurno();
+			AlgoChessControler.getAlgoChessControler().determininarSiHayGanador();
 			this.pasarTurno();
 		});
 		pasarturno.setPrefWidth(144);
@@ -193,5 +200,12 @@ public class EscenaTablero extends Scene {
 			jugadorTurno = 2;
 		}
 	}
-	
+
+	public String getNombreJugadorRojo() {
+		return jugadorRojoNombre;
+	}
+
+	public String getNombreJugadorAzul() {
+		return jugadorAzulNombre;
+	}
 }

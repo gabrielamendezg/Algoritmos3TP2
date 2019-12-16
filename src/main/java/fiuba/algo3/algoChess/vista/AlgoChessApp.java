@@ -2,7 +2,6 @@ package fiuba.algo3.algoChess.vista;
 
 import java.io.File;
 
-import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import javafx.application.*;
 import javafx.geometry.Pos;
 import javafx.scene.*;
@@ -74,14 +73,14 @@ public class AlgoChessApp extends Application
 		tagJugadorAzul.setStyle("-fx-spacing: 3");
 		Label jugadorAzul = new Label("Jugador Azul:");
 		jugadorAzul.setStyle("-fx-text-fill: white;-fx-font-size: 20px;-fx-label-padding: 30");
-		tagJugadorAzul.getChildren().addAll(new ImageView(new Image("imagenes/emblemaAzul.PNG")),jugadorAzul);
+		tagJugadorAzul.getChildren().addAll(new ImageView(new Image("imagenes/emblemaAzul.png")),jugadorAzul);
 		tagJugadorAzul.setAlignment(Pos.CENTER);
 		
 		HBox tagJugadorRojo = new HBox();
 		tagJugadorRojo.setStyle("-fx-spacing: 3");
 		Label jugadorRojo = new Label("Jugador Rojo:");
 		jugadorRojo.setStyle("-fx-text-fill: white;-fx-font-size: 20px;-fx-label-padding: 30");
-		tagJugadorRojo.getChildren().addAll(new ImageView(new Image("imagenes/emblemaRojo.PNG")),jugadorRojo);
+		tagJugadorRojo.getChildren().addAll(new ImageView(new Image("imagenes/emblemaRojo.png")),jugadorRojo);
 		tagJugadorRojo.setAlignment(Pos.CENTER);
 		
 		Label placeholder = new Label("Jugador Rojo:");
