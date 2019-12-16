@@ -112,15 +112,7 @@ public class AlgoChessControler implements Observador {
 
     public void setOnActionCeldaConImagen() {
         celdasConImagenes.stream().forEach(celda -> celda.setOnAction(new CeldaControler(celda)));
-        celdasConImagenes.stream().forEach(celda -> {
-            final Tooltip tooltip = new Tooltip();
-            Posicionable posicionable = algoChess.unidadDeLaPosicion(celda.getX() + 1, celda.getY() + 1);
-            if(posicionable != null) {
-                tooltip.setText(
-                        "PUNTOS DE VIDA" + "\n" + String.valueOf(posicionable.obtenerVida()));
-                celda.setTooltip(tooltip);
-            }
-        });
+        actualizarTooltip();
     }
 
     public void deseleccionarUnidades() {
@@ -138,15 +130,7 @@ public class AlgoChessControler implements Observador {
                 if (unidad1 instanceof Atacante){
                     if (!turnoCompletado()){
                         algoChess.primeraUnidadSeleccionadaAtacaSegundaUnida((Atacante) unidad1, (Atacable) unidad2);
-                        celdasConImagenes.stream().forEach(celda -> {
-                            final Tooltip tooltip = new Tooltip();
-                            Posicionable unidadPosicionada = algoChess.unidadDeLaPosicion(celda.getX() + 1, celda.getY() + 1);
-                            if(unidadPosicionada != null) {
-                                tooltip.setText(
-                                        "PUNTOS DE VIDA" + "\n" + String.valueOf(posicionable.obtenerVida()));
-                                celda.setTooltip(tooltip);
-                            }
-                        });
+                        actualizarTooltip();
                         if (unidad2 !=null)
                             new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
                         this.completarTurno();
@@ -157,6 +141,19 @@ public class AlgoChessControler implements Observador {
                 } else throw new UnidadNoEsAtacanteExcepcion();
             } else throw new NoSePuedeAtacarUnidadPropiaExcepcion();
         } throw new SelecionaUnaUnidaMasParaAtacarExcepcion();
+    }
+
+    private void actualizarTooltip() {
+        celdasConImagenes.stream().forEach(celda -> {
+            Tooltip tooltip = new Tooltip();
+            Posicionable unidadPosicionada = algoChess.unidadDeLaPosicion(celda.getX() + 1, celda.getY() + 1);
+            if(unidadPosicionada != null) {
+                tooltip.setText(
+                        "PUNTOS DE VIDA" + "\n" +
+                                String.valueOf(unidadPosicionada.obtenerVida()));
+                celda.setTooltip(tooltip);
+            }
+        });
     }
 
     private void determininarSiHayGanador() {
@@ -240,12 +237,13 @@ public class AlgoChessControler implements Observador {
     
     private void mostrarImagenDeLosPosicionables() {
         posicionablesRojos.stream().forEach(unidadPosicionado -> {
-            ImagenTablero.getImagenTablero().colocarImagenEnLaPosicion(this.imagenDePosicionableRojo(unidadPosicionado),unidadPosicionado.getPosicion().getX() - 1, unidadPosicionado.getPosicion().getY() - 1, unidadPosicionado.obtenerVida());
+            ImagenTablero.getImagenTablero().colocarImagenEnLaPosicion(this.imagenDePosicionableRojo(unidadPosicionado),unidadPosicionado.getPosicion().getX() - 1, unidadPosicionado.getPosicion().getY() - 1);
         });
 
         posicionablesAzules.stream().forEach(unidadPosicionado -> {
-            ImagenTablero.getImagenTablero().colocarImagenEnLaPosicion(this.imagenDePosicionableAzul(unidadPosicionado),unidadPosicionado.getPosicion().getX() - 1, unidadPosicionado.getPosicion().getY() - 1, unidadPosicionado.obtenerVida());
+            ImagenTablero.getImagenTablero().colocarImagenEnLaPosicion(this.imagenDePosicionableAzul(unidadPosicionado),unidadPosicionado.getPosicion().getX() - 1, unidadPosicionado.getPosicion().getY() - 1);
         });
+        actualizarTooltip();
     }
 
     private Image imagenDePosicionableRojo(Posicionable unidadPosicionado) {
