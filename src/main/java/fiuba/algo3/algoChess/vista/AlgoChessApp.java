@@ -1,5 +1,7 @@
 package fiuba.algo3.algoChess.vista;
 
+import java.io.File;
+
 import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import javafx.application.*;
 import javafx.geometry.Pos;
@@ -11,6 +13,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.*;
 
 public class AlgoChessApp extends Application
@@ -19,6 +23,7 @@ public class AlgoChessApp extends Application
 	private String botonColor = "#6886aa";
 	private String botonSombra = "#39516d";
 	private String blanco ="#ffffff";
+	MediaPlayer mediaPlayer;
 
     public AlgoChessApp() {
     	//para que imagen tablero exita desde el comienzo
@@ -53,6 +58,10 @@ public class AlgoChessApp extends Application
 		Scene menu = new Scene(layout1, 990, 700);
 		reglas.setOnAction(e -> stage.setScene(this.reglas(stage,menu)));
 		iniciar.setOnAction(e -> stage.setScene(this.jugadores(stage)));
+		Media sound = new Media(new File("src/main/resources/sonidos/medieval_intro.wav").toURI().toString());
+        mediaPlayer = new MediaPlayer(sound);
+    	mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
 		return menu;
 	}
 	
@@ -90,7 +99,7 @@ public class AlgoChessApp extends Application
 	}
 	
 	private Scene iniciarJuego(Stage stage,String jugadorAzul,String jugadorRojo) {
-		Scene eleccion = new EscenaTablero(stage, jugadorAzul, jugadorRojo, ImagenTablero.getImagenTablero(), new BorderPane());
+		Scene eleccion = new EscenaTablero(stage, jugadorAzul, jugadorRojo, ImagenTablero.getImagenTablero(), new BorderPane(),mediaPlayer);
 		return eleccion;
 	}
 

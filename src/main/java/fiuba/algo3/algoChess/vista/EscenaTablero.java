@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class EscenaTablero extends Scene {
@@ -22,9 +23,9 @@ public class EscenaTablero extends Scene {
 	public Stage stagePrincipal;
 	public BorderPane panelPrincipal;
 	public int jugadorTurno;
+	public MediaPlayer mediaPlayer;
 	
-	
-	public EscenaTablero(Stage stage, String jugadorAzul, String jugadorRojo, ImagenTablero tablero, BorderPane panel) {
+	public EscenaTablero(Stage stage, String jugadorAzul, String jugadorRojo, ImagenTablero tablero, BorderPane panel,	MediaPlayer mediaPlayerstage) {
 		super(panel,990,700);
 		jugadorAzulNombre = jugadorAzul;
 		jugadorRojoNombre = jugadorRojo;
@@ -40,6 +41,7 @@ public class EscenaTablero extends Scene {
 		tablero.setAlignment(Pos.CENTER);
 		panelPrincipal.setStyle("-fx-background-color: #484860");
 		panelPrincipal.setCenterShape(true);
+		mediaPlayer = mediaPlayerstage;
 		return;
 	}
 	
@@ -100,6 +102,7 @@ public class EscenaTablero extends Scene {
 		terminar.setOnAction(e -> {
 			this.iniciarJuego(AlgoChessControler.getAlgoChessControler().turnoAleatorio());
 			ImagenTablero.getImagenTablero().desactivarDragAndDrop();
+			mediaPlayer.stop();
 		});
 		HBox botonterminar = new HBox(terminar);
 		botonterminar.setAlignment(Pos.CENTER);

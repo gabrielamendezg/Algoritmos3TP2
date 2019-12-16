@@ -132,7 +132,7 @@ public class AlgoChessControler implements Observador {
                         algoChess.primeraUnidadSeleccionadaAtacaSegundaUnida((Atacante) unidad1, (Atacable) unidad2);
                         actualizarTooltip();
                         if (unidad2 !=null)
-                            new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
+                            new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n","src/main/resources/sonidos/impacto.wav");
                         this.completarTurno();
                         this.deseleccionarUnidades();
                         this.determininarSiHayGanador();
@@ -286,7 +286,7 @@ public class AlgoChessControler implements Observador {
                 					celda.setTooltip(tooltip);
                 				}
                 			});
-                			new Informar("Curación recibida", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n");
+                			new Informar("Curación recibida", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n","src/main/resources/sonidos/guitar.wav");
                 			this.completarTurno();
                 			this.deseleccionarUnidades();
                 			this.determininarSiHayGanador();

@@ -16,7 +16,7 @@ import javafx.scene.input.TransferMode;
 public class DragClase{
 
     static String styleDefaul;
-
+    String sound = "src/main/resources/sonidos/Shutdown.wav";
     AlgoChessControler algoChessControler = AlgoChessControler.getAlgoChessControler();
 
     public EventHandler<DragEvent> getDragOver(ImagenCelda celda){
@@ -84,11 +84,11 @@ public class DragClase{
                         success = true;
                         AlgoChessControler.getAlgoChessControler().actualizarPuntos();
                     } catch (FilaOColumnaNoPerteneceATuParteDelTableroExcepcion e) {
-                        new Informar("Territorio Enemigo!", "Solo puedes posicionar unidades en tu territorio");
+                        new Informar("Territorio Enemigo!", "Solo puedes posicionar unidades en tu territorio",sound);
                     } catch (PuntosInsuficientesExcepcion e) {
-                        new Informar("Puntos insuficientes","Puntos insuficientes para esta unidad por favor termina tu turno o escoge otro");
+                        new Informar("Puntos insuficientes","Puntos insuficientes para esta unidad por favor termina tu turno o escoge otro",sound);
                     } catch (PosicionOcupadaExcepcion e){
-                        new Informar("Posicion ocupada", "La posicion ya esta ocupada ...");
+                        new Informar("Posicion ocupada", "La posicion ya esta ocupada",sound);
                     }
 
                 }
