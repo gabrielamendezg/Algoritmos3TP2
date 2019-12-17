@@ -63,7 +63,6 @@ public class ImagenTablero extends GridPane {
         for(int y = 0; y < 20 ; y++) {
             for (int x = 0; x < 20; x++) {
                 celdas[x][y].colorPorDefecto();
-
             }
         }
     }
@@ -87,11 +86,11 @@ public class ImagenTablero extends GridPane {
     }
 
     public void efectoAtaqueEnLaCelda(int x, int y) {
-        Node unidad = celdas[x][y].getGraphic();
+
         celdas[x][y].setGraphic(null);
         celdas[x][y].setGraphic(new ImageView(explosion));
         MediaPlayer mediaPlayer = new MediaPlayer(soundExplosion);
         mediaPlayer.play();
-        //celdas[x][y].setGraphic(unidad);
+
 	}
 }

@@ -138,10 +138,9 @@ public class AlgoChessControler implements Observador {
                         if (unidad2 !=null)
                             new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n","src/main/resources/sonidos/impacto.wav");
                         this.completarTurno();
-                        actualizarTooltip();
-                        this.deseleccionarUnidades();
-                        this.determininarSiHayGanador();
                         this.actualizarTodo();
+                        actualizarTooltip();
+                        this.determininarSiHayGanador();
                         return;
                     }else throw new YaCompletasteTuTurnoExcecion();
                 } else throw new UnidadNoEsAtacanteExcepcion();
@@ -193,22 +192,33 @@ public class AlgoChessControler implements Observador {
 
     public void actualizarTodo() {
         this.deseleccionarUnidades();
+
+        //elimino del modelo
+        algoChess.eliminarUnidadesMuertasDelTabler();
+        algoChess.eliminarUnidadesMuertasDeLosJugadores();
+
         //se elimina unidades muertas
         ArrayList<Posicionable> unidadConVidaCeroAzules = new ArrayList<>();
         posicionablesAzules.stream().forEach(unidadPosicionado -> {
-            if(unidadPosicionado.obtenerVida() <= 0)
+            if(unidadPosicionado != null &&  unidadPosicionado.obtenerVida() <= 0)
                 unidadConVidaCeroAzules.add(unidadPosicionado);
         });
 
         unidadConVidaCeroAzules.stream().forEach(unidadMuerta -> {
-            if(EscenaTablero.getEscenaTablero() != null)
-                Notifications.create()
-                        .darkStyle()
-                        .hideAfter(Duration.seconds(5))
-                        .position(Pos.CENTER)
-                        .title("Murio ;( tu unidad")
-                        .text(EscenaTablero.getEscenaTablero().getNombreJugadorAzul() + " MURIO tu " + this.nombredeUnidad(unidadMuerta))
-                        .showInformation();
+            try {
+
+                if (EscenaTablero.getEscenaTablero() != null) {
+                    if (unidadMuerta != null) {
+                        Notifications.create()
+                                .darkStyle()
+                                .hideAfter(Duration.seconds(5))
+                                .position(Pos.CENTER)
+                                .title("Murio ;( tu unidad")
+                                .text(EscenaTablero.getEscenaTablero().getNombreJugadorAzul() + " MURIO tu " + this.nombredeUnidad(unidadMuerta))
+                                .showInformation();
+                    }
+                }
+            } catch (Exception e) {}
             Media sound = new Media(new File("src/main/resources/sonidos/Shutdown.wav").toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(sound);
             mediaPlayer.play();
@@ -218,32 +228,30 @@ public class AlgoChessControler implements Observador {
 
         ArrayList<Posicionable> unidadConVidaCeroRojas = new ArrayList<>();
         posicionablesRojos.stream().forEach(unidadPosicionado -> {
-            if(unidadPosicionado.obtenerVida() <= 0)
+            if(unidadPosicionado != null && unidadPosicionado.obtenerVida() <= 0)
                 unidadConVidaCeroRojas.add(unidadPosicionado);
         });
         unidadConVidaCeroRojas.stream().forEach(unidadMuerta -> {
-            if(EscenaTablero.getEscenaTablero() != null)
-                Notifications.create()
-                        .hideAfter(Duration.seconds(5))
-                        .position(Pos.CENTER)
-                        .title("Murio ;( tu unidad")
-                        .text(EscenaTablero.getEscenaTablero().getNombreJugadorRojo() + " MURIO tu " + this.nombredeUnidad(unidadMuerta))
-                        .showInformation();
+            try {
+                if (EscenaTablero.getEscenaTablero() != null) {
+                    if (unidadMuerta != null) {
+                        Notifications.create()
+                                .hideAfter(Duration.seconds(5))
+                                .position(Pos.CENTER)
+                                .title("Murio ;( tu unidad")
+                                .text(EscenaTablero.getEscenaTablero().getNombreJugadorRojo() + " MURIO tu " + this.nombredeUnidad(unidadMuerta))
+                                .showInformation();
+                    }
+                }
+            } catch (Exception e) {}
             Media sound = new Media(new File("src/main/resources/sonidos/Shutdown.wav").toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(sound);
             mediaPlayer.play();
             posicionablesRojos.remove(unidadMuerta);
         });
-        //elimino del modelo
-        algoChess.eliminarUnidadesMuertasDelTabler();
-        algoChess.eliminarUnidadesMuertasDeLosJugadores();
 
-        //elimino imagenes del tablero la celda no se puede hacer click
-        celdasConImagenes.stream().forEach( celda -> {
+        celdasConImagenes.stream().forEach(celda -> {
             celda.setGraphic(null);
-            celda.setOnAction(null);
-            celda.setTooltip(null);
-            ImagenTablero.getImagenTablero().colorPorDectoTablero();
         });
 
         //elinmo las celdad viejas
@@ -335,9 +343,10 @@ public class AlgoChessControler implements Observador {
                 				}
                 			});
                 			new Informar("Curación recibida", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n","src/main/resources/sonidos/guitar.wav");
-                			this.completarTurno();
-                			this.deseleccionarUnidades();
-                			this.determininarSiHayGanador();
+                            this.completarTurno();
+                            this.actualizarTodo();
+                            actualizarTooltip();
+                            this.determininarSiHayGanador();
                 			return;
                     	}else throw new YaCompletasteTuTurnoExcecion();
                     }else throw new UnidadNoEsSanableExcepcion();
