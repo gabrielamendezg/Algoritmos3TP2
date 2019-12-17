@@ -1,20 +1,19 @@
 package fiuba.algo3.algoChess.modelo.algoChess;
 
+import fiuba.algo3.algoChess.controlador.AlgoChessControler;
+import fiuba.algo3.algoChess.modelo.Observable;
+import fiuba.algo3.algoChess.modelo.Observador;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
+import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacante;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Movible;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Sanable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Sanador;
 import fiuba.algo3.algoChess.modelo.tablero.*;
-
-/*Rearmar base
- * 
- * 
- * 
- */
-
 import fiuba.algo3.algoChess.modelo.jugador.*;
+
+import java.util.ArrayList;
 
 public class AlgoChess {
 
@@ -41,10 +40,19 @@ public class AlgoChess {
 
 	public void posicionarPosicionable(Posicionable posicionable, int x, int y) {
 
-		if(jugadorActivo instanceof JugadorA)
+		if(jugadorActivo instanceof JugadorA) {
 			tablero.posicionarEn((JugadorA) jugadorActivo, posicionable, new Posicion(x, y));
-		if(jugadorActivo instanceof JugadorB)
+			this.actualizarObservadores((Observable) posicionable);
+		}if(jugadorActivo instanceof JugadorB) {
 			tablero.posicionarEn((JugadorB) jugadorActivo, posicionable, new Posicion(x, y));
+			this.actualizarObservadores((Observable) posicionable);
+		}
+	}
+
+	public void actualizarObservadores(Observable posicionable) {
+		posicionable.eliminarObservadores();
+		posicionable.addObserver(tablero.getCeldaDeLaPosicion(posicionable.getPosicion().getX(),posicionable.getPosicion().getY()));
+		posicionable.addObserver(AlgoChessControler.getAlgoChessControler());
 	}
 
 	public Jugador getJugadorActivo() {
@@ -147,5 +155,31 @@ public class AlgoChess {
 
 	public void primeraUnidadSeleccionadaCuraSegundaUnidad(Sanador unidad1, Sanable unidad2) {
 		unidad1.sanar(unidad2);
+	}
+
+	public void eliminarUnidadesMuertasDelTabler() {
+		tablero.eliminarUnidadesMuertasDelTabler();
+	}
+
+	public void eliminarUnidadesMuertasDeLosJugadores() {
+		ArrayList<Unidad> unidadConVidaCeroA = new ArrayList<>();
+		jugadorA.obtenerUnidades().stream().forEach(unidadPosicionado -> {
+			if(unidadPosicionado.obtenerVida() <= 0)
+				unidadConVidaCeroA.add(unidadPosicionado);
+		});
+		unidadConVidaCeroA.stream().forEach(unidadMuerta -> {
+
+			jugadorA.eliminarUnidad(unidadMuerta);
+		});
+
+		ArrayList<Unidad> unidadConVidaCeroB = new ArrayList<>();
+		jugadorB.obtenerUnidades().stream().forEach(unidadPosicionado -> {
+			if(unidadPosicionado.obtenerVida() <= 0)
+				unidadConVidaCeroB.add(unidadPosicionado);
+		});
+		unidadConVidaCeroB.stream().forEach(unidadMuerta -> {
+
+			jugadorB.eliminarUnidad(unidadMuerta);
+		});
 	}
 }

@@ -2,9 +2,13 @@ package fiuba.algo3.algoChess.modelo.entidades;
 
 
 import fiuba.algo3.algoChess.modelo.Observable;
+import fiuba.algo3.algoChess.modelo.Observador;
+import fiuba.algo3.algoChess.modelo.celda.Celda;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 import fiuba.algo3.algoChess.modelo.jugador.*;
+
+import java.util.ArrayList;
 
 public abstract class Unidad extends Observable implements Posicionable {
 	
@@ -33,8 +37,7 @@ public abstract class Unidad extends Observable implements Posicionable {
 	public void recibirAtaque(int daño) {
 		vida = vida - daño;
 		vida = vida - danioPorTerritoroEnemigo.penalizacionPorTerritorioEnemigo(daño);
-		if(vida <= 0)
-			this.notificarObservadores();
+		this.notificarObservadoresAtaques();
 
 	}
 
@@ -56,7 +59,7 @@ public abstract class Unidad extends Observable implements Posicionable {
 		}
 		posicion = newPosicion;
 		danioPorTerritoroEnemigo.actualizaDanioPorTerritoroEnemigo(posicion);
-		this.notificarObservadores();
+		this.notificarObservadoresMovimiento();
 	}
 	
 	@Override
@@ -68,4 +71,8 @@ public abstract class Unidad extends Observable implements Posicionable {
 		tipo.posicionarEnEstaPosicion(this,jugador,aPosicion);
 	}
 
+	public void eliminarObservadores() {
+		this.observersMovi = new ArrayList<>();
+		this.observersAtaque = new ArrayList<>();
+	}
 }

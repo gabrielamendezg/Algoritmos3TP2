@@ -6,7 +6,7 @@ import fiuba.algo3.algoChess.modelo.jugador.*;
 import fiuba.algo3.algoChess.modelo.tablero.Posicion;
 
 
-public abstract class Celda {
+public abstract class Celda implements Observador{
 	protected Posicionable unidad;
 	
 	public Celda() {

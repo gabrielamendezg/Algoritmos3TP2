@@ -12,7 +12,7 @@ import fiuba.algo3.algoChess.modelo.entidades.Jinete;
 import fiuba.algo3.algoChess.modelo.entidades.SoldadoDeInfanteria;
 import fiuba.algo3.algoChess.modelo.entidades.Unidad;
 
-public class JugadorB implements Jugador, Observador {
+public class JugadorB implements Jugador {
 
 	protected int puntos;
 	protected  ArrayList<Unidad> unidades;
@@ -47,7 +47,7 @@ public class JugadorB implements Jugador, Observador {
 		return (unidades.size() != 0);
 	}
     
-    private void eliminarUnidad(Unidad unaUnidad){
+    public void eliminarUnidad(Unidad unaUnidad){
 		this.unidades.remove(unaUnidad);
 	}
 
@@ -84,17 +84,5 @@ public class JugadorB implements Jugador, Observador {
 
 			throw new PuntosInsuficientesExcepcion();
 		}
-	}
-
-	@Override
-	public void change() {
-		ArrayList<Unidad> unidadConVidaCero = new ArrayList<>();
-		unidades.stream().forEach(unidadPosicionado -> {
-			if(unidadPosicionado.obtenerVida() <= 0)
-				unidadConVidaCero.add(unidadPosicionado);
-		});
-		unidadConVidaCero.stream().forEach(unidadMuerta -> {
-			this.eliminarUnidad(unidadMuerta);
-		});
 	}
 }

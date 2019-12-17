@@ -1,5 +1,6 @@
 package fiuba.algo3.algoChess.modelo.celda;
 
+import fiuba.algo3.algoChess.controlador.AlgoChessControler;
 import fiuba.algo3.algoChess.modelo.Excepciones.*;
 import fiuba.algo3.algoChess.modelo.Observador;
 import fiuba.algo3.algoChess.modelo.jugador.*;
@@ -31,4 +32,9 @@ public class CeldaB extends Celda {
 		}
 	}
 
+	@Override
+	public void change() {
+		if(unidad != null)
+			AlgoChessControler.getAlgoChessControler().posicionableDePosicionRecibeAtaque(unidad.getPosicion().getX(),unidad.getPosicion().getY());
+	}
 }

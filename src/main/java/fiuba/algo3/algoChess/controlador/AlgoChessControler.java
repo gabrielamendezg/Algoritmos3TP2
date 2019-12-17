@@ -49,7 +49,6 @@ public class AlgoChessControler implements Observador {
         if (algoChess.getJugadorActivo() instanceof JugadorA)
             posicionablesAzules.add(posicionable);
         else posicionablesRojos.add(posicionable);
-        posicionable.addObserver(this);
     }
 
     public void pasarTurno() {
@@ -136,12 +135,13 @@ public class AlgoChessControler implements Observador {
                 if (unidad1 instanceof Atacante){
                     if (!turnoCompletado()){
                         algoChess.primeraUnidadSeleccionadaAtacaSegundaUnida((Atacante) unidad1, (Atacable) unidad2);
-                        actualizarTooltip();
                         if (unidad2 !=null)
                             new Informar("Ataque recibido", "Puntos de vida restante\n" + unidad2.obtenerVida() + "\n","src/main/resources/sonidos/impacto.wav");
                         this.completarTurno();
+                        actualizarTooltip();
                         this.deseleccionarUnidades();
                         this.determininarSiHayGanador();
+                        this.actualizarTodo();
                         return;
                     }else throw new YaCompletasteTuTurnoExcecion();
                 } else throw new UnidadNoEsAtacanteExcepcion();
@@ -188,7 +188,10 @@ public class AlgoChessControler implements Observador {
     }
     @Override
     public void change() {
+       this.actualizarTodo();
+    }
 
+    public void actualizarTodo() {
         this.deseleccionarUnidades();
         //se elimina unidades muertas
         ArrayList<Posicionable> unidadConVidaCeroAzules = new ArrayList<>();
@@ -231,6 +234,10 @@ public class AlgoChessControler implements Observador {
             mediaPlayer.play();
             posicionablesRojos.remove(unidadMuerta);
         });
+        //elimino del modelo
+        algoChess.eliminarUnidadesMuertasDelTabler();
+        algoChess.eliminarUnidadesMuertasDeLosJugadores();
+
         //elimino imagenes del tablero la celda no se puede hacer click
         celdasConImagenes.stream().forEach( celda -> {
             celda.setGraphic(null);
@@ -339,4 +346,7 @@ public class AlgoChessControler implements Observador {
         } throw new SelecionaUnaUnidaMasParaAtacarExcepcion();		
 	}
 
+    public void posicionableDePosicionRecibeAtaque(int x, int y) {
+        ImagenTablero.getImagenTablero().efectoAtaqueEnLaCelda(x - 1, y - 1);
+    }
 }

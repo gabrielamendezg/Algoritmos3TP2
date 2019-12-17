@@ -1,6 +1,7 @@
 package fiuba.algo3.algoChess.modelo.tablero;
 import fiuba.algo3.algoChess.modelo.Excepciones.*;
-import fiuba.algo3.algoChess.modelo.Observador;
+import fiuba.algo3.algoChess.modelo.Observable;
+import fiuba.algo3.algoChess.modelo.algoChess.AlgoChess;
 import fiuba.algo3.algoChess.modelo.celda.*;
 import fiuba.algo3.algoChess.modelo.celda.Posicionable;
 import fiuba.algo3.algoChess.modelo.entidades.interfaces.Atacable;
@@ -11,7 +12,7 @@ import fiuba.algo3.algoChess.modelo.jugador.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Tablero implements Observador {
+public class Tablero {
 
 	private int xMinB = 11;
 	private int tamanio = 20;
@@ -42,14 +43,10 @@ public class Tablero implements Observador {
 	//Modifico para hacer uso de CeldaA y CeldaB, encapsular y eliminar condiciones ifs y evaluaciones lógicas.
 	public void posicionarEn(JugadorA jugador, Posicionable posicionable, Posicion aPosicion){
 		matriz.get(aPosicion.toString()).recibirPosicionable(jugador, posicionable, aPosicion);
-		posicionable.addObserver(jugador);
-		posicionable.addObserver(this);
 	}
 
 	public void posicionarEn(JugadorB jugador, Posicionable posicionable, Posicion aPosicion){
 		matriz.get(aPosicion.toString()).recibirPosicionable(jugador, posicionable, aPosicion);
-		posicionable.addObserver(jugador);
-		posicionable.addObserver(this);
 	}
 
 	//Mueve la unidad (si existe) en la posición de origen a la posición destino.
@@ -79,6 +76,7 @@ public class Tablero implements Observador {
 			Celda Origen = matriz.get(dePosicion.toString());
 			movible.movibleMoveteA(jugador, aPosicion);
 			Destino.recibirMovible(Origen.vaciarCelda());
+			AlgoChess.getAlgoChess().actualizarObservadores((Observable) movible);
 			return;
 		}
 		throw new PosicionOcupadaExcepcion();
@@ -110,6 +108,7 @@ public class Tablero implements Observador {
 			Celda Origen = matriz.get(dePosicion.toString());
 			movible.movibleMoveteA(jugador, aPosicion);
 			Destino.recibirMovible(Origen.vaciarCelda());
+			AlgoChess.getAlgoChess().actualizarObservadores((Observable) movible);
 			return;
 		}
 		throw new PosicionOcupadaExcepcion();
@@ -200,12 +199,18 @@ public class Tablero implements Observador {
 		} catch (CoordenadaFueraDelTableroExcepcion e) {}
 		return null;
 	}
+	public Celda getCeldaDeLaPosicion(int x, int y) {
+		return matriz.get(new Posicion(x,y).toString());
+	}
 
-	@Override
-	public void change() {
+	public void eliminarUnidadesMuertasDelTabler() {
 		matriz.values().stream().forEach(celda -> {
 			if(celda.getPosicionable() != null && celda.getPosicionable().obtenerVida() <= 0)
 				celda.vaciarCelda();
+		});
+		matriz.values().stream().forEach(celda -> {
+			if(celda.getPosicionable() != null)
+				AlgoChess.getAlgoChess().actualizarObservadores((Observable) celda.getPosicionable());
 		});
 	}
 }
