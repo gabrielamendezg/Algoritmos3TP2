@@ -31,11 +31,14 @@ public class JugadorA implements Jugador {
     }
 
     public int cantidadDeUnidades() {
+		this.eliminarUnidadesMuertas();
 		return (this.unidades.size());
 	}
     
     public ArrayList<Unidad> obtenerUnidades() {
-		return this.unidades;
+
+		this.eliminarUnidadesMuertas();
+    	return this.unidades;
 	}
 
 	@Override
@@ -43,7 +46,20 @@ public class JugadorA implements Jugador {
 		return puntos;
 	}
 
+	public void eliminarUnidadesMuertas() {
+		ArrayList<Unidad> unidadConVidaCero = new ArrayList<>();
+		unidades.stream().forEach(unidadPosicionado -> {
+			if(unidadPosicionado.obtenerVida() <= 0)
+				unidadConVidaCero.add(unidadPosicionado);
+		});
+		unidadConVidaCero.stream().forEach(unidadMuerta -> {
+
+			this.eliminarUnidad(unidadMuerta);
+		});
+	}
+
 	public boolean sigueEnJuego() {
+		this.eliminarUnidadesMuertas();
 		return (unidades.size() != 0);
 	}
     

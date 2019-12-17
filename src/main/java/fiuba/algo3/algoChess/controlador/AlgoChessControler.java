@@ -252,6 +252,7 @@ public class AlgoChessControler implements Observador {
 
         celdasConImagenes.stream().forEach(celda -> {
             celda.setGraphic(null);
+            celda.setTooltip(null);
         });
 
         //elinmo las celdad viejas
@@ -283,6 +284,7 @@ public class AlgoChessControler implements Observador {
         				if(!movimientoCompletado) {
         					direccion.moverUnidad(algoChess,(Movible) unidad1);
         					this.completarMovimiento();
+                            this.actualizarTooltip();
         					return;
         				}else throw new UnMovimientoPorTurnoExcepcion();
         			} else throw new UnidadNoEsMovibleExcepcion();

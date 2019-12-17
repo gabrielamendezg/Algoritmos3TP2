@@ -162,24 +162,7 @@ public class AlgoChess {
 	}
 
 	public void eliminarUnidadesMuertasDeLosJugadores() {
-		ArrayList<Unidad> unidadConVidaCeroA = new ArrayList<>();
-		jugadorA.obtenerUnidades().stream().forEach(unidadPosicionado -> {
-			if(unidadPosicionado.obtenerVida() <= 0)
-				unidadConVidaCeroA.add(unidadPosicionado);
-		});
-		unidadConVidaCeroA.stream().forEach(unidadMuerta -> {
-
-			jugadorA.eliminarUnidad(unidadMuerta);
-		});
-
-		ArrayList<Unidad> unidadConVidaCeroB = new ArrayList<>();
-		jugadorB.obtenerUnidades().stream().forEach(unidadPosicionado -> {
-			if(unidadPosicionado.obtenerVida() <= 0)
-				unidadConVidaCeroB.add(unidadPosicionado);
-		});
-		unidadConVidaCeroB.stream().forEach(unidadMuerta -> {
-
-			jugadorB.eliminarUnidad(unidadMuerta);
-		});
+		jugadorA.eliminarUnidadesMuertas();
+		jugadorB.eliminarUnidadesMuertas();
 	}
 }
